@@ -1,10 +1,10 @@
 import React from 'react';
 
-const Messages = () => (
+const Search = () => (
   <div>
-    <h2>Messages</h2>
+    <h2>Search</h2>
     This example shows how to use React Router!
   </div>
 );
 
-export default Messages;
+export default Search;

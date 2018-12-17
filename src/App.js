@@ -3,8 +3,10 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom"
 import './App.css';
 
 import Home from './components/Home';
-import About from './components/About';
-import Messages from './components/Messages';
+import Customers from './components/Customers';
+import Library from './components/Library';
+import Search from './components/Search';
+
 
 
 class App extends Component {
@@ -17,18 +19,22 @@ class App extends Component {
               <Link to="/">Home</Link>
             </li>
             <li>
-              <Link to="/about">About</Link>
+              <Link to="/customers">Customers</Link>
             </li>
             <li>
-              <Link to="/messages">Messages</Link>
+              <Link to="/library">Library</Link>
+            </li>
+            <li>
+              <Link to="/search">Search</Link>
             </li>
           </ul>
 
           <hr />
 
           <Route exact path="/" component={Home} />
-          <Route path="/about" component={About} />
-          <Route path="/messages" component={Messages} />
+          <Route path="/customers" component={Customers} />
+          <Route path="/library" component={Library} />
+          <Route exact path="/search" component={Search} />
         </div>
       </Router>
     );
