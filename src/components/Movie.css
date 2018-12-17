@@ -1,0 +1,42 @@
+.movie {
+  background-color: white;
+  padding: 1em 0;
+  margin: 0.5rem;
+
+  min-height: 250px;
+  min-width: 225px;
+  flex-basis: 18%;
+
+  border-radius: 5px;
+
+  display: grid;
+  grid-template-columns: 1fr 5fr 1fr;
+  align-items: center;
+}
+
+.card__content {
+  grid-column-start: 2;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+
+  text-align: center;
+  font-weight: 100;
+  overflow: hidden;
+}
+
+.card__content-title {
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.card__content-overview {
+  font-size: 3rem;
+  list-style-type: none;
+}
+
+.card__content-release_date, .card__content-image_url {
+  padding: 0;
+  margin: 0;
+}
