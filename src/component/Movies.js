@@ -1,51 +1,27 @@
-import React, { Component } from 'react';
-import axios from 'axios';
+import React from 'react';
+import PropTypes from 'prop-types';
 
-const URL = "http://localhost:3000/"
 
-class Movies extends Component {
-  constructor() {
-    super();
-    this.state = {
-      movies: [],
-    }
-  }
+const Movies = (props) => {
 
-  componentDidMount() {
-    axios.get(URL)
-    .then((response) => {
-      console.log(response);
-      const movies = response.data.map((movie) => {
-        return movie
-      })
-      this.setState({
-        movies: movies,
-      })
-      console.log(this.state.movies)
-    })
-    .catch((error) => {
-      console.log(error.message);
-      this.setState({
-        error: error.message,
-        // add error messages buy mapping through check validations??
-      })
-    })
-  }
-
-  // displayMovies = () => {
-  //   return this.state.movies.map((movie, i) => {
-  //     retunr
-  //   }
-  // }
-
-  render(){
     return (
       <div>
-      {console.log(this.state.movies)}
-
+        <p>{props.image}</p>
+        <p>{props.title}</p>
+        <p>{props.overview}</p>
+        <p>{props.releaseDate}</p>
+        <p>{props.externalId}</p>
     </div>
     )
   }
-}
+
+  Movies.propTypes = {
+    id: PropTypes.number,
+    title: PropTypes.string,
+    overview: PropTypes.string,
+    releaseDate: PropTypes.string,
+    image: PropTypes.string,
+    externalId: PropTypes.id
+  }
 
 export default Movies;
