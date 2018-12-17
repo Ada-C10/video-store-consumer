@@ -14,7 +14,7 @@ class Customers extends Component  {
 
   componentDidMount() {
 
-    const url = "localhost:3000/customers";
+    const url = "http://localhost:3000/customers";
     axios.get(url)
       .then((response) => {
         const customers = response.data.map((customer) => {
@@ -42,10 +42,8 @@ class Customers extends Component  {
     return (
 
       <section>
-      <h1> CUSTOMERS PAGE </h1>
-        {this.state.customers.map((customer, i) => {
-          return <Customer key={i} name={customer.name} movies_checked_out_count={customer.movies_checked_out_count} />
-        })}
+        <h1> CUSTOMERS PAGE </h1>
+        {this.populateCustomers()}
       </section>
     )
   }

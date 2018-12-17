@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import Index from './components/Index';
 import Search from './components/Search';
 import Library from './components/Library';
-import Customers from "./components/Customers";
+import Customers from './components/Customers';
 
 const AppRouter = () => (
   <Router>
