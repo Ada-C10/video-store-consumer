@@ -1,6 +1,8 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import MovieList from './MovieList';
+import CustomerList from './CustomerList';
+
 
 
 function VideoStore() {
@@ -23,7 +25,7 @@ function VideoStore() {
 
     <Route exact path="/" component={Home} />
     <Route path="/movies" component={MovieListShow} />
-    <Route path="/customers" component={CustomerList} />
+    <Route path="/customers" component={CustomerListShow} />
     </div>
     </Router>
   );
@@ -46,10 +48,10 @@ function MovieListShow() {
   );
 }
 
-function CustomerList() {
+function CustomerListShow() {
   return (
     <div>
-    <h2>About</h2>
+    <CustomerList/>
     </div>
   );
 }
