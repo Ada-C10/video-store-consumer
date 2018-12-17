@@ -42,13 +42,13 @@ class MovieList extends Component {
 
   makeMovieList = (movies) => {
     const moviesList = movies.map((movie) => {
-      return <li key={movie.id} >
-      <Movie
+      return <Movie
+      key={movie.id}
       title={movie.title}
       overview={movie.overview}
       release_date={movie.release_date}
       image_url={movie.image_url}/>
-      </li>
+
     });
     return moviesList
   }
@@ -65,8 +65,7 @@ class MovieList extends Component {
 }
 
 MovieList.propTypes = {
-  url: PropTypes.string.isRequired,
-  boardName: PropTypes.string.isRequired
+
 };
 
 export default MovieList;
