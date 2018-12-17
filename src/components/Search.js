@@ -1,7 +1,15 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
-const Search = () => {
-  return <h2> Search!!!! </h2>;
+class Search extends Component  {
+  render() {
+    return (
+      <h1> Search </h1>
+    )
+  }
+}
+
+Search.propTypes = {
+
 };
 
 export default Search;
