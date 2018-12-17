@@ -34,7 +34,8 @@ class Customers extends Component  {
 
   populateCustomers = () => {
     return this.state.customers.map((customer, i) => {
-      return <Customer key={i} name={customer.name} movies_checked_out_count={customer.movies_checked_out_count} />
+      const newCustomer = {...customer};
+      return <Customer key={i} customer={newCustomer} />
     })
   }
 
