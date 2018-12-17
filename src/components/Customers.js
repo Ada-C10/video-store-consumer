@@ -1,8 +1,15 @@
-import React, { Component} from 'react';
+import React, { Component } from 'react';
 
-const Customers = () => {
-  return  <h2> Customers!!!! </h2>
+class Customers extends Component  {
+  render() {
+    return (
+      <h1> Customers </h1>
+    )
+  }
 }
 
+  Customers.propTypes = {
+  
+  };
 
-export default Customers;
+  export default Customers;
