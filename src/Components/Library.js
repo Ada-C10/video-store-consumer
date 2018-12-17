@@ -1,14 +1,14 @@
 import React from 'react';
 // import './RecentSubmission.css';
 
-const Home = () => {
+const Library = () => {
   return (
     <div >
       <h1>
-        You are in Home!
+        You are in Library!
       </h1>
     </div>
   );
 }
 
-export default Home;
+export default Library;
