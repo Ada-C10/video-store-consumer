@@ -1,19 +1,25 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class Movie extends Component  {
 
   render() {
     return (
-      <div>
-
-        <h1> {this.props.movie.title}</h1>
-        <h1> {this.props.movie.overview} </h1>
+      <div className="movie item">
+        <img src={this.props.movie.image_url} alt="movie poster" />
+        <div className="item__details">
+          <h2>{this.props.movie.title}</h2>
+          <p>{this.props.movie.release_date}</p>
+        </div>
+        <button className="item__button">Select for Rental</button>
       </div>
+
     )
   }
 }
 
   Movie.propTypes = {
+    movie: PropTypes.object
 
   };
 
