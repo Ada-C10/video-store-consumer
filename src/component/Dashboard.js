@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Movies from './Movies'
+
 import axios from 'axios';
 
 const URL = "http://localhost:3000/"
@@ -34,7 +35,6 @@ componentDidMount() {
 }
 
 render() {
-
   const movies = this.state.movies.map((movie, i) => {
     return <Movies
       key={i}
@@ -43,7 +43,7 @@ render() {
       overview={movie.overview}
       releaseDate={movie.release_date}
       image={movie.image_url}
-      externalId={movie.external_id} />
+     />
     })
 
   return (

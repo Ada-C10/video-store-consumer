@@ -6,11 +6,10 @@ const Movies = (props) => {
 
     return (
       <div>
-        <p>{props.image}</p>
-        <p>{props.title}</p>
+        <img src={props.image} alt={props.title}/>
+        <h4><strong>{props.title}</strong></h4>
         <p>{props.overview}</p>
         <p>{props.releaseDate}</p>
-        <p>{props.externalId}</p>
     </div>
     )
   }
