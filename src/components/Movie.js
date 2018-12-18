@@ -6,7 +6,7 @@ const Movie = (props) => {
   return (
     <div className="movie">
       <div className="movie__art">
-        <img src={ props.data.image_url } />
+        <img src={ props.data.image_url } className="pic" />
       </div>
       <div className="movie__info">
         <h3 className="movie__title">
