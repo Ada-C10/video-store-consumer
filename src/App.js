@@ -47,7 +47,7 @@ class App extends Component {
 
     onSelectCustomer = (customerId) => {
         console.log('cust id in customerlist compo', customerId);
-        const selectedCust = this.state.customers.find((customer) =>{
+        const selectedCust = this.state.customers.find((customer) => {
             return customer.id === customerId;
         });
         console.log('selected cust', selectedCust);
@@ -56,6 +56,23 @@ class App extends Component {
                 currentCustomer: selectedCust,
             });
         }
+    };
+
+
+    onConfirmRental = () => {
+        const customerId = this.state.currentCustomer.id;
+        const movieTitle = this.state.currentMovie.name;
+        console.log('creating rental for:', customerId, movieTitle);
+        axios.post(`http://localhost:3000/rentals/${movieTitle}/checkout?customer=${customerId}`)
+            .then((response) => {
+                console.log('rental created');
+            })
+            .catch((error) => {
+                console.log('errors', error.message);
+                this.setState({
+                    errorMessage: `Failure! ${error.message}`,
+                })
+            });
     };
 
   render() {
@@ -73,7 +90,9 @@ class App extends Component {
                             <p>{this.state.currentCustomer.name}</p>
                         </div>
                         <div>CurrentMovieField</div>
-                        <button>CheckOutButton</button>
+                        <button type="button"
+                        onClick={this.onConfirmRental}>
+                        Confirm Rental</button>
                     </section>
                 </header>
                 <section className="component">
