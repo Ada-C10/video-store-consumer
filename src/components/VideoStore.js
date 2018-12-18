@@ -11,8 +11,8 @@ class VideoStore extends Component {
     super(props);
 
     this.state = {
-      selectedCustomer: "",
-      selectedMovie: {}
+      selectedCustomer: "none",
+      selectedMovie: "none"
     };
   }
 
@@ -55,6 +55,10 @@ class VideoStore extends Component {
       </li>
       </ul>
 
+
+      <div>{this.state.selectedCustomer === "none" ? this.state.selectedCustomer
+       : this.state.selectedCustomer.name}</div>
+      <div>{this.state.selectedMovie === "none" ? this.state.selectedMovie : this.state.selectedMovie.title}</div>
       <hr />
 
       <Route exact path="/" component={Home} />
