@@ -4,10 +4,13 @@ import './styles/Customer.css';
 
 
 class Customer extends Component {
+  constructor() {
+    super();
+  }
 
-
-
-
+  render () {
+    return
+  }
 }
 
 export default Customer;

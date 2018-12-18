@@ -4,9 +4,13 @@ import './styles/Library.css';
 
 
 class Library extends Component {
+  constructor() {
+    super();
+  }
 
-
-
+  render () {
+    return
+  }
 
 }
 
