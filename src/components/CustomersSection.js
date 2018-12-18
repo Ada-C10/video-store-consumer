@@ -2,9 +2,9 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 
-// import './CustomersButton.css';
+// import './CustomersSection.css';
 
-class CustomersLink extends Component {
+class CustomersSection extends Component {
   constructor(props) {
     super(props);
   }
@@ -23,8 +23,8 @@ class CustomersLink extends Component {
   }
 }
 
-CustomersLink.propTypes = {
+CustomersSection.propTypes = {
 
 };
 
-export default CustomersLink;
+export default CustomersSection;

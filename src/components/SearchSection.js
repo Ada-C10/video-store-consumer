@@ -2,9 +2,9 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 
-// import './SearchLink.css';
+// import './SearchSection.css';
 
-class SearchLink extends Component {
+class SearchSection extends Component {
   constructor(props) {
     super(props);
   }
@@ -23,8 +23,8 @@ class SearchLink extends Component {
   }
 }
 
-SearchLink.propTypes = {
+SearchSection.propTypes = {
 
 };
 
-export default SearchLink;
+export default SearchSection;

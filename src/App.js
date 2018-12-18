@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import NewRental from './components/NewRental';
 import { Route } from 'react-router-dom'
-import SearchLink from './components/SearchLink';
-import LibraryLink from './components/LibraryLink';
-import CustomersLink from './components/CustomersLink';
+
 import Nav from './components/Nav';
 
 

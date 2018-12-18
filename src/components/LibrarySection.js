@@ -5,9 +5,9 @@ import Library from './Library';
 import { BrowserRouter as Router, Link } from 'react-router-dom';
 
 
-// import './LibraryButton.css';
+// import './LibrarySection.css';
 
-class LibraryLink extends Component {
+class LibrarySection extends Component {
   constructor(props) {
     super(props);
 
@@ -60,8 +60,8 @@ class LibraryLink extends Component {
   }
 }
 
-LibraryLink.propTypes = {
+LibrarySection.propTypes = {
 
 };
 
-export default LibraryLink;
+export default LibrarySection;
