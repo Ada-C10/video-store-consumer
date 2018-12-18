@@ -17,29 +17,29 @@ class SearchBar extends Component {
     };
   }
 
-queryMovie =(title) =>{
-  console.log(`searching for ${title}`);
-axios.get(QUERY_URL + title)
+onSubmit =() =>{
+  // console.log(`searching for $`);
+axios.get(QUERY_URL + this.state.searchValue)
 .then((response) =>{
-this.setState({
-  searchedMovies:response.data
-})
-})
+  const movieList = response.data.map((movie) => {
+    return movie
+  })
+  console.log(response);
+    this.setState({
+      searchedMovies:movieList
+  })
+  })
 .catch((error) => {
   console.log(error.message);
 })
-  console.log("The component did in fect mount");
-
 }
 
-
   onSearchChange = (event) => {
-    console.log("printing event in onSearchChange",event);
+
     this.setState({
       searchValue: event.target.value,
     });
 
-    this.onSearchChange(event.target.value);
   }
 
   render() {
@@ -52,10 +52,18 @@ this.setState({
           className="search-bar"
           placeholder="Filter Movies"
         />
+        <input type="submit" value="submit" onClick={ this.onSubmit } />
+        {this.movieList}
       </section>
+
+
     );
+
   }
 }
+
+
+
 
 SearchBar.propTypes = {
   onSearchChange: PropTypes.func.isRequired,
