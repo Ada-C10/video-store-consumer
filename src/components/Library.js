@@ -19,15 +19,12 @@ class Library extends Component {
 
     axios.get(URL)
     .then((response) => {
-      const movieList = response.data.map((movie) => {
-        return {
-          ...movie
-        }
+      const allMovies = response.data.map((movie, i ) => {
+        return <Movie key={i} {...movie}/>
       });
       this.setState({
-        movies: movieList,
+        movies: allMovies,
       });
-      console.log(this.state.movies)
     })
     .catch((error) => {
       this.setState({error: error.message});
@@ -36,13 +33,10 @@ class Library extends Component {
 
 
   render () {
-    const movieList = this.state.movies.map((movie, i) => {
-      return <Movie key={i} {...movie} />
-    });
 
     return (
       <div>
-        {movieList}
+        {this.state.movies}
       </div>
     );
   }
