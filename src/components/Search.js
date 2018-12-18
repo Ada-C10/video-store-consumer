@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import './styles/Search.css';
+import axios from 'axios';
 
 
 class Search extends Component {
@@ -9,6 +10,7 @@ class Search extends Component {
 
     this.state = {
       query: "",
+      searchResults: [],
     }
   }
 
@@ -25,6 +27,17 @@ class Search extends Component {
     console.log(`User searched for ${this.state.query}`);
   }
 
+  componentDidMount(){
+    const URL = "https://api.themoviedb.org/3/search/movie?api_key=MOVIEDB_KEY&language=en-US"
+    axios.get(URL)
+      .then((response) => {
+        this.setState({searchResults: response.data
+        });
+      })
+      .catch((error) => {
+        this.setState({error: error.message})
+      })
+  }
 
   render () {
     return (
