@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import './SearchBar.css';
+import axios from 'axios';
 
+const QUERY_URL ="http://localhost:3000/movies?query";
+const MOVIES_URL ="http://localhost:3000/movies";
 
 class SearchBar extends Component {
 
@@ -10,8 +13,26 @@ class SearchBar extends Component {
 
     this.state = {
       searchValue: '',
+      searchedMovies:[],
     };
   }
+
+
+queryMovie =(title) =>{
+  console.log(`searching for ${title}`);
+axios.get(QUERY_URL + title)
+.then((response) =>{
+this.setState({
+  searchedMovies:response.data
+})
+})
+.catch((error) => {
+  console.log(error.message);
+})
+  console.log("The component did in fect mount");
+
+}
+
 
   onSearchChange = (event) => {
     console.log("printing event in onSearchChange",event);
@@ -19,7 +40,7 @@ class SearchBar extends Component {
       searchValue: event.target.value,
     });
 
-    this.props.onSearchChange(event.target.value);
+    this.onSearchChange(event.target.value);
   }
 
   render() {
