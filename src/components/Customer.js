@@ -12,14 +12,15 @@ class Customer extends Component {
   }
   render() {
     return (
-      <div className="customer">
-        <div className="customer-list-container"> </div>
-        <h1 className="customer__content">
-          {" "}
-          {this.props.customer.name}
-          <p>{this.props.customer.phone}</p>
-          <p>{this.props.customer.movies_checked_out_count}</p>
-        </h1>
+      <div className="customer item">
+        <div className="item__details">
+          <h2>{this.props.customer.name}</h2>
+          <p />{" "}
+          <p>
+            {this.props.customer.movies_checked_out_count} Movies checked out
+          </p>
+        </div>
+        <button className="item__button"> Select for Rental</button>
       </div>
     );
   }
