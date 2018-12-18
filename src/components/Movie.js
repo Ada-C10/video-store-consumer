@@ -19,7 +19,7 @@ const Movie = (props) => {
           type="button"
           onClick={props.selectMovie}
         >
-          Select Movie
+          {props.buttonName}
         </button>
     </div>
   );
@@ -28,6 +28,7 @@ const Movie = (props) => {
 Movie.propTypes = {
   movie: PropTypes.object.isRequired,
   selectMovie: PropTypes.func.isRequired,
+  buttonName: PropTypes.string,
 };
 
 export default Movie;

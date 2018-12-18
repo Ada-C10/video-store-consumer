@@ -2,12 +2,11 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom"
 import './App.css';
 import axios from 'axios';
+
 import Home from './components/Home';
 import Customers from './components/Customers';
 import Library from './components/Library';
 import Search from './components/Search';
-
-
 
 class App extends Component {
   constructor(){
@@ -46,6 +45,7 @@ class App extends Component {
       customer_id: this.state.currentCustomerID,
       due_date: dueDate,
     }
+
     axios.post(rentalURL, rental)
     .then(() => {
 
@@ -58,7 +58,23 @@ class App extends Component {
     })
   }
 
-  addMovie = () => {
+  addMovie = (movie) => {
+
+  const ADD_MOVIE_URL = `http://localhost:3000/movies`;
+
+    axios.post(ADD_MOVIE_URL, movie)
+    .then(() => {
+
+      console.log('inside add Movie', movie.title, movie.image_url);
+
+      const message = `Successfully added ${movie.title} to the library`;
+      this.setState({
+        movies: [...this.state.movies, movie],
+        Messages: [message] });
+    })
+    .catch((error) => {
+      this.setState({ Messages: [...this.state.Messages, error.message] });
+    })
 
   }
 
@@ -121,7 +137,7 @@ class App extends Component {
           />
         <Route exact path="/search"
            render={(props) => <Search {...props}
-           addMovie={ (title) => this.addMovie(title)}
+           addMovie={ (movie) => this.addMovie(movie)}
           />}
           />
         </div>

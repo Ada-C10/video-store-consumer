@@ -37,7 +37,8 @@ class Search extends Component {
   render () {
     const queryList = this.state.queryResults.map((movie, i) => {
 
-      return <Movie key = {i} movie={movie} selectMovie={() => {this.props.addMovie(movie)}}/>
+      return <Movie key = {i} movie={movie} selectMovie={() => {this.props.addMovie(movie)}}
+        buttonName="Add Movie to Library"/>
 
     })
 

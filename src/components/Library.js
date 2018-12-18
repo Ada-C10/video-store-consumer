@@ -31,7 +31,10 @@ class Library extends Component {
 
     const movieList = this.props.movies.map((movie, i) => {
 
-      return <Movie key = {i} movie={movie} selectMovie={() => {this.props.selectMovie(movie.title)}}/>
+      console.log('inside library' ,movie.title, movie.image_url)
+
+      return <Movie key = {i} movie={movie} selectMovie={() => {this.props.selectMovie(movie.title)}}
+      buttonName="Select Movie"/>
 
     })
 
