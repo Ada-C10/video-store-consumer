@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import './styles/Search.css';
 import axios from 'axios';
+// import ENV from './.env';
 
 
 class Search extends Component {
@@ -22,13 +23,10 @@ class Search extends Component {
    });
   }
 
-  onSearchSubmit = (event) => {
-    event.preventDefault();
-    console.log(`User searched for ${this.state.query}`);
-  }
-
-  componentDidMount(){
-    const URL = "https://api.themoviedb.org/3/search/movie?api_key=MOVIEDB_KEY&language=en-US"
+  searchMovieAPI =(query)=> {
+    const key = process.env.REACT_APP_MOVIEDB_KEY;
+    console.log(key);
+    const URL = "https://api.themoviedb.org/3/search/movie?api_key=" + `${key}&query=${query}`;
     axios.get(URL)
       .then((response) => {
         this.setState({searchResults: response.data
@@ -37,6 +35,12 @@ class Search extends Component {
       .catch((error) => {
         this.setState({error: error.message})
       })
+  }
+
+  onSearchSubmit = (event) => {
+    event.preventDefault();
+    console.log(`User searched for ${this.state.query}`);
+    this.searchMovieAPI(this.state.query);
   }
 
   render () {
