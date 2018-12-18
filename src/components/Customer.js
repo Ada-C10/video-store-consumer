@@ -14,8 +14,11 @@ class Customer extends Component {
     return (
       <div className="customer">
         <div className="customer-list-container"> </div>
-        <h1> {this.props.customer.name}</h1>
-        <h1> {this.props.customer.phone} </h1>
+        <h1 className="customer__content">
+          {" "}
+          {this.props.customer.name}
+          <p>{this.props.customer.phone}</p>
+        </h1>
       </div>
     );
   }

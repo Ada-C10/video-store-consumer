@@ -2,7 +2,7 @@
   background-color: #336699;
   display: grid;
   grid-template-columns: 1fr 5fr 1fr;
-  align-items: center;
+  align-items: flex-start;
   padding: 1em 0;
   margin: 0.5rem;
 
