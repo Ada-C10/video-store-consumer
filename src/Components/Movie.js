@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types'
 import './Movie.css';
 
-const Movie = ({id, title, release_date, image_url, buttonFunc}) => {
+const Movie = ({id, title, release_date, image_url, buttonFunc, theme}) => {
 
 
   return (
@@ -12,11 +12,10 @@ const Movie = ({id, title, release_date, image_url, buttonFunc}) => {
         <h1>{title}</h1>
         <p>{release_date}</p>
       </div>
-      <div>
-        {buttonFunc}
+      <div
+        onClick={() => buttonFunc()} >
+        {theme}
       </div>
-
-
     </div>
   );
 }

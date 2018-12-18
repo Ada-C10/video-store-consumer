@@ -22,8 +22,8 @@ const movies = [
 ]
 
 class Library extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       library: []
@@ -55,7 +55,8 @@ class Library extends Component {
         <Movie
           key={i}
           {...movie}
-          buttonFunc={'callback function to select movie'}
+          buttonFunc={() => this.props.selectMovieCallback(movie)}
+          theme='Select for Rental'
           />
       )
     });

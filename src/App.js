@@ -67,6 +67,13 @@ class App extends Component {
    }
  }
 
+ selectMovie = (movie) => {
+   console.log(movie);
+   this.setState({
+     selectedMovie: movie
+   });
+ };
+
   render() {
     return (
       <div className="App">
@@ -84,10 +91,18 @@ class App extends Component {
              </li>
            </ul>
 
+           <div>
+             <p>Selected Movie</p>
+             {this.state.selectedMovie && <p>{this.state.selectedMovie.title}</p>}
+           </div>
+
            <hr />
 
            <Route path="/search" component={Search} />
-           <Route path="/library" component={Library} />
+           <Route
+             path="/library"
+             render={(props) => <Library {...props} selectMovieCallback={this.selectMovie}/>}
+           />
            <Route path="/customers" component={Customers} />
          </div>
        </Router>
