@@ -34,7 +34,7 @@ class Customers extends React.Component{
       return <Customer
       key={i}
       customerInfo={formattedCustomer}
-      selectCustomer={() => {this.props.selectCustomer(customer.name)}} />
+      selectCustomer={() => {this.props.selectCustomer(formattedCustomer)}} />
     });
 
     return (

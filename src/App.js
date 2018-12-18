@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom"
 import './App.css';
-
+import axios from 'axios';
 import Home from './components/Home';
 import Customers from './components/Customers';
 import Library from './components/Library';
@@ -15,21 +15,52 @@ class App extends Component {
 
     this.state = {
       currentMovie: "none",
-      currentCustomer: "none",
+      currentCustomerName: "none",
+      currentCustomerID: 0,
+      Messages: [],
     }
   }
 
   selectMovie = (title) => {
-    // console.log("Inside selectMovie", title);
     this.setState({currentMovie: title})
   }
 
-  selectCustomer = (name) => {
-    // console.log("Inside selectMovie", name);
-    this.setState({currentCustomer: name})
+  selectCustomer = (customer) => {
+    this.setState({
+      currentCustomerName: customer["name"],
+      currentCustomerID: customer["id"]})
+  }
+
+  rental = () => {
+    const rentalURL = `http://localhost:3000/rentals/${this.state.currentMovie}/check-out`;
+
+    let dueDate = new Date();
+    dueDate.setDate(dueDate.getDate() + 7);
+
+    const rental = {
+      customer_id: this.state.currentCustomerID,
+      due_date: dueDate,
+    }
+    axios.post(rentalURL, rental)
+    .then((response) => {
+      console.log(response);
+      const message = `Successfully checked out ${this.state.currentMovie} to ${this.state.currentCustomerName}`;
+
+      this.setState({ Messages: [message] })
+    })
+    .catch((error) => {
+      this.setState({Messages: [...this.state.Messages, error.message]});
+    })
+
+
   }
 
   render() {
+
+    const Messages = this.state.Messages.map((message, i) => {
+      return <li key={i}>{message}</li>;
+    })
+
     return (
       <Router>
         <div>
@@ -50,17 +81,29 @@ class App extends Component {
               Selected Movie: {this.state.currentMovie}
             </li>
             <li>
-              Selected Customer: {this.state.currentCustomer}
+              Selected Customer: {this.state.currentCustomerName}
+            </li>
+            <li>
+              <button
+                type="button"
+                onClick={this.rental}
+              >
+                Checkout
+              </button>
             </li>
           </ul>
-
+          <section>
+            <ul>
+              {Messages}
+            </ul>
+          </section>
           <hr />
 
           <Route exact path="/" component={Home} />
           <Route
             path="/customers"
             render={(props) => <Customers {...props}
-            selectCustomer={ (name) => this.selectCustomer(name)}/>}
+            selectCustomer={ (customer) => this.selectCustomer(customer)}/>}
             />
           <Route
             path="/library"
