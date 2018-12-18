@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+
 import { Route } from 'react-router-dom'
 
 import NewRental from './components/NewRental';
@@ -29,6 +30,7 @@ class App extends Component {
           <Route path="/library" render={() => <LibrarySection />} />
           <Route path="/customers" render={() => <CustomerSection />} />
           <Route path="/search" render={() => <SearchSection />} />
+
       </div>
     );
   }
