@@ -6,8 +6,14 @@ import './CustomerList.css';
 
 const CustomerList = (props) => {
   const customerList = props.customers.map((customer) => {
-    return <Customer key={customer.id} {...customer} />
+    return <Customer
+            key={customer.id}
+            {...customer}
+            rentCustomerCallback={props.rentCustomerCallback}
+             />
   });
+
+  console.log(customerList)
 
   return (
     <div>
@@ -18,6 +24,7 @@ const CustomerList = (props) => {
 
 CustomerList.propTypes = {
   customers: PropTypes.array.isRequired,
+  rentCustomerCallback: PropTypes.func.isRequired,
 }
 
 export default CustomerList;

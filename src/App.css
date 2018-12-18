@@ -1,17 +1,27 @@
 .App {
   text-align: center;
+  background-color: #000024;
+  color: white;
+}
+
+a:link {
+  text-decoration: none;
+}
+
+.header {
+  -webkit-text-stroke: 1px red;
+   color: #000024;
+   font-size: 4em;
+   text-transform: uppercase;
+   font-family: 'Muli', sans-serif;
+}
+
+.header:hover {
+  -webkit-text-stroke: 1px #EC407A;
+   color: #000024;
 }
 
 ul li {
   list-style: none;
-}
-
-.icon {
-  width: auto;
-  height: 75px;
-  padding: 0 0;
-}
-
-.icon:hover {
-  opacity: .5;
+  color: red;
 }

@@ -6,6 +6,7 @@ import './Movie.css';
 const Movie = (props) => {
   const { id, title, release_date, image_url } = props;
   const onMovieClick = () => props.rentMovieCallback(id, title);
+  
   return (
     <div className="movie">
       <h3> {title} </h3>

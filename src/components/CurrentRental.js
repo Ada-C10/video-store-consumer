@@ -9,7 +9,7 @@ class CurrentRental extends Component {
 
     this.state = {
       movie: '',
-      customer: '',
+      customerId: '',
     }
   }
 
@@ -28,10 +28,10 @@ class CurrentRental extends Component {
       <div>
         <form className="form-inline">
           <label htmlFor="movie">Selected Movie:</label>
-          <input readOnly name="movie" value={this.props.movie} className="form-control mr-sm-2"/>
+          <input readOnly name="movie" value={this.props.movie.title} className="form-control mr-sm-2"/>
 
           <label htmlFor="customer">Selected Customer:</label>
-          <input readOnly name="customer" value={this.props.customer} className="form-control mr-sm-2" />
+          <input readOnly name="customer" value={this.props.customer.name} className="form-control mr-sm-2" />
           <input type="submit" value="Check Out New Rental" className="btn btn-primary"/>
         </form>
       </div>
