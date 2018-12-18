@@ -17,7 +17,7 @@ class SearchSection extends Component {
 
     return (
       <div>
-      <p>Search</p>
+        <p>Searchin section</p>
       </div>
     )
   }

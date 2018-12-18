@@ -1,7 +1,10 @@
 // import axios from 'axios';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
+<<<<<<< HEAD
 import Movie from './Movie';
+=======
+>>>>>>> routing
 import { BrowserRouter as Router, Link } from 'react-router-dom';
 
 
@@ -40,6 +43,7 @@ class LibrarySection extends Component {
   }
 
   render() {
+<<<<<<< HEAD
     const { movies } = this.state
     console.log(movies)
 
@@ -59,6 +63,20 @@ class LibrarySection extends Component {
 
 
         {allMovies}
+=======
+    // const { movies } = this.state
+    // console.log(movies)
+    //
+    // const allMovies = movies.map((movie) => {
+    //   <div key={movie.id}>
+    //     {movie.title}
+    //   </div>
+    // })
+
+    return (
+      <div>
+        hello movies!
+>>>>>>> routing
       </div>
     )
   }
