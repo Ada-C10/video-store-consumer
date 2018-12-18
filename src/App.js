@@ -16,8 +16,8 @@ class App extends Component {
             <nav className="navbar">
               <ul>
                 <li><Link to="/">Homepage</Link></li>
-                <li><Link to="/library">Library</Link></li>
                 <li><Link to="/search">Search</Link></li>
+                <li><Link to="/library">Library</Link></li>
                 <li><Link to="/customers">Customers</Link></li>
               </ul>
             </nav>
