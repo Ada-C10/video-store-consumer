@@ -5,11 +5,13 @@ import PropTypes from 'prop-types';
 
 const Movie = (props) => {
   console.log(props)
+
+
   return (
       <div>
         {props.title}
         <img src={props.image_url} alt={`${props.title}`} />
-        <button>Select for Rental</button>
+        <button onClick={props.selectMovieCallback}>Select for Rental</button>
       </div>
   )
 }
