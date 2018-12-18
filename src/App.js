@@ -19,13 +19,15 @@ class App extends Component {
     }
 
 
-        // handleAddMovie = () => {
-        //
-        // };
-        //
-        // handleAddCustomer = () => {
-        //
-        // };
+       onSelectCustomer = (custId) => {
+           console.log('cust selected', custId);
+           const customer = this.state.customers.find((customer) =>{
+               return customer.id === custId
+           });
+           this.setState({
+               currentCustomer: customer
+           })
+       };
 
 
 
@@ -52,6 +54,7 @@ class App extends Component {
                 <Route path="/customers"
                        render={(props) => <CustomerList {...props }
                        state={this.state.customers}/>}
+                       onSelectCallback={this.onSelectCustomer}
                 />
                 </section>
             </div>

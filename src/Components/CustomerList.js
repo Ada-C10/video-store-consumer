@@ -42,9 +42,11 @@ class CustomerList extends Component {
     }
 
     onSelectCustomer = (customerId) => {
+        console.log('cust id in customerlist compo', customerId);
         const selectedCust = this.state.customers.find((customer) =>{
             return customer.id === customerId;
         });
+        console.log('selected cust', selectedCust);
         if (selectedCust) {
             this.setState({
                 currentCustomer: selectedCust,
@@ -53,10 +55,12 @@ class CustomerList extends Component {
     };
 
     render() {
-        console.log('customer list', this.state.customers);
+        // console.log('customer list', this.state.customers);
+        console.log('current cust', this.state.currentCustomer)
+
         const customerList = this.state.customers.map((customer) => {
             return <Customer key={customer.id}
-                             selectCustomerCallback={this.onSelectCustomer}
+                             onSelectCallback={this.onSelectCustomer}
                              {...customer} />
 
         });

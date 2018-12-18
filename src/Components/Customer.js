@@ -5,17 +5,20 @@ import './Customer.css'
 
 
 const Customer = (props) => {
-    const { id, name, moviesCheckedOut, rentalCredit } = props;
-    handleSelect = (e) => {
-        console.log('this select', this.props.id)
+    const handleSelect = () => {
+        console.log('this select', props.id);
+        props.onSelectCallback(props.id)
     };
+
+    const { id, name, moviesCheckedOut, rentalCredit } = props;
+
     return (
         <section className="card customer-card">
             <p className="customer-name">{name}</p>
             <p className="customer-movies-out">Movies Checked Out: {moviesCheckedOut}</p>
             <p className="customer-credit">Rental Credit: ${rentalCredit}</p>
             <button className="selectCustomer"
-                    onClick={this.handleSelect}
+                    onClick={handleSelect}
                     type="button">Select</button>
         </section>
     );
@@ -26,7 +29,7 @@ Customer.propTypes = {
     name: PropTypes.string,
     moviesCheckedOut: PropTypes.number,
     rentalCredit: PropTypes.number,
-    selectCustomerCallback: PropTypes.func,
+    onselectCallback: PropTypes.func,
 };
 
 export default Customer;
