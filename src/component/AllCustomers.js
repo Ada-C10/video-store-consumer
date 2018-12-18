@@ -3,7 +3,7 @@ import Customer from './Customer'
 
 import axios from 'axios';
 
-const URL = "http://localhost:3000/customers/"
+const URL = "http://localhost:3000/customers"
 
 class AllCustomers extends Component {
   constructor() {

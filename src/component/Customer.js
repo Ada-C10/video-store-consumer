@@ -7,7 +7,7 @@ const Customer = (props) => {
     return (
       <div>
         <h4><strong>{props.name}</strong></h4>
-        <p>{props.movies_checked_out_count}</p>
+        <p>Movies Checked Out: {props.movies_checked_out_count}</p>
     </div>
     )
   }
