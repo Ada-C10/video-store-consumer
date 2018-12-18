@@ -55,7 +55,10 @@ class App extends Component {
              <p>Selected Movie</p>
              {this.state.selectedMovie && <p>{this.state.selectedMovie.title}</p>}
            </div>
-
+           <div>
+             <p>Selected Customer</p>
+             {this.state.selectedCustomer && <p>{this.state.selectedCustomer.name}</p>}
+           </div>
 
            <Route path="/search"
              render={() => <Search baseUrl={this.url} addMovieCallback={this.addMovie}/>} />
