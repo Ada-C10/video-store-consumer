@@ -15,8 +15,9 @@ class RentalManager extends Component {
   }
 
   addToLibrary = movie => {
+    console.log(movie);
     axios
-      .post("http://localhost:3000/movies", { movie })
+      .post("http://localhost:3000/movies", movie)
       .then(response => {
         console.log(response);
       })
@@ -44,12 +45,9 @@ class RentalManager extends Component {
     const date = new Date(Date.now());
     date.setDate(date.getDate() + 7);
 
-    console.log(date);
-
     const url = `http://localhost:3000/rentals/${this.state.currentMovieTitle}/check-out?customer_id=${this.state.currentCustomerID}&due_date=${date}` ;
     // const url = `http://localhost:3000/rentals/Psycho/check-out?customer_id=1&due_date=${date}`;
 
-    console.log(url);
     axios
       .post(url)
       .then(response => {

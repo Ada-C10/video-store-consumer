@@ -18,20 +18,15 @@ class Search extends Component {
     const url =
       "http://localhost:3000/movies?query=" +
       `${this.state.searchTerm}`;
-    console.log(url);
+
     axios
       .get(url)
       .then(response => {
-        console.log(response);
         const movies = response.data.map(movie => {
-          return {
-            ...movie,
-            // image_url: `https://image.tmdb.org/t/p/w185/${movie.poster_path}`
-          };
+          return {...movie};
         });
 
         this.setState({ movies });
-        console.log(this.state.movies);
       })
       .catch(error => {
         const errorMessage = error.message;
