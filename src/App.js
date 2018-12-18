@@ -19,18 +19,44 @@ class App extends Component {
         };
     }
 
+    componentDidMount() {
+        axios.get("http://localhost:3000/customers")
+            .then((response) => {
+                console.log('response', response.data);
+                const customers = response.data.map((customer) => {
+                    const newCustomer = {
+                        ...customer,
+                        rentalCredit: customer["account_credit"],
+                        moviesCheckedOut: customer["movies_checked_out_count"],
 
-       onSelectCustomer = (custId) => {
-           console.log('cust selected', custId);
-           const customer = this.state.customers.find((customer) =>{
-               return customer.id === custId
-           });
-           this.setState({
-               currentCustomer: customer
-           })
-       };
+                    };
+                    return newCustomer
+                });
 
+                this.setState({
+                    customers,
+                })
+            })
+            .catch((error) => {
+                console.log('errors:', error.message);
+                this.setState ({
+                    errorMessage: error.message
+                });
+            });
+    }
 
+    onSelectCustomer = (customerId) => {
+        console.log('cust id in customerlist compo', customerId);
+        const selectedCust = this.state.customers.find((customer) =>{
+            return customer.id === customerId;
+        });
+        console.log('selected cust', selectedCust);
+        if (selectedCust) {
+            this.setState({
+                currentCustomer: selectedCust,
+            });
+        }
+    };
 
   render() {
     return (
@@ -43,16 +69,18 @@ class App extends Component {
                     </nav>
                     <section className="search-bar">SearchBarComponentHere</section>
                     <section className="rental-info-fields">
-                        <div className="selected-item">Current Customer:{this.state.currentCustomer}</div>
+                        <div>Current Customer:{this.state.currentCustomer.name}</div>
                         <div>CurrentMovieField</div>
                         <button>CheckOutButton</button>
                     </section>
                 </header>
                 <section className="component">
                 <Route path="/customers"
-                       render={(props) => <CustomerList {...props }
+                       render={() => <CustomerList
+                           customers={this.state.customers}
+                           onSelectCallback={this.onSelectCustomer}
                        state={this.state.customers}/>}
-                       onSelectCallback={this.onSelectCustomer}
+
                 />
                 </section>
             </div>

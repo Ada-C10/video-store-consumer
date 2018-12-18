@@ -5,12 +5,14 @@ import './Customer.css'
 
 
 const Customer = (props) => {
+    const { id, name, moviesCheckedOut, rentalCredit } = props;
     const handleSelect = () => {
-        console.log('this select', props.id);
-        props.onSelectCallback(props.id)
+        console.log('this select', id);
+        console.log('this props - customer', id);
+        props.onSelectCallback(id)
     };
 
-    const { id, name, moviesCheckedOut, rentalCredit } = props;
+
 
     return (
         <section className="card customer-card">
@@ -29,7 +31,7 @@ Customer.propTypes = {
     name: PropTypes.string,
     moviesCheckedOut: PropTypes.number,
     rentalCredit: PropTypes.number,
-    onselectCallback: PropTypes.func,
+    onSelectCallback: PropTypes.func,
 };
 
 export default Customer;
