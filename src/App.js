@@ -5,11 +5,16 @@ import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import Customers from './Components/Customers';
 import Library from './Components/Library';
 import Search from './Components/Search';
+import axios from 'axios';
 
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {
+    this.state = this.resetState()
+  }
+
+  resetState = () => {
+    return {
       selectedCustomer: undefined,
       selectedMovie: undefined
     }
@@ -31,8 +36,29 @@ class App extends Component {
 
   checkoutMovie = () => {
     // http://localhost:3000/rentals/Jaws/check-out?customer_id=1&due_date=12/11/2019
-    const rentalUrl = `${this.url}rentals/${this.state.selectMovie.title}/check-out?`;
-    axios.post(rentalUrl, {customer_id: this.state.selectCustomer.id, due_date: Date.today + 7})
+   const rentalUrl = this.state.selectedMovie ?
+   `${this.url}rentals/${this.state.selectedMovie.title}/check-out?` :
+   `${this.url}rentals/:title/check-out`;
+    console.log(rentalUrl);
+
+    const customerId = this.state.selectedCustomer ?
+    this.state.selectedCustomer.id : 0;
+    console.log(customerId);
+
+    const dueDate = new Date();
+    dueDate.setDate(dueDate.getDate() + 7);
+    console.log(dueDate);
+
+    axios.post(rentalUrl, {customer_id: customerId, due_date: dueDate})
+    .then((response) => {
+      console.log(response)
+      this.setState(
+        this.resetState(),
+      )
+    })
+    .catch((error) => {
+      console.log(error)
+    })
   }
 
   url = "http://localhost:3000/"
@@ -60,22 +86,22 @@ class App extends Component {
             <div>
               <p>Selected Customer</p>
               {this.state.selectedCustomer && <p>{this.state.selectedCustomer.name}</p>}
-            </div><button onClick={checkoutMovie}>Check Out New Rental</button>
+            </div>
+            <div><button onClick={this.checkoutMovie}>Check Out New Rental</button></div>
+            <Route path="/search" component={Search} />
+            <Route
+              path="/library"
+              render={() => <Library selectMovieCallback={this.selectMovie} baseUrl={this.url}/>}
+              />
+            <Route path='/customers'
+              component={() => <Customers baseUrl={this.url} selectCustomerCallback={this.selectCustomer}/>}
+              />
           </div>
-          <Route path="/search" component={Search} />
-          <Route
-            path="/library"
-            render={() => <Library selectMovieCallback={this.selectMovie} baseUrl={this.url}/>}
-            />
-          <Route path='/customers'
-            component={() => <Customers baseUrl={this.url} selectCustomerCallback={this.selectCustomer}/>}
-            />
-        </div>
-      </Router>
+        </Router>
 
-    </div>
-  );
-}
+      </div>
+    );
+  }
 }
 
 export default App;
