@@ -18,7 +18,7 @@ const Movie = (props) => {
       </div>
       <div className="movie__select">
         <p className="movie__select-link" onClick={ props.selectCB }>
-          select me!
+          { props.type === "Search" ? "add to library" : "select me!" }
         </p>
       </div>
     </div>
