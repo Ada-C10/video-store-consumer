@@ -26,11 +26,14 @@ class Search extends Component {
   searchMovieAPI =(query)=> {
     const key = process.env.REACT_APP_MOVIEDB_KEY;
     console.log(key);
-    const URL = "https://api.themoviedb.org/3/search/movie?api_key=" + `${key}&query=${query}`;
+    // const URL = "https://api.themoviedb.org/3/search/movie?api_key=" + `${key}&query=${query}`;
+    const URL = "http://localhost:3000/" + `movies?query=${query}`;
+
     axios.get(URL)
       .then((response) => {
         this.setState({searchResults: response.data
         });
+        console.log(response.data);
       })
       .catch((error) => {
         this.setState({error: error.message})
