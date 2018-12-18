@@ -1,12 +1,12 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
-import Index from './components/Index';
-import Search from './components/Search';
-import Library from './components/Library';
-import Customers from './components/Customers';
+import Index from './Index';
+import Search from './Search';
+import Library from './Library';
+import Customers from './Customers';
 
-const AppRouter = () => (
+const AppRouter = (props) => (
   <Router>
     <div>
       <nav>
@@ -29,7 +29,8 @@ const AppRouter = () => (
       <Route path="/" exact component={Index} />
       <Route path="/search/" component={Search} />
       <Route path="/library/" component={Library} />
-      <Route path="/customers/" component={Customers} />
+
+      <Route path="/customers/" component={() => {return <Customers setCustomerCallback={props.setCustomer}/>}} />
 
     </div>
   </Router>
