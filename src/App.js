@@ -58,6 +58,10 @@ class App extends Component {
     })
   }
 
+  addMovie = () => {
+
+  }
+
   render() {
 
     const Messages = this.state.Messages.map((message, i) => {
@@ -115,7 +119,11 @@ class App extends Component {
             setMovies = { (movies) => this.setMovies(movies)}
             movies = {this.state.movies} />}
           />
-          <Route exact path="/search" component={Search} />
+        <Route exact path="/search"
+           render={(props) => <Search {...props}
+           addMovie={ (title) => this.addMovie(title)}
+          />}
+          />
         </div>
       </Router>
     );

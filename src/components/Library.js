@@ -47,6 +47,7 @@ class Library extends Component {
 Library.propTypes = {
   selectMovie: PropTypes.func.isRequired,
   setMovies: PropTypes.func.isRequired,
+  movies: PropTypes.array.isRequired,
 };
 
 export default Library;
