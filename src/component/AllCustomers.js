@@ -1,29 +1,29 @@
 import React, { Component } from 'react';
-import Movies from './Movies'
+import Customer from './Customer'
 
 import axios from 'axios';
 
-const URL = "http://localhost:3000/movies"
+const URL = "http://localhost:3000/customers/"
 
-class RentalLibrary extends Component {
+class AllCustomers extends Component {
   constructor() {
     super();
     this.state = {
-      movies: [],
+      customers: [],
     }
   }
 
 componentDidMount() {
   axios.get(URL)
   .then((response) => {
-    console.log(response);
-    const movies = response.data.map((movie) => {
-      return movie
+    // console.log(response);
+    const customers = response.data.map((customer) => {
+      return customer
     })
     this.setState({
-      movies: movies,
+      customers: customers,
     })
-    console.log(this.state.movies)
+    // console.log(this.state.customers)
   })
   .catch((error) => {
     console.log(error.message);
@@ -35,20 +35,18 @@ componentDidMount() {
 }
 
 render() {
-  const movies = this.state.movies.map((movie, i) => {
-    return <Movies
+  const customers = this.state.customers.map((customer, i) => {
+    return <Customer
       key={i}
-      id={movie.id}
-      title={movie.title}
-      overview={movie.overview}
-      releaseDate={movie.release_date}
-      image={movie.image_url}
+      id={customer.id}
+      name={customer.name}
+      movies_checked_out_count={customer.movies_checked_out_count}
      />
     })
 
   return (
     <div>
-    {movies}
+    {customers}
     </div>
   )
 }
@@ -60,4 +58,4 @@ render() {
 //   boardName: PropTypes.string.isRequired,
 // };
 
-export default RentalLibrary;
+export default AllCustomers;
