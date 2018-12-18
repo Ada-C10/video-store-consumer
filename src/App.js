@@ -30,9 +30,8 @@ class App extends Component {
 
  addMovie = (movie) => {
    console.log(movie);
-   // this.setState({
-   //   selectedMovie: movie
-   // });
+
+   // TODO: create a create action/route in movie controller of RoR app to complete this method
  };
 
   render() {
