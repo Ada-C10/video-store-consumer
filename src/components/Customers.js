@@ -9,6 +9,7 @@ class Customers extends React.Component{
 
     this.state = {
       allCustomers: [],
+      errorMessages: [],
     }
   }
 
@@ -20,7 +21,9 @@ class Customers extends React.Component{
       this.setState({allCustomers: response.data})
     })
     .catch((error) => {
-      console.log(error);
+      this.setState({
+        errorMessages: [...this.state.errorMessages, error.message]
+      });
     })
   }
 
@@ -39,6 +42,7 @@ class Customers extends React.Component{
 
     return (
       <div>
+      {this.state.errorMessages}
       {allCustomers}
       </div>
     )
