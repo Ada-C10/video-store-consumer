@@ -1,33 +1,40 @@
-// import axios from 'axios';
-import PropTypes from 'prop-types';
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import axios from 'axios';
 import Customer from './Customer';
 
 // import './CustomersSection.css';
 
-class CustomersSection extends Component {
+const ALL_CUSTOMERS_URL = "http://localhost:3000/customers"
+
+class CustomerSection extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      customers: [
-        {
-          name: "Customer Name1",
-          phone: "555-555-5555"
-        },
-        {
-          name: "Customer Name2",
-          phone: "555-555-5555"
-        },
-        {
-          name: "Customer Name3",
-          phone: "555-555-5555"
-        }
-      ]
+      customers: [],
+      errors: []
     };
   }
 
+  componentDidMount() {
+    console.log("the component mounted!");
+
+    axios.get(ALL_CUSTOMERS_URL)
+    .then((response) => {
+      this.setState({
+        customers: response.data,
+      });
+    })
+    .catch((error) => {
+      this.setState({
+        error: error.message
+      });
+    });
+  }
+
   render() {
+
     const { customers } = this.state
     console.log(customers)
 
@@ -51,8 +58,8 @@ class CustomersSection extends Component {
   }
 }
 
-CustomersSection.propTypes = {
+CustomerSection.propTypes = {
 
 };
 
-export default CustomersSection;
+export default CustomerSection;
