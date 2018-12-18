@@ -15,6 +15,8 @@ class RentalManager extends Component {
   }
 
   addToLibrary = movie => {
+    const image_url = movie.image_url.slice(31);
+    movie = {...movie, image_url: image_url};
     console.log(movie);
     axios
       .post("http://localhost:3000/movies", movie)
