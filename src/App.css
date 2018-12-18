@@ -23,6 +23,13 @@
   font-size: large;
 }
 
+ul {
+  list-style: none;
+  display: flex;
+  padding: 10px;
+  justify-content: space-between;
+}
+
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
