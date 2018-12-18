@@ -1,0 +1,19 @@
+.customer-card {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.card {
+    margin: 0.5rem 2rem 0.5rem 2rem;
+    border: 1px solid black;
+    background-color: lightgrey;
+    border-radius: 5px;
+}
+
+.customer-name {
+    font-weight: bolder;
+}
+
+.card .select-btn {
+
+}

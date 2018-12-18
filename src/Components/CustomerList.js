@@ -1,19 +1,72 @@
 import PropTypes from 'prop-types';
-import Customer from './Customer'
+import Customer from './Customer';
+import React from 'react';
+import {Component} from 'react';
+import axios from "axios";
+// import 'bootstrap/dist/css/bootstrap.min.css';
 
-const CustomerList = (props) => {
-    const customerList = props.customers.map((customer) => {
-        return <Customer key={customer.id}
-                         selectCustomerCallback={props.onSelectCallback}
-                         {...customer} />
+class CustomerList extends Component {
+    constructor(props) {
+        super(props);
 
-    });
-    return (
-        <section className="customer-card-group">
-            {customerList}
-        </section>
-    )
-};
+        this.state = {
+            currentCustomer: '',
+            customers: [],
+            errorMessages: '',
+        };
+    }
+    componentDidMount() {
+        axios.get("http://localhost:3000/customers")
+            .then((response) => {
+                console.log('response', response.data);
+                const customers = response.data.map((customer) => {
+                    const newCustomer = {
+                        ...customer,
+                        rentalCredit: customer["account_credit"],
+                        moviesCheckedOut: customer["movies_checked_out_count"],
+
+                    };
+                    return newCustomer
+                });
+
+                this.setState({
+                    customers,
+                })
+            })
+        .catch((error) => {
+            console.log('errors:', error.message);
+            this.setState ({
+                errorMessage: error.message
+            });
+        });
+    }
+
+    onSelectCustomer = (customerId) => {
+        const selectedCust = this.state.customers.find((customer) =>{
+            return customer.id === customerId;
+        });
+        if (selectedCust) {
+            this.setState({
+                currentCustomer: selectedCust,
+            });
+        }
+    };
+
+    render() {
+        console.log('customer list', this.state.customers);
+        const customerList = this.state.customers.map((customer) => {
+            return <Customer key={customer.id}
+                             selectCustomerCallback={this.onSelectCustomer}
+                             {...customer} />
+
+        });
+        return (
+            <section className="customer-card-group">
+                {customerList}
+            </section>
+        )
+    };
+}
 
 
 CustomerList.propTypes = {
