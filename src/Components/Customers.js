@@ -9,8 +9,6 @@ class Customers extends React.Component {
     super(props)
     this.state = {
       customers: ["sample customer"],
-      error: undefined,
-      message: undefined
     }
   }
 

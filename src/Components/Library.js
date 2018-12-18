@@ -9,7 +9,6 @@ class Library extends Component {
 
     this.state = {
       library: [],
-      message: undefined
     };
   }
 
