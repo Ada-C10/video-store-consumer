@@ -1,66 +1,59 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import Library from './components/Library';
+import axios from 'axios';
 
 import './App.css';
 
+const URL='http://localhost:3000/';
+
 class App extends Component {
-  constructor(props) {
-    super(props);
+ constructor(props) {
+   super(props);
 
-    this.state = {
-      movieList: [
-        {
-          "title": "Psycho",
-          "overview": "When larcenous real estate clerk Marion Crane goes on the lam with a.",
-          "release_date": "1960-06-16",
-          "inventory": 8
-        },
-        {
-          "title": "Jaws",
-          "overview": "An insatiable great white shark terrorizes the townspeople of A.",
-          "release_date": "1975-06-19",
-          "inventory": 6
-        }
-      ],
+   this.state = {
+     movieList: [],
+   };
+ }
 
-    };
-  }
+ componentDidMount() {
+   axios.get(URL)
+     .then((response) => {
+       const movies = response.data.map((movie) => {
+         const newMovie = {
+           ...movie,
+         }
+         return newMovie;
+       })
+       this.setState({movieList: movies})
+     })
+     .catch((error) => {
+       console.log(error.message);
+       this.setState({
+         errorMessage: error.message,
+       })
+     })
 
-  onSearchChange = (value) => {
-  console.log(value);
-  const movie = this.state.Library.filter((movie) => {
-    return regex.test(`${pet.name}${pet.about}${pet.species}`.toUpperCase());
-  });
+ }
 
-  this.setState({
-    movieList,
+ render() {
+   return (
+     <div className='App'>
+       <Router>
+         <div>
+           <nav>
+             <ul>
+               <li><Link to='/'>Home</Link></li>
+               <li><Link to='/library/'>Library</Link></li>
+             </ul>
+           </nav>
 
-  });
-}
-
-  componentDidMount() {
-
-  }
-
-  render() {
-    return (
-      <div className="App">
-        <Router>
-          <div>
-            <nav>
-              <ul>
-                <li><Link to="/">Home</Link></li>
-                <li><Link to="/library/">Library</Link></li>
-              </ul>
-            </nav>
-
-            <Route path="/library/" render={() => <Library movies={this.state.movieList} /> } />
-          </div>
-        </Router>
-      </div>
-    );
-  }
+           <Route path='/library/' render={() => <Library movies={this.state.movieList} /> } />
+         </div>
+       </Router>
+     </div>
+   );
+ }
 }
 
 export default App;

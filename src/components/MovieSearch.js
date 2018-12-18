@@ -13,13 +13,35 @@ class MovieSearch extends Component {
     };
   }
 
-  onSearchChange = (event) => {
-    this.setState({
-      searchValue: event.target.value,
-    });
+  // componentDidMount() {
+  //   axios.get(URL)
+  //     .then((response) => {
+  //       const movies = response.data.map((movie) => {
+  //         const newMovie = {
+  //           ...movie,
+  //         }
+  //         return newMovie;
+  //       })
+  //       this.setState({movieList: movies, masterList: movies})
+  //     })
+  //     .catch((error) => {
+  //       console.log(error.message);
+  //       this.setState({
+  //         errorMessage: error.message,
+  //       })
+  //     })
+  //
+  // }
 
-    this.props.onSearchChange(event.target.value);
-  }
+  // onSearchChange = (event) => {
+  //   this.setState({
+  //     searchValue: event.target.value,
+  //   });
+  //
+  //   this.props.onSearchChange(event.target.value);
+  // }
+
+
 
 
   render () {
