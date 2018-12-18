@@ -8,10 +8,10 @@ class App extends Component {
       <section>
         <header className="header">
           <nav>
-            <a href="/html/">HTML</a> |
-            <a href="/css/">CSS</a> |
-            <a href="/js/">JavaScript</a> |
-            <a href="/jquery/">jQuery</a>
+            <a href="/library/">Library</a> |
+            <a href="/checkout/">Checkout</a> |
+            <a href="/search/">Search</a> |
+            <a href="/customers/">Customers</a>
           </nav>
         </header>
         <Library/>
