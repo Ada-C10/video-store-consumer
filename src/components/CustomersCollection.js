@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
+import Customer from './Customer.js'
 
 class CustomersCollection  extends Component {
 
@@ -11,6 +12,13 @@ class CustomersCollection  extends Component {
       customerList: [],
     }
   }
+
+  displayCustomers = () => {
+  return this.state.customerList.map( (customer) => {
+    console.log("printing customer",customer.name);
+    return <Customer name={customer.name} key={customer.id}/>
+  });
+}
 
   componentDidMount() {
     console.log("The component did in fact mount");
@@ -36,7 +44,7 @@ class CustomersCollection  extends Component {
       <h1>Testing That the Customers Pg shows up! </h1>
       </section>
       <section>
-      {this.state.customerList}
+      {this.displayCustomers()}
       </section>
       </div>
 
