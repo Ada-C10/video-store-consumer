@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import AppRouter from "./Router";
 import axios from "axios";
 import RentalSelection from "./RentalSelection";
+import PropTypes from 'prop-types';
 
 class RentalManager extends Component {
   constructor(props) {
@@ -42,7 +43,8 @@ class RentalManager extends Component {
   };
 
   checkOut = () => {
-    if (this.state.currentCustomerID && this.state.MovieTitle) {
+    const changeMessage = this.props.changeMessageCallback;
+    if (this.state.currentCustomerID && this.state.currentMovieTitle) {
       const date = new Date(Date.now());
       date.setDate(date.getDate() + 7);
 
@@ -51,18 +53,18 @@ class RentalManager extends Component {
       axios
         .post(url)
         .then(response => {
+          changeMessage(`successfully checked out ${this.state.currentMovieTitle} to ${this.state.currentCustomerName}`)
           // success message to status bar
           console.log(response);
         })
 
         .catch(error => {
           const errorMessage = error.message;
-          this.setState({ errorMessage });
+          changeMessage({ errorMessage });
           console.log(errorMessage);
         });
      } else {
-       // error message to status bar
-       console.log("need a customer and a movie to check out");
+          changeMessage("need a customer and a movie to check out");
      }
   };
 
@@ -82,6 +84,8 @@ class RentalManager extends Component {
   }
 }
 
-RentalManager.propTypes = {};
+RentalManager.propTypes = {
+  changeMessageCallback: PropTypes.func,
+};
 
 export default RentalManager;
