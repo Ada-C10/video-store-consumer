@@ -4,25 +4,27 @@ import React, { Component } from 'react';
 
 // import './CustomersButton.css';
 
-class CustomersButton extends Component {
+class CustomersLink extends Component {
   constructor(props) {
     super(props);
+  }
+
+  displayCustomers = () => {
+    console.log('clicked on button to display customers')
   }
 
   render() {
 
     return (
       <div>
-        <button>
-          Customers
-        </button>
+        <p>Customers</p>
       </div>
     )
   }
 }
 
-CustomersButton.propTypes = {
+CustomersLink.propTypes = {
 
 };
 
-export default CustomersButton;
+export default CustomersLink;

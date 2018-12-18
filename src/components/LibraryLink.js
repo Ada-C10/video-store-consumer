@@ -4,25 +4,27 @@ import React, { Component } from 'react';
 
 // import './LibraryButton.css';
 
-class LibraryButton extends Component {
+class LibraryLink extends Component {
   constructor(props) {
     super(props);
+  }
+
+  displayLibrary = () => {
+    console.log('clicked on button to display library')
   }
 
   render() {
 
     return (
       <div>
-        <button>
-          Library
-        </button>
+        <p>Library</p>
       </div>
     )
   }
 }
 
-LibraryButton.propTypes = {
+LibraryLink.propTypes = {
 
 };
 
-export default LibraryButton;
+export default LibraryLink;

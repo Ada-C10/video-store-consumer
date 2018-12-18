@@ -1,9 +1,10 @@
 // import axios from 'axios';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
-import SearchButton from './SearchButton';
-import LibraryButton from './LibraryButton';
-import CustomersButton from './CustomersButton';
+import SearchLink from './SearchLink';
+import LibraryLink from './LibraryLink';
+import CustomersLink from './CustomersLink';
+import { BrowserRouter as Router, Link } from 'react-router-dom';
 
 // import './Nav.css';
 
@@ -15,18 +16,21 @@ class Nav extends Component {
   render() {
 
     return (
-      <div>
-        <p>This is the navigation component.</p>
-        <SearchButton />
-        <LibraryButton />
-        <CustomersButton />
-      </div>
+      <Router>
+        <div>
+          <p>This is the navigation component.</p>
+          <SearchLink />
+          <LibraryLink />
+          <CustomersLink />
+        </div>
+      </Router>
     )
   }
+
 }
 
-Nav.propTypes = {
-
-};
+// Nav.propTypes = {
+//
+// };
 
 export default Nav;
