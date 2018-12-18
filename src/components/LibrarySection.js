@@ -35,10 +35,6 @@ class LibrarySection extends Component {
     }
   }
 
-  displayLibrary = () => {
-    console.log('clicked on button to display library')
-  }
-
   render() {
     const { movies } = this.state
     console.log(movies)
@@ -56,8 +52,6 @@ class LibrarySection extends Component {
 
     return (
       <div>
-
-
         {allMovies}
       </div>
     )
