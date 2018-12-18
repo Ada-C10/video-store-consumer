@@ -6,23 +6,34 @@ import Customers from './Components/Customers';
 import Library from './Components/Library';
 import Search from './Components/Search';
 
+
 class App extends Component {
   constructor(props) {
-    super(props);
-    this.state = {
-      selectedCustomer: undefined,
-      selectedMovie: undefined
-    }
-  }
+   super(props);
+   this.state = {
+     customers: [],
+     movies: [],
+     rentals: [],
+     selectedCustomer: undefined,
+     selectedMovie: undefined
+   }
+ }
 
-  selectMovie = (movie) => {
-    console.log(movie);
-    this.setState({
-      selectedMovie: movie
-    });
-  };
+ url = "http://localhost:3000/";
 
-  url = "http://localhost:3000/"
+ selectMovie = (movie) => {
+   console.log(movie);
+   this.setState({
+     selectedMovie: movie
+   });
+ };
+
+ addMovie = (movie) => {
+   console.log(movie);
+   // this.setState({
+   //   selectedMovie: movie
+   // });
+ };
 
   render() {
     return (
@@ -48,16 +59,16 @@ class App extends Component {
 
 
            <Route path="/search"
-             render={() => <Search baseUrl={this.url}/>} />
+             render={() => <Search baseUrl={this.url} addMovieCallback={this.addMovie}/>} />
            <Route
              path="/library"
              render={() => <Library selectMovieCallback={this.selectMovie} baseUrl={this.url}/>}
            />
-           <Route path='/customers'
-             component={() => <Customers baseUrl={this.url} />}
-             />
+           <Route path="/customers" component={() =>
+               <Customers baseUrl={this.url} selectCustomerCallback={this.selectCustomer}/>} />
+
          </div>
-        </Router>
+       </Router>
 
       </div>
     );

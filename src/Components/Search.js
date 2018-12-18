@@ -13,10 +13,7 @@ class Search extends React.Component {
   }
 
   handleKeyInput = (event) => {
-    console.log(event.target.value);
-    // this.props.searchCallback(event.target.value);
     if (event.key === 'Enter') {
-      // console.log('do validate');
 
       const VIDEO_STORE_API_SEARCH = this.props.baseUrl + 'movies?query=' + event.target.value;
 
