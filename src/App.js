@@ -3,6 +3,7 @@ import axios from 'axios'
 import './App.css';
 import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
 import CustomerList from './Components/CustomerList'
+import SelectedCustomer from "./Components/SelectedCustomer";
 // import Movie from './Components/movie'
 // import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -42,15 +43,12 @@ class App extends Component {
                     </nav>
                     <section className="search-bar">SearchBarComponentHere</section>
                     <section className="rental-info-fields">
-                        <div>CurrentCustomerField</div>
+                        <div className="selected-item">Current Customer:{this.state.currentCustomer}</div>
                         <div>CurrentMovieField</div>
                         <button>CheckOutButton</button>
                     </section>
                 </header>
                 <section className="component">
-
-
-
                 <Route path="/customers"
                        render={(props) => <CustomerList {...props }
                        state={this.state.customers}/>}

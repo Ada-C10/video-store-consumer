@@ -56,7 +56,7 @@ class CustomerList extends Component {
 
     render() {
         // console.log('customer list', this.state.customers);
-        console.log('current cust', this.state.currentCustomer)
+        console.log('current cust', this.state.currentCustomer);
 
         const customerList = this.state.customers.map((customer) => {
             return <Customer key={customer.id}
