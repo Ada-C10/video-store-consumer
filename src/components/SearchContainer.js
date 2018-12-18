@@ -6,7 +6,7 @@ import Movie from './Movie';
 
 
 const SEARCH_URL = 'https://ada-video-store-api.herokuapp.com/movies?query=';
-const ADD_URL = 'https://ada-video-store-api.herokuapp.com/movies';
+const ADD_URL = 'http://localhost:3000/';
 
 class SearchContainer extends React.Component {
   static propTypes = {
@@ -19,6 +19,21 @@ class SearchContainer extends React.Component {
     this.state = {
       movies: []
     }
+  }
+
+
+  addMovieToLibrary = (movie) => {
+
+    console.log(movie.image_url, 'hi');
+
+    const pic_url = movie.image_url.substring(31);
+
+    axios.post(ADD_URL + `movies?title=${movie.title}&overview=${movie.overview}&release_date=${movie.rerelease_date}&pic_url=${pic_url}&external_id=${movie.external_id}`)
+      .then(() => {
+        })
+      .catch((error) => {
+        console.log(error);
+      });
   }
 
   searchMovieByTitle = (title) => {
@@ -39,7 +54,9 @@ class SearchContainer extends React.Component {
       return <Movie
                 key={movie.id}
                 data={movie}
-                selectCB={()=>{}}
+                selectCB={()=>{
+                  this.addMovieToLibrary(movie);
+                }}
                 type="Search"
               />
   });
