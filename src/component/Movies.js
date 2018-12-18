@@ -10,6 +10,7 @@ const Movies = (props) => {
         <h4><strong>{props.title}</strong></h4>
         <p>{props.overview}</p>
         <p>{props.releaseDate}</p>
+        <button type="button">{props.button}</button>
     </div>
     )
   }
@@ -20,7 +21,9 @@ const Movies = (props) => {
     overview: PropTypes.string,
     releaseDate: PropTypes.string,
     image: PropTypes.string,
-    externalId: PropTypes.id
+    externalId: PropTypes.id,
+    select: PropTypes.string,
+    button: PropTypes.string
   }
 
 export default Movies;

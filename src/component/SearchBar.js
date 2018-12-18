@@ -44,8 +44,10 @@ class SearchBar extends Component {
       })
     }
 
+
+
   movieList = () => {
-      if (this.state.searchMovies.length > 1) {
+      if (this.state.searchMovies.length >= 1) {
         const list = this.state.searchMovies.map((movie, i) => {
         return <Movies
           key={i}
@@ -54,7 +56,9 @@ class SearchBar extends Component {
           overview={movie.overview}
           releaseDate={movie.release_date}
           image={movie.image_url}
+          button="Add to Rental Library"
          />
+
          })
          return list
       }
@@ -73,6 +77,7 @@ class SearchBar extends Component {
           <input type="submit" value="Submit" onClick={this.onSubmit} />
         </section>
           {this.movieList()}
+
       </div>
     );
     }

@@ -36,6 +36,7 @@ componentDidMount() {
 
 render() {
   const movies = this.state.movies.map((movie, i) => {
+
     return <Movies
       key={i}
       id={movie.id}
@@ -43,6 +44,7 @@ render() {
       overview={movie.overview}
       releaseDate={movie.release_date}
       image={movie.image_url}
+      button="Rent Me"
      />
     })
 
