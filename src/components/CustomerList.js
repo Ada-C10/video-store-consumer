@@ -42,12 +42,15 @@ class CustomerList extends Component {
 
   makeCustomerList = (customers) => {
     const customerList = customers.map((customer) => {
-      return <Customer
-      key={customer.id}
+      return <li key={customer.id}>
+      <Customer
       name={customer.name}
       phone={customer.phone}
       postal_code={customer.postal_code}/>
-
+      <button
+      onClick ={ () => {this.props.selectCustomerCallback(customer)}}
+      type="button">Select for Rental</button>
+      </li>
     });
     return customerList
   }

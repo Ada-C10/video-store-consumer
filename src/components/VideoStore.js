@@ -23,6 +23,15 @@ class VideoStore extends Component {
     console.log(this.state);
   }
 
+
+  findCustomer =(customer) => {
+    const customerSelectedState = {}
+    customerSelectedState["selectedCustomer"] = customer
+    this.setState(customerSelectedState)
+    console.log(customer);
+    console.log(this.state);
+  }
+
   //      <Route path="/movies" render={(props) => <MovieListShow {...this.findMovie}/>}/>
   //      <Route path="/movies" component={() => <MovieListShow findMovief={this.findMovie}  />}/>
 
@@ -51,7 +60,7 @@ class VideoStore extends Component {
       <Route exact path="/" component={Home} />
 
       <Route path="/movies" render={(props) => <MovieListShow {...props} findMovieProp={this.findMovie} />}/>
-      <Route path="/customers" component={CustomerListShow} />
+      <Route path="/customers" render={(props) => <CustomerListShow {...props} findCustomerProp={this.findCustomer} />}/>
       <Route path="/search" component={SearchShow} />
       </div>
       </Router>)
@@ -83,10 +92,10 @@ class VideoStore extends Component {
     );
   }
 
-  function CustomerListShow() {
+  function CustomerListShow(props) {
     return (
       <div>
-      <CustomerList/>
+      <CustomerList selectCustomerCallback={props.findCustomerProp}/>
       </div>
     );
   }
