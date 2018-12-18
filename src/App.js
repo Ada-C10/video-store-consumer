@@ -101,7 +101,7 @@ class App extends Component {
              render={() => <Search baseUrl={this.url}/>} />
            <Route
              path="/library"
-             render={() => <Library selectMovieCallback={this.selectMovie}/>}
+             render={() => <Library selectMovieCallback={this.selectMovie} baseUrl={this.url}/>}
            />
            <Route path="/customers" component={Customers} />
          </div>

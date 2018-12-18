@@ -36,7 +36,7 @@ class Library extends Component {
     //   library: movies
     // });
     // NOTE: change this address once api is deployed
-    const VIDEO_STORE_API = "http://localhost:3000/" + 'movies';
+    const VIDEO_STORE_API = this.props.baseUrl + 'movies';
 
     axios.get(VIDEO_STORE_API)
     .then((response) => {
