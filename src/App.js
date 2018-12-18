@@ -97,7 +97,8 @@ class App extends Component {
            </div>
 
 
-           <Route path="/search" component={Search} />
+           <Route path="/search"
+             render={() => <Search baseUrl={this.url}/>} />
            <Route
              path="/library"
              render={() => <Library selectMovieCallback={this.selectMovie}/>}

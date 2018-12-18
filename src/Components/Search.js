@@ -1,4 +1,5 @@
 import React from 'react';
+import Movie from './Movie';
 import './Search.css';
 import axios from 'axios';
 
@@ -6,10 +7,45 @@ class Search extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      searchTerm: ""
+      searchTerm: "",
+      movies: []
     }
   }
+
+  handleKeyInput = (event) => {
+    console.log(event.target.value);
+    // this.props.searchCallback(event.target.value);
+    if (event.key === 'Enter') {
+      // console.log('do validate');
+
+      const VIDEO_STORE_API_SEARCH = this.props.baseUrl + 'movies?query=' + event.target.value;
+
+      axios.get(VIDEO_STORE_API_SEARCH)
+      .then((response) => {
+        this.setState({
+          movies: response.data,
+        });
+      })
+      .catch((error) => {
+        this.setState({
+          error: error.message
+        });
+      });
+    }
+  };
+
   render() {
+    const searchList = this.state.movies.map((movie, i) => {
+      return (
+        <Movie
+          key={i}
+          {...movie}
+          buttonFunc={() => this.props.addMovieCallback(movie)}
+          theme='Add to Library'
+          />
+      )
+    });
+
     return (
       <div >
         <section className="search-bar">
@@ -20,9 +56,9 @@ class Search extends React.Component {
             onKeyPress={this.handleKeyInput}
             />
         </section>
-        <h1>
-          You are in Search!
-        </h1>
+        <div >
+          {searchList}
+        </div>
       </div>
     );
   }
