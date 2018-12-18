@@ -7,12 +7,19 @@ const Customer = (props) => {
   return(
     <div>
       <p>{id}: {name}</p>
+      <button
+        type="button"
+        onClick={props.selectCustomer}
+      >
+        Select Customer
+      </button>
     </div>
   )
 }
 
 Customer.propTypes = {
   customerInfo: PropTypes.object.isRequired,
+  selectCustomer: PropTypes.func.isRequired,
 }
 
 export default Customer;

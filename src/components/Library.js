@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-
+import PropTypes from 'prop-types';
 import Movie from './Movie';
 
 class Library extends Component {
@@ -32,7 +32,7 @@ class Library extends Component {
 
     const movieList = this.state.movies.map((movie, i) => {
 
-      return <Movie key = {i} movie={movie} />
+      return <Movie key = {i} movie={movie} selectMovie={() => {this.props.selectMovie(movie.title)}}/>
 
     })
 
@@ -44,5 +44,9 @@ class Library extends Component {
     )
   }
 }
+
+Library.propTypes = {
+  selectMovie: PropTypes.func.isRequired,
+};
 
 export default Library;

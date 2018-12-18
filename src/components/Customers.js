@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import Customer from './Customer';
+import PropTypes from 'prop-types';
 
 class Customers extends React.Component{
   constructor(){
@@ -32,7 +33,8 @@ class Customers extends React.Component{
 
       return <Customer
       key={i}
-      customerInfo={formattedCustomer} />
+      customerInfo={formattedCustomer}
+      selectCustomer={() => {this.props.selectCustomer(customer.name)}} />
     });
 
     return (
@@ -41,5 +43,9 @@ class Customers extends React.Component{
       </div>
     )
   }
+}
+
+Customers.propTypes = {
+  selectCustomer: PropTypes.func.isRequired,
 }
   export default Customers;
