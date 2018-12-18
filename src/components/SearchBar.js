@@ -4,7 +4,7 @@ import './SearchBar.css';
 import axios from 'axios';
 import Movie from './Movie.js'
 
-const QUERY_URL ="http://localhost:3000/movies?query";
+const QUERY_URL ="http://localhost:3000/movies?query=";
 const MOVIES_URL ="http://localhost:3000/movies";
 
 class SearchBar extends Component {
@@ -22,6 +22,7 @@ class SearchBar extends Component {
     // console.log(`searching for $`);
     axios.get(QUERY_URL + this.state.searchValue)
     .then((response) =>{
+      console.log("printing response from axios.get", response);
       const movieList = response.data.map((movie) => {
         return movie
       })
@@ -42,12 +43,12 @@ class SearchBar extends Component {
     });
   }
 
-  // displayMovies = () => {
-  //   return this.state.searchedMovies.map( (movie) => {
-  //     console.log("printing movie title from SearchBar displayMovies func",movie.title);
-  //     return <Movie key={movie.id} title={movie.title} />
-  //   });
-  // }
+  displayMovies = () => {
+    return this.state.searchedMovies.map( (movie) => {
+      console.log("printing movie title from SearchBar displayMovies func",movie.title);
+      return <Movie key={movie.id} title={movie.title} />
+    });
+  }
 
   render() {
     return (
@@ -60,7 +61,7 @@ class SearchBar extends Component {
       placeholder="Filter Movies"
       />
       <input type="submit" value="submit" onClick={ this.onSubmit } />
-      {this.movieList}
+      {this.displayMovies()}
       </section>
 
 
