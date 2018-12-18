@@ -17,14 +17,11 @@ class MovieList extends Component {
     };
   }
 
-  componentDidMount() {
-
-
-  }
-
 addmovie = (movie) => {
+
+  movie = {...movie};
   movie.inventory = 5
-  console.log(movie)
+
   const last = movie.image_url.length
   movie.image_url = movie.image_url.slice(31,last)
   axios.post("http://localhost:3000/movies", movie)
@@ -38,18 +35,20 @@ addmovie = (movie) => {
     // })
     //
     // this.setState({
-    //   movies
+    //
     // })
 
   })
   .catch((error) => {
     this.setState({
-      errorMessage: error.message
+      errorMessage: error.toString()
     })
   });
+
 }
 
   makeMovieList = (movies) => {
+
     const moviesList = movies.map((movie) => {
       return (<li key={movie.id}>
         <Movie
