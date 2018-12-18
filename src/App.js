@@ -69,7 +69,9 @@ class App extends Component {
                     </nav>
                     <section className="search-bar">SearchBarComponentHere</section>
                     <section className="rental-info-fields">
-                        <div>Current Customer:{this.state.currentCustomer.name}</div>
+                        <div className="selected-item"><p>Current Customer:</p>
+                            <p>{this.state.currentCustomer.name}</p>
+                        </div>
                         <div>CurrentMovieField</div>
                         <button>CheckOutButton</button>
                     </section>
