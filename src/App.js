@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import Library from './components/Library';
+import CurrentRental from './components/CurrentRental';
 import axios from 'axios';
 
 import './App.css';
@@ -13,12 +14,16 @@ class App extends Component {
 
    this.state = {
      movieList: [],
+     customerList: [],
+     movie: 'none',
+     customer: 'none',
    };
  }
 
  componentDidMount() {
-   axios.get(URL)
+   axios.get(`${URL}/movies`)
      .then((response) => {
+       console.log(response);
        const movies = response.data.map((movie) => {
          const newMovie = {
            ...movie,
@@ -33,7 +38,15 @@ class App extends Component {
          errorMessage: error.message,
        })
      })
+ }
 
+ selectMovie = (movieId, movieTitle) => {
+   let currentMovie = movieTitle
+   this.setState({movie: currentMovie})
+ }
+
+ checkOutRental = (newRental) => {
+   console.log(newRental);
  }
 
  render() {
@@ -45,12 +58,17 @@ class App extends Component {
              <ul>
                <li><Link to='/'>Home</Link></li>
                <li><Link to='/library/'>Library</Link></li>
+               <li><CurrentRental movie={this.state.movie} customer={this.state.customer} addRentalCallback={this.checkOutRental} /></li>
              </ul>
            </nav>
 
-           <Route path='/library/' render={() => <Library movies={this.state.movieList} /> } />
+           <Route path='/library/' render={() =>
+             <Library movies={this.state.movieList} rentMovieCallback={this.selectMovie} /> } />
          </div>
        </Router>
+       <div>
+
+       </div>
      </div>
    );
  }

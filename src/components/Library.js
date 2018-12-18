@@ -6,7 +6,10 @@ import './Library.css';
 
 const Library = (props) => {
   const movieList = props.movies.map((movie) => {
-    return <Movie key={movie.id} {...movie} />
+    return <Movie
+            key={movie.id}
+            {...movie}
+            rentMovieCallback={props.rentMovieCallback} />
   });
 
   return (
@@ -18,6 +21,7 @@ const Library = (props) => {
 
 Library.propTypes = {
   movies: PropTypes.array.isRequired,
+  rentMovieCallback: PropTypes.func.isRequired,
 }
 
 export default Library;
