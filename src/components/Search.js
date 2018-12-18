@@ -12,22 +12,29 @@ class Search extends Component {
     }
   }
 
-  onSearch = (event) => {
-    console.log(`User searched for ${event.target.value}`);
+  onInputChange = (event) => {
+    console.log(`User changed input to ${event.target.value}`);
 
     this.setState({
      query: event.target.value,
    });
   }
 
+  onSearchSubmit = (event) => {
+    event.preventDefault();
+    console.log(`User searched for ${this.state.query}`);
+  }
+
+
   render () {
     return (
       <div>
-        <form className="movie-search-form">
+        <form className="movie-search-form" onSubmit={this.onSearchSubmit}>
           <div className="movie-search-form-container">
             <label htmlFor="searchQuery"></label>
             <input name="query" placeholder="Search by Movie"
-                onChange={this.onSearch}/>
+                onChange={this.onInputChange}
+                />
           </div>
         </form>
       </div>
