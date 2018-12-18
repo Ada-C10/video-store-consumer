@@ -52,8 +52,8 @@ class CustomersCollection  extends Component {
   }
 }
 
-// Customers.propTypes = {
-//
-// };
+CustomersCollection.propTypes = {
+customerList: PropTypes.array.isRequired
+};
 
 export default CustomersCollection ;
