@@ -24,6 +24,9 @@ class MovieList extends Component {
 
 addmovie = (movie) => {
   movie.inventory = 5
+  console.log(movie)
+  const last = movie.image_url.length
+  movie.image_url = movie.image_url.slice(31,last)
   axios.post("http://localhost:3000/movies", movie)
   .then((response) => {
       console.log(response);
