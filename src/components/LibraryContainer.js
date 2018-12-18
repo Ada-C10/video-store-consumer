@@ -23,7 +23,7 @@ class LibraryContainer extends Component {
         this.setState({ collection: res.data })
       })
       .catch((err) => {
-        alert(`hm couldn\'t load ${this.props.type}s for some reason. try refresh.`)
+        alert(`hm couldn't load ${this.props.type}s for some reason. try refresh.`)
         console.log(err);
       });
   }
