@@ -10,7 +10,14 @@ class Search extends Component {
 
   render () {
     return (
-      <li>coool search y'alll </li>
+      <div>
+        <form className="movie-search-form">
+          <div className="movie-search-form-container">
+            <label htmlFor="searchQuery"></label>
+            <input name="query" placeholder="Search by Movie"/>
+          </div>
+        </form>
+      </div>
       )
   }
 
