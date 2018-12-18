@@ -42,12 +42,13 @@ class MovieList extends Component {
 
   makeMovieList = (movies) => {
     const moviesList = movies.map((movie) => {
-      return <Movie
-      key={movie.id}
+      return <li key={movie.id}>
+      <Movie
       title={movie.title}
       overview={movie.overview}
       release_date={movie.release_date}
       image_url={movie.image_url}/>
+      </li>
 
     });
     return moviesList

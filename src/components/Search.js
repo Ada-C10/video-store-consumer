@@ -22,16 +22,22 @@ class MovieList extends Component {
 
   }
 
-
+addmovie = (movie) => {
+  movie.inventory = 5
+}
 
   makeMovieList = (movies) => {
     const moviesList = movies.map((movie) => {
-      return <Movie
-      key={movie.id}
+      return (<li key={movie.id}>
+        <Movie
       title={movie.title}
       overview={movie.overview}
       release_date={movie.release_date}
       image_url={movie.image_url}/>
+      <button
+      onClick ={ () => {this.addmovie(movie)}}
+      type="button"> Add to Library</button>
+      </li>)
 
     });
     return moviesList
@@ -45,7 +51,6 @@ class MovieList extends Component {
         const newMovie = {
           ...movie
         }
-        console.log(newMovie);
         return newMovie
       })
 
