@@ -1,8 +1,8 @@
-import axios from 'axios';
+// import axios from 'axios';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 
-import './CustomersButton.css';
+// import './CustomersButton.css';
 
 class CustomersButton extends Component {
   constructor(props) {
@@ -13,6 +13,9 @@ class CustomersButton extends Component {
 
     return (
       <div>
+        <button>
+          Customers
+        </button>
       </div>
     )
   }

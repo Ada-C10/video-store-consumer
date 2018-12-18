@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
-import { Route } from 'react-router-dom';
 import NewRental from './components/NewRental';
+import { Route } from 'react-router-dom'
+import SearchButton from './components/SearchButton';
+import LibraryButton from './components/LibraryButton';
+import CustomersButton from './components/CustomersButton';
+import Nav from './components/Nav';
+
 
 class App extends Component {
 
@@ -12,15 +17,23 @@ class App extends Component {
     }
 
     return (
-      <div className="video-store">
+      <div>
+        <div className="video-store">
         <header>
-          <div>
-            Nav-bar goes here || <NewRental selectedCustomer={testData.selectedCustomer} selectedMovie={testData.selectedMovie}/>
-          </div>
-          <div>
-            Status Bar goes here.
-          </div>
+
+        <div>
+        <Nav />
+        </div>
+
+        <div>
+        <NewRental selectedCustomer={testData.selectedCustomer} selectedMovie={testData.selectedMovie}/>
+        </div>
         </header>
+
+        <div>
+        Status Bar goes here.
+        </div>
+      </div>
       </div>
     );
   }

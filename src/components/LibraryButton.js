@@ -1,8 +1,8 @@
-import axios from 'axios';
+// import axios from 'axios';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 
-import './LibraryButton.css';
+// import './LibraryButton.css';
 
 class LibraryButton extends Component {
   constructor(props) {
@@ -13,6 +13,9 @@ class LibraryButton extends Component {
 
     return (
       <div>
+        <button>
+          Library
+        </button>
       </div>
     )
   }

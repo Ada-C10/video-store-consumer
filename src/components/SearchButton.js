@@ -1,8 +1,8 @@
-import axios from 'axios';
+// import axios from 'axios';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 
-import './SearchButton.css';
+// import './SearchButton.css';
 
 class SearchButton extends Component {
   constructor(props) {
@@ -13,6 +13,9 @@ class SearchButton extends Component {
 
     return (
       <div>
+      <button>
+        Search
+      </button>
       </div>
     )
   }
