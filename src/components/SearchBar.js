@@ -17,7 +17,6 @@ class SearchBar extends Component {
     };
   }
 
-
 queryMovie =(title) =>{
   console.log(`searching for ${title}`);
 axios.get(QUERY_URL + title)
@@ -51,7 +50,7 @@ this.setState({
           value={this.state.searchValue}
           name="search-bar"
           className="search-bar"
-          placeholder="Search movies here"
+          placeholder="Filter Movies"
         />
       </section>
     );
