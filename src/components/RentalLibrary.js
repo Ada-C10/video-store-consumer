@@ -26,7 +26,7 @@ class RentalLibrary  extends Component {
 
     axios.get(GET_ALL_MOVIES)
     .then((response) => {
-      console.log("in get movies",response);
+      console.log("in get movies", response);
       this.setState({
         movieList: response.data,
       });
@@ -37,6 +37,11 @@ class RentalLibrary  extends Component {
       });
     });
   }
+
+//   const boardCards = response.data.map((cardData) =>{
+// return cardData['card']
+// });
+
 
   render() {
     return (
