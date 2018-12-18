@@ -12,7 +12,14 @@ class Movie extends Component {
           <h2>{this.props.movie.title}</h2>
           <p>{this.props.movie.release_date}</p>
         </div>
-        <button className="item__button">Select for Rental</button>
+        <button
+          onClick={() => {
+            this.props.setMovieCallback(this.props.movie.title);
+          }}
+          className="item__button"
+        >
+          Select for Rental
+        </button>
       </div>
     );
   }

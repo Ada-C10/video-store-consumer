@@ -28,8 +28,12 @@ const AppRouter = props => (
 
       <Route path="/" exact component={Index} />
       <Route path="/search/" component={Search} />
-      <Route path="/library/" component={Library} />
-
+      <Route
+        path="/library/"
+        component={() => {
+          return <Library setMovieCallback={props.setMovieCallback} />;
+        }}
+      />
       <Route
         path="/customers/"
         component={() => {

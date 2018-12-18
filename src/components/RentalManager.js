@@ -21,6 +21,11 @@ class RentalManager extends Component {
       currentCustomerName: customerName
     });
   };
+  setMovie = movieTitle => {
+    this.setState({
+      currentMovieTitle: movieTitle
+    });
+  };
 
   checkOut = () => {
     // if (this.state.currentCustomerID && this.state.MovieTitle) {
@@ -51,8 +56,13 @@ class RentalManager extends Component {
   render() {
     return (
       <div>
+        <h2> {this.state.currentCustomerName}</h2>
+        <h2> {this.state.currentMovieTitle}</h2>
         <RentalSelection checkOutCallback={this.checkOut} />
-        <AppRouter setCustomerCallback={this.setCustomer} />
+        <AppRouter
+          setCustomerCallback={this.setCustomer}
+          setMovieCallback={this.setMovie}
+        />
       </div>
     );
   }
