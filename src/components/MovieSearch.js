@@ -5,10 +5,10 @@ import './SearchBar.css';
 
 class MovieSearch extends Component {
 
-  construtor(props) {
+  constructor(props) {
     super(props);
 
-    this.setState = {
+    this.state = {
       searchValue: '',
     };
   }
