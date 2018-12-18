@@ -18,7 +18,12 @@ class App extends Component {
       currentCustomerName: "none",
       currentCustomerID: 0,
       Messages: [],
+      movies: []
     }
+  }
+
+  setMovies = (movies) => {
+    this.setState({ movies : movies });
   }
 
   selectMovie = (title) => {
@@ -42,8 +47,8 @@ class App extends Component {
       due_date: dueDate,
     }
     axios.post(rentalURL, rental)
-    .then((response) => {
-      console.log(response);
+    .then(() => {
+
       const message = `Successfully checked out ${this.state.currentMovie} to ${this.state.currentCustomerName}`;
 
       this.setState({ Messages: [message] })
@@ -51,8 +56,6 @@ class App extends Component {
     .catch((error) => {
       this.setState({Messages: [...this.state.Messages, error.message]});
     })
-
-
   }
 
   render() {
@@ -108,7 +111,9 @@ class App extends Component {
           <Route
             path="/library"
             render={(props) => <Library {...props}
-            selectMovie={ (title) => this.selectMovie(title)}/>}
+            selectMovie={ (title) => this.selectMovie(title)}
+            setMovies = { (movies) => this.setMovies(movies)}
+            movies = {this.state.movies} />}
           />
           <Route exact path="/search" component={Search} />
         </div>

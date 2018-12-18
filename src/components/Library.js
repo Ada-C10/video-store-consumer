@@ -8,7 +8,6 @@ class Library extends Component {
     super();
 
     this.state = {
-      movies: [],
       errorMessages: []
     }
   }
@@ -19,7 +18,7 @@ class Library extends Component {
 
     axios.get(GET_MOVIES)
     .then((response) => {
-      this.setState({ movies: response.data });
+      this.props.setMovies(response.data);
     })
     .catch((error) => {
       this.setState({
@@ -30,7 +29,7 @@ class Library extends Component {
 
   render () {
 
-    const movieList = this.state.movies.map((movie, i) => {
+    const movieList = this.props.movies.map((movie, i) => {
 
       return <Movie key = {i} movie={movie} selectMovie={() => {this.props.selectMovie(movie.title)}}/>
 
@@ -47,6 +46,7 @@ class Library extends Component {
 
 Library.propTypes = {
   selectMovie: PropTypes.func.isRequired,
+  setMovies: PropTypes.func.isRequired,
 };
 
 export default Library;
