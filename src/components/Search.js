@@ -24,6 +24,26 @@ class MovieList extends Component {
 
 addmovie = (movie) => {
   movie.inventory = 5
+  axios.post("http://localhost:3000/movies", movie)
+  .then((response) => {
+      console.log(response);
+    // const movies = response.data.map((movie) => {
+    //   const newMovie = {
+    //     ...movie
+    //   }
+    //   return newMovie
+    // })
+    //
+    // this.setState({
+    //   movies
+    // })
+
+  })
+  .catch((error) => {
+    this.setState({
+      errorMessage: error.message
+    })
+  });
 }
 
   makeMovieList = (movies) => {
