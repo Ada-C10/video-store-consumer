@@ -7,7 +7,9 @@ const Movie = (props) => {
   const { id, title, overview, release_date, inventory, image_url, external_id } = props;
   return (
     <div>
-      {id} {title} {overview} {release_date} {inventory} {image_url} {external_id}
+      <img src={image_url} alt={title} />
+      <p> {title} </p>
+      <p> {overview} </p>
     </div>
   );
 };
