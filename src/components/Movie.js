@@ -1,10 +1,9 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import './Movie.css';
-import './Item.css';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import "./Movie.css";
+import "./Item.css";
 
-class Movie extends Component  {
-
+class Movie extends Component {
   render() {
     return (
       <div className="movie item">
@@ -15,14 +14,12 @@ class Movie extends Component  {
         </div>
         <button className="item__button">Select for Rental</button>
       </div>
-
-    )
+    );
   }
 }
 
-  Movie.propTypes = {
-    movie: PropTypes.object
+Movie.propTypes = {
+  movie: PropTypes.object
+};
 
-  };
-
-  export default Movie;
+export default Movie;
