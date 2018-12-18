@@ -78,9 +78,32 @@ class App extends Component {
    }
  }
 
- checkOutRental = (newRental) => {
-   console.log(newRental);
-   axios.post(`${URL}/rentals/checkout`)
+ getDueDate = () => {
+   let dueDate = new Date(Date.now() + 12096e5);
+   console.log(dueDate);
+   const dd = dueDate.getDate();
+   const mm = dueDate.getMonth()+1;
+   const yyyy = dueDate.getFullYear();
+
+   return dueDate = yyyy + '-' + mm + '-' + dd;
+ }
+
+ checkOutRental = () => {
+   const apiPostInfo = {
+     customer_id: this.state.customer.id,
+     due_date: this.getDueDate(),
+   };
+
+   axios.post(`${URL}/rentals/${this.state.movie.title}/check-out`, apiPostInfo)
+     .then( (response) => {
+       const myNewRental = response.data;
+       console.log(myNewRental);
+     })
+     .catch( (error) => {
+       this.setState({
+         errorMessage: `Failure ${error.message}`,
+       })
+     });
  }
 
  render() {
