@@ -19,10 +19,19 @@ class Library extends React.Component {
     return (
       <Router>
         <section>
+          <nav>
+            <button>
+              <Link to="/VideoCollection">Library</Link>
+            </button>
+            <button>
+              <Link to="/CustomerCollection">Customers</Link>
+            </button>
+            <button>
+              <Link to="/Search">Search</Link>
+            </button>
+          </nav>
           <Route exact={true} path="/VideoCollection" component={VideoCollection}/>
-          <Link to="/VideoCollection">Library</Link>
           <Route exact={true} path="/CustomerCollection" component={CustomerCollection }/>
-          <Link to="/CustomerCollection">Customers</Link>
         </section>
       </Router>
     );
