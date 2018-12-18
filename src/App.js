@@ -17,6 +17,7 @@ class App extends Component {
     }
   }
 
+  url = ""
 
   render() {
     return (
@@ -39,7 +40,7 @@ class App extends Component {
 
            <Route path="/search" component={Search} />
            <Route path="/library" component={Library} />
-           <Route path="/customers" component={Customers} />
+           <Route path="/customers" component={Customers} baseUrl={this.url} />
          </div>
        </Router>
 
