@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
-import { Route } from 'react-router-dom'
+import { Route } from 'react-router-dom';
+import NewRental from './components/NewRental';
 
 class App extends Component {
+
   render() {
+
     return (
       <div className="video-store">
         <header>
