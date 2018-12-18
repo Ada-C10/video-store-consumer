@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Link, Route } from "react-router-dom";
 
-import Dashboard from './component/Dashboard';
+import RentalLibrary from './component/RentalLibrary';
 import './App.css';
 
 class App extends Component {
@@ -14,9 +14,11 @@ class App extends Component {
             <ul>
               <li><Link to="/">Home</Link></li>
               <li><Link to="/library">All Movies</Link></li>
+              <li><Link to="/customer">Customer List</Link></li>
             </ul>
           </nav>
-            <Route path="/library" component={Dashboard} />
+
+            <Route path="/library" component={RentalLibrary} />
           </div>
         </Router>
 

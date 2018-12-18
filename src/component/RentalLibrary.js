@@ -3,9 +3,9 @@ import Movies from './Movies'
 
 import axios from 'axios';
 
-const URL = "http://localhost:3000/"
+const URL = "http://localhost:3000"
 
-class Dashboard extends Component {
+class RentalLibrary extends Component {
   constructor() {
     super();
     this.state = {
@@ -60,4 +60,4 @@ render() {
 //   boardName: PropTypes.string.isRequired,
 // };
 
-export default Dashboard;
+export default RentalLibrary;
