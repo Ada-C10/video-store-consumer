@@ -18,6 +18,7 @@ class Customer extends Component {
           {" "}
           {this.props.customer.name}
           <p>{this.props.customer.phone}</p>
+          <p>{this.props.customer.movies_checked_out_count}</p>
         </h1>
       </div>
     );
