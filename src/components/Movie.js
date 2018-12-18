@@ -21,7 +21,7 @@ const Movie = (props) => {
     </div>
   )
 }
-
+ 
 // onClick={() => props.deleteCardCallback(props.id)}
 
 Movie.propTypes = {

@@ -52,7 +52,7 @@ class MovieLibrary extends Component {
         external_id={movie.external_id}/>
     });
 
-
+ 
     return (
       <div >
 

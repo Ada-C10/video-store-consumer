@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import './Result.css';
 
 const Result = (props) => {
-
+ 
 
   return (
     <div className="movie">

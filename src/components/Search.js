@@ -12,7 +12,7 @@ class Search extends Component {
       searchResults: [],
       searchTerm: ''
     };
-  }
+  } 
 
   componentDidMount() {
     this.getSearchResults();
