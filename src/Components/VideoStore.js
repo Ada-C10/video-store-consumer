@@ -1,26 +1,28 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import axios from 'axios';
+import React from 'react';
+// import PropTypes from 'prop-types';
+// import axios from 'axios';
 
-import VideoCollection from './VideoCollection';
-// import CustomerCollection from './CustomerCollection';
+import VideoCollection from './VideoCollection'
+
+import CustomerCollection from './CustomerCollection';
 // import Search from '/Search';
 
-class VideoStore extends Component {
+class VideoStore extends React.Component {
+
 
   constructor() {
     super();
-
 
   }
 
 
   render() {
-    return(
+    return (
       <div>
-        <VideoCollection />
+      <VideoCollection />
+      <CustomerCollection />
       </div>
-    )
+    );
   }
 }
 
