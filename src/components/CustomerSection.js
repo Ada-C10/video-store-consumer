@@ -17,7 +17,7 @@ class CustomersSection extends Component {
 
     return (
       <div>
-        <p>Customers</p>
+        <p>Customers here</p>
       </div>
     )
   }

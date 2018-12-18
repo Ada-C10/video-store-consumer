@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { BrowserRouter as Router, Link } from 'react-router-dom';
 
 import './Nav.css';
@@ -12,20 +11,14 @@ class Nav extends Component {
   render() {
 
     return (
-
         <div>
           <h2><Link to= "/search">Search</Link></h2>
           <h2><Link to= "/customers">Customers</Link></h2>
           <h2><Link to= "/library">Library</Link></h2>
         </div>
-
     )
   }
 
 }
-
-// Nav.propTypes = {
-//
-// };
 
 export default Nav;

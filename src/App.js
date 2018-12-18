@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
-import NewRental from './components/NewRental';
 import { Route } from 'react-router-dom'
-import Nav from './components/Nav';
 
+import NewRental from './components/NewRental';
+import Nav from './components/Nav';
+import LibrarySection from './components/LibrarySection';
+import CustomerSection from './components/CustomerSection';
+import SearchSection from './components/SearchSection';
 
 class App extends Component {
 
@@ -23,7 +26,9 @@ class App extends Component {
             </div>
           </header>
           <span>Status Bar goes here.</span>
-
+          <Route path="/library" render={() => <LibrarySection />} />
+          <Route path="/customers" render={() => <CustomerSection />} />
+          <Route path="/search" render={() => <SearchSection />} />
       </div>
     );
   }
