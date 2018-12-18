@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import NewRental from './components/NewRental';
+import LibrarySection from './components/LibrarySection';
 import { Route } from 'react-router-dom'
 
 import Nav from './components/Nav';
@@ -31,6 +32,8 @@ class App extends Component {
         <div>
         Status Bar goes here.
         </div>
+
+        <LibrarySection />
       </div>
       </div>
     );

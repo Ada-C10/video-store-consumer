@@ -1,6 +1,7 @@
 // import axios from 'axios';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
+import Movie from './Movie';
 
 // import './Library.css';
 

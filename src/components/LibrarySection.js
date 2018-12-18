@@ -1,7 +1,7 @@
 // import axios from 'axios';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
-import Library from './Library';
+import Movie from './Movie';
 import { BrowserRouter as Router, Link } from 'react-router-dom';
 
 
@@ -43,18 +43,22 @@ class LibrarySection extends Component {
     const { movies } = this.state
     console.log(movies)
 
-    const allMovies = movies.map((movie) => {
-      <div key={movie.id}>
-        {movie.title}
-      </div>
-    })
+    const allMovies = movies.map((movie, i) => {
+
+      return <Movie
+        key={i}
+        title={movie.title}
+        release_date={movie.release_date}
+        image_url={movie.image_url}
+      />
+
+    });
 
     return (
       <div>
 
-            <Library>
-              {allMovies}
-            </Library>
+
+        {allMovies}
       </div>
     )
   }
