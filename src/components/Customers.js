@@ -23,7 +23,7 @@ class Customers extends Component {
         });
 
         this.setState({ customers });
-        console.log(this.state.customers);
+
       })
       .catch(error => {
         const errorMessage = error.message;
