@@ -16,17 +16,17 @@ class Search extends Component {
 
   movieSearch = () => {
     const url =
-      "https://api.themoviedb.org/3/search/movie?api_key=027b7f1daa3e60e2d79cf9f745e1940d&query=" +
+      "http://localhost:3000/movies?query=" +
       `${this.state.searchTerm}`;
     console.log(url);
     axios
       .get(url)
       .then(response => {
         console.log(response);
-        const movies = response.data.results.map(movie => {
+        const movies = response.data.map(movie => {
           return {
             ...movie,
-            image_url: `https://image.tmdb.org/t/p/w185/${movie.poster_path}`
+            // image_url: `https://image.tmdb.org/t/p/w185/${movie.poster_path}`
           };
         });
 
