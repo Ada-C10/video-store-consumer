@@ -7,9 +7,6 @@ class Movie extends Component {
     return (
       <div>
       <section>
-      <h1>Testing That the Movie Pg shows up! </h1>
-      </section>
-      <section>
       {this.props.title}
       </section>
       </div>
