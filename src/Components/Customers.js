@@ -9,7 +9,8 @@ class Customers extends React.Component {
     super(props)
     this.state = {
       customers: ["sample customer"],
-      error: undefined
+      error: undefined,
+      message: undefined
     }
   }
 
@@ -20,6 +21,7 @@ class Customers extends React.Component {
       console.log(response.data)
       this.setState({
         customers: response.data,
+        message: `Loaded ${response.data.length} customers`
       })
     })
     .catch((error) => {
