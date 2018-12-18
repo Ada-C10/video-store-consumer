@@ -33,7 +33,8 @@ class Customers extends React.Component {
   render() {
     const customers = this.state.customers.map( (cust) => {
       return (<Customer key={`${cust.name}${cust.id}`} name={cust.name}
-        id={cust.id} moviesCheckedOutCount={cust.movies_checked_out_count}/>) });
+        id={cust.id} moviesCheckedOutCount={cust.movies_checked_out_count}
+         selectCustomerCallback={() => this.props.selectCustomerCallback(cust)}/>) });
     return (
       <div >
         <h1>
@@ -47,5 +48,6 @@ class Customers extends React.Component {
 export default Customers;
 
 Customers.propTypes = {
-  baseUrl: PropTypes.string.isRequired
+  baseUrl: PropTypes.string.isRequired,
+  selectCustomerCallback: PropTypes.func.isRequired
 };
