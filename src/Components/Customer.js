@@ -1,22 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export default Customer;
-
 const Customer = (props) => {
-  const {name, registered_at, address, city, state, postal_code, phone, account_credit} = props
+  const { moviesCheckedOutCount, name } = props
   return(
-    <div ></div>
+    <div><ul>
+    <li>Customer {name}</li>
+    <li>has checkedout {moviesCheckedOutCount} movies</li>
+    </ul></div>
   )
 }
 
+export default Customer;
+
 Customer.propTypes = {
+  id: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
-  redistered_at: PropTypes.string,
-  address: PropTypes.string,
-  city: PropTypes.string,
-  state: PropTypes.string,
-  postal_code: PropTypes.string,
-  phone: PropTypes.string,
-  account_credit: PropTypes.string,
+  moviesCheckedOutCount: PropTypes.number
 };
