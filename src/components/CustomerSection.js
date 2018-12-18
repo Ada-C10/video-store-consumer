@@ -42,11 +42,10 @@ class CustomersSection extends Component {
 
     return (
       <div>
-<<<<<<< HEAD:src/components/CustomerSection.js
+
         <p>Customers here</p>
-=======
+
         {allCustomers}
->>>>>>> customer_component:src/components/CustomersSection.js
       </div>
     )
   }
