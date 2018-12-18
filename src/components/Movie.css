@@ -14,7 +14,7 @@
   align-items: center;
 }
 
-.card__content {
+.movie__content {
   grid-column-start: 2;
 
   display: flex;
@@ -26,17 +26,32 @@
   overflow: hidden;
 }
 
-.card__content-title {
+.movie__content-overview {
   text-overflow: ellipsis;
   overflow: hidden;
 }
 
-.card__content-overview {
-  font-size: 3rem;
+.movie__content-title {
+  font-size: 2em;
   list-style-type: none;
 }
 
-.card__content-release_date, .card__content-image_url {
-  padding: 0;
+.movie__content-release_date, .movie__content-image_url {
+  padding: 10px;
   margin: 0;
+}
+.movie__content-image_url {
+  padding-bottom: 30px;
+}
+
+.movie__select {
+  grid-column-start: 3;
+  color: black;
+  background-color: inherit;
+  border: 1px solid black;
+  font-size: 1em;
+  width: 200px;
+  height: 40px;
+  margin:0 auto;
+  display:block;
 }

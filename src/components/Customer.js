@@ -8,18 +8,23 @@ const Customer = (props) => {
 
   return (
     <div className="customer">
-    <span className="customer__content">
-    <div className="customer__content-name">{props.name}</div>
-    <div className="customer__content-created_at">{props.created_at}</div>
+      <span className="customer__content">
+        <div className="customer__content-name">{props.name}</div>
+        <div className="customer__content-info">{props.created_at}</div>
 
-    <div className="customer__content-address">{props.address}</div>
-    <div className="customer__content-city">{props.city}</div>
-    <div className="customer__content-state">{props.state}</div>
-    <div className="customer__content-postal">{props.postal}</div>
+        <div className="customer__content-info">{props.address}</div>
+        <div className="customer__content-info">{props.city}</div>
+        <div className="customer__content-info">{props.state}</div>
+        <div className="customer__content-info">{props.postal}</div>
 
-    <div className="customer__content-phone">{props.phone}</div>
-    <div className="customer__content-account_credit">{props.account_credit}</div>
-    </span>
+        <div className="customer__content-info">{props.phone}</div>
+        <div className="customer__content-info">{props.account_credit}</div>
+
+      </span>
+      <button
+        className="customer__select">
+        Select customer for rental
+      </button>
     </div>
   )
 }
@@ -36,4 +41,4 @@ Customer.propTypes = {
   created_at:PropTypes.instanceOf(Date),
 };
 
-export default Movie;
+export default Customer;

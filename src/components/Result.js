@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import './Movie.css';
+import './Result.css';
 
-const Movie = (props) => {
+const Result = (props) => {
 
 
   return (
@@ -16,7 +16,7 @@ const Movie = (props) => {
       </span>
       <button
         className="movie__select">
-        Select movie for rental
+        Add movie to library
       </button>
     </div>
   )
@@ -24,7 +24,7 @@ const Movie = (props) => {
 
 // onClick={() => props.deleteCardCallback(props.id)}
 
-Movie.propTypes = {
+Result.propTypes = {
   id:PropTypes.integer,
   title:PropTypes.string,
   overview:PropTypes.string,
@@ -34,4 +34,4 @@ Movie.propTypes = {
   buttonClassname:PropTypes.string
 };
 
-export default Movie;
+export default Result;
