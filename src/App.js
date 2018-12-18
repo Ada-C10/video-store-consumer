@@ -5,19 +5,21 @@ import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import Customers from './Components/Customers';
 import Library from './Components/Library';
 import Search from './Components/Search';
+import axios from 'axios';
 
 
 class App extends Component {
   constructor(props) {
-   super(props);
-   this.state = {
-     customers: [],
-     movies: [],
-     rentals: [],
-     selectedCustomer: undefined,
-     selectedMovie: undefined
-   }
- }
+    super(props);
+    this.state = this.resetState()
+  }
+
+  resetState = () => {
+    return {
+      selectedCustomer: undefined,
+      selectedMovie: undefined
+    }
+  };
 
  url = "http://localhost:3000/";
 
@@ -28,11 +30,45 @@ class App extends Component {
    });
  };
 
+ selectCustomer = (customer) => {
+
+   this.setState({
+     selectedCustomer: customer
+   });
+ };
+
  addMovie = (movie) => {
    console.log(movie);
 
    // TODO: create a create action/route in movie controller of RoR app to complete this method
  };
+
+  checkoutMovie = () => {
+    // http://localhost:3000/rentals/Jaws/check-out?customer_id=1&due_date=12/11/2019
+   const rentalUrl = this.state.selectedMovie ?
+   `${this.url}rentals/${this.state.selectedMovie.title}/check-out?` :
+   `${this.url}rentals/:title/check-out`;
+    console.log(rentalUrl);
+
+    const customerId = this.state.selectedCustomer ?
+    this.state.selectedCustomer.id : 0;
+    console.log(customerId);
+
+    const dueDate = new Date();
+    dueDate.setDate(dueDate.getDate() + 7);
+    console.log(dueDate);
+
+    axios.post(rentalUrl, {customer_id: customerId, due_date: dueDate})
+    .then((response) => {
+      console.log(response)
+      this.setState(
+        this.resetState(),
+      )
+    })
+    .catch((error) => {
+      console.log(error)
+    })
+  };
 
   render() {
     return (
@@ -59,6 +95,7 @@ class App extends Component {
              <p>Selected Customer</p>
              {this.state.selectedCustomer && <p>{this.state.selectedCustomer.name}</p>}
            </div>
+            <div><button onClick={this.checkoutMovie}>Check Out New Rental</button></div>
 
            <Route path="/search"
              render={() => <Search baseUrl={this.url} addMovieCallback={this.addMovie}/>} />
@@ -68,10 +105,8 @@ class App extends Component {
            />
            <Route path="/customers" component={() =>
                <Customers baseUrl={this.url} selectCustomerCallback={this.selectCustomer}/>} />
-
          </div>
        </Router>
-
       </div>
     );
   }
