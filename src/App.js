@@ -52,13 +52,18 @@ class App extends Component {
  render() {
    return (
      <div className='App'>
+
        <Router>
          <div>
            <nav>
              <ul>
-               <li><Link to='/'>Home</Link></li>
-               <li><Link to='/library/'>Library</Link></li>
-               <li><CurrentRental movie={this.state.movie} customer={this.state.customer} addRentalCallback={this.checkOutRental} /></li>
+               <li><Link to='/'><h1>Video Store</h1></Link></li>
+               <li><Link to='/library/'><img className="icon" src="https://cmkt-image-prd.global.ssl.fastly.net/0.1.0/ps/1099153/580/386/m2/fpnw/wm0/film-reel-flat-icon-01-.jpg?1458399596&s=7dd4c457821c806e74d4bccc42bb53b4" /><p>Library</p></Link></li>
+               <li><Link to='/customers/'><img className="icon" src="https://www.freeiconspng.com/uploads/customers-icon-5.png" /><p>Customers</p></Link></li>
+               <li><CurrentRental
+                      movie={this.state.movie}
+                      customer={this.state.customer}
+                      addRentalCallback={this.checkOutRental} /></li>
              </ul>
            </nav>
 

@@ -7,11 +7,11 @@ const Movie = (props) => {
   const { id, title, release_date, image_url } = props;
   const onMovieClick = () => props.rentMovieCallback(id, title);
   return (
-    <div>
+    <div className="movie">
+      <h3> {title} </h3>
       <img src={image_url} alt={title} />
-      <p> {title} </p>
       <p> {release_date} </p>
-      <button onClick={onMovieClick}> Select for Rental </button>
+      <button onClick={onMovieClick}>Select for Rental</button>
     </div>
   );
 };
