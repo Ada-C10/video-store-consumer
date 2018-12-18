@@ -7,6 +7,25 @@ import Search from './Search';
 
 
 class VideoStore extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      selectedCustomer: "",
+      selectedMovie: {}
+    };
+  }
+
+  findMovie =(movie) => {
+    const movieSelectedState = {}
+    movieSelectedState["selectedMovie"] = movie
+    this.setState(movieSelectedState)
+    console.log(this.state);
+  }
+
+  //      <Route path="/movies" render={(props) => <MovieListShow {...this.findMovie}/>}/>
+  //      <Route path="/movies" component={() => <MovieListShow findMovief={this.findMovie}  />}/>
+
 
   render() {
     return (
@@ -30,7 +49,8 @@ class VideoStore extends Component {
       <hr />
 
       <Route exact path="/" component={Home} />
-      <Route path="/movies" component={MovieListShow} />
+
+      <Route path="/movies" render={(props) => <MovieListShow {...props} findMovieProp={this.findMovie} />}/>
       <Route path="/customers" component={CustomerListShow} />
       <Route path="/search" component={SearchShow} />
       </div>
@@ -54,11 +74,11 @@ class VideoStore extends Component {
     );
   }
 
-  function MovieListShow() {
+  function MovieListShow(props) {
 
     return (
       <section>
-      <MovieList/>
+      <MovieList selectMovieCallback={props.findMovieProp}/>
       </section>
     );
   }

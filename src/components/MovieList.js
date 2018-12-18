@@ -29,7 +29,6 @@ class MovieList extends Component {
       this.setState({
         movies
       })
-
     })
     .catch((error) => {
       this.setState({
@@ -48,7 +47,11 @@ class MovieList extends Component {
       overview={movie.overview}
       release_date={movie.release_date}
       image_url={movie.image_url}/>
+      <button
+      onClick ={ () => {this.props.selectMovieCallback(movie)}}
+      type="button">Select for Rental</button>
       </li>
+
 
     });
     return moviesList
