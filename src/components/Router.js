@@ -27,7 +27,12 @@ const AppRouter = props => (
       </nav>
 
       <Route path="/" exact component={Index} />
-      <Route path="/search/" component={Search} />
+      <Route
+        path="/search/"
+        component={() => {
+          return <Search addToLibraryCallback={props.addToLibraryCallback} />;
+        }}
+      />
       <Route
         path="/library/"
         component={() => {

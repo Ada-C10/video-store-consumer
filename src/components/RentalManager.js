@@ -14,6 +14,18 @@ class RentalManager extends Component {
     };
   }
 
+  addToLibrary = movie => {
+    axios
+      .post("http://localhost:3000/movies", { movie })
+      .then(response => {
+        console.log(response);
+      })
+      .catch(error => {
+        const errorMessage = error.message;
+        this.setState({ errorMessage });
+      });
+  };
+
   setCustomer = (customerID, customerName) => {
     // console.log(customerID, customerName);
     this.setState({
@@ -62,6 +74,7 @@ class RentalManager extends Component {
         <AppRouter
           setCustomerCallback={this.setCustomer}
           setMovieCallback={this.setMovie}
+          addToLibraryCallback={this.addToLibrary}
         />
       </div>
     );
