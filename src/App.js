@@ -38,9 +38,17 @@ class App extends Component {
  };
 
  addMovie = (movie) => {
-   console.log(movie);
 
-   // TODO: create a create action/route in movie controller of RoR app to complete this method
+   const addMovieURL = this.url + 'movies';
+
+   axios.post(addMovieURL, {id: movie.external_id})
+   .then((response) => {
+     console.log(response)
+   })
+   .catch((error) => {
+     console.log(error)
+   })
+
  };
 
   checkoutMovie = () => {
