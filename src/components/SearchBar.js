@@ -45,8 +45,7 @@ class SearchBar extends Component {
 
   displayMovies = () => {
     return this.state.searchedMovies.map( (movie) => {
-      console.log("printing movie title from SearchBar displayMovies func",movie.title);
-      return <Movie key={movie.id} title={movie.title} />
+      return <Movie key={movie.external_id} title={movie.title} />
     });
   }
 
