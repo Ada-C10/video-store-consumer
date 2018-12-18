@@ -62,14 +62,16 @@ class App extends Component {
 
   const ADD_MOVIE_URL = `http://localhost:3000/movies`;
 
+  console.log("in add movie before post");
+
     axios.post(ADD_MOVIE_URL, movie)
-    .then(() => {
+    .then((response) => {
 
       console.log('inside add Movie', movie.title, movie.image_url);
+      console.log('response',response.data);
 
-      const message = `Successfully added ${movie.title} to the library`;
+      const message = `Successfully added ${movie.image_url} to the library`;
       this.setState({
-        movies: [...this.state.movies, movie],
         Messages: [message] });
     })
     .catch((error) => {
@@ -83,6 +85,8 @@ class App extends Component {
     const Messages = this.state.Messages.map((message, i) => {
       return <li key={i}>{message}</li>;
     })
+
+    console.log('list of movies:',this.state.movies);
 
     return (
       <Router>

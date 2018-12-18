@@ -16,8 +16,11 @@ class Library extends Component {
 
     const GET_MOVIES = `http://localhost:3000/movies`;
 
+
     axios.get(GET_MOVIES)
     .then((response) => {
+
+      console.log('in component did mount', response.data);
       this.props.setMovies(response.data);
     })
     .catch((error) => {
@@ -30,8 +33,6 @@ class Library extends Component {
   render () {
 
     const movieList = this.props.movies.map((movie, i) => {
-
-      console.log('inside library' ,movie.title, movie.image_url)
 
       return <Movie key = {i} movie={movie} selectMovie={() => {this.props.selectMovie(movie.title)}}
       buttonName="Select Movie"/>
