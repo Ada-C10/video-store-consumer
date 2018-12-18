@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
 import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
+import Library from './components/Library';
+import CustomerList from './components/CustomerList';
+import Search from './components/Search';
+import Home from './components/Home';
 import './App.css';
 
 class App extends Component {
@@ -18,6 +22,11 @@ class App extends Component {
               </ul>
             </nav>
           </header>
+
+          <Route path="/" exact component={Home} />
+          <Route path="/library/" component={Library} />
+          <Route path="/search/" component={Search} />
+          <Route path="/customers/" component={CustomerList} />
         </div>
       </Router>
     );

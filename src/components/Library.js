@@ -9,7 +9,18 @@ class Library extends Component {
   }
 
   render () {
-    return
+    return (
+      <div>
+        <p>Here is a fantastic fantabulous libraryyyy</p>
+        <ul>
+          <li>Cool Movie </li>
+          <li>Cool Movie </li>
+          <li>Cool Movie </li>
+          <li>Cool Movie </li>
+          <li>Cool Movie </li>
+        </ul>
+      </div>
+    )
   }
 
 }

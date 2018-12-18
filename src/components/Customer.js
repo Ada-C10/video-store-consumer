@@ -9,7 +9,9 @@ class Customer extends Component {
   }
 
   render () {
-    return
+    return (
+      <p>Hello from Customer</p>
+    )
   }
 }
 

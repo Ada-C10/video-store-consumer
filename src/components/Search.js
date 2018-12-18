@@ -9,7 +9,9 @@ class Search extends Component {
   }
 
   render () {
-    return
+    return (
+      <li>coool search y'alll </li>
+      )
   }
 
 }
