@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 
 import LibraryContainer from './components/LibraryContainer'
+import SearchContainer from './components/SearchContainer'
 
 class App extends Component {
   render() {
@@ -16,6 +17,7 @@ class App extends Component {
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
         <LibraryContainer selectCB={ (thing) => {console.log(thing)} } type="Movie"/>
+        <SearchContainer />
       </div>
     );
   }
