@@ -30,7 +30,7 @@ class SearchBar extends Component {
           value={this.state.searchValue}
           name="search-bar"
           className="search-bar"
-          placeholder="Filter Movies"
+          placeholder="Search movies here"
         />
       </section>
     );

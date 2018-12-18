@@ -23,17 +23,25 @@ class App extends Component {
 
       <div className="App">
 
-        <Link to={'/customers'}>Customers</Link>
-        <Route path="/customers" component={CustomersCollection }/>
-        <Link to={'/library'}>Rental Library</Link>
-        <Route path="/library" component={RentalLibrary }/>
-
-        <section className="search-bar">
-          <SearchBar onSearchChange={this.onSearchChange} />
-        </section>
-        
+      <section className="search-bar">
+        <SearchBar onSearchChange={this.onSearchChange} />
         <Link to={'/search'}>Search Bar </Link>
         <Route path="/search" component={ SearchBar }/>
+      </section>
+
+
+      <ul>
+        <li>
+        <Link to={'/customers'}>Customers</Link>
+        <Route path="/customers" component={CustomersCollection }/>
+        </li>
+
+        <li>
+        <Link to={'/library'}>Rental Library</Link>
+        <Route path="/library" component={RentalLibrary }/>
+        </li>
+      </ul>
+
 
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
