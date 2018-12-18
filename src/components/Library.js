@@ -1,58 +1,57 @@
-import React, { Component } from 'react';
-import axios from 'axios';
-import Movie from './Movie';
+import React, { Component } from "react";
+import axios from "axios";
+import Movie from "./Movie";
 
-class Library extends Component  {
-
+class Library extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      movies: [],
-    }
+      movies: []
+    };
   }
 
   componentDidMount() {
-
     const url = "http://localhost:3000/movies";
-    axios.get(url)
-      .then((response) => {
-        const movies = response.data.map((movie) => {
-          return {...movie};
-        })
+    axios
+      .get(url)
+      .then(response => {
+        const movies = response.data.map(movie => {
+          return { ...movie };
+        });
 
-        this.setState({movies});
+        this.setState({ movies });
         console.log(this.state.movies);
-
       })
-      .catch((error) => {
+      .catch(error => {
         const errorMessage = error.message;
-        this.setState({errorMessage});
+        this.setState({ errorMessage });
       });
-
   }
 
   populateMovies = () => {
     return this.state.movies.map((movie, i) => {
-      const newMovie = {...movie};
-      return <Movie key={i} movie={newMovie} />
-    })
-  }
+      const newMovie = { ...movie };
+      return (
+        <Movie
+          key={i}
+          movie={newMovie}
+          setMovieCallback={this.props.setMovieCallback}
+        />
+      );
+    });
+  };
 
   render() {
     return (
-
       <section>
         <h1> MOVIES PAGE </h1>
         {this.populateMovies()}
       </section>
-    )
+    );
   }
-
 }
 
-Library.propTypes = {
-
-};
+Library.propTypes = {};
 
 export default Library;
