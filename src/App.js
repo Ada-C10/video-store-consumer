@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import NewRental from './components/NewRental';
 import { Route } from 'react-router-dom'
-
 import Nav from './components/Nav';
 
 
@@ -15,23 +14,16 @@ class App extends Component {
     }
 
     return (
-      <div>
-        <div className="video-store">
-        <header>
+      <div className="video-store">
+          <header>
+            <h1>Scarecrow Video</h1>
+            <div>
+              <Nav />
+              <NewRental selectedCustomer={testData.selectedCustomer} selectedMovie={testData.selectedMovie}/>
+            </div>
+          </header>
+          <span>Status Bar goes here.</span>
 
-        <div>
-        <Nav />
-        </div>
-
-        <div>
-        <NewRental selectedCustomer={testData.selectedCustomer} selectedMovie={testData.selectedMovie}/>
-        </div>
-        </header>
-
-        <div>
-        Status Bar goes here.
-        </div>
-      </div>
       </div>
     );
   }
