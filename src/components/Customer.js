@@ -1,33 +1,24 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
-import "./customer.css";
+import React, { Component } from 'react';
+import './customer.css';
 
-class Customer extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      name: "",
-      phone: ""
-    };
-  }
+class Customer extends Component  {
+
   render() {
+
+
     return (
-      <div className="customer item">
-        <div className="item__details">
-          <h2>{this.props.customer.name}</h2>
-          <p />{" "}
-          <p>
-            {this.props.customer.movies_checked_out_count} Movies checked out
-          </p>
-        </div>
-        <button className="item__button"> Select for Rental</button>
+      <div>
+
+        <h1> {this.props.customer.name}</h1>
+        <h1> {this.props.customer.phone} </h1>
+        <h1> {this.props.customer.movies_checked_out_count}</h1>
       </div>
-    );
+    )
   }
 }
 
-Customer.propTypes = {
-  customer: PropTypes.object
-};
+  Customer.propTypes = {
 
-export default Customer;
+  };
+
+  export default Customer;

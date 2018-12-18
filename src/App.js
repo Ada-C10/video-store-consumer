@@ -4,6 +4,7 @@ import "./App.css";
 import RentalManager from './components/RentalManager';
 
 
+
 class App extends Component {
   render() {
     return (
@@ -13,6 +14,7 @@ class App extends Component {
           <h1 className="App-title">Welcome to React</h1>
         </header>
         <p className="App-intro">Customers</p>
+
         <RentalManager />
       </div>
     );
