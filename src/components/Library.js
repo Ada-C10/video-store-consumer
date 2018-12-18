@@ -19,7 +19,7 @@ class Library extends Component {
 
     axios.get(URL)
     .then((response) => {
-      const allMovies = response.data.map((movie, i ) => {
+      const allMovies = response.data.map((movie, i) => {
         return <Movie key={i} {...movie}/>
       });
       this.setState({
@@ -33,7 +33,6 @@ class Library extends Component {
 
 
   render () {
-
     return (
       <div>
         {this.state.movies}
