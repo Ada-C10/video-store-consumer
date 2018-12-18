@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 
 const Movie = (props) => {
-  console.log(props)
+  // console.log(props)
 
 
   return (

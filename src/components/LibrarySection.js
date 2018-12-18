@@ -35,7 +35,7 @@ class LibrarySection extends Component {
   render() {
 
     const { movies } = this.state
-    console.log(movies)
+    // console.log(movies)
 
     const allMovies = movies.map((movie, i) => {
 
@@ -44,6 +44,7 @@ class LibrarySection extends Component {
         title={movie.title}
         release_date={movie.release_date}
         image_url={movie.image_url}
+        selectMovieCallback={() => this.props.selectMovieCallback(movie)}
       />)
     });
 

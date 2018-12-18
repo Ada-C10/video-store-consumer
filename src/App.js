@@ -20,19 +20,14 @@ class App extends Component {
   }
 
 
-  selectMovie = (movieId) => {
-    // let movie = document.getElementById()
-    this.setState({selectedMovie: movieId })
-    console.log(movieId)
+  selectMovie = (movie) => {
+    this.setState({selectedMovie: movie.title })
+    console.log(movie)
   }
 
 
   render() {
 
-    // const testData = {
-    //   selectedCustomer: "Felini",
-    //   selectedMovie: "8 1/2",
-    // }
 
     return (
       <div className="video-store">
