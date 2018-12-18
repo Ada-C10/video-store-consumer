@@ -23,7 +23,6 @@ class Customers extends Component {
         });
 
         this.setState({ customers });
-
       })
       .catch(error => {
         const errorMessage = error.message;
@@ -34,7 +33,13 @@ class Customers extends Component {
   populateCustomers = () => {
     return this.state.customers.map((customer, i) => {
       const newCustomer = { ...customer };
-      return <Customer key={i} customer={newCustomer} />;
+      return (
+        <Customer
+          key={i}
+          customer={newCustomer}
+          setCustomerCallback={this.props.setCustomerCallback}
+        />
+      );
     });
   };
 
