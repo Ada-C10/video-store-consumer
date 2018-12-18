@@ -102,11 +102,16 @@ class App extends Component {
      .catch( (error) => {
        this.setState({
          errorMessage: `Failure ${error.message}`,
-       })
+       });
      });
+   this.setState({
+     movie: 'none',
+     customer: 'none',
+   })
  }
 
  render() {
+   console.log("Rendering app with state", this.state);
    return (
      <div className='App'>
 

@@ -8,19 +8,10 @@ const CurrentRental = (props) => {
 
     return (
       <div>
-          <label htmlFor="movie">Selected Movie:</label>
-          <input readOnly
-            name="movie"
-            value={props.movie.title}
-            className="form-control mr-sm-2"/>
-
-          <label htmlFor="customer">Selected Customer:</label>
-          <input readOnly
-            name="customer"
-            value={props.customer.name}
-            className="form-control mr-sm-2" />
-          <button className="btn btn-primary" onClick={checkoutRentalClick}>Check Out New Rental
-          </button>
+        <h4>Selected Movie: {props.movie.title} </h4>
+        <h4>Selected Customer: {props.customer.name} </h4>
+        <button className="btn btn-primary" onClick={checkoutRentalClick}>Check Out New Rental
+        </button>
       </div>
     )
 

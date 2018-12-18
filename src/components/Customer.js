@@ -4,13 +4,14 @@ import PropTypes from 'prop-types';
 import './Customer.css';
 
 const Customer = (props) => {
-  const { id, name, address, city, state, postal_code, phone, account_credit } = props;
+  const { id, name, movies_checked_out_count } = props;
   const onCustomerClick = () => props.rentCustomerCallback(id, name);
 
   return (
     <div>
-      {id} {name} {address} {city} {state} {postal_code} {phone} {account_credit}
-      <button onClick={onCustomerClick}>Select for Rental</button>
+      <h4>{name}</h4>
+      <p>{movies_checked_out_count} movies checked out</p>
+      <button nameClass="btn btn-primary" onClick={onCustomerClick}>Select Customer</button>
     </div>
   );
 };
@@ -18,12 +19,7 @@ const Customer = (props) => {
 Customer.propTypes = {
   id: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
-  address: PropTypes.string.isRequired,
-  city: PropTypes.string.isRequired,
-  state: PropTypes.number.isRequired,
-  postal_code: PropTypes.string.isRequired,
-  phone: PropTypes.string.isRequired,
-  account_credit: PropTypes.number,
+  movies_checked_out_count: PropTypes.number.isRequired,
   rentCustomerCallback: PropTypes.func.isRequired,
 }
 

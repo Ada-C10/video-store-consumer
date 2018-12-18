@@ -1,7 +1,8 @@
 .App {
   text-align: center;
-  background-color: #000024;
-  color: white;
+  background: url(https://cdna.artstation.com/p/assets/images/images/007/741/138/large/didier-konings-scene-mattepaint-main-v013.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 a:link {
