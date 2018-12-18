@@ -9,7 +9,13 @@
   /* width: 33%; */
 }
 
+.movie-info, .movie-options {
+  width: 1/3;
+  /* min-width: 33%; */
+}
+
 .movie-info {
-  /* width: 1/3; */
-  min-width: 33%;
+  display: flex;
+  flex-direction: column;
+  /* width: 100%; */
 }

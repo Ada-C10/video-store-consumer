@@ -7,12 +7,16 @@ const Movie = ({id, title, release_date, image_url, buttonFunc, theme}) => {
 
   return (
     <div className='movie'>
-      <img alt={`movie cover for ${title}`} src={image_url} />
+      <img
+        alt={`movie cover for ${title}`}
+        src={image_url}
+        className="movie-img" />
       <div className="movie-info">
         <h1>{title}</h1>
         <p>{release_date}</p>
       </div>
       <div
+        className="movie-options"
         onClick={() => buttonFunc()} >
         {theme}
       </div>

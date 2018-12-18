@@ -96,12 +96,11 @@ class App extends Component {
              {this.state.selectedMovie && <p>{this.state.selectedMovie.title}</p>}
            </div>
 
-           <hr />
 
            <Route path="/search" component={Search} />
            <Route
              path="/library"
-             render={(props) => <Library {...props} selectMovieCallback={this.selectMovie}/>}
+             render={() => <Library selectMovieCallback={this.selectMovie}/>}
            />
            <Route path="/customers" component={Customers} />
          </div>

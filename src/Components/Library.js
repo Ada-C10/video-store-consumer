@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Movie from './Movie';
 import './Library.css';
+import axios from 'axios';
 
 const movies = [
   {
@@ -31,22 +32,23 @@ class Library extends Component {
   }
 
   componentDidMount() {
-    this.setState({
-      library: movies
-    });
-    // const GET_INSPO_CARDS_URL = this.props.url + '/' + this.props.boardName + '/cards';
-    //
-    // axios.get(GET_INSPO_CARDS_URL)
-    // .then((response) => {
-    //   this.setState({
-    //     cards: response.data,
-    //   });
-    // })
-    // .catch((error) => {
-    //   this.setState({
-    //     error: error.message
-    //   });
+    // this.setState({
+    //   library: movies
     // });
+    // NOTE: change this address once api is deployed
+    const VIDEO_STORE_API = "http://localhost:3000/" + 'movies';
+
+    axios.get(VIDEO_STORE_API)
+    .then((response) => {
+      this.setState({
+        library: response.data,
+      });
+    })
+    .catch((error) => {
+      this.setState({
+        error: error.message
+      });
+    });
   }
 
   render () {
