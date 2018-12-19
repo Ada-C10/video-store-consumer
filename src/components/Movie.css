@@ -1,3 +1,11 @@
 .movie {
   padding: 1rem;
 }
+
+.movie-btn {
+  color: black;
+}
+
+.movie-btn:hover {
+  opacity: .5;
+}

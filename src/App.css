@@ -3,18 +3,36 @@
   background: url(https://cdna.artstation.com/p/assets/images/images/007/741/138/large/didier-konings-scene-mattepaint-main-v013.jpg);
   background-repeat: no-repeat;
   background-size: cover;
+  margin: 0 0;
+  padding: 2rem 2rem;
+  color: lightgray;
+}
+
+.line {
+  border-top: solid;
+  border-bottom: solid;
+  border-width: thin;
+  border-color: red;
+  padding: 0 0;
+  height: 10px;
+  width: 50%;
+  margin: auto;
 }
 
 a:link {
   text-decoration: none;
 }
 
+.letter {
+  font-size: 80px;
+}
 .header {
   -webkit-text-stroke: 1px red;
    color: #000024;
    font-size: 4em;
    text-transform: uppercase;
-   font-family: 'Muli', sans-serif;
+   font-family: 'Aleo', serif;
+   padding: 0 0;
 }
 
 .header:hover {
@@ -25,4 +43,14 @@ a:link {
 ul li {
   list-style: none;
   color: red;
+}
+
+.app-button {
+  margin: 2rem;
+  font-size: 1.5rem;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
 }

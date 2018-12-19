@@ -8,8 +8,8 @@ const CurrentRental = (props) => {
 
     return (
       <div>
-        <h4>Selected Movie: {props.movie.title} </h4>
-        <h4>Selected Customer: {props.customer.name} </h4>
+        <h4>Selected Movie: <div className="field">{props.movie.title}</div> </h4>
+        <h4>Selected Customer: <div className="field">{props.customer.name}</div></h4>
         <button className="btn btn-primary" onClick={checkoutRentalClick}>Check Out New Rental
         </button>
       </div>

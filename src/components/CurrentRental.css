@@ -1,0 +1,9 @@
+.field {
+  width: 100px;
+  height: 30px;
+  border: solid;
+  border-width: thin;
+  margin: auto;
+  background-color: white;
+
+}
