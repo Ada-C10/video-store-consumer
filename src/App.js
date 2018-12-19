@@ -3,7 +3,6 @@ import logo from "./dog-logo.svg";
 import "./App.css";
 
 import RentalManager from "./components/RentalManager";
-import MessageBar from "./components/MessageBar";
 
 class App extends Component {
   constructor(props) {
