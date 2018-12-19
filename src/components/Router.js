@@ -42,7 +42,7 @@ const AppRouter = props => (
       <Route
         path="/customers/"
         component={() => {
-          return <Customers setCustomerCallback={props.setCustomerCallback} />;
+          return <Customers setCustomerCallback={props.setCustomerCallback} changeMessageCallback={props.changeMessageCallback}/>;
         }}
       />
     </div>

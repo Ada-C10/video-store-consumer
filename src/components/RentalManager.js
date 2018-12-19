@@ -30,7 +30,6 @@ class RentalManager extends Component {
   };
 
   setCustomer = (customerID, customerName) => {
-    // console.log(customerID, customerName);
     this.setState({
       currentCustomerID: customerID,
       currentCustomerName: customerName
@@ -53,9 +52,8 @@ class RentalManager extends Component {
       axios
         .post(url)
         .then(response => {
-          changeMessage(`successfully checked out ${this.state.currentMovieTitle} to ${this.state.currentCustomerName}`)
-          // success message to status bar
-          console.log(response);
+          changeMessage(`Successfully checked out ${this.state.currentMovieTitle} to ${this.state.currentCustomerName}!`)
+
         })
 
         .catch(error => {
@@ -64,7 +62,7 @@ class RentalManager extends Component {
           console.log(errorMessage);
         });
      } else {
-          changeMessage("need a customer and a movie to check out");
+          changeMessage("Both a Customer and a Movie must be selected to create a rental.");
      }
   };
 
@@ -73,11 +71,12 @@ class RentalManager extends Component {
       <div>
         <h2> {this.state.currentCustomerName}</h2>
         <h2> {this.state.currentMovieTitle}</h2>
-        <RentalSelection checkOutCallback={this.checkOut} />
+        <RentalSelection checkOutCallback={this.checkOut}/>
         <AppRouter
           setCustomerCallback={this.setCustomer}
           setMovieCallback={this.setMovie}
           addToLibraryCallback={this.addToLibrary}
+          changeMessageCallback={this.props.changeMessageCallback}
         />
       </div>
     );
