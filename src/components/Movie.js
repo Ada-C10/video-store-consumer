@@ -12,6 +12,7 @@ const Movie = (props) => {
         {props.title}
         <img src={props.image_url} alt={`${props.title}`} />
         <button onClick={props.selectMovieCallback}>Select for Rental</button>
+
       </div>
   )
 }

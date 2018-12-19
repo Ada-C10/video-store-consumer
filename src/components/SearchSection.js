@@ -7,6 +7,7 @@ import Movie from './Movie';
 import './SearchSection.css';
 
 const SEARCH_MOVIES = "http://localhost:3000/movies?query="
+const ADD_MOVIE = "http://localhost:3000/movies"
 
 class SearchSection extends Component {
   constructor(props) {
@@ -36,6 +37,20 @@ class SearchSection extends Component {
     });
   }
 
+  addToLibrary = (movie) => {
+    let postUrl = `${ADD_MOVIE}?title=${movie.title}&overview=${movie.overview}&release_date=${movie.release_date}&image_url=${movie.image_url}&external_id=${movie.external_id}`
+    console.log(postUrl)
+    axios.post(postUrl)
+    .then((response) => {
+      console.log(response)
+    })
+
+    // axios.post(`ADD_MOVIE + `)
+
+  }
+
+
+
     render() {
 
       const { searchResults } = this.state;
@@ -46,13 +61,20 @@ class SearchSection extends Component {
           title={movie.title}
           release_date={movie.release_date}
           image_url={movie.image_url}
-        />)
+        />
+        )
       });
 
       return (
         <div>
           <SearchBar searchCallback={this.onSearchSubmit}/>
-          <p>{returnedResults}</p>
+
+          <ul>
+          {searchResults.map(movie => <li key={movie.id}>{movie.title} <img src={movie.image_url} /> <button onClick={() => this.addToLibrary(movie)}>Add to Library</button></li>)}
+          </ul>
+
+
+
         </div>
       )
     }
