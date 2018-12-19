@@ -53,11 +53,9 @@ class CustomerList extends Component {
     //         });
     //     }
     // };
-
     render() {
         // console.log('customer list', this.state.customers);
         console.log('all customers', this.props.customers);
-
         const customerList = this.props.customers.map((customer) => {
             return <Customer key={customer.id}
                              onSelectCallback={this.props.onSelectCallback}

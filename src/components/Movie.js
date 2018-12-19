@@ -5,13 +5,13 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 const Movie = (props) => {
-    console.log(props)
+    console.log(props);
     const { id, title, releaseDate, image, overview } = props;
-    console.log(image)
+    console.log(image);
     const handleSelect = () => {
         console.log('this select', id);
         console.log('this props - movie', id);
-        props.selectedMovieCallback(title)
+        props.selectedMovieCallback(id)
     };
 
     return (

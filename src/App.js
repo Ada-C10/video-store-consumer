@@ -25,7 +25,7 @@ class App extends Component {
     componentDidMount() {
         axios.get("http://localhost:3000/customers")
             .then((response) => {
-                console.log('response', response.data);
+                console.log('response custs', response.data);
                 const customers = response.data.map((customer) => {
                     const newCustomer = {
                         ...customer,
@@ -46,25 +46,32 @@ class App extends Component {
 
             .catch((error) => {
                 console.log('errors:', error.message);
-                this.setState ({
+                this.setState({
                     message: error.message
                 });
+            });
 
-              axios.get(`http://localhost:3000/movies`)
-              .then((response) => {
-                this.setState({
-                  movies: response.data,
-                  librarySummary: `${response.data.length} Movies loaded`
-                });
-              })
-              .catch((error) => {
-                this.setState({error: error.message})
+      axios.get(`http://localhost:3000/movies`)
+          .then((response) => {
+              console.log('resp movies', response.data);
+              const movies = response.data.map((movie) => {
+                  const newMovie = {...movie};
+                  return newMovie
               });
 
-        });
-      }
+            this.setState({
+              movies,
+              message: `${response.data.length} Movies loaded`
+            });
+          })
+          .catch((error) => {
+            this.setState({error: error.message})
+          });
 
-      onSelectMovie = (movieId) => {
+
+  }
+
+    onSelectMovie = (movieId) => {
           console.log('', movieId);
           const selectedMovie = this.state.movies.find((movie) => {
               return movie.id === movieId;
@@ -77,12 +84,6 @@ class App extends Component {
           }
       };
 
- //  setSelectedMovie = (title) => {
- //   this.setState({
- //     selectedMovie: title,
- //     currentMovie: title
- //   });
- // };
 
     onSelectCustomer = (customerId) => {
         console.log('cust id in customerlist compo', customerId);
@@ -115,6 +116,8 @@ class App extends Component {
     };
 
   render() {
+      console.log('movies', this.state.movies);
+      console.log('customers', this.state.customers);
     return (
             <div className="video-store">
                 <header className="header">
@@ -155,7 +158,7 @@ class App extends Component {
                                 <p>{this.state.currentCustomer.name}</p>
                             </div>
                             <div className="selected-item"><h4>Selected Movie:</h4>
-                                <p>Customer Placeholder{this.state.currentMovie.title}</p>
+                                <p>{this.state.currentMovie.title}</p>
                             </div>
                             <button className="btn btn-success"
                                 onClick={this.onConfirmRental}>Confirm Rental</button>
