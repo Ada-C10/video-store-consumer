@@ -17,15 +17,12 @@ class Search extends Component {
   }
 
   onInputChange = (event) => {
-    console.log(`User changed input to ${event.target.value}`);
-
     this.setState({
       query: event.target.value,
     });
   }
 
   searchMovieAPI =(query)=> {
-
     const URL = "http://localhost:3000/" + `movies?query=${query}`;
 
     axios.get(URL)
@@ -48,6 +45,14 @@ class Search extends Component {
 
   addToLibrary = (hit) => {
     console.log(`You are the function addToLibrary from search. Clicked movie ${hit}`);
+
+    axios.post(SOMEURLHERE, movieInfo)
+    .then((response) => {
+      // code here
+    })
+    .catch((error) => {
+      // code here
+    })
   }
 
   render () {
@@ -67,7 +72,6 @@ class Search extends Component {
       </div>
     )
   }
-
 }
 
 export default Search;
