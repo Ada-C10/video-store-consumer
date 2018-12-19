@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { Route, Link } from 'react-router-dom';
 import './App.css';
 import {
-  Collapse,
+  Alert,
+  Button,
   Navbar,
   NavbarToggler,
   NavbarBrand,
@@ -13,7 +14,6 @@ import {
   Row,
   Col,
   Jumbotron,
-  Button
 } from 'reactstrap';
 import MovieLibrary from './components/MovieLibrary.js';
 import CustomerLibrary from './components/CustomerLibrary.js';
@@ -44,8 +44,8 @@ class App extends Component {
     super(props);
     this.state = {
       message: "",
-      selectedMovie: "",
-      selectedCustomer: "",
+      selectedMovie: "None",
+      selectedCustomer: "None",
       isRentalReady: false,
     };
   }
@@ -97,7 +97,7 @@ class App extends Component {
       console.log(this.state.selectedMovie);
       console.log(this.state.selectedCustomer);
 
-      if (this.state.selectedMovie !== "" && this.state.selectedCustomer !== "") {
+      if (this.state.selectedMovie !== "None" && this.state.selectedCustomer !== "None") {
         this.setState({
           isRentalReady: true,
         });
@@ -119,16 +119,34 @@ class App extends Component {
 
     return (
       <div>
-        <Nav>
-          <NavItem><Link to="/movies">Movie Library</Link></NavItem>
-          <NavItem><Link to="/customers">Customers</Link></NavItem>
-          <NavItem><Link to="/search">Search</Link></NavItem>
-          <NavItem>Selected Movie</NavItem>
-          <NavItem>Selected Customer</NavItem>
-          <NavItem><button onClick={makeRental} className="p-2 bd-highlight">Check Out New Rental</button></NavItem>
-        </Nav>
-        <div>
-          <StatusBar status={this.state.message}/>
+        <Navbar color="faded">
+          <Nav>
+            <NavItem>
+              <Link to="/movies">Movie Library</Link>
+            </NavItem>
+            <NavItem>
+              <Link to="/customers">Customers</Link>
+            </NavItem>
+            <NavItem>
+              <Link to="/search">Search</Link>
+            </NavItem>
+            <NavItem>
+              <div>{this.state.selectedMovie}</div>
+            </NavItem>
+            <NavItem>
+              <div>{this.state.selectedCustomer}</div>
+            </NavItem>
+            <NavItem>
+              <div>
+                <Button onClick={makeRental}>Check Out New Rental</Button>
+              </div>
+            </NavItem>
+          </Nav>
+        </Navbar>
+        <div className="status-bar status-bar--success">
+          <Alert color="success">
+            <StatusBar className="status-br__text" status={this.state.message}/>
+          </Alert>
         </div>
 
         <Route path="/movies"
@@ -143,6 +161,7 @@ class App extends Component {
           />
         <Route path="/search" component={searchConst}/>
       </div>
+
     );
   }
 }
