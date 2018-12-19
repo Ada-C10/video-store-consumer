@@ -11,13 +11,14 @@ class Search extends Component {
     this.state = {
       results: [],
       keyword: "",
+      errors: [],
     }
   }
 
-
-
-
   onInputChange = (event) => {
+    this.setState({
+      errors: [],
+    })
     console.log("In on input change");
 
     const field = event.target.name;
@@ -29,7 +30,6 @@ class Search extends Component {
   }
 
   onFormSubmit = (event) => {
-    console.log("onformsubmit");
     event.preventDefault();
     const newKeywordData = {
       keyword: this.state.keyword,
@@ -41,18 +41,16 @@ class Search extends Component {
 
     axios.get(SEARCH_URL)
     .then((response) => {
-      // pressedKey.preventDefault();
-      console.log("im in response data");
       this.setState({
         results: response.data
       });
-      console.log(response.data);
     })
     .catch((error) => {
       console.log(error.response);
       this.setState({
-        error: error.message
+        errors: error.response.statusText
       });
+      this.showErrors
     })
   };
 
@@ -62,6 +60,12 @@ class Search extends Component {
     return result.map((movie, i) => {
       return <li key={i}> {movie.title} </li>
     })
+  }
+
+  showErrors = () => {
+    if (this.state.errors.length >= 1) {
+      return <span>Failed to load movie about {this.state.keyword}: {this.state.errors}</span>
+    }
   }
 
   render() {
@@ -87,6 +91,10 @@ class Search extends Component {
 
         <section>
           <ul>{resultCollection}</ul>
+        </section>
+
+        <section>
+          {this.showErrors()}
         </section>
       </section>
     )
