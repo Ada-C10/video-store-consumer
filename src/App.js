@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 
 import { Route } from 'react-router-dom'
-
+import axios from 'axios';
 import NewRental from './components/NewRental';
 import Nav from './components/Nav';
 import LibrarySection from './components/LibrarySection';
 import CustomerSection from './components/CustomerSection';
 import SearchSection from './components/SearchSection';
+
+const RENT_MOVIE = "http://localhost:3000/rentals/"
 
 class App extends Component {
 
@@ -15,6 +17,7 @@ class App extends Component {
 
     this.state = {
       selectedCustomer: "",
+      selectedCustomerID: "",
       selectedMovie: ""
     }
   }
@@ -27,12 +30,26 @@ class App extends Component {
 
 
   selectCustomer = (customer) => {
-    this.setState({selectedCustomer: customer.name })
+    this.setState({
+      selectedCustomer: customer.name,
+      selectedCustomerID: customer.id
+    })
     console.log(customer)
   }
 
-  rentMovie() {
-    console.log("in rentMovie")
+  rentMovie = () => {
+    axios.post(RENT_MOVIE + this.state.selectedMovie + "/check-out?customer_id=" + this.state.selectedCustomerID + "&due_date=" + "2019/1/1")
+    .then((response) => {
+      // this.props.status(`Successfully loaded ${response.data.length} movies from the rental library`, 'success');
+      this.setState({
+        searchResults: response.data
+      });
+    })
+    .catch((error) => {
+      console.log('API Library call error');
+      console.log(error.message);
+      // this.props.status(`Failed to load movies: ${error.message}`, 'success');
+    });
   }
 
 
