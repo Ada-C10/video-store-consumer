@@ -19,7 +19,6 @@ class Search extends Component {
     this.setState({
       errors: [],
     })
-    console.log("In on input change");
 
     const field = event.target.name;
     const value = event.target.value;
@@ -35,8 +34,6 @@ class Search extends Component {
       keyword: this.state.keyword,
     };
 
-    // return this.handleKeyPress(newKeywordData);
-
     let SEARCH_URL = `http://localhost:3001/movies?query=${newKeywordData.keyword}`;
 
     axios.get(SEARCH_URL)
@@ -46,21 +43,12 @@ class Search extends Component {
       });
     })
     .catch((error) => {
-      console.log(error.response);
       this.setState({
         errors: error.response.statusText
       });
       this.showErrors
     })
   };
-
-  showResults = (result) => {
-
-    console.log("i'm in showresults", result);
-    return result.map((movie, i) => {
-      return <li key={i}> {movie.title} </li>
-    })
-  }
 
   showErrors = () => {
     if (this.state.errors.length >= 1) {

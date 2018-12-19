@@ -10,10 +10,11 @@ import Library from './components/Library'
 class App extends Component {
   render() {
     return (
-        <div className="App">
-          <header className="App-header">
-          </header>
-          <Library />
+        <div >
+
+            <Library />
+
+
         </div>
     );
   }
