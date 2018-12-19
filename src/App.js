@@ -1,10 +1,24 @@
 import React, { Component } from 'react';
 import { Route, Link } from 'react-router-dom';
 import './App.css';
+import {
+  Collapse,
+  Navbar,
+  NavbarToggler,
+  NavbarBrand,
+  Nav,
+  NavItem,
+  NavLink,
+  Container,
+  Row,
+  Col,
+  Jumbotron,
+  Button
+} from 'reactstrap';
 import MovieLibrary from './components/MovieLibrary.js';
 import CustomerLibrary from './components/CustomerLibrary.js';
 import Search from './components/Search.js';
-import Rental from './componenets/Rental.js';
+import Rental from './components/Rental.js';
 import StatusBar from './components/StatusBar.js';
 
 // const libraryConst = () => (
@@ -97,14 +111,14 @@ class App extends Component {
 
     return (
       <div>
-        <ul>
-          <li><Link to="/movies">Movie Library</Link></li>
-          <li><Link to="/customers">Customers</Link></li>
-          <li><Link to="/search">Search</Link></li>
-          <li>Selected Movie</li>
-          <li>Selected Customer</li>
-          <button onClick={makeRental}>Check Out New Rental</button>
-        </ul>
+        <Nav>
+          <NavItem><Link to="/movies">Movie Library</Link></NavItem>
+          <NavItem><Link to="/customers">Customers</Link></NavItem>
+          <NavItem><Link to="/search">Search</Link></NavItem>
+          <NavItem>Selected Movie</NavItem>
+          <NavItem>Selected Customer</NavItem>
+          <NavItem><button onClick={makeRental} className="p-2 bd-highlight">Check Out New Rental</button></NavItem>
+        </Nav>
         <div>
           <StatusBar status={this.state.message}/>
         </div>
