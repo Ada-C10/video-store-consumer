@@ -25,7 +25,7 @@ class App extends Component {
     componentDidMount() {
         axios.get("http://localhost:3000/customers")
             .then((response) => {
-                console.log('response custs', response.data);
+                // console.log('response custs', response.data);
                 const customers = response.data.map((customer) => {
                     const newCustomer = {
                         ...customer,
@@ -53,7 +53,7 @@ class App extends Component {
 
       axios.get(`http://localhost:3000/movies`)
           .then((response) => {
-              console.log('resp movies', response.data);
+              // console.log('resp movies', response.data);
               const movies = response.data.map((movie) => {
                   const newMovie = {...movie};
                   return newMovie
@@ -100,12 +100,22 @@ class App extends Component {
 
 
     onConfirmRental = () => {
+        function addDays(date, days) {
+            var result = new Date(date);
+            result.setDate(result.getDate() + days);
+            return result;
+        }
+        const date = new Date(Date.now()).toLocaleString();
+        const checkout = addDays(date, 7);
         const customerId = this.state.currentCustomer.id;
         const movieTitle = this.state.currentMovie.title;
-        console.log('creating rental for:', customerId, movieTitle);
-        axios.post(`http://localhost:3000/rentals/${movieTitle}/checkout?customer=${customerId}`)
+        console.log('creating rental for:', customerId, movieTitle, checkout);
+        axios.post(`http://localhost:3000/rentals/${movieTitle}/check-out?customer_id=${customerId}&due_date=${checkout}`)
             .then((response) => {
                 console.log('rental created');
+                this.setState({
+                    message: `Rental successfully created for ${this.state.customer.name} - ${this.state.movie.title}`
+                });
             })
             .catch((error) => {
                 console.log('errors', error.message);
@@ -116,8 +126,8 @@ class App extends Component {
     };
 
   render() {
-      console.log('movies', this.state.movies);
-      console.log('customers', this.state.customers);
+      // console.log('movies', this.state.movies);
+      // console.log('customers', this.state.customers);
     return (
             <div className="video-store">
                 <header className="header">
