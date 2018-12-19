@@ -45,22 +45,20 @@ class App extends Component {
    axios.post(addMovieURL, {id: movie.external_id})
    .then((response) => {
      console.log(response)
+     this.setStatusMessage(`Successfully added ${movie.title} to rental library`);
    })
    .catch((error) => {
      console.log(error)
+     this.setStatusMessage(`Cound not add ${movie.title} to rental library`);
    })
  };
 
  setStatusMessage = (message) => {
-   console.log("I'm in message");
-   // console.log(message);
    this.setState({status: message});
-   console.log(this.state.status);
  }
 
   checkoutMovie = () => {
-    // http://localhost:3000/rentals/Jaws/check-out?customer_id=1&due_date=12/11/2019
-   const rentalUrl = this.state.selectedMovie ?
+    const rentalUrl = this.state.selectedMovie ?
    `${this.url}rentals/${this.state.selectedMovie.title}/check-out?` :
    `${this.url}rentals/:title/check-out`;
     console.log(rentalUrl);
