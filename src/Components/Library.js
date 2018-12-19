@@ -9,7 +9,7 @@ class Library extends Component {
     super(props);
 
     this.state = {
-      library: []
+      library: [],
     };
   }
 
@@ -21,6 +21,7 @@ class Library extends Component {
     .then((response) => {
       this.setState({
         library: response.data,
+        message: `Successfully loaded ${response.data.length} movies from the rental library.`
       });
     })
     .catch((error) => {
