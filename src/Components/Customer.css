@@ -44,3 +44,7 @@ p {
     background-color: #cfcfcf;
     font-size: 1rem;
 }
+
+.item__button:hover {
+  color: magenta;
+}
