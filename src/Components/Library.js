@@ -43,7 +43,7 @@ class Library extends Component {
     });
 
     return (
-      <div >
+      <div className="library">
         {rentalList}
       </div>
     );
