@@ -73,15 +73,19 @@ class App extends Component {
     dueDate.setDate(dueDate.getDate() + 7);
     console.log(dueDate);
 
-    axios.post(rentalUrl, {customer_id: customerId, due_date: dueDate})
+    const movie = this.state.selectedMovie.title;
+    const customer = this.state.selectedCustomer.name;
+
+    axios.post(rentalUrl, {customer_id: customerId})
     .then((response) => {
-      console.log(response)
+      this.setStatusMessage(`Successfully checked out ${movie} to ${customer}`);
       this.setState(
         this.resetState(),
       )
     })
     .catch((error) => {
       console.log(error)
+      this.setStatusMessage(`Unable to check out ${movie} to ${customer}. ${error}`);
     })
   };
 
@@ -125,8 +129,11 @@ class App extends Component {
              render={() => <Library selectMovieCallback={this.selectMovie}
              baseUrl={this.url} setStatusMessageCallback={this.setStatusMessage}/>}
            />
-           <Route path="/customers" component={() =>
-               <Customers baseUrl={this.url} selectCustomerCallback={this.selectCustomer}/>} />
+           <Route
+             path="/customers"
+             render={() => <Customers selectCustomerCallback={this.selectCustomer}
+             baseUrl={this.url} setStatusMessageCallback={this.setStatusMessage}/>}
+             />
          </div>
        </Router>
 

@@ -10,7 +10,7 @@ const Customer = (props) => {
     <h2>Customer {name}</h2>
     <p>{moviesCheckedOutCount} movies checked out</p>
     </ul></section>
-    <button className="item__button" onClick={() => selectCustomerCallback()}>Select for Rental</button>
+    <button className="item__button" onClick={selectCustomerCallback}>Select for Rental</button>
     </div>
   )
 }

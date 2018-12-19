@@ -14,18 +14,22 @@ class Customers extends React.Component {
 
   componentDidMount(){
     const customersURL = this.props.baseUrl + "customers/";
+
+    this.props.setStatusMessageCallback("Loading Customers...");
     axios.get(customersURL)
     .then((response) => {
       this.setState({
         customers: response.data,
         message: `Loaded ${response.data.length} customers`
       })
+      this.props.setStatusMessageCallback(this.state.message);
     })
     .catch((error) => {
       const errorStr = `Got an error with status ${error.response.status} and message ${error.response.statusText}`
       this.setState({
         error: errorStr
       })
+      this.props.setStatusMessageCallback(`Unable to load customers. ${this.state.error}`);
     })
   }
 
@@ -48,5 +52,6 @@ export default Customers;
 
 Customers.propTypes = {
   baseUrl: PropTypes.string.isRequired,
-  selectCustomerCallback: PropTypes.func.isRequired
+  selectCustomerCallback: PropTypes.func.isRequired,
+  setStatusMessageCallback: PropTypes.func.isRequired
 };
