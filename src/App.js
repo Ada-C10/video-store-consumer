@@ -8,7 +8,7 @@ import axios from 'axios';
 
 import './App.css';
 
-const URL='http://localhost:3000/';
+const URL='http://localhost:3000';
 
 class App extends Component {
  constructor(props) {
@@ -122,7 +122,7 @@ class App extends Component {
  //using the rails APi to query the external API
  //result from axios.get -> [resultListAxiosget]
  listResults = (query) => {
-   axios.get(URL + `movies?query=${query}`)
+   axios.get(URL + `/movies?query=${query}`)
 
    .then((response) => {
      console.log(response)
@@ -160,17 +160,21 @@ class App extends Component {
    });
 
    const image_url = selectedMovie.image_url.slice(31);
-   const apiPayload = {...selectedMovie, image_url: image_url}
-   console.log(apiPayload);
+   const movieData = {...selectedMovie, image_url: image_url}
+   console.log(movieData);
 
-   axios.post(URL, apiPayload)
+   axios.post(`${URL}/movies`, movieData)
    .then( (response) => {
      console.log(response)
      console.log("success")
-     const newMovie = response.data;
 
-     const {movieList} = this.state;
-     movieList.push(newMovie);
+     const movieList = this.state.movieList;
+     movieList.push(selectedMovie);
+
+     this.setState({
+       movieList: movieList,
+       queryList: [],
+     })
    })
    .catch( (error) => {
      console.log(error)

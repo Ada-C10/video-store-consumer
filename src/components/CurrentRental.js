@@ -18,8 +18,8 @@ const CurrentRental = (props) => {
 }
 
 CurrentRental.propTypes = {
-  movie: PropTypes.string,
-  customer: PropTypes.string,
+  movie: PropTypes.object,
+  customer: PropTypes.object,
   addRentalCallback: PropTypes.func.isRequired,
 }
 
