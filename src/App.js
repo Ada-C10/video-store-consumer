@@ -10,7 +10,6 @@ import SearchSection from './components/SearchSection';
 
 const RENT_MOVIE = "http://localhost:3000/rentals/";
 
-
 class App extends Component {
 
   constructor() {
