@@ -51,8 +51,10 @@ class LibraryContainer extends Component {
       });
     }
 
+    const klass = this.props.type.toLowerCase() + '-container'
+
     return (
-      <div className="library-container">
+      <div className={ klass }>
         { collection }
       </div>
     )

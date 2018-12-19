@@ -1,12 +1,13 @@
 import React from 'react';
 
 import './Customer.css';
+import profpic from '../assets/profpic.png'
 
 const Customer = (props) => {
   return (
     <div className="customer">
       <div className="customer__art">
-        <img src="../assets/profpic.png" />
+        <img src={profpic} />
       </div>
       <div className="customer__info">
         <h3 className="customer__name">
