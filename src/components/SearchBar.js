@@ -45,7 +45,7 @@ class SearchBar extends Component {
 
   displayMovies = () => {
     return this.state.searchedMovies.map( (movie) => {
-      return <Movie key={movie.external_id} title={movie.title} />
+      return <Movie key={movie.external_id} title={movie.title} imageUrl={movie.image_url} overview={movie.overview} />
     });
   }
 

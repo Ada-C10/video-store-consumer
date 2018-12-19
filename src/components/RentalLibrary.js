@@ -18,7 +18,7 @@ class RentalLibrary  extends Component {
     console.log("printing movie",movie.title);
     return <Movie
             title={movie.title}
-            key={movie.external_id}
+            key={movie.id}
             imageUrl={movie.image_url}
             overview={movie.overview}
             releaseDate={movie.releaseDate}/>
@@ -64,7 +64,7 @@ class RentalLibrary  extends Component {
 }
 
 RentalLibrary.propTypes = {
-movieList:PropTypes.array.isRequired,
+ movieList:PropTypes.array.isRequired,
 };
 
 export default RentalLibrary ;
