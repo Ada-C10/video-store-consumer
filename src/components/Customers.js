@@ -15,7 +15,7 @@ class Customers extends Component {
   }
 
   componentDidMount() {
-    this.changeMessage("Loading Customers...");
+
     const url = "http://localhost:3000/customers";
     axios
       .get(url)
@@ -25,7 +25,6 @@ class Customers extends Component {
         });
 
         this.setState({ customers });
-        this.changeMessage(`Found ${customers.length} customers.`);
 
 
       })

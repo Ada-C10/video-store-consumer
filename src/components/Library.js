@@ -14,7 +14,7 @@ class Library extends Component {
   }
 
   componentDidMount() {
-    this.changeMessage("Loading Movie Library...");
+
     const url = "http://localhost:3000/movies";
     axios
       .get(url)
@@ -24,7 +24,7 @@ class Library extends Component {
         });
 
         this.setState({ movies });
-        this.changeMessage(`Successfully loaded ${movies.length} Movies from Library.`);
+  
 
       })
       .catch(error => {

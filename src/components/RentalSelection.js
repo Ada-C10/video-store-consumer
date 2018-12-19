@@ -14,6 +14,8 @@ class RentalSelection extends Component {
 
   changeMessage = (message) => {
     this.setState({message});
+    setTimeout(() => this.setState({message: ""}), 4000)
+
   }
 
   checkOut = () => {
