@@ -11,6 +11,7 @@ class MovieLibrary extends Component {
 
     this.state = {
       movies: [],
+      moreMovies: '',
       buttonClassname: "movie__rent",
       movieCount: 0,
     };
@@ -58,6 +59,7 @@ class MovieLibrary extends Component {
         external_id={movie.external_id}
         grabMovieTitleCallback={this.props.grabMovieTitleCallback}
         />
+
     });
 
 

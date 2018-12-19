@@ -98,11 +98,12 @@ class App extends Component {
     const makeRental = () => {
       console.log(this.state.selectedMovie);
       console.log(this.state.selectedCustomer);
-      
+
       if (this.state.selectedMovie !== "" && this.state.selectedCustomer !== "") {
         this.setState({
           isRentalReady: true,
         });
+
       }
 
       console.log(this.state.isRentalReady);
@@ -115,6 +116,7 @@ class App extends Component {
         message: `Successfully checked out ${this.state.selectedMovie} to ${this.state.selectedCustomer}`,
       });
       console.log(this.state.message);
+      console.log(this.state.selectedCustomer);
     }
 
     return (
