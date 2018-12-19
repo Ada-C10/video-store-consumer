@@ -7,7 +7,7 @@ const Customer = (props) => {
   return (
     <div className="customer">
       <div className="customer__art">
-        <img src={profpic} />
+        <img src={profpic} className="profpic" />
       </div>
       <div className="customer__info">
         <h3 className="customer__name">

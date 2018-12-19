@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import logo from './logo.png';
 import './App.css';
 
 import LibraryContainer from './components/LibraryContainer';
 import SearchContainer from './components/SearchContainer';
 import NewRental from './components/NewRental';
 import NavBar from './components/NavBar';
+import StatusBar from './components/StatusBar';
 import { Route } from 'react-router-dom';
 
 
@@ -45,7 +46,7 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
+          <h1 className="App-title">Welcome to React Video Store</h1>
         </header>
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
@@ -56,7 +57,7 @@ class App extends Component {
           customer={ this.state.customer }
           cust_id={ this.state.cust_id }
           clearCB={ this.clearSelections } />
-
+        <StatusBar status={ this.state.status } />
         <Route path="/library" render={() => <LibraryContainer type="Movie" selectCB = {this.select} />} />
         <Route path="/customers" render={() => <LibraryContainer type="Customer" selectCB = {this.select} />} />
         <Route path="/search" render={() => <SearchContainer />} />
