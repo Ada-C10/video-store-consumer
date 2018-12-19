@@ -5,7 +5,8 @@
   margin: 1em;
   min-width: 100%;
   grid-template-columns: 2fr 4fr 2fr;
-  grid-template-areas: "movie-img movie-info movie-options"
+  grid-template-areas: "movie-img movie-info movie-options";
+  background-color: #e9e9e9;
 
 }
 .movie-img {
@@ -27,12 +28,4 @@
   justify-content: center;
   background: #beb3b3;
   border-radius: 0px 20px 20px 0px;
-}
-
-.movie-options:hover {
-  background: #CFCFE5;
-}
-
-.movie-options--text {
-  font-size: 18px;
 }

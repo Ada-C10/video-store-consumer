@@ -16,13 +16,11 @@ const Movie = ({title, release_date, image_url, buttonFunc, theme}) => {
         <h1>{title}</h1>
         <p>{release_date}</p>
       </div>
-      <div
-        className="movie-options"
+      <button
+        className="movie-options item__details"
         onClick={() => buttonFunc()}>
-        <div className="movie-options--text">
-          {theme}
-        </div>
-      </div>
+        {theme}
+      </button>
     </div>
   );
 }

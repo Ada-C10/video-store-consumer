@@ -27,8 +27,13 @@
   to { transform: rotate(360deg); }
 }
 
-
 button:hover {
   color: magenta;
-  background: #CFCFE5
+  background: #CFCFE5;
+  font-weight: bold;
+}
+
+button {
+    background-color: #cfcfcf;
+    font-size: 1.25rem;
 }
