@@ -37,6 +37,7 @@ class CustomerCollection extends React.Component {
       key={i}
       name={customer.name}
       count={customer.movies_checked_out_count}
+      addToSelectCustomerHandler={() => this.props.addToSelectCustomerHandler(customer)}
       />
     });
 

@@ -7,8 +7,8 @@ class Customer extends React.Component {
     super(props);
   }
 
-  addToRentClickHander = (event) => {
-
+  addToSelectCustomerHandler = (event) => {
+    this.props.addToSelectCustomerHandler(this.props)
   }
 
   render () {
@@ -17,7 +17,7 @@ class Customer extends React.Component {
         <h3>{this.props.name}</h3>
         <p>{this.props.count}</p>
         <button
-          onClick={this.addToRentClickHander}>
+          onClick={this.addToSelectCustomerHandler}>
           Select for Rental
           </button>
       </section>

@@ -26,6 +26,14 @@ class Library extends React.Component {
 
   }
 
+  selectNewCustomer = (customer) => {
+    let updatedCustomer = customer.name;
+
+    this.setState({
+      selectedCustomer: updatedCustomer,
+    })
+  }
+
   render() {
     return (
       <Router>
@@ -69,7 +77,7 @@ class Library extends React.Component {
             <Route exact={true} path="/Search" component={Search}/>
             <Route path="/VideoCollection"
             render={() => <VideoCollection  addToRentClickHander= {this.addToRent}/> } />
-            <Route exact={true} path="/CustomerCollection" component={CustomerCollection }/>
+            <Route path="/CustomerCollection" render={() => <CustomerCollection addToSelectCustomerHandler={this.selectNewCustomer}/>}/>
           </section>
         </section>
       </Router>
