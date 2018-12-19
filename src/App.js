@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import Customers from './Components/Customers';
 import Library from './Components/Library';
 import Search from './Components/Search';
+import StatusBar from './Components/StatusBar';
 import axios from 'axios';
 
 
@@ -48,8 +49,14 @@ class App extends Component {
    .catch((error) => {
      console.log(error)
    })
-
  };
+
+ setStatusMessage = (message) => {
+   console.log("I'm in message");
+   // console.log(message);
+   this.setState({status: message});
+   console.log(this.state.status);
+ }
 
   checkoutMovie = () => {
     // http://localhost:3000/rentals/Jaws/check-out?customer_id=1&due_date=12/11/2019
@@ -79,6 +86,7 @@ class App extends Component {
   };
 
   render() {
+    console.log(this.state.status);
     return (
       <div className="App">
         <Router>
@@ -105,16 +113,25 @@ class App extends Component {
            </div>
             <div><button onClick={this.checkoutMovie}>Check Out New Rental</button></div>
 
+            <div>
+              {this.state.status &&
+                <StatusBar message={this.state.status}/>}
+                </div>
+
            <Route path="/search"
              render={() => <Search baseUrl={this.url} addMovieCallback={this.addMovie}/>} />
            <Route
              path="/library"
-             render={() => <Library selectMovieCallback={this.selectMovie} baseUrl={this.url}/>}
+             render={() => <Library selectMovieCallback={this.selectMovie}
+             baseUrl={this.url} setStatusMessageCallback={this.setStatusMessage}/>}
            />
            <Route path="/customers" component={() =>
                <Customers baseUrl={this.url} selectCustomerCallback={this.selectCustomer}/>} />
          </div>
        </Router>
+
+
+
       </div>
     );
   }

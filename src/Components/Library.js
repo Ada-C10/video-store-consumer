@@ -16,6 +16,7 @@ class Library extends Component {
   componentDidMount() {
 
     const VIDEO_STORE_API = this.props.baseUrl + 'movies';
+    this.props.setStatusMessageCallback("Loading Libary...");
 
     axios.get(VIDEO_STORE_API)
     .then((response) => {
@@ -23,11 +24,13 @@ class Library extends Component {
         library: response.data,
         message: `Successfully loaded ${response.data.length} movies from the rental library.`
       });
+      this.props.setStatusMessageCallback(this.state.message);
     })
     .catch((error) => {
       this.setState({
         error: error.message
       });
+      this.props.setStatusMessageCallback(`Unable to load videos. ${this.state.error}`);
     });
   }
 

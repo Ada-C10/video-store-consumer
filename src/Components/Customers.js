@@ -13,7 +13,7 @@ class Customers extends React.Component {
   }
 
   componentDidMount(){
-    const customersURL = this.props.baseUrl + "customers/"
+    const customersURL = this.props.baseUrl + "customers/";
     axios.get(customersURL)
     .then((response) => {
       this.setState({
