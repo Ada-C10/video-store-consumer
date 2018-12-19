@@ -7,6 +7,9 @@ class Library extends Component {
   constructor() {
     super();
 
+    this.state = {
+      movies: [],
+    }
   }
 
   componentDidMount() {
@@ -15,7 +18,7 @@ class Library extends Component {
 
     axios.get(GET_MOVIES)
     .then((response) => {
-      this.props.setMovies(response.data);
+      this.setState({movies: response.data})
     })
     .catch((error) => {
       this.props.replaceMessage(error.message);
@@ -24,7 +27,7 @@ class Library extends Component {
 
   render () {
 
-    const movieList = this.props.movies.map((movie, i) => {
+    const movieList = this.state.movies.map((movie, i) => {
 
       return <Movie key = {i} movie={movie} selectMovie={() => {this.props.selectMovie(movie.title)}}
       buttonName="Select Movie"/>

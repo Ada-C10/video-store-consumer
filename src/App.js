@@ -17,7 +17,6 @@ class App extends Component {
       currentCustomerName: "none",
       currentCustomerID: 0,
       messages: [],
-      movies: []
     }
   }
 
@@ -64,7 +63,7 @@ class App extends Component {
 
     axios.post(ADD_MOVIE_URL, movie)
     .then(() => {
-      const message = `Successfully added ${movie.image_url} to the library`;
+      const message = `Successfully added ${movie.title} to the library`;
       this.setState({
         messages: [message] });
     })
@@ -132,8 +131,6 @@ class App extends Component {
             path="/library"
             render={(props) => <Library {...props}
             selectMovie={ (title) => this.selectMovie(title)}
-            setMovies = { (movies) => this.setMovies(movies)}
-            movies = {this.state.movies}
             replaceMessage = {this.replaceMessage}/>}
           />
         <Route exact path="/search"
