@@ -71,7 +71,6 @@ class Search extends Component {
             }
           }}
         />
-        <h1> </h1>
         {this.populateMovies()}
       </section>
     );
