@@ -13,15 +13,25 @@ class RentalLibrary  extends Component {
     }
   }
 
+  handleSelectMovie = (id, title) => {
+    if (this.props.onSelectMovie) { //if onSelectMovie is defined then execute it
+      this.props.onSelectMovie(id, title);
+    }
+  }
+
   displayMovies = () => {
   return this.state.movieList.map( (movie) => {
     console.log("printing movie",movie.title);
     return <Movie
-            title={movie.title}
-            key={movie.id}
-            imageUrl={movie.image_url}
-            overview={movie.overview}
-            releaseDate={movie.releaseDate}/>
+              id={movie.id}
+              title={movie.title}
+              key={movie.id}
+              imageUrl={movie.image_url}
+              overview={movie.overview}
+              releaseDate={movie.releaseDate}
+              isInLibrary={true}
+              onSelectMovie={this.handleSelectMovie}
+            />
   });
 }
 
@@ -64,7 +74,7 @@ class RentalLibrary  extends Component {
 }
 
 RentalLibrary.propTypes = {
- movieList:PropTypes.array.isRequired,
+ onSelectMovie: PropTypes.func,
 };
 
 export default RentalLibrary ;

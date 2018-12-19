@@ -12,9 +12,22 @@ import { BrowserRouter as Router, Link, Route } from 'react-router-dom';
 
 class App extends Component {
 
-  // state = {
-  //   customers: []
-  // }
+  constructor(props){
+    super(props);
+
+    this.state = {
+      selectedMovie: {},
+    }
+  }
+
+  handleSelectMovie = (id, title) => {
+    this.setState({ //make custom object
+      selectedMovie: {
+        id, //equal to id: id
+        title,
+      }
+    });
+  }
 
   render() {
     return (
@@ -22,7 +35,7 @@ class App extends Component {
       <Router>
 
       <div className="App">
-
+      <h1>{this.state.selectedMovie.title}</h1>
       <section className="search-bar">
         <SearchBar onSearchChange={this.onSearchChange} />
         <Link to={'/search'}>Search Bar </Link>
@@ -38,7 +51,10 @@ class App extends Component {
 
         <li>
         <Link to={'/library'}>Rental Library</Link>
-        <Route path="/library" component={RentalLibrary }/>
+        <Route
+          path="/library"
+          render={() => <RentalLibrary onSelectMovie={this.handleSelectMovie} />}
+        />
         </li>
       </ul>
 
