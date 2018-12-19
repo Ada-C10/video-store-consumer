@@ -12,11 +12,13 @@ class Movie extends Component {
 
   handleClickAddRental =() =>{
     if(this.props.onRentalSelect) {
-    this.props.onRentalSelect(this.props.id, this.props.title)
+    this.props.onRentalSelect(this.movie)
   }
 }
 
   render() {
+
+
     return (
       <div>
         <h4>{this.props.title}</h4>

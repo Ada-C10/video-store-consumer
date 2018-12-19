@@ -5,7 +5,7 @@ import axios from 'axios';
 import Movie from './Movie.js'
 
 const QUERY_URL ="http://localhost:3000/movies?query=";
-const MOVIES_URL ="http://localhost:3000/movies";
+const MOVIES_URL ="http://localhost:3000/movies/  ";
 
 class SearchBar extends Component {
 
@@ -15,6 +15,8 @@ class SearchBar extends Component {
     this.state = {
       searchValue: '',
       searchedMovies:[],
+
+
     };
   }
 
@@ -40,17 +42,25 @@ class SearchBar extends Component {
 
     this.setState({
       searchValue: event.target.value,
+
     });
   }
 
 
   handleRentalSelect = (movie) => {
     const URL = MOVIES_URL
-    console.log(movie);
+    console.log("handlerental",movie);
     axios.post(URL, {...movie})
     .then((response) => {
       console.log(response);
     })
+    .catch((error) => {
+      console.log(error.message);
+    })
+    // this.setState({ //make custom object
+    //   movie:movie
+    //   });
+
   }
 
   displayMovies = () => {
@@ -59,7 +69,7 @@ class SearchBar extends Component {
       title={movie.title}
       imageUrl={movie.image_url}
       overview={movie.overview}
-      onRentalSelect={this.handleRentalSelect(movie)}
+      onRentalSelect={() => this.handleRentalSelect(movie)}
 
        />
     });
