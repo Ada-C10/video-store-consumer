@@ -5,16 +5,25 @@ import './NewRental.css';
 
 class NewRental extends Component {
   submitNew = () => {
-    const due_date = new Date();
-    due_date.setDate(due_date.getDate() + 7);
+    const date = new Date();
+    date.setDate(date.getDate() + 7);
 
-    axios.post(`localhost:3000/rentals/${this.props.movie}/check-out?customer_id=${this.props.cust_id}&due_date=${due_date}`)
+    const month = (date.getMonth() + 1);
+    const day = date.getDate();
+    const year = date.getFullYear();
+
+    const due_date = [year, month, day].join('-')
+
+    axios.post(`http://localhost:3000/rentals/${this.props.movie}/check-out?customer_id=${this.props.cust_id}&due_date=${due_date}`)
       .then((res) => {
+        this.props.clearCB();
+        alert('consider that movie checkd out by that person you told me!')
         // set status
       })
       .catch((err) => {
-        alert('could not create new rental');
         console.log(err);
+        this.props.clearCB();
+        alert('could not create new rental');
       });
   }
 

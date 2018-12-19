@@ -18,11 +18,19 @@ class App extends Component {
     }
   }
 
-  select = (obj, type) => {
-    type = type.toLowerCase();
+  clearSelections = () => {
+    this.setState({
+      movie: '',
+      customer: '',
+      cust_id: '',
+      status: '',
+    });
+  }
 
+  select = (obj, type) => {
     let newState = this.state;
-    newState[type] = type === 'movie' ? obj.title : obj.name;
+    newState[type.toLowerCase()] = obj.title ? obj.title : obj.name;
+    newState.cust_id = obj.name ? obj.id : null;
 
     this.setState(newState);
   }
@@ -40,7 +48,8 @@ class App extends Component {
         <NewRental
           movie={ this.state.movie }
           customer={ this.state.customer }
-          cust_id={ this.state.cust_id } />
+          cust_id={ this.state.cust_id }
+          clearCB={ this.clearSelections } />
         <LibraryContainer selectCB={this.select} type="Movie" />
         <LibraryContainer selectCB={this.select} type="Customer" />
         <SearchContainer />
