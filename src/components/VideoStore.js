@@ -25,6 +25,12 @@ class VideoStore extends Component {
     console.log(this.state);
   }
 
+  resetState = () => {
+    this.setState({
+      selectedCustomer: '',
+      selectedMovie: '',
+    });
+  }
 
   findCustomer =(customer) => {
     const customerSelectedState = {}
@@ -47,6 +53,7 @@ class VideoStore extends Component {
       axios.post(`http://localhost:3000/rentals/${this.state.selectedMovie.title}/check-out`, apiPayload)
       .then((response) => {
         console.log(response);
+        this.resetState();
       })
       .catch((error) => {
         this.setState({
@@ -66,6 +73,7 @@ class VideoStore extends Component {
       axios.post(`http://localhost:3000/rentals/${this.state.selectedMovie.title}/return`, apiPayload)
       .then((response) => {
         console.log(response);
+        this.resetState();
       })
       .catch((error) => {
         this.setState({
