@@ -10,6 +10,7 @@ class RentalLibrary extends Component {
     super();
     this.state = {
       movies: [],
+      error: undefined
     }
   }
 
@@ -34,7 +35,10 @@ componentDidMount() {
   })
 }
 
+
+
 render() {
+  console.log("I made a bunch of movies");
   const movies = this.state.movies.map((movie, i) => {
 
     return <Movies
@@ -45,6 +49,7 @@ render() {
       releaseDate={movie.release_date}
       image={movie.image_url}
       button="Rent Me"
+      callback={() => {}}
      />
     })
 

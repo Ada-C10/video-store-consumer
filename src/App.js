@@ -19,12 +19,13 @@ class App extends Component {
               <li><Link to="/customer">Customer List</Link></li>
               <li><SearchBar /></li>
             </ul>
-          </nav>
-
-
             <Route path="/search" component={SearchBar} />
             <Route path="/customer" component={AllCustomers} />
             <Route path="/library" component={RentalLibrary} />
+          </nav>
+
+
+
 
           </div>
         </Router>
