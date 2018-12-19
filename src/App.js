@@ -95,40 +95,49 @@ class App extends Component {
       <div className="App">
         <Router>
          <div>
-           <ul>
-             <li>
-               <Link to="/search">Search</Link>
-             </li>
-             <li>
-               <Link to="/library">Library</Link>
-             </li>
-             <li>
-               <Link to="/customers">Customers</Link>
-             </li>
-           </ul>
+           <div className='top-bar'>
+             <ul className='nav-links'>
+               <li>
+                 <Link to="/search">Search</Link>
+               </li>
+               <li>
+                 <Link to="/library">Library</Link>
+               </li>
+               <li>
+                 <Link to="/customers">Customers</Link>
+               </li>
+             </ul>
 
-           <div>
-             <p>Selected Movie</p>
-             {this.state.selectedMovie && <p>{this.state.selectedMovie.title}</p>}
+             <section className="rentalDisplay">
+               <div>
+                 <p>Selected Movie</p>
+                 {this.state.selectedMovie && <p>{this.state.selectedMovie.title}</p>}
+               </div>
+               <div>
+                 <p>Selected Customer</p>
+                 {this.state.selectedCustomer && <p>{this.state.selectedCustomer.name}</p>}
+               </div>
+               <div>
+                 <button onClick={this.checkoutMovie}>Check Out New Rental</button>
+               </div>
+             </section>
            </div>
-           <div>
-             <p>Selected Customer</p>
-             {this.state.selectedCustomer && <p>{this.state.selectedCustomer.name}</p>}
-           </div>
-            <div><button onClick={this.checkoutMovie}>Check Out New Rental</button></div>
 
-            <div>
+            <div className="status-bar">
               {this.state.status &&
                 <StatusBar message={this.state.status}/>}
-                </div>
+            </div>
 
            <Route path="/search"
-             render={() => <Search baseUrl={this.url} addMovieCallback={this.addMovie}/>} />
+             render={() => <Search baseUrl={this.url}
+             addMovieCallback={this.addMovie}
+             setStatusMessageCallback={this.setStatusMessage} />}
+             />
            <Route
              path="/library"
              render={() => <Library selectMovieCallback={this.selectMovie}
              baseUrl={this.url} setStatusMessageCallback={this.setStatusMessage}/>}
-           />
+             />
            <Route
              path="/customers"
              render={() => <Customers selectCustomerCallback={this.selectCustomer}

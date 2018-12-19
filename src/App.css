@@ -37,3 +37,18 @@ button {
     background-color: #cfcfcf;
     font-size: 1.25rem;
 }
+
+.top-bar {
+  display: flex;
+  /* border: 1px blue solid;  */
+}
+
+.nav-links {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.rentalDisplay {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
