@@ -59,7 +59,6 @@ class RentalManager extends Component {
       <div className="video-store">
 
         <header className="header">
-          <div className="header__controls">
 
             <RentalSelection currentCustomerName={this.state.currentCustomerName} currentCustomerID={this.state.currentCustomerID} currentMovieTitle={this.state.currentMovieTitle} />
 
@@ -103,7 +102,7 @@ class RentalManager extends Component {
                 />
               </div>
             </Router>
-          </div>
+          
         </header>
       </div>
     );
