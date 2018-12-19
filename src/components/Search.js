@@ -44,11 +44,20 @@ class Search extends Component {
   }
 
   addToLibrary = (hit) => {
+    const POSTURL = "http://localhost:3000/movies"
     console.log(`You are the function addToLibrary from search. Clicked movie ${hit}`);
 
-    axios.post(SOMEURLHERE, movieInfo)
+    const hard_coded_data = {
+      title: 'test title',
+      overview: 'pls pls pls work',
+      release_date: '2010-01-01',
+      external_id: 4456,
+      image_url: 'image.jpg'
+    };
+
+    axios.post(POSTURL, hard_coded_data)
     .then((response) => {
-      // code here
+      console.log(response.data)
     })
     .catch((error) => {
       // code here
