@@ -31,7 +31,7 @@ class Search extends Component {
     axios.get(URL)
     .then((response) => {
       const searchResultList = response.data.map((hit, i) => {
-        return <Movie key={i} message="Add to library" {...hit} />
+        return <Movie key={i} message="Add to library" addToLibraryCallback={this.addToLibrary} {...hit} />
       })
       this.setState({searchResults: searchResultList});
     })
@@ -44,6 +44,11 @@ class Search extends Component {
     event.preventDefault();
     console.log(`User searched for ${this.state.query}`);
     this.searchMovieAPI(this.state.query);
+  }
+
+  addToLibrary = (hit) => {
+    console.log("You are in add to library from search");
+    console.log(hit);
   }
 
   render () {

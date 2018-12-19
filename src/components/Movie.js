@@ -9,6 +9,10 @@ class Movie extends Component {
     super();
   }
 
+  clickHandler = () => {
+    this.props.addToLibraryCallback(this.props.id);
+  }
+
   render () {
     const image_alt_tag = `Movie poster for ${this.props.title}`;
 
@@ -19,7 +23,8 @@ class Movie extends Component {
           <h2>{this.props.title}</h2>
           <h4>{this.props.release_date}</h4>
           <p>{this.props.overview}</p>
-          <Button color="secondary"  className="movie-item__select-button">{this.props.message}</Button>
+          <Button color="secondary"  className="movie-item__select-button" onClick={this.clickHandler}>
+             {this.props.message}</Button>
         </div>
       </div>
     )

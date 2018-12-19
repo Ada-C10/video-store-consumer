@@ -20,7 +20,7 @@ class Library extends Component {
     axios.get(URL)
     .then((response) => {
       const allMovies = response.data.map((movie, i) => {
-        return <Movie key={i} message="Select for rental" {...movie}/>
+        return <Movie key={i} message="Select for rental"  {...movie}/>
       });
       this.setState({
         movies: allMovies,
