@@ -35,12 +35,6 @@ componentDidMount() {
   })
 }
 
-// onAddRental = (customer) => {
-//   ()updatedCustomerCallback(customer)
-//   // updateCurrentCustomer = {props.updatedCustomer(customer)}
-// }
-
-
 render() {
   const customers = this.state.customers.map((customer, i) => {
     return <Customer

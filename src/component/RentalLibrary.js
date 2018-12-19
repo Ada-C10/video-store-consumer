@@ -18,14 +18,13 @@ class RentalLibrary extends Component {
 componentDidMount() {
   axios.get(URL)
   .then((response) => {
-    console.log(response);
     const movies = response.data.map((movie) => {
       return movie
     })
     this.setState({
       movies: movies,
     })
-    console.log(this.state.movies)
+
   })
   .catch((error) => {
     console.log(error.message);
@@ -36,16 +35,8 @@ componentDidMount() {
   })
 }
 
-// onAddRental = (movie) => {
-//   <CheckOut currentMovie={movie}/>
-//   console.log(movie)
-// }
-
-
-
-
 render() {
-  console.log(`I made a bunch of movies rental library component`);
+
   const movies = this.state.movies.map((movie, i) => {
     let title = `Rent ${movie.title}`
     return <Movies
@@ -56,7 +47,7 @@ render() {
       releaseDate={movie.release_date}
       image={movie.image_url}
       button={title}
-      callback={() => this.onAddRental(movie)}
+      callback={()=>this.props.updatedMovieCallback(movie)}
      />
     })
 
@@ -70,7 +61,8 @@ render() {
 }
 
 RentalLibrary.propTypes = {
-  onAddRental: PropTypes.func,
+  // onAddRental: PropTypes.func,
+  updatedMovieCallback: PropTypes.func,
 };
 
 export default RentalLibrary;

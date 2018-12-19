@@ -12,22 +12,24 @@ class App extends Component {
       super();
       this.state = {
         isReavelad: false,
-        currentCustomer: {}
+        currentCustomer: {},
+        currentMovie: {},
       }
     }
 
   onCheckOutCallback = (customer) => {
-    console.log(customer);
     this.setState({
       currentCustomer: customer
     })
-    console.log(this.state.currentCustomer);
   }
 
-
+  onMovieCheckOut = (movie) => {
+    this.setState({
+      currentMovie: movie
+    })  
+  }
 
   render() {
-      console.log(this.state.currentCustomer);
     return (
       <div className="App">
       <Router>
@@ -39,7 +41,7 @@ class App extends Component {
               <li><Link to="/customer" >Customer List</Link></li>
               <li><SearchBar /></li>
               <li><CheckOut
-                  updatedMovieCallback={this.updatedMovie}
+                  currentMovie={this.state.currentMovie}
                   currentCustomer={this.state.currentCustomer} />
               </li>
             </ul>
@@ -61,7 +63,12 @@ class App extends Component {
           </div>
 
           <div>
-            <Route path="/library" component={RentalLibrary} />
+            <Route path="/library"
+            render={() =>
+              <RentalLibrary
+              updatedMovieCallback={this.onMovieCheckOut}
+              />
+            }/>
           </div>
 
           </div>

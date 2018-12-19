@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-
+import axios from 'axios';
 
 
 
@@ -9,7 +9,7 @@ class CheckOut extends Component {
       super(props);
       this.state = {
         currentCustomer: props.currentCustomer,
-
+        currentMovie: props.currentMovie,
       }
     }
 
@@ -31,29 +31,35 @@ class CheckOut extends Component {
     // }
 
 
-  // onRental = () => {
-  //   const url = `http://localhost:3000/rentals/${this.props.currentMovie.title}/check-out`
-  //   console.log(url)
-  //
-  //   axios.post(url, this.props.currentMovie.title, this.props.currentCustomer.id )
-  //   .then((response) => {
-  //     console.log(response);
-  //   })
-  //   .catch((error) => {
-  //     // What should we do when we know the post request failed?
-  //     this.setState({
-  //       errorMessage: `Failure ${error.message}`,
-  //     })
-  //   });
-  // };
+  onRental = () => {
+    const due_date = new Date();
+    due_date.setDate(due_date.getDate() + 7)
+    const customer_id = this.props.currentCustomer.id
+
+    const url = `http://localhost:3000/rentals/${this.props.currentMovie.title}/check-out`
+
+    const params = {
+      customer_id,
+      due_date,
+    }
+
+    axios.post(url, params)
+    .then((response) => {
+      console.log(response);
+    })
+    .catch((error) => {
+      // What should we do when we know the post request failed?
+      this.setState({
+        errorMessage: `Failure ${error.message}`,
+      })
+    });
+  };
 
   render() {
     return(
       <section>
-        <section>
-          {console.log(this.props.currentCustomer)}
-          {console.log("CHECK OUT")}
-        </section>
+        <section>{this.props.currentCustomer.name}</section>
+        <section>{this.props.currentMovie.title}</section>
         <button type="button" onClick={this.onRental}>Check Out Movie</button>
     </section>)
   }
@@ -61,6 +67,7 @@ class CheckOut extends Component {
 
 CheckOut.propTypes = {
   currentCustomer: PropTypes.object,
+  currentMovie: PropTypes.currentMovie,
   // currentMovie: PropTypes.object,
   // currentCustomer: PropTypes.object,
   // updatedCustomerCallback: PropTypes.func,
