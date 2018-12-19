@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 import Movie from './Movie';
+import Search from './Search';
 
 import './MovieLibrary.css';
 
@@ -13,7 +14,11 @@ class MovieLibrary extends Component {
       movies: [],
       moreMovies: '',
       buttonClassname: "movie__rent",
+<<<<<<< HEAD
+      movieToAddToLibrary: {}
+=======
       movieCount: 0,
+>>>>>>> f9398d62186c82b1d562c47721f1fa740a17ec7a
     };
   }
 
@@ -36,16 +41,6 @@ class MovieLibrary extends Component {
     });
   }
 
-  // searchMovieLibrary = (searchTerm) => {
-  //   axios.get(`http://localhost:3000/movies?query=<${searchTerm}>`)
-  //   .then((response) => {
-  //     this.setState({ movies: response.data });
-  //   })
-  //   .catch((error) => {
-  //     this.setState({ error: error.message });
-  //   });
-  // }
-
 
   render() {
     const allMovies = this.state.movies.map((movie) => {
@@ -65,6 +60,8 @@ class MovieLibrary extends Component {
 
     return (
       <div >
+<<<<<<< HEAD
+=======
 
         <form className="search-bar" onSubmit={this.onFormSubmit}>
           <input
@@ -77,6 +74,7 @@ class MovieLibrary extends Component {
           <button type="submit" className="search-bar__submit"/>
         </form>
 
+>>>>>>> f9398d62186c82b1d562c47721f1fa740a17ec7a
         <div className="library">
           {allMovies}
         </div>

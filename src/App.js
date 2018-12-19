@@ -39,8 +39,6 @@ const searchConst = () => (
   </div>
 );
 
-
-
 class App extends Component {
   constructor(props){
     super(props);
