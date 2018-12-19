@@ -1,4 +1,4 @@
-// import axios from 'axios';
+import axios from 'axios';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import Selector from './Selector';
@@ -11,13 +11,17 @@ class NewRental extends Component {
     super(props);
   }
 
+  checkoutMovie = () => {
+    this.props.rentMovieCallBack();
+  }
+
   render() {
 
     return (
       <div>
         <div><Selector selectorType="Customer" selected={this.props.selectedCustomer}/></div>
         <div><Selector selectorType="Movie" selected={this.props.selectedMovie}/></div>
-        <button>Check Out</button>
+        <button onClick={this.checkoutMovie}>Check Out</button>
       </div>
     )
   }

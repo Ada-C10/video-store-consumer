@@ -17,7 +17,6 @@ class LibrarySection extends Component {
   }
 
   componentDidMount() {
-    console.log("hello");
     axios.get(GET_MOVIES)
     .then((response) => {
       // this.props.status(`Successfully loaded ${response.data.length} movies from the rental library`, 'success');
@@ -35,7 +34,6 @@ class LibrarySection extends Component {
   render() {
 
     const { movies } = this.state
-    // console.log(movies)
 
     const allMovies = movies.map((movie, i) => {
 
