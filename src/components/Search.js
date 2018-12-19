@@ -10,25 +10,26 @@ class Search extends Component {
     this.state = {
       searchTerm: "",
       movies: [],
-      message: "",
+      message: ""
     };
   }
 
   movieSearch = () => {
-    this.changeMessage(`Searching for ${this.state.searchTerm}...`)
+    this.changeMessage(`Searching for ${this.state.searchTerm}...`);
     const url =
-      "http://localhost:3000/movies?query=" +
-      `${this.state.searchTerm}`;
+      "http://localhost:3000/movies?query=" + `${this.state.searchTerm}`;
 
     axios
       .get(url)
       .then(response => {
         const movies = response.data.map(movie => {
-          return {...movie};
+          return { ...movie };
         });
 
         this.setState({ movies });
-        this.changeMessage(`Found ${movies.length} results for ${this.state.searchTerm}.`)
+        this.changeMessage(
+          `Found ${movies.length} results for ${this.state.searchTerm}.`
+        );
       })
       .catch(error => {
         const errorMessage = error.message;
@@ -49,10 +50,10 @@ class Search extends Component {
     });
   };
 
-  changeMessage = (message) => {
-    this.setState({message});
-    setTimeout(() => this.setState({message: ""}), 2500)
-  }
+  changeMessage = message => {
+    this.setState({ message });
+    setTimeout(() => this.setState({ message: "" }), 2500);
+  };
 
   render() {
     return (
@@ -70,7 +71,7 @@ class Search extends Component {
             }
           }}
         />
-        <h1> MOVIES PAGE </h1>
+        <h1> </h1>
         {this.populateMovies()}
       </section>
     );
