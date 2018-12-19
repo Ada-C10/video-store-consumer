@@ -4,9 +4,6 @@ import PropTypes from 'prop-types';
 import './Rental.css';
 
 class Rental extends Component {
-  constructor(props) {
-    super(props);
-  }
   render() {
 
     return (

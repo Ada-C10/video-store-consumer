@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import Movie from './Movie';
 import axios from 'axios';
 import './MovieList.css';
@@ -103,8 +102,5 @@ addmovie = (movie) => {
   }
 }
 
-MovieList.propTypes = {
-
-};
 
 export default MovieList;

@@ -24,7 +24,6 @@ class VideoStore extends Component {
     const movieSelectedState = {}
     movieSelectedState["selectedMovie"] = movie
     this.setState(movieSelectedState)
-    console.log(this.state);
   }
 
   resetState = () => {
@@ -35,12 +34,9 @@ class VideoStore extends Component {
   }
 
   findCustomer =(customer) => {
-    console.log(customer);
     const customerSelectedState = {}
     customerSelectedState["selectedCustomer"] = customer
     this.setState(customerSelectedState)
-    console.log(customer);
-    console.log(this.state);
   }
 
   checkOutRental  =() => {
@@ -51,7 +47,6 @@ class VideoStore extends Component {
       customer_id: this.state.selectedCustomer.id,
       due_date: today
     }
-    console.log(apiPayload);
     if (this.state.selectedCustomer !== "none" && this.state.selectedMovie !== "none") {
       axios.post(`http://localhost:3000/rentals/${this.state.selectedMovie.title}/check-out`, apiPayload)
       .then((response) => {
@@ -89,18 +84,6 @@ class VideoStore extends Component {
     console.log(this.state.errorMessage);
   }
 
-  // overdueMovies  =() => {
-  //
-  //   axios.get("http://localhost:3000/rentals/overdue")
-  //   .then((response) => {
-  //     console.log(response)
-  //   })
-  //   .catch((error) => {
-  //     this.setState({
-  //       errorMessage: error.message
-  //     })
-  //   });
-  // }
   //      <Route path="/movies" render={(props) => <MovieListShow {...this.findMovie}/>}/>
   //      <Route path="/movies" component={() => <MovieListShow findMovief={this.findMovie}  />}/>
 

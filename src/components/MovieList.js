@@ -62,13 +62,13 @@ class MovieList extends Component {
   }
 
   makeMovieList = (movies) => {
-    const moviesList = movies.map((movie) => {
+    const moviesList = movies.map((movie, id) => {
       if (movie.customer_id) {
         const customer = {
           name: movie.name,
           id: movie.customer_id
         }
-        return <li key={movie.id}>
+        return <li key={id}>
         <Rental
         title={movie.title}
         name={movie.name}
@@ -82,7 +82,7 @@ class MovieList extends Component {
         type="button">Select Customer</button>
         </li>
       } else {
-        return <li key={movie.id}>
+        return <li key={id}>
         <Movie
         title={movie.title}
         overview={movie.overview}
@@ -101,10 +101,10 @@ class MovieList extends Component {
 
 
   render() {
-    console.log(this);
 
     return (
       <ul>
+      <h2>{this.state.errorMessage ? this.state.errorMessage: "" }</h2>
       { this.state.movies !== [] && this.makeMovieList(this.state.movies)}
       </ul>
     )
@@ -112,7 +112,9 @@ class MovieList extends Component {
 }
 
 MovieList.propTypes = {
-
+  URL: PropTypes.string.isRequired,
+  movie: PropTypes.string,
+  selectMovieCallback: PropTypes.func.isRequired,
 };
 
 export default MovieList;

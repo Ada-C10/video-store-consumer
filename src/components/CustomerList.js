@@ -67,7 +67,7 @@ class CustomerList extends Component {
 }
 
 CustomerList.propTypes = {
-
+  selectCustomerCallback: PropTypes.func.isRequired,
 };
 
 export default CustomerList;

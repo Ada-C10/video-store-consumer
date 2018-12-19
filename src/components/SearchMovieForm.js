@@ -37,7 +37,6 @@ class SearchMovieForm extends Component {
   }
 
   render() {
-    //console.log('rendering new pet form');
     return (
       <form onSubmit={this.onSubmit} name="search-movie-form" id="search-movie-form">
         <div>
