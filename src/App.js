@@ -8,6 +8,8 @@ import LibrarySection from './components/LibrarySection';
 import CustomerSection from './components/CustomerSection';
 import SearchSection from './components/SearchSection';
 
+import './App.css';
+
 const RENT_MOVIE = "http://localhost:3000/rentals/";
 
 class App extends Component {
@@ -64,14 +66,13 @@ class App extends Component {
 
     return (
       <div className="video-store">
-          <header>
+          <header className="video-store__header">
             <h1>Be Kind, Rewind</h1>
-            <div>
-              <Nav />
-              <NewRental selectedCustomer={this.state.selectedCustomer} selectedMovie={this.state.selectedMovie} rentMovieCallBack={this.rentMovie}/>
-            </div>
+            <Nav />
+            <NewRental selectedCustomer={this.state.selectedCustomer} selectedMovie={this.state.selectedMovie} rentMovieCallBack={this.rentMovie}/>
           </header>
-          <span>Status Bar goes here.</span>
+          <div></div>
+          <span className="status-bar">Status Bar goes here.</span>
           <Route path="/library" render={() => <LibrarySection selectMovieCallback = {this.selectMovie} />} />
           <Route path="/customers" render={() => <CustomerSection selectCustomerCallback = {this.selectCustomer} />} />
           <Route path="/search" render={() => <SearchSection />} />
