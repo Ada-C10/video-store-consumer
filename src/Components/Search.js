@@ -2,6 +2,7 @@ import React from 'react';
 import Movie from './Movie';
 import './Search.css';
 import axios from 'axios';
+import PropTypes from 'prop-types'
 
 class Search extends React.Component {
   constructor(props) {
@@ -59,6 +60,11 @@ class Search extends React.Component {
       </div>
     );
   }
+}
+
+Search.propTypes = {
+  addMovieCallback: PropTypes.func.isRequired,
+  baseUrl: PropTypes.string.isRequired
 }
 
 export default Search;

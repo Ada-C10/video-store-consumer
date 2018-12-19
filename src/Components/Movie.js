@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types'
 import './Movie.css';
 
-const Movie = ({id, title, release_date, image_url, buttonFunc, theme}) => {
+const Movie = ({title, release_date, image_url, buttonFunc, theme}) => {
 
 
   return (
@@ -25,11 +25,11 @@ const Movie = ({id, title, release_date, image_url, buttonFunc, theme}) => {
 }
 
 Movie.propTypes = {
-  id: PropTypes.string,
-  title: PropTypes.string,
-  release_date: PropTypes.string,
-  image_url: PropTypes.string,
-  buttonFunc: PropTypes.string //PropTypes.func
+  title: PropTypes.string.isRequired,
+  release_date: PropTypes.string.isRequired,
+  image_url: PropTypes.string.isRequired,
+  buttonFunc: PropTypes.func.isRequired,
+  theme: PropTypes.string.isRequired
 }
 
 export default Movie;

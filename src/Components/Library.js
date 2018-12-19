@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Movie from './Movie';
+import PropTypes from 'prop-types'
 import './Library.css';
 import axios from 'axios';
 
@@ -14,7 +15,6 @@ class Library extends Component {
 
   componentDidMount() {
 
-    // NOTE: change this address once api is deployed
     const VIDEO_STORE_API = this.props.baseUrl + 'movies';
 
     axios.get(VIDEO_STORE_API)
@@ -48,6 +48,11 @@ class Library extends Component {
       </div>
     );
   }
+}
+
+Library.propTypes = {
+  selectMovieCallback: PropTypes.func.isRequired,
+  baseUrl: PropTypes.string.isRequired
 }
 
 export default Library;
