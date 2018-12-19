@@ -1,14 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import './Customer.css';
 
 const Customer = (props) => {
   const { moviesCheckedOutCount, name, selectCustomerCallback } = props
   return(
-    <div><ul>
-    <li>Customer {name}</li>
-    <li>has checkedout {moviesCheckedOutCount} movies</li>
-    <li><button onClick={() => selectCustomerCallback()}>Select for Rental</button></li>
-    </ul></div>
+    <div className="customer item">
+    <section className="item__details"><ul>
+    <h2>Customer {name}</h2>
+    <p>{moviesCheckedOutCount} movies checked out</p>
+    </ul></section>
+    <button className="item__button" onClick={() => selectCustomerCallback()}>Select for Rental</button>
+    </div>
   )
 }
 
