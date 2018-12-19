@@ -70,7 +70,7 @@ class Search extends Component {
         title={result.title}
         release_date={result.release_date}
         image_url={result.image_url}
-        buttonText="Add to Library"/>
+        search={true}/>
     });
 
     return (

@@ -39,6 +39,7 @@ class VideoCollection extends React.Component {
       title={video.title}
       release_date={video.release_date}
       image_url={video.image_url}
+      search={false}
       addToRentClickHander={() => this.props.addToRentClickHander(video)}/>
     });
 
