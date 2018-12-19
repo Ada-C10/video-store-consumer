@@ -5,6 +5,10 @@ import './Movie.css';
 
 const Movie = (props) => {
 
+  const onClickMovie = () => {
+    props.grabMovieTitleCallback(props.title)
+  }
+
 
   return (
     <div className="movie">
@@ -14,24 +18,25 @@ const Movie = (props) => {
         <div className="movie__content-release_date">{props.release_date}</div>
         <div className="movie__content-image_url"><img src={props.image_url} alt="new"/></div>
       </span>
-      <button
+      <button onClick={onClickMovie}
         className="movie__select">
         Select movie for rental
       </button>
     </div>
   )
 }
- 
+
 // onClick={() => props.deleteCardCallback(props.id)}
 
 Movie.propTypes = {
-  id:PropTypes.integer,
+  id:PropTypes.number,
   title:PropTypes.string,
   overview:PropTypes.string,
   release_date:PropTypes.string,
   image_url:PropTypes.string,
-  external_id:PropTypes.integer,
-  buttonClassname:PropTypes.string
+  external_id:PropTypes.number,
+  buttonClassname:PropTypes.string,
+  grabMovieTitleCallback:PropTypes.func,
 };
 
 export default Movie;

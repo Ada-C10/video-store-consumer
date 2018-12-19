@@ -4,18 +4,19 @@ import './App.css';
 import MovieLibrary from './components/MovieLibrary.js';
 import CustomerLibrary from './components/CustomerLibrary.js';
 import Search from './components/Search.js';
+import StatusBar from './components/StatusBar.js';
 
-const libraryConst = () => (
-  <div>
-    <MovieLibrary/>
-  </div>
-);
+// const libraryConst = () => (
+//   <div>
+//     <MovieLibrary />
+//   </div>
+// );
 
-const customerConst = () => (
-  <div>
-    <CustomerLibrary/>
-  </div>
-);
+// const customerConst = () => (
+//   <div>
+//     <CustomerLibrary />
+//   </div>
+// );
 
 const searchConst = () => (
   <div>
@@ -26,17 +27,71 @@ const searchConst = () => (
 
 
 class App extends Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      message: "",
+      rentingMovie: "",
+      rentingCustomer: "",
+    };
+  }
+
+  customerCount = (allCustomers) => {
+    const newMessage = `Successfully loaded ${allCustomers} customers`;
+
+    console.log(`New Status = ${newMessage}`);
+
+    this.setState({
+      message: newMessage,
+    });
+  }
+
+  movieCount = (allMovies) => {
+    const newMessage = `Successfully loaded ${allMovies} movies`;
+
+    console.log(`New Status = ${newMessage}`);
+
+    this.setState({
+      message: newMessage,
+    });
+  }
+
+  rentalsMovie = (movieTitle) => {
+    console.log(`Selected movie = ${movieTitle}`);
+    this.setState({
+      rentingMovie: movieTitle,
+    });
+  }
+
+  rentalsCustomer = (customerName) => {
+    console.log(`Selected customer = ${customerName}`);
+    this.setState({
+      rentingCustomer: customerName,
+    });
+  }
+
   render() {
     return (
       <div>
         <ul>
-          <li><Link to="/">Movie Library</Link></li>
+          <li><Link to="/movies">Movie Library</Link></li>
           <li><Link to="/customers">Customers</Link></li>
           <li><Link to="/search">Search</Link></li>
         </ul>
+        <div>
+          <StatusBar status={this.state.message}/>
+        </div>
 
-        <Route path="/" exact component={libraryConst}/>
-        <Route path="/customers" component={customerConst}/>
+        <Route path="/movies"
+          render={ (props) => <MovieLibrary {...props}
+          movieCountCallback={this.movieCount}
+          grabMovieTitleCallback={this.rentalsMovie} /> }
+        />
+        <Route path="/customers"
+          render={ (props) => <CustomerLibrary {...props}
+          customerCountCallback={this.customerCount}
+          grabCustomerNameCallback={this.rentalsCustomer} /> }
+          />
         <Route path="/search" component={searchConst}/>
       </div>
     );
