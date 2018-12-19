@@ -7,6 +7,7 @@ import Nav from './components/Nav';
 import LibrarySection from './components/LibrarySection';
 import CustomerSection from './components/CustomerSection';
 import SearchSection from './components/SearchSection';
+import StatusBar from './components/StatusBar';
 
 const RENT_MOVIE = "http://localhost:3000/rentals/";
 
@@ -20,6 +21,10 @@ class App extends Component {
       selectedCustomerID: "",
       selectedMovie: "",
       returnDate: this.getReturnDay(),
+      status: {
+        statusClass: 'default',
+        statusMessage: ''
+      }
     }
   }
 
@@ -41,7 +46,12 @@ class App extends Component {
     .then((response) => {
       // this.props.status(`Successfully loaded ${response.data.length} movies from the rental library`, 'success');
       this.setState({
-        searchResults: response.data
+        searchResults: response.data,
+
+        status: {
+          statusClass: 'test'
+        }
+
       });
     })
     .catch((error) => {
@@ -72,6 +82,7 @@ class App extends Component {
             </div>
           </header>
           <span>Status Bar goes here.</span>
+          <StatusBar statusClass={this.state.status.statusClass} movie={this.state.selectedMovie} customer={this.state.selectedCustomer}/>
           <Route path="/library" render={() => <LibrarySection selectMovieCallback = {this.selectMovie} />} />
           <Route path="/customers" render={() => <CustomerSection selectCustomerCallback = {this.selectCustomer} />} />
           <Route path="/search" render={() => <SearchSection />} />

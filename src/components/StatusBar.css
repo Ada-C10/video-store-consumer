@@ -1,0 +1,12 @@
+.default {
+  color: blue;
+  font-size: 2em;
+  background-color: yellow;
+  display: none;
+}
+
+.test {
+  color: white;
+  font-size: 2em;
+  background-color: purple;
+}

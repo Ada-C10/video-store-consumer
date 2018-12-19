@@ -43,9 +43,9 @@ class SearchSection extends Component {
     axios.post(postUrl)
     .then((response) => {
       console.log(response)
+
     })
 
-    // axios.post(`ADD_MOVIE + `)
 
   }
 
