@@ -13,10 +13,20 @@ class CustomersCollection  extends Component {
     }
   }
 
+  handleSelectCustomer = (name) => {
+    if (this.props.onSelectCustomer) {
+      this.props.onSelectCustomer( name);
+    }
+  }
+
   displayCustomers = () => {
   return this.state.customerList.map( (customer) => {
-    console.log("printing customer",customer.name);
-    return <Customer name={customer.name} key={customer.id}/>
+    // console.log("printing customer",customer.name);
+    return <Customer
+            name={customer.name}
+            key={customer.id}
+            onSelectCustomer={this.handleSelectCustomer}
+            />
   });
 }
 
@@ -53,7 +63,8 @@ class CustomersCollection  extends Component {
 }
 
 CustomersCollection.propTypes = {
-customerList: PropTypes.array.isRequired
+  customerList: PropTypes.array.isRequired,
+  onSelecCustomer: PropTypes.func,
 };
 
 export default CustomersCollection ;

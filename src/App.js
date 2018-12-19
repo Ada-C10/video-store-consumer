@@ -17,7 +17,16 @@ class App extends Component {
 
     this.state = {
       selectedMovie: {},
+      selectedCustomer: {},
     }
+  }
+
+  handleSelectCustomer = (name) => {
+    this.setState({
+      selectedCustomer: {
+        name,
+      }
+    })
   }
 
   handleSelectMovie = (id, title) => {
@@ -50,7 +59,11 @@ class App extends Component {
       <ul>
         <li>
 
-        <Route path="/customers" component={CustomersCollection }/>
+        <Route
+          path="/customers"
+          render={() => <CustomersCollection onSelectCustomer={this.handleSelectCustomer} />}
+        />
+
         </li>
 
         <li>
