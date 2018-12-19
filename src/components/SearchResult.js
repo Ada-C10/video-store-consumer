@@ -27,7 +27,7 @@ class SearchResult extends Component {
 
 SearchResult.propTypes = {
   movie: PropTypes.object,
-  addToLibraryCallback: PropTypes.func
+  addToLibraryCallback: PropTypes.func,
 };
 
 export default SearchResult;

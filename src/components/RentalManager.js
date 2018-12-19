@@ -29,11 +29,11 @@ class RentalManager extends Component {
     axios
       .post("http://localhost:3000/movies", { movie })
       .then(response => {
-        console.log(response);
+        this.changeMessage(`Successfully added ${movie.title} to Movie Library.`)
       })
       .catch(error => {
         const errorMessage = error.message;
-        this.setState({ errorMessage });
+        this.changeMessage({ errorMessage });
       });
   };
 
