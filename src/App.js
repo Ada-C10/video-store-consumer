@@ -51,6 +51,7 @@ class App extends Component {
         <Link to={'/library'}>Rental Library</Link>
       </nav>
       <h1>{this.state.selectedMovie.title}</h1>
+      <h1>{this.state.selectedCustomer.name}</h1>
       <section className="search-bar">
         <Route path="/search" component={ SearchBar }/>
       </section>

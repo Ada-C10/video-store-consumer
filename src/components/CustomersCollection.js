@@ -14,6 +14,7 @@ class CustomersCollection  extends Component {
   }
 
   handleSelectCustomer = (name) => {
+    console.log("printing name in hnadleSelectCustoomer in customerscollect", name);
     if (this.props.onSelectCustomer) {
       this.props.onSelectCustomer( name);
     }
