@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Movie from "./Movie";
 import axios from "axios";
 import SearchResult from "./SearchResult";
 import PropTypes from "prop-types";

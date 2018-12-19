@@ -23,6 +23,7 @@ class Customers extends Component {
         });
 
         this.setState({ customers });
+
       })
       .catch(error => {
         const errorMessage = error.message;
@@ -54,7 +55,9 @@ class Customers extends Component {
 }
 
 Customers.propTypes = {
-  customers: PropTypes.array
+  customers: PropTypes.array,
+  changeMessageCallback: PropTypes.func,
+  setCustomerCallback: PropTypes.func,
 };
 
 export default Customers;
