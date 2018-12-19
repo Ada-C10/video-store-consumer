@@ -15,19 +15,23 @@ class Search extends React.Component {
 
   handleKeyInput = (event) => {
     if (event.key === 'Enter') {
+      const searchTerm = event.target.value;
 
-      const VIDEO_STORE_API_SEARCH = this.props.baseUrl + 'movies?query=' + event.target.value;
+      const VIDEO_STORE_API_SEARCH = this.props.baseUrl + 'movies?query=' + searchTerm;
+      this.props.setStatusMessageCallback(`Searching for ${searchTerm}...`);
 
       axios.get(VIDEO_STORE_API_SEARCH)
       .then((response) => {
         this.setState({
           movies: response.data,
         });
+        this.props.setStatusMessageCallback(`Found ${response.data.length} results for ${searchTerm}.`);
       })
       .catch((error) => {
         this.setState({
           error: error.message
         });
+        this.props.setStatusMessageCallback(`Unable to search ${searchTerm}. ${this.state.error}`);
       });
     }
   };

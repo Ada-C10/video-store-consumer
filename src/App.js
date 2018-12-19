@@ -45,48 +45,50 @@ class App extends Component {
    axios.post(addMovieURL, {id: movie.external_id})
    .then((response) => {
      console.log(response)
+     this.setStatusMessage(`Successfully added ${movie.title} to rental library`);
    })
    .catch((error) => {
      console.log(error)
+     this.setStatusMessage(`${error}. Cound not add ${movie.title} to rental library.`);
    })
  };
 
  setStatusMessage = (message) => {
-   console.log("I'm in message");
-   // console.log(message);
    this.setState({status: message});
-   console.log(this.state.status);
  }
 
   checkoutMovie = () => {
-    // http://localhost:3000/rentals/Jaws/check-out?customer_id=1&due_date=12/11/2019
-   const rentalUrl = this.state.selectedMovie ?
-   `${this.url}rentals/${this.state.selectedMovie.title}/check-out?` :
-   `${this.url}rentals/:title/check-out`;
-    console.log(rentalUrl);
+    if (this.state.selectedMove && this.state.selectedCustomer) {
+      const rentalUrl = this.state.selectedMovie ?
+      `${this.url}rentals/${this.state.selectedMovie.title}/check-out?` :
+      `${this.url}rentals/:title/check-out`;
+      console.log(rentalUrl);
 
-    const customerId = this.state.selectedCustomer ?
-    this.state.selectedCustomer.id : 0;
-    console.log(customerId);
+      const customerId = this.state.selectedCustomer ?
+      this.state.selectedCustomer.id : 0;
+      console.log(customerId);
 
-    const dueDate = new Date();
-    dueDate.setDate(dueDate.getDate() + 7);
-    console.log(dueDate);
+      const dueDate = new Date();
+      dueDate.setDate(dueDate.getDate() + 7);
+      console.log(dueDate);
 
-    const movie = this.state.selectedMovie.title;
-    const customer = this.state.selectedCustomer.name;
+      const movie = this.state.selectedMovie.title;
+      const customer = this.state.selectedCustomer.name;
 
-    axios.post(rentalUrl, {customer_id: customerId})
-    .then((response) => {
-      this.setStatusMessage(`Successfully checked out ${movie} to ${customer}`);
-      this.setState(
-        this.resetState(),
-      )
-    })
-    .catch((error) => {
-      console.log(error)
-      this.setStatusMessage(`Unable to check out ${movie} to ${customer}. ${error}`);
-    })
+      axios.post(rentalUrl, {customer_id: customerId, due_date: dueDate})
+      .then((response) => {
+        this.setStatusMessage(`Successfully checked out ${movie} to ${customer}`);
+        this.setState(
+          this.resetState(),
+        )
+      })
+      .catch((error) => {
+        console.log(error)
+        this.setStatusMessage(`Unable to check out ${movie} to ${customer}. ${error}`);
+      })
+    } else {
+      this.setStatusMessage(`Need to select a movie and customer.`);
+    }
   };
 
   render() {
@@ -95,40 +97,49 @@ class App extends Component {
       <div className="App">
         <Router>
          <div>
-           <ul>
-             <li>
-               <Link to="/search">Search</Link>
-             </li>
-             <li>
-               <Link to="/library">Library</Link>
-             </li>
-             <li>
-               <Link to="/customers">Customers</Link>
-             </li>
-           </ul>
+           <div className='top-bar'>
+             <ul className='nav-links'>
+               <li>
+                 <Link to="/search">Search</Link>
+               </li>
+               <li>
+                 <Link to="/library">Library</Link>
+               </li>
+               <li>
+                 <Link to="/customers">Customers</Link>
+               </li>
+             </ul>
 
-           <div>
-             <p>Selected Movie</p>
-             {this.state.selectedMovie && <p>{this.state.selectedMovie.title}</p>}
+             <section className="rentalDisplay">
+               <div>
+                 <p>Selected Movie</p>
+                 {this.state.selectedMovie && <p>{this.state.selectedMovie.title}</p>}
+               </div>
+               <div>
+                 <p>Selected Customer</p>
+                 {this.state.selectedCustomer && <p>{this.state.selectedCustomer.name}</p>}
+               </div>
+               <div>
+                 <button onClick={this.checkoutMovie}>Check Out New Rental</button>
+               </div>
+             </section>
            </div>
-           <div>
-             <p>Selected Customer</p>
-             {this.state.selectedCustomer && <p>{this.state.selectedCustomer.name}</p>}
-           </div>
-            <div><button onClick={this.checkoutMovie}>Check Out New Rental</button></div>
 
-            <div>
+            <div className="status-bar">
               {this.state.status &&
                 <StatusBar message={this.state.status}/>}
-                </div>
+            </div>
 
            <Route path="/search"
-             render={() => <Search baseUrl={this.url} addMovieCallback={this.addMovie}/>} />
+             render={() => <Search baseUrl={this.url}
+             addMovieCallback={this.addMovie}
+             setStatusMessageCallback={this.setStatusMessage} />}
+             />
            <Route
              path="/library"
              render={() => <Library selectMovieCallback={this.selectMovie}
              baseUrl={this.url} setStatusMessageCallback={this.setStatusMessage}/>}
-           />
+             />
            <Route
              path="/customers"
              render={() => <Customers selectCustomerCallback={this.selectCustomer}
