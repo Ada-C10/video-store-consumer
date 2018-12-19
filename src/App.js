@@ -32,25 +32,29 @@ class App extends Component {
   render() {
     return (
 
+
       <Router>
 
       <div className="App">
+      <nav>
+      <Link to={'/search'}>Search Bar </Link>
+      <Link to={'/customers'}>Customers</Link>
+        <Link to={'/library'}>Rental Library</Link>
+      </nav>
       <h1>{this.state.selectedMovie.title}</h1>
       <section className="search-bar">
-        <SearchBar onSearchChange={this.onSearchChange} />
-        <Link to={'/search'}>Search Bar </Link>
         <Route path="/search" component={ SearchBar }/>
       </section>
 
 
       <ul>
         <li>
-        <Link to={'/customers'}>Customers</Link>
+
         <Route path="/customers" component={CustomersCollection }/>
         </li>
 
         <li>
-        <Link to={'/library'}>Rental Library</Link>
+
         <Route
           path="/library"
           render={() => <RentalLibrary onSelectMovie={this.handleSelectMovie} />}
@@ -58,6 +62,8 @@ class App extends Component {
         </li>
       </ul>
 
+//checkout pass customer id as a parameter in the api post with id in the url axios can post for you?
+//urlencode the movie's title use it as the path and send the cusomer id as the parameter
 
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
