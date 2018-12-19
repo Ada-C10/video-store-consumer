@@ -32,8 +32,9 @@ class App extends Component {
     super(props);
     this.state = {
       message: "",
-      rentingMovie: "",
-      rentingCustomer: "",
+      selectedMovie: "",
+      selectedCustomer: "",
+      isRentalReady: false,
     };
   }
 
@@ -48,7 +49,7 @@ class App extends Component {
   }
 
   movieCount = (allMovies) => {
-    const newMessage = `Successfully loaded ${allMovies} movies`;
+    const newMessage = `Successfully loaded ${allMovies} movies from the rental library`;
 
     console.log(`New Status = ${newMessage}`);
 
@@ -60,15 +61,22 @@ class App extends Component {
   rentalsMovie = (movieTitle) => {
     console.log(`Selected movie = ${movieTitle}`);
     this.setState({
-      rentingMovie: movieTitle,
+      selectedMovie: movieTitle,
     });
   }
 
   rentalsCustomer = (customerName) => {
     console.log(`Selected customer = ${customerName}`);
     this.setState({
-      rentingCustomer: customerName,
+      selectedCustomer: customerName,
     });
+  }
+
+  makeRental = () => {
+    this.setState({
+      isRentalReady: (this.state.selectedMovie != "" && this.state.selectedCustomer != "")
+    });
+    console.log(this.state.isRentalReady);
   }
 
   render() {
@@ -93,6 +101,9 @@ class App extends Component {
           <li><Link to="/movies">Movie Library</Link></li>
           <li><Link to="/customers">Customers</Link></li>
           <li><Link to="/search">Search</Link></li>
+          <li>Selected Movie</li>
+          <li>Selected Customer</li>
+          <button onClick={makeRental}>Check Out New Rental</button>
         </ul>
         <div>
           <StatusBar status={this.state.message}/>

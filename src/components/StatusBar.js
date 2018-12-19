@@ -7,7 +7,7 @@ const StatusBar = (props) => {
 
   return (
     <div className="status_bar">
-      <h5>{props.status}</h5>
+      <h3>{props.status}</h3>
     </div>
   )
 }
