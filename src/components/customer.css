@@ -1,4 +1,48 @@
 .customer {
+  border-radius: 20px;
+  border: 5px solid darkgreen;
+  background-color: white;
   display: grid;
   grid-template-columns: 4fr 1fr;
+  text-align: center;
+
+  align-content: center;
 }
+.customer-container-box {
+  width: 90%;
+  display: inline-block;
+}
+.customer__content {
+  grid-column-start: 4;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+
+  text-align: center;
+  font-weight: 100;
+  overflow: hidden;
+}
+.customer-item__button {
+  font-size: 18px;
+}
+.message p {
+  background-color: #8fb996;
+}
+/* .btn {
+  background-color: #90a959;
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  font-size: 16px;
+  margin: 4px 2px;
+  opacity: 100;
+  transition: 0.3s;
+}
+.hide {
+  color: #90a959;
+}
+.btn:hover {
+  opacity: 0;
+} */

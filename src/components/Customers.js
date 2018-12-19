@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import Customer from "./Customer";
 import PropTypes from "prop-types";
-import "./customers.css";
+import "./Customers.css";
 
 class Customers extends Component {
   constructor(props) {
@@ -57,7 +57,6 @@ class Customers extends Component {
 
 Customers.propTypes = {
   customers: PropTypes.array,
-  changeMessageCallback: PropTypes.func,
   setCustomerCallback: PropTypes.func,
 };
 

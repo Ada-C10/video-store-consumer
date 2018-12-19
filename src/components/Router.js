@@ -9,18 +9,18 @@ import Customers from "./Customers";
 const AppRouter = props => (
   <Router>
     <div>
-      <nav>
-        <ul>
-          <li>
+      <nav className="nav-bar__nav">
+        <ul className="nav-bar">
+          <li className="nav-bar__nav-item">
             <Link to="/">Home</Link>
           </li>
-          <li>
-            <Link to="/search/">Search</Link>
+          <li className="nav-bar__nav-item">
+            <Link to="/search/">Go Fetch</Link>
           </li>
-          <li>
+          <li className="nav-bar__nav-item">
             <Link to="/library/">Library</Link>
           </li>
-          <li>
+          <li className="nav-bar__nav-item">
             <Link to="/customers/">Customers</Link>
           </li>
         </ul>

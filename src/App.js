@@ -1,26 +1,37 @@
 import React, { Component } from "react";
-import logo from "./logo.svg";
+import logo from "./dog-logo.svg";
 import "./App.css";
-import RentalManager from './components/RentalManager';
 
+import RentalManager from "./components/RentalManager";
+import MessageBar from "./components/MessageBar";
 
 class App extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {message: ""};
+    this.state = { message: "" };
   }
 
-  changeMessage = (message) => {
-    this.setState({message});
-  }
+  changeMessage = message => {
+    this.setState({ message });
+  };
 
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
+      <div className="video-store">
+        <header className="header">
+          <img
+            className="header-art"
+            src="http://icons.iconarchive.com/icons/designbolts/free-multimedia/96/Film-icon.png"
+          />
+          {<img src={logo} className="header-art" alt="logo" />}
+          <img
+            className="header-art"
+            src="http://icons.iconarchive.com/icons/designbolts/free-multimedia/96/Film-icon.png"
+          />
+          <div className="header__controls">
+            <h1 className="App-title">Bonkers Video</h1>
+          </div>
         </header>
         <p className="App-intro">{this.state.message}</p>
 

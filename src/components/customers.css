@@ -1,4 +1,8 @@
 .customers {
   display: flex;
   flex-wrap: wrap;
+  text-align: center;
+}
+.customer-container-box {
+  background-color: #6da34d;
 }

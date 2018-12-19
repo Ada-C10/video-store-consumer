@@ -1,21 +1,33 @@
 .App {
   text-align: center;
 }
-
+header.header {
+  background-color: white;
+  border: 5px solid #111d13;
+  border-radius: 15px;
+}
+.header-art {
+  margin-left: 10px;
+  margin-right: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 80px;
 }
 
 .App-header {
-  background-color: #222;
+  background-color: #6da34d;
   height: 150px;
   padding: 20px;
   color: white;
 }
 
 .App-title {
-  font-size: 1.5em;
+  font-size: 2em;
+  font-family: sans-serif;
+  color: #e6f14a;
 }
 
 .App-intro {
@@ -23,6 +35,23 @@
 }
 
 @keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.video-store {
+  text-align: center;
+  background-color: #6da34d;
+}
+li.nav-bar__nav-item {
+  list-style-type: none;
+}
+.rental-selection-container {
+  display: inline-block;
+}
+.rmField {
+  background-color: white;
 }
