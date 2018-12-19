@@ -16,7 +16,7 @@ class App extends Component {
       currentMovie: "none",
       currentCustomerName: "none",
       currentCustomerID: 0,
-      Messages: [],
+      messages: [],
       movies: []
     }
   }
@@ -51,10 +51,10 @@ class App extends Component {
 
       const message = `Successfully checked out ${this.state.currentMovie} to ${this.state.currentCustomerName}`;
 
-      this.setState({ Messages: [message] })
+      this.setState({ messages: [message] })
     })
     .catch((error) => {
-      this.setState({Messages: [...this.state.Messages, error.message]});
+      this.setState({messages: [...this.state.messages, error.message]});
     })
   }
 
@@ -62,31 +62,26 @@ class App extends Component {
 
   const ADD_MOVIE_URL = `http://localhost:3000/movies`;
 
-  console.log("in add movie before post");
-
     axios.post(ADD_MOVIE_URL, movie)
-    .then((response) => {
-
-      console.log('inside add Movie', movie.title, movie.image_url);
-      console.log('response',response.data);
-
+    .then(() => {
       const message = `Successfully added ${movie.image_url} to the library`;
       this.setState({
-        Messages: [message] });
+        messages: [message] });
     })
     .catch((error) => {
-      this.setState({ Messages: [...this.state.Messages, error.message] });
+      this.setState({ messages: [...this.state.messages, error.message] });
     })
+  }
 
+  replaceMessage = (error) => {
+    this.setState({messages: [error]});
   }
 
   render() {
 
-    const Messages = this.state.Messages.map((message, i) => {
+    const messages = this.state.messages.map((message, i) => {
       return <li key={i}>{message}</li>;
     })
-
-    console.log('list of movies:',this.state.movies);
 
     return (
       <Router>
@@ -121,7 +116,7 @@ class App extends Component {
           </ul>
           <section>
             <ul>
-              {Messages}
+              {messages}
             </ul>
           </section>
           <hr />
@@ -130,18 +125,21 @@ class App extends Component {
           <Route
             path="/customers"
             render={(props) => <Customers {...props}
-            selectCustomer={ (customer) => this.selectCustomer(customer)}/>}
+            selectCustomer={ (customer) => this.selectCustomer(customer)}
+            replaceMessage = {this.replaceMessage}/>}
             />
           <Route
             path="/library"
             render={(props) => <Library {...props}
             selectMovie={ (title) => this.selectMovie(title)}
             setMovies = { (movies) => this.setMovies(movies)}
-            movies = {this.state.movies} />}
+            movies = {this.state.movies}
+            replaceMessage = {this.replaceMessage}/>}
           />
         <Route exact path="/search"
            render={(props) => <Search {...props}
            addMovie={ (movie) => this.addMovie(movie)}
+           replaceMessage = {this.replaceMessage}
           />}
           />
         </div>

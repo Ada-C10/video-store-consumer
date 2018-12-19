@@ -30,7 +30,7 @@ class Search extends Component {
       this.setState({queryResults: response.data})
     })
     .catch((error) => {
-      console.log(error);
+      this.props.replaceMessage(error.message);
     })
   }
 
@@ -67,6 +67,7 @@ class Search extends Component {
 
 Search.propTypes = {
   addMovie: PropTypes.func.isRequired,
+  replaceMessage: PropTypes.func.isRequired,
 }
 
 export default Search;

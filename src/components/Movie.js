@@ -7,8 +7,6 @@ const Movie = (props) => {
 
   const { title, overview, image_url, release_date } = props.movie;
 
-
-
   return(
     <div className="movie">
       <h3>{title} </h3>

@@ -9,7 +9,6 @@ class Customers extends React.Component{
 
     this.state = {
       allCustomers: [],
-      errorMessages: [],
     }
   }
 
@@ -21,9 +20,7 @@ class Customers extends React.Component{
       this.setState({allCustomers: response.data})
     })
     .catch((error) => {
-      this.setState({
-        errorMessages: [...this.state.errorMessages, error.message]
-      });
+      this.props.replaceMessage(error.message);
     })
   }
 
@@ -42,7 +39,6 @@ class Customers extends React.Component{
 
     return (
       <div>
-      {this.state.errorMessages}
       {allCustomers}
       </div>
     )
@@ -51,5 +47,6 @@ class Customers extends React.Component{
 
 Customers.propTypes = {
   selectCustomer: PropTypes.func.isRequired,
+  replaceMessage: PropTypes.func.isRequired,
 }
   export default Customers;

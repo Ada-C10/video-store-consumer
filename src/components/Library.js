@@ -7,26 +7,18 @@ class Library extends Component {
   constructor() {
     super();
 
-    this.state = {
-      errorMessages: []
-    }
   }
 
   componentDidMount() {
 
     const GET_MOVIES = `http://localhost:3000/movies`;
 
-
     axios.get(GET_MOVIES)
     .then((response) => {
-
-      console.log('in component did mount', response.data);
       this.props.setMovies(response.data);
     })
     .catch((error) => {
-      this.setState({
-        errorMessages: [...this.state.errorMessages, error.message]
-      });
+      this.props.replaceMessage(error.message);
     });
   }
 
@@ -52,6 +44,7 @@ Library.propTypes = {
   selectMovie: PropTypes.func.isRequired,
   setMovies: PropTypes.func.isRequired,
   movies: PropTypes.array.isRequired,
+  replaceMessage: PropTypes.func.isRequired,
 };
 
 export default Library;
