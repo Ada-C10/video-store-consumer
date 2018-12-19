@@ -48,8 +48,8 @@ addmovie = (movie) => {
 
   makeMovieList = (movies) => {
 
-    const moviesList = movies.map((movie) => {
-      return (<li key={movie.id}>
+    const moviesList = movies.map((movie, id) => {
+      return (<li key={id}>
         <Movie
       title={movie.title}
       overview={movie.overview}
