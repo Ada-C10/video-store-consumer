@@ -1,19 +1,20 @@
 import React, { Component } from "react";
 import logo from "./logo.svg";
 import "./App.css";
-import RentalManager from './components/RentalManager';
-
-
+import RentalManager from "./components/RentalManager";
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
+      <div className="video-store">
+        <header className="header">
+          <div className="header__controls">
+            {" "}
+            <h1 className="App-title">Bonkers Video!</h1>
+          </div>
         </header>
-        <p className="App-intro">Customers</p>
+        <p className="navbar__nav" />
+        <br />
 
         <RentalManager />
       </div>
@@ -22,3 +23,6 @@ class App extends Component {
 }
 
 export default App;
+{
+  // <img src={logo} className="App-logo" alt="logo" />
+}

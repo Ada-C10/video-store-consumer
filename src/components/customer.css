@@ -1,4 +1,27 @@
 .customer {
+  border-radius: 20px;
+  border: 5px solid darkgreen;
+  background-color: white;
   display: grid;
   grid-template-columns: 4fr 1fr;
+}
+/* align-items: flex-start;
+  padding: 1em 0;
+  margin: 0.5rem;
+  padding: 1em 0;
+  margin: 0.5rem;
+  /* min-height: 80px;
+  min-width: 100px; */
+/* flex-basis: 18%; */
+
+.customer__content {
+  grid-column-start: 4;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+
+  text-align: center;
+  font-weight: 100;
+  overflow: hidden;
 }

@@ -1,0 +1,9 @@
+.rental-selection {
+  min-height: 150px;
+  width: 1fr;
+}
+.rental-item__button {
+  width: 4rem;
+  background-color: white;
+  border: 0.5em solid #7bf96c;
+}
