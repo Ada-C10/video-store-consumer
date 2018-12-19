@@ -60,7 +60,7 @@ class Search extends Component {
       overview: `${hit.overview}`,
       release_date: `${hit.release_date}`,
       external_id: hit.id,
-      image_url: `${hit.poster_path}`
+      image_url: `${hit.image_url}`
     };
 
     axios.post(POSTURL, movie_data)
