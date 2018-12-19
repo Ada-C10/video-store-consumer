@@ -57,10 +57,12 @@ class App extends Component {
        <Router>
          <div>
            <nav>
-             <ul>
-               <li><Link to='/'><h1>Video Store</h1></Link></li>
-               <li><Link to='/library/'><img className="icon" src="https://cmkt-image-prd.global.ssl.fastly.net/0.1.0/ps/1099153/580/386/m2/fpnw/wm0/film-reel-flat-icon-01-.jpg?1458399596&s=7dd4c457821c806e74d4bccc42bb53b4" /><p>Library</p></Link></li>
-               <li><Link to='/customers/'><img className="icon" src="https://www.freeiconspng.com/uploads/customers-icon-5.png" /><p>Customers</p></Link></li>
+            <div className="line"></div>
+              <Link to='/'><h1 className="header"><span className="letter">V</span>ideo Stor<span className="letter">e</span></h1></Link>
+            <div className="line"></div>
+             <ul className="navbar">
+               <li><Link to='/library/'><button className="btn app-button">Library</button></Link></li>
+               <li><Link to='/customers/'><button className="btn app-button">Customers</button></Link></li>
                <li><CurrentRental
                       movie={this.state.movie}
                       customer={this.state.customer}
@@ -68,11 +70,10 @@ class App extends Component {
               <li><Link to='/search/'>Search Movie</Link></li>
              </ul>
            </nav>
-
            <Route path='/library/' render={() =>
              <Library movies={this.state.movieList} rentMovieCallback={this.selectMovie} />} />
            <Route path='/search/' render={() =>
-             <MovieSearch />} />
+             <MovieSearch/>} />
          </div>
        </Router>
        <div>

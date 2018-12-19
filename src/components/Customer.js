@@ -11,7 +11,7 @@ const Customer = (props) => {
     <div>
       <h4>{name}</h4>
       <p>{movies_checked_out_count} movies checked out</p>
-      <button nameClass="btn btn-primary" onClick={onCustomerClick}>Select Customer</button>
+      <button className="customer-btn" onClick={onCustomerClick}>Select Customer</button>
     </div>
   );
 };

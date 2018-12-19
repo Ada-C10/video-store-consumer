@@ -1,0 +1,7 @@
+.customer-btn {
+  color: black;
+}
+
+.customer-btn:hover {
+  opacity: .5;
+}

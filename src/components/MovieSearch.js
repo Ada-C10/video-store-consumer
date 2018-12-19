@@ -1,72 +1,103 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
+import MovieSearchList from './MovieSearchList';
+import MovieSearchBar from './MovieSearchBar';
 import axios from 'axios';
-import PropTypes from 'prop-types';
+import './MovieSearchBar.css';
 
-import './SearchBar.css';
+// passes onSearchChangeCallback to MovieSearchBar.js
 
-const URL='http://localhost:3000/';
-const BASEURL = 'movies?query='
-// const KEY = process.env.REACT_APP_apikey
+const URL='http://localhost:3000/movies';
+const QUERY='?query=';
+
 
 class MovieSearch extends Component {
-
-  constructor(props) {
-    super(props);
-
+  constructor(){
+    super()
     this.state = {
-      query: '',
-      returnedSeachedMovies: []
-    };
+      resultListAxiosget:[],
+      movieSelect: ''
+    }
   }
 
-  //retrieves a movie from rails api
-  //when onSubmit occurs, trigger axios.get
-  onSubmit = (event) => {
-    this.state.query = event.target.value;
-    this.setState(query);
+  //triggers axios.get and passes the query
+  //attached to form
+  onSearchChange = (query) => {
+    this.listResults(query)
   }
 
-    axios.get(`${URL}${BASEURL}${this.state.query}`)
-      .then((response) => {
-        console.log("SUCCESS");
-        console.log(response);
-        // const seachedMovies = response.data.map((movie) => {
-        //   const seachedMovie = {
-        //     ...movie,
-        //   }
-        //   return seachedMovie; //display all searched movies
-        //
-        // })
-        this.setState({returnedSeachedMovies: response.data})
+  //retrieves the data react app --> rails api -->external api
+  //using the rails APi to query the external API
+  //result from axios.get -> [resultListAxiosget]
+  listResults = (query) => {
+    axios.get(URL + QUERY + `${query}`)
+
+    .then((response) => {
+      console.log(response)
+      const resultListAxiosget = response.data.map((result) => {
+        console.log(result)
+        const newResult = {
+          ...result,
+          imageURL:result.image_url,
+          title: result.title,
+          releaseDate: result.release_date,
+          overview: result.overview ? result.overview: "",
+        }
+        return newResult
       })
-      .catch((error) => {
-        console.log("ERROR");
-        console.log(error.message);
-        this.setState({
-          errorMessage: error.message,
-        })
-      })
+      this.setState ({
+        resultListAxiosget
+      });
 
+    })
+    .catch((error) => {
+      console.log(error.message);
+      console.log("ERROR")
+      this.setState({
+        errorMessage: error.message,
+      });
+
+    });
   }
-  render() {
-    const MovieSearch = this.state.returnedSeachedMovies.map((movie, i) => {
-      return
-      <section>
-         key={i}
-         title={movie.title}
-         release_date={movie.release_date}
-         image_url={movie.image_url}
-         <input
-          name="search-bar"
-          className="search-bar"
-          placeholder="Search by movie title"
-          value={this.state.query}
-          onChange={this.onSubmit} />
-      </section>
+
+   addMovietoLibrary =(externalId)=> {
+    const selectedMovie = this.state.resultListAxiosget.find((movie) => {
+      return movie.external_id === externalId;
+    });
+    if (selectedMovie) {
+      this.setState({
+        movieSelect: selectedMovie
+      });
     }
 
-MovieSearch.propTypes = {
-  onSearchChange: PropTypes.func,
-};
+    console.log(URL);
+    const image_url = selectedMovie.image_url;
+    const apiPayload = {...selectedMovie, image_url: image_url}
+    console.log(apiPayload);
 
-export default MovieSearch;
+    axios.post(URL, apiPayload)
+    .then( (response) => {
+      console.log(response)
+      console.log("success")
+    })
+    .catch( (error) => {
+      console.log(error)
+    })
+  }
+
+
+
+
+  render() {
+    return (
+      <section>
+        <MovieSearchBar
+          onSearchChangeCallback={this.onSearchChange}/>
+        <MovieSearchList
+          resultListAxiosget = {this.state.resultListAxiosget}
+          addMovietoLibraryCallback ={this.addMovietoLibrary}
+          />
+      </section>
+    )}
+  }
+
+  export default MovieSearch;
