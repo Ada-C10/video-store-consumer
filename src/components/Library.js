@@ -1,17 +1,20 @@
 import React, { Component } from "react";
 import axios from "axios";
 import Movie from "./Movie";
+import PropTypes from 'prop-types';
 
 class Library extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      movies: []
+      movies: [],
+      message: "",
     };
   }
 
   componentDidMount() {
+    this.changeMessage("Loading Movie Library...");
     const url = "http://localhost:3000/movies";
     axios
       .get(url)
@@ -21,11 +24,12 @@ class Library extends Component {
         });
 
         this.setState({ movies });
-        console.log(this.state.movies);
+        this.changeMessage(`Successfully loaded ${movies.length} Movies from Library.`);
+
       })
       .catch(error => {
         const errorMessage = error.message;
-        this.setState({ errorMessage });
+        this.changeMessage({ errorMessage });
       });
   }
 
@@ -42,16 +46,23 @@ class Library extends Component {
     });
   };
 
+  changeMessage = (message) => {
+    this.setState({message});
+    setTimeout(() => this.setState({message: ""}), 2500)
+  }
+
   render() {
     return (
       <section>
-        <h1> MOVIES PAGE </h1>
+        <h1> {this.state.message} </h1>
         {this.populateMovies()}
       </section>
     );
   }
 }
 
-Library.propTypes = {};
+Library.propTypes = {
+  setMovieCallback: PropTypes.func,
+};
 
 export default Library;

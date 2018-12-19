@@ -3,7 +3,6 @@ import logo from "./dog-logo.svg";
 import "./App.css";
 
 import RentalManager from "./components/RentalManager";
-import MessageBar from "./components/MessageBar";
 
 class App extends Component {
   constructor(props) {
@@ -33,11 +32,9 @@ class App extends Component {
             <h1 className="App-title">Bonkers Video</h1>
           </div>
         </header>
+        <p className="App-intro">{this.state.message}</p>
 
-        <br />
-
-        <MessageBar message={this.state.message} />
-        <RentalManager changeMessageCallback={this.changeMessage} />
+        <RentalManager changeMessageCallback={this.changeMessage}/>
       </div>
     );
   }

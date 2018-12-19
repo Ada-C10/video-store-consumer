@@ -1,8 +1,14 @@
 import React, { Component } from "react";
-import AppRouter from "./Router";
 import axios from "axios";
 import RentalSelection from "./RentalSelection";
 import PropTypes from "prop-types";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+
+import Index from "./Index";
+import Search from "./Search";
+import Library from "./Library";
+import Customers from "./Customers";
+
 
 class RentalManager extends Component {
   constructor(props) {
@@ -11,7 +17,8 @@ class RentalManager extends Component {
     this.state = {
       currentCustomerID: "",
       currentCustomerName: "",
-      currentMovieTitle: ""
+      currentMovieTitle: "",
+      message: "",
     };
   }
 
@@ -41,25 +48,16 @@ class RentalManager extends Component {
       currentMovieTitle: movieTitle
     });
   };
+  changeMessage = (message) => {
+    this.setState({message});
+    setTimeout(() => this.setState({message: ""}), 2500)
+  }
 
   checkOut = () => {
-    const changeMessage = this.props.changeMessageCallback;
+    const changeMessage = this.changeMessage;
     if (this.state.currentCustomerID && this.state.currentMovieTitle) {
       const date = new Date(Date.now());
       date.setDate(date.getDate() + 7);
-
-      console.log(date);
-
-      // const url = `http://localhost:3000/rentals/${this.state.currentMovieTitle}/check-out?customer_id=${this.state.currentCustomerID}&due_date=December 25, 2018` ;
-      // const url = `http://localhost:3000/rentals/Psycho/check-out?customer_id=1&due_date=${date}`;
-      //
-      // console.log(url);
-      // axios
-      //   .post(url)
-      //   .then(response => {
-      //     // success message to status bar
-      //     console.log(response);
-      //   })
 
       const url = `http://localhost:3000/rentals/${
         this.state.currentMovieTitle
@@ -92,20 +90,57 @@ class RentalManager extends Component {
       <div className="rmField">
         <h2> {this.state.currentCustomerName}</h2>
         <h2> {this.state.currentMovieTitle}</h2>
+        <h2> {this.state.message} </h2>
         <RentalSelection checkOutCallback={this.checkOut} />
-        <AppRouter
-          setCustomerCallback={this.setCustomer}
-          setMovieCallback={this.setMovie}
-          addToLibraryCallback={this.addToLibrary}
-          changeMessageCallback={this.props.changeMessageCallback}
-        />
+          <Router>
+            <div>
+              <nav className="nav-bar__nav">
+                <ul className="nav-bar">
+                  <li className="nav-bar__nav-item">
+                    <Link to="/">Home</Link>
+                  </li>
+                  <li className="nav-bar__nav-item">
+                    <Link to="/search/">Go Fetch</Link>
+                  </li>
+                  <li className="nav-bar__nav-item">
+                    <Link to="/library/">Library</Link>
+                  </li>
+                  <li className="nav-bar__nav-item">
+                    <Link to="/customers/">Customers</Link>
+                  </li>
+                </ul>
+              </nav>
+
+              <Route path="/" exact component={Index} />
+              <Route
+                path="/search/"
+                component={() => {
+                  return <Search addToLibraryCallback={this.addToLibrary} />;
+                }}
+              />
+              <Route
+                path="/library/"
+                component={() => {
+                  return <Library setMovieCallback={this.setMovie} />;
+                }}
+              />
+              <Route
+                path="/customers/"
+                component={() => {
+                  return <Customers setCustomerCallback={this.setCustomer} />;
+                }}
+              />
+            </div>
+          </Router>
+
+
+
       </div>
     );
   }
 }
 
 RentalManager.propTypes = {
-  changeMessageCallback: PropTypes.func
 };
 
 export default RentalManager;

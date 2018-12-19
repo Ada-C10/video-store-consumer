@@ -9,11 +9,13 @@ class Customers extends Component {
     super(props);
 
     this.state = {
-      customers: []
+      customers: [],
+      message: "",
     };
   }
 
   componentDidMount() {
+    this.changeMessage("Loading Customers...");
     const url = "http://localhost:3000/customers";
     axios
       .get(url)
@@ -23,6 +25,9 @@ class Customers extends Component {
         });
 
         this.setState({ customers });
+        this.changeMessage(`Found ${customers.length} customers.`);
+
+
       })
       .catch(error => {
         const errorMessage = error.message;
@@ -43,10 +48,15 @@ class Customers extends Component {
     });
   };
 
+  changeMessage = (message) => {
+    this.setState({message});
+    setTimeout(() => this.setState({message: ""}), 2500)
+  }
+
   render() {
     return (
       <section>
-        <header> CUSTOMERS </header>
+        <h1 className="customers"> {this.state.message} </h1>
         {this.populateCustomers()}
       </section>
     );
@@ -55,8 +65,7 @@ class Customers extends Component {
 
 Customers.propTypes = {
   customers: PropTypes.array,
-  changeMessageCallback: PropTypes.func,
-  setCustomerCallback: PropTypes.func
+  setCustomerCallback: PropTypes.func,
 };
 
 export default Customers;

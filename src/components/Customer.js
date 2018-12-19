@@ -10,13 +10,13 @@ class Customer extends Component {
             <h1> {this.props.customer.name}</h1>
             <div />
             {this.props.customer.phone} <div />
-            <h1>
+
               <h3>
                 {" "}
                 Movies checked out:{" "}
                 {this.props.customer.movies_checked_out_count}
               </h3>
-            </h1>
+            
           </div>
           <button
             className="customer-item__button"
