@@ -18,7 +18,6 @@ class CustomerSection extends Component {
   }
 
   componentDidMount() {
-    console.log("the component mounted!");
 
     axios.get(ALL_CUSTOMERS_URL)
     .then((response) => {
@@ -36,13 +35,13 @@ class CustomerSection extends Component {
   render() {
 
     const { customers } = this.state
-    console.log(customers)
 
     const allCustomers = customers.map((customer, i) => {
       return <Customer
         key={i}
         name={customer.name}
         phone={customer.phone}
+        selectCustomerCallback={() => this.props.selectCustomerCallback(customer)}
         />
 
     });

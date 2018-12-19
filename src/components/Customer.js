@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 
 
 const Customer = (props) => {
-  console.log(props)
   return (
       <div>
         {props.name}
@@ -12,7 +11,7 @@ const Customer = (props) => {
         {props.phone}
         <br />
         <p># of movies checked out</p>
-        <button>Select for Rental</button>
+        <button onClick={props.selectCustomerCallback}>Select for Rental</button>
       </div>
   )
 }

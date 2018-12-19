@@ -26,6 +26,12 @@ class App extends Component {
   }
 
 
+  selectCustomer = (customer) => {
+    this.setState({selectedCustomer: customer.name })
+    console.log(customer)
+  }
+
+
   render() {
 
 
@@ -40,7 +46,7 @@ class App extends Component {
           </header>
           <span>Status Bar goes here.</span>
           <Route path="/library" render={() => <LibrarySection selectMovieCallback = {this.selectMovie} />} />
-          <Route path="/customers" render={() => <CustomerSection />} />
+          <Route path="/customers" render={() => <CustomerSection selectCustomerCallback = {this.selectCustomer} />} />
           <Route path="/search" render={() => <SearchSection />} />
 
       </div>
