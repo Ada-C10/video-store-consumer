@@ -5,6 +5,9 @@ import './Customer.css';
 
 const Customer = (props) => {
 
+  const onClickCustomer = () => {
+    props.grabCustomerNameCallback(props.name)
+  }
 
   return (
     <div className="customer">
@@ -21,7 +24,7 @@ const Customer = (props) => {
         <div className="customer__content-info">{props.account_credit}</div>
 
       </span>
-      <button
+      <button onClick={onClickCustomer}
         className="customer__select">
         Select customer for rental
       </button>
@@ -30,7 +33,7 @@ const Customer = (props) => {
 }
 
 Customer.propTypes = {
-  id:PropTypes.integer,
+  id:PropTypes.number,
   name:PropTypes.string,
   address:PropTypes.string,
   city:PropTypes.string,
@@ -39,7 +42,7 @@ Customer.propTypes = {
   phone:PropTypes.string,
   account_credit:PropTypes.number,
   created_at:PropTypes.instanceOf(Date),
+  grabCustomerNameCallback:PropTypes.func,
 };
 
 export default Customer;
- 

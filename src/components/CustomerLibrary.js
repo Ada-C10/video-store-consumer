@@ -5,11 +5,12 @@ import Customer from './Customer';
 
 
 class CustomerLibrary extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
-      customers: []
+      customers: [],
+      customerCount: 0,
     };
   }
 
@@ -20,7 +21,12 @@ class CustomerLibrary extends Component {
   getCustomers = () => {
     axios.get('http://localhost:3000/customers')
     .then((response) => {
-      this.setState({ customers: response.data });
+      console.log(response.data.length);
+      this.setState({
+        customers: response.data,
+        customerCount: response.data.length,
+      });
+      this.props.customerCountCallback(this.state.customerCount)
     })
     .catch((error) => {
       this.setState({ error: error.message });
@@ -40,7 +46,9 @@ class CustomerLibrary extends Component {
         postal_code={customer.postal_code}
         phone={customer.phone}
         account_credit={customer.account_credit}
-        created_at={customer.created_at}/>
+        created_at={customer.created_at}
+        grabCustomerNameCallback={this.props.grabCustomerNameCallback}
+        />
     });
 
     return (
@@ -54,8 +62,8 @@ class CustomerLibrary extends Component {
 }
 
 CustomerLibrary.propTypes = {
-
+  customerCountCallback:PropTypes.func,
+  grabCustomerNameCallback:PropTypes.func,
 };
 
 export default CustomerLibrary;
- 

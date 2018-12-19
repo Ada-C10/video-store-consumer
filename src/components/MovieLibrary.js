@@ -7,13 +7,17 @@ import Search from './Search';
 import './MovieLibrary.css';
 
 class MovieLibrary extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       movies: [],
       buttonClassname: "movie__rent",
+<<<<<<< HEAD
       movieToAddToLibrary: {}
+=======
+      movieCount: 0,
+>>>>>>> f9398d62186c82b1d562c47721f1fa740a17ec7a
     };
   }
 
@@ -24,7 +28,12 @@ class MovieLibrary extends Component {
   getMovies = () => {
     axios.get('http://localhost:3000/movies')
     .then((response) => {
-      this.setState({ movies: response.data });
+      console.log(response.data.length);
+      this.setState({
+        movies: response.data,
+        movieCount: response.data.length,
+      });
+      this.props.movieCountCallback(this.state.movieCount)
     })
     .catch((error) => {
       this.setState({ error: error.message });
@@ -41,12 +50,29 @@ class MovieLibrary extends Component {
         overview={movie.overview}
         release_date={movie.release_date}
         image_url={movie.image_url}
-        external_id={movie.external_id}/>
+        external_id={movie.external_id}
+        grabMovieTitleCallback={this.props.grabMovieTitleCallback}
+        />
     });
 
 
     return (
       <div >
+<<<<<<< HEAD
+=======
+
+        <form className="search-bar" onSubmit={this.onFormSubmit}>
+          <input
+            type="text"
+            placeholder="Search.."
+            name="searchTerm"
+            value={this.state.searchTerm}
+            onChange={this.onInputChange}
+            />
+          <button type="submit" className="search-bar__submit"/>
+        </form>
+
+>>>>>>> f9398d62186c82b1d562c47721f1fa740a17ec7a
         <div className="library">
           {allMovies}
         </div>
@@ -56,7 +82,8 @@ class MovieLibrary extends Component {
 }
 
 MovieLibrary.propTypes = {
-
+  movieCountCallback:PropTypes.func,
+  grabMovieTitleCallback:PropTypes.func,
 };
 
 export default MovieLibrary;
