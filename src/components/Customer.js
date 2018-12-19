@@ -8,8 +8,8 @@ const Customer = (props) => {
   const onCustomerClick = () => props.rentCustomerCallback(id, name);
 
   return (
-    <div>
-      <h4>{name}</h4>
+    <div className="customers">
+      <h4 className="customer-name">{name}</h4>
       <p>{movies_checked_out_count} movies checked out</p>
       <button className="customer-btn" onClick={onCustomerClick}>Select Customer</button>
     </div>

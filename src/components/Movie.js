@@ -9,7 +9,7 @@ const Movie = (props) => {
 
   return (
     <div className="movie">
-      <h4> {title} </h4>
+      <h4 className="movie-title"> {title} </h4>
       <img src={image_url} alt={title} />
       <p> {release_date} </p>
       <button className="movie-btn" onClick={onMovieClick}>Select for Rental</button>

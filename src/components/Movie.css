@@ -2,6 +2,10 @@
   padding: 1rem;
 }
 
+.movie-title {
+  color: #ed2b12;
+}
+
 .movie-btn {
   color: black;
 }

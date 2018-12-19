@@ -8,41 +8,13 @@
   color: lightgray;
 }
 
-.line {
-  border-top: solid;
-  border-bottom: solid;
-  border-width: thin;
-  border-color: red;
-  padding: 0 0;
-  height: 10px;
-  width: 50%;
-  margin: auto;
-}
-
 a:link {
   text-decoration: none;
 }
 
-.letter {
-  font-size: 80px;
-}
-.header {
-  -webkit-text-stroke: 1px red;
-   color: #000024;
-   font-size: 4em;
-   text-transform: uppercase;
-   font-family: 'Aleo', serif;
-   padding: 0 0;
-}
-
-.header:hover {
-  -webkit-text-stroke: 1px #EC407A;
-   color: #000024;
-}
-
 ul li {
   list-style: none;
-  color: red;
+  color: #ed2b12;
 }
 
 .app-button {
@@ -53,4 +25,105 @@ ul li {
 .navbar {
   display: flex;
   justify-content: space-between;
+}
+
+body {
+  background: #000;
+}
+
+.st {
+  width: 625px;
+  margin: 6rem auto 3rem auto;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 8rem;
+  font-family: 'ITC Benguiat W01';
+  font-weight: 800;
+  color: #1c0502;
+  text-shadow: -0.05rem -0.05rem 1px #ed2b12,
+    0.05rem -0.05rem 1px #ed2b12,
+    -0.05rem 0.05rem 1px #ed2b12,
+    0.05rem 0.05rem 1px #ed2b12,
+    0 0 15px #630100,
+    0 0 20px #450100;
+  letter-spacing: -2px;
+}
+
+.st p {
+  display: inline-block;
+  margin: 0;
+}
+
+.st-bound {
+  box-shadow: -0.05rem -0.05rem 2px #ed2b12,
+    0.05rem -0.05rem 2px #ed2b12,
+    -0.05rem 0.05rem 2px #ed2b12,
+    0.05rem 0.05rem 2px #ed2b12;
+  height: 3px;
+}
+
+.st-bound-full {
+  width: 100%;
+  margin: auto;
+  margin-bottom: -2rem;
+  max-width: 320px;
+  margin-left: 150px;
+}
+
+.st-bound-mini {
+  margin-top: 0.5rem;
+}
+
+.st-bound-left {
+  float: left;
+  width: 40px;
+  position: relative;
+  left: 155px;
+  top: 11rem;
+}
+
+.st-bound-right {
+  float: right;
+  width: 40px;
+  position: relative;
+  top: 11rem;
+  right: 155px;
+}
+
+.st-bottom {
+  clear: both;
+  top: -4rem;
+  position: relative;
+  left: .2rem;
+  letter-spacing: 2px;
+}
+
+.st-drop {
+  line-height: 0;
+  position: relative;
+  top: 1.55rem;
+}
+
+.st-stranger-s {
+  font-size: 10.5rem;
+  letter-spacing: 3px;
+}
+
+.st-stranger-t {
+  font-size: 8rem;
+  letter-spacing: 3px;
+}
+
+.st-stranger-r-2 {
+  font-size: 10.5rem;
+  right: 0.2rem;
+}
+
+.st-things-t {
+  font-size: 104%;
+  letter-spacing: -10px;
+}
+
+.st-things-n {
+  letter-spacing: -10px;
 }

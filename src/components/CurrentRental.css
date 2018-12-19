@@ -1,5 +1,6 @@
 .field {
-  width: 100px;
+  width: auto;
+  color: black;
   height: 30px;
   border: solid;
   border-width: thin;

@@ -16,9 +16,12 @@ const CustomerList = (props) => {
   console.log(customerList)
 
   return (
-    <div>
-      {customerList}
-    </div>
+    <section>
+      <p>Loaded {customerList.length} customers </p>
+      <div>
+        {customerList}
+      </div>
+    </section>
   )
 }
 
