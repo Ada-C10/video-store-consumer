@@ -37,7 +37,7 @@ class LibraryContainer extends Component {
           <Movie
           key={ e.external_id }
           data={ e }
-          selectCB={ () => { this.props.selectCB(e) } } />
+          selectCB={ () => { this.props.selectCB(e, this.props.type) } } />
         )
       });
     } else {
@@ -46,7 +46,7 @@ class LibraryContainer extends Component {
           <Customer
           key={ e.id }
           data={ e }
-          selectCB={ () => { this.props.selectCB(e) } } />
+          selectCB={ () => { this.props.selectCB(e, this.props.type) } } />
         )
       });
     }

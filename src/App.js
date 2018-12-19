@@ -7,6 +7,26 @@ import SearchContainer from './components/SearchContainer';
 import NewRental from './components/NewRental';
 
 class App extends Component {
+  constructor() {
+    super();
+
+    this.state = {
+      movie: '',
+      customer: '',
+      cust_id: '',
+      status: '',
+    }
+  }
+
+  select = (obj, type) => {
+    type = type.toLowerCase();
+
+    let newState = this.state;
+    newState[type] = type === 'movie' ? obj.title : obj.name;
+
+    this.setState(newState);
+  }
+
   render() {
     return (
       <div className="App">
@@ -17,8 +37,12 @@ class App extends Component {
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
-        <NewRental />
-        <LibraryContainer selectCB={ (thing) => {console.log(thing)} } type="Movie"/>
+        <NewRental
+          movie={ this.state.movie }
+          customer={ this.state.customer }
+          cust_id={ this.state.cust_id } />
+        <LibraryContainer selectCB={this.select} type="Movie" />
+        <LibraryContainer selectCB={this.select} type="Customer" />
         <SearchContainer />
       </div>
     );
