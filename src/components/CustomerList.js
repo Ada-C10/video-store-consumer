@@ -49,7 +49,7 @@ class CustomerList extends Component {
       postal_code={customer.postal_code}/>
       <button
       onClick ={ () => {this.props.selectCustomerCallback(customer)}}
-      type="button">Select for Rental</button>
+      type="button">Select Customer</button>
       </li>
     });
     return customerList

@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Movie from './Movie';
+import Rental from './Rental';
+
 import axios from 'axios';
 import './MovieList.css';
 
@@ -40,18 +42,36 @@ class MovieList extends Component {
 
   makeMovieList = (movies) => {
     const moviesList = movies.map((movie) => {
-      console.log(movie.customer_id);
+      if (movie.customer_id) {
+        const customer = {
+          name: movie.name,
+          id: movie.customer_id
+        }
+        return <li key={movie.id}>
+        <Rental
+        title={movie.title}
+        name={movie.name}
+        due_date={movie.due_date}
+        image_url={movie.image_url}/>
+        <button
+        onClick ={ () => {this.props.selectMovieCallback(movie)}}
+        type="button">Select Movie</button>
+        <button
+        onClick ={ () => {this.props.selectCustomerCallback(customer)}}
+        type="button">Select Customer</button>
+        </li>
+      } else {
       return <li key={movie.id}>
-      <Movie
-      title={movie.title}
-      overview={movie.overview}
-      release_date={movie.release_date}
-      image_url={movie.image_url}/>
-      <button
-      onClick ={ () => {this.props.selectMovieCallback(movie)}}
-      type="button">Select Movie</button>
-      </li>
-
+        <Movie
+        title={movie.title}
+        overview={movie.overview}
+        release_date={movie.release_date}
+        image_url={movie.image_url}/>
+        <button
+        onClick ={ () => {this.props.selectMovieCallback(movie)}}
+        type="button">Select Movie</button>
+        </li>
+    }
 
     });
 
