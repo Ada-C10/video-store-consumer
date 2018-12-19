@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import './styles/Movie.css';
+import { Button } from 'reactstrap';
 
 
 class Movie extends Component {
@@ -18,9 +19,8 @@ class Movie extends Component {
           <h2>{this.props.title}</h2>
           <h3>{this.props.release_date}</h3>
           <p>{this.props.overview}</p>
-      </div>
-      <button className="movie-item__select-button">Select for rental</button>
-
+          <Button color="secondary"  className="movie-item__select-button">Select for rental</Button>
+        </div>
       </div>
     )
   }
