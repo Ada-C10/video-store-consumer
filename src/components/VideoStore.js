@@ -54,6 +54,25 @@ class VideoStore extends Component {
         })
       });
     }
+  }
+
+  checkInRental  =() => {
+    const apiPayload = {
+      title: this.state.selectedMovie.title,
+      customer_id: this.state.selectedCustomer.id,
+    }
+    console.log(apiPayload);
+    if (this.state.selectedCustomer !== "none" && this.state.selectedMovie !== "none") {
+      axios.post(`http://localhost:3000/rentals/${this.state.selectedMovie.title}/return`, apiPayload)
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => {
+        this.setState({
+          errorMessage: error.message
+        })
+      });
+    }
     console.log(this.state.errorMessage);
   }
 
@@ -87,6 +106,9 @@ class VideoStore extends Component {
       <button
       onClick ={this.checkOutRental}
       type="button">Check Out New Rental</button>
+      <button
+      onClick ={this.checkInRental}
+      type="button">Check In Movie</button>
       <hr />
 
       <Route exact path="/" component={Home} />
