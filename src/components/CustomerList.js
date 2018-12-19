@@ -42,12 +42,13 @@ class CustomerList extends Component {
 
   makeCustomerList = (customers) => {
     const customerList = customers.map((customer) => {
-      return <li key={customer.id}>
+      return <li key={customer.id} className={"customer-list-li"}>
       <Customer
       name={customer.name}
       phone={customer.phone}
       postal_code={customer.postal_code}/>
       <button
+      className={"btn btn-secondary btn-lg"}
       onClick ={ () => {this.props.selectCustomerCallback(customer)}}
       type="button">Select Customer</button>
       </li>
@@ -59,7 +60,7 @@ class CustomerList extends Component {
   render() {
 
     return (
-      <ul>
+      <ul className="text-white bg-dark mb-3">
       { this.state.customers !== [] && this.makeCustomerList(this.state.customers)}
       </ul>
     )

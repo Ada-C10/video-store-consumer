@@ -1,0 +1,9 @@
+.movie-component-container {
+  display: flex;
+  padding: 1em;
+}
+
+p {
+  padding-left: 1em;
+  padding-right: 1em;
+}

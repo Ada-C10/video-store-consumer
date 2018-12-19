@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Movie from './Movie';
 import axios from 'axios';
-import './MovieList.css';
+import './Search.css';
 import SearchMovieForm from './SearchMovieForm';
 
 
@@ -50,13 +50,14 @@ addmovie = (movie) => {
   makeMovieList = (movies) => {
 
     const moviesList = movies.map((movie) => {
-      return (<li key={movie.id}>
+      return (<li key={movie.id} className={"search-li"}>
         <Movie
       title={movie.title}
       overview={movie.overview}
       release_date={movie.release_date}
       image_url={movie.image_url}/>
       <button
+      className={"btn btn-secondary btn-lg add-to-lib-button"}
       onClick ={ () => {this.addmovie(movie)}}
       type="button"> Add to Library</button>
       </li>)
@@ -92,8 +93,7 @@ addmovie = (movie) => {
   render() {
 
     return (
-      <section>
-
+      <section className={"search-section text-white bg-dark mb-3"}>
       <SearchMovieForm searchResultsCallback= {this.returnResults}/>
       <ul>
       { this.state.movies !== [] && this.makeMovieList(this.state.movies)}

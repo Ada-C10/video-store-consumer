@@ -10,10 +10,10 @@ class Customer extends Component {
   render() {
 
     return (
-      <div>
+      <div className="text-white bg-dark mb-3">
       <h1>{this.props.name}</h1>
       <p>{this.props.phone}</p>
-      <p>{this.props.postal_code}</p>
+      <p>Postal Code: {this.props.postal_code}</p>
       </div>
     )
   }

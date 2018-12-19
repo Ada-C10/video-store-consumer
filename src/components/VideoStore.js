@@ -4,6 +4,7 @@ import MovieList from './MovieList';
 import CustomerList from './CustomerList';
 import Search from './Search';
 import axios from 'axios';
+import './VideoStore.css';
 
 
 
@@ -109,6 +110,7 @@ class VideoStore extends Component {
     return (
       <Router>
       <div>
+      <header>
       <ul>
       <li>
       <Link to="/">Home</Link>
@@ -129,7 +131,7 @@ class VideoStore extends Component {
 
 
       <div>{this.state.selectedCustomer === "none" ? this.state.selectedCustomer
-       : this.state.selectedCustomer.name}</div>
+      : this.state.selectedCustomer.name}</div>
       <div>{this.state.selectedMovie === "none" ? this.state.selectedMovie : this.state.selectedMovie.title}</div>
       <button
       onClick ={this.checkOutRental}
@@ -137,8 +139,8 @@ class VideoStore extends Component {
       <button
       onClick ={this.checkInRental}
       type="button">Check In Movie</button>
-      <hr />
-
+      </header>
+      <section className={"main-content"}>
       <Route exact path="/" component={Home} />
 
       <Route path="/movies" render={(props) => <MovieListShow {...props} findMovieProp={this.findMovie} />}/>
@@ -146,7 +148,7 @@ class VideoStore extends Component {
       <Route path="/search" component={SearchShow} />
 
       <Route path="/overdue" render={(props) => <OverdueShow {...props} returnedMovieProp={this.state.returnedMovie} findMovieProp={this.findMovie} findCustomerProp={this.findCustomer} />}/>
-
+      </section>
       </div>
       </Router>)
     }
@@ -164,7 +166,7 @@ class VideoStore extends Component {
   function OverdueShow(props) {
     return (
       <div>
-      <h2>Overdue Movies</h2>
+      <h2 className={"overdue-heading"}>Overdue Movies</h2>
       <MovieList
       selectCustomerCallback={props.findCustomerProp} selectMovieCallback={props.findMovieProp}
 

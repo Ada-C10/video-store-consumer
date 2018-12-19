@@ -10,11 +10,13 @@ class Movie extends Component {
   render() {
 
     return (
+      <div className="text-white bg-dark mb-3 movie-component-container">
+      <img src={this.props.image_url} alt={`${this.props.overview}`} />
       <div>
       <h1>{this.props.title}</h1>
       <p>{this.props.overview}</p>
-      <p>{this.props.release_date}</p>
-      <img src={this.props.image_url} alt={`${this.props.overview}`} />
+      <p><em>Release Date: {this.props.release_date}</em></p>
+      </div>
       </div>
     )
   }

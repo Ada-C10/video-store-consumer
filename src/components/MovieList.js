@@ -68,27 +68,34 @@ class MovieList extends Component {
           name: movie.name,
           id: movie.customer_id
         }
-        return <li key={movie.id}>
+        return <li key={movie.id} className={"movie-list-li-flex"} >
+        <div className={"rental-component-flex"}>
         <Rental
         title={movie.title}
         name={movie.name}
         due_date={movie.due_date}
         image_url={movie.image_url}/>
+        </div>
+        <div className="rental-button-container">
         <button
+        className={"btn btn-secondary btn-lg rental-button-spacing"}
         onClick ={ () => {this.props.selectMovieCallback(movie)}}
         type="button">Select Movie</button>
         <button
+        className={"btn btn-secondary btn-lg rental-button-spacing"}
         onClick ={ () => {this.props.selectCustomerCallback(customer)}}
         type="button">Select Customer</button>
+        </div>
         </li>
       } else {
-        return <li key={movie.id}>
+        return <li key={movie.id} className={"movie-list-li-flex"}>
         <Movie
         title={movie.title}
         overview={movie.overview}
         release_date={movie.release_date}
         image_url={movie.image_url}/>
         <button
+        className={"btn btn-secondary btn-lg"}
         onClick ={ () => {this.props.selectMovieCallback(movie)}}
         type="button">Select Movie</button>
         </li>
@@ -104,7 +111,7 @@ class MovieList extends Component {
     console.log(this);
 
     return (
-      <ul>
+      <ul className="text-white bg-dark mb-3 movie-list">
       { this.state.movies !== [] && this.makeMovieList(this.state.movies)}
       </ul>
     )

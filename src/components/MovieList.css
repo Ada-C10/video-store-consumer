@@ -1,0 +1,23 @@
+.movie-list {
+  list-style: none;
+}
+
+.movie-list-li-flex {
+  display: flex;
+  margin: 1em;
+  padding: 1em;
+  justify-content: center;
+  border-bottom: 1px solid #6c757d;
+}
+
+.rental-button-spacing {
+  margin: 1em;
+}
+
+.rental-button-container{
+  display: flex;
+}
+
+.rental-component-flex {
+  flex: 1;
+}

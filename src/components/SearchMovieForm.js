@@ -37,14 +37,19 @@ class SearchMovieForm extends Component {
   }
 
   render() {
-    //console.log('rendering new pet form');
     return (
-      <form onSubmit={this.onSubmit} name="search-movie-form" id="search-movie-form">
-        <div>
-          <label htmlFor="location">Text</label>
-          <input name="text" placeholder="text" onChange={this.onFormChange} value={this.state.text} />
+      <form onSubmit={this.onSubmit}
+      name="search-movie-form"
+      id="search-movie-form"
+      className={"search-form form"}>
+        <div className={"form-group"}>
+          <input
+          name="text"
+          placeholder="movie title"
+          onChange={this.onFormChange}
+          value={this.state.text} />
         </div>
-        <input type="submit" name="submit" value="Find a movie" />
+        <input type="submit" name="submit" value="Search for a Movie" />
       </form>
     );
   }

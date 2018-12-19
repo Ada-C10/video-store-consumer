@@ -10,11 +10,13 @@ class Rental extends Component {
   render() {
 
     return (
-      <div>
-      <h1>{this.props.title}</h1>
-      <p>{this.props.name}</p>
-      <p>{this.props.due_date}</p>
+      <div className={"rental-component-container"}>
       <img src={this.props.image_url} alt={`${this.props.overview}`} />
+      <div>
+      <h2>{this.props.title}</h2>
+      <p>Customer: {this.props.name}</p>
+      <p>Due Date: {this.props.due_date}</p>
+      </div>
       </div>
     )
   }

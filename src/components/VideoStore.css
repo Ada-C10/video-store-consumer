@@ -1,0 +1,12 @@
+body {
+  background-color: #343a40;
+}
+
+.main-content {
+    background-color: #343a40 !important;
+    height: 100vh;
+}
+
+.overdue-heading {
+  color: white;
+}

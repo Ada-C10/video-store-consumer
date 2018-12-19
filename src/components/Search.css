@@ -1,0 +1,9 @@
+.add-to-lib-button {
+  margin: 1em;
+}
+
+.search-li {
+  border-bottom: 1px solid #6c757d;
+  padding-bottom: 1em;
+  display: flex;
+}
