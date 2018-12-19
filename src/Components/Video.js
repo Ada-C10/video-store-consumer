@@ -7,9 +7,10 @@ class Video extends React.Component {
     super(props);
   }
 
-  addToLibraryClickHander = (event) => {
-
+  addToRentClickHander = (event) => {
+    this.props.addToRentClickHander(this.props);
   }
+
 
   render () {
     return (
@@ -18,9 +19,9 @@ class Video extends React.Component {
         <p>{this.props.release_date}</p>
         <img src={this.props.image_url}/>
         <button
-          onClick={this.addToLibraryClickHander}>
-          Add to library
-          </button>
+          onClick={ this.addToRentClickHander}>
+          Select for Rental
+        </button>
       </section>
     )
   }

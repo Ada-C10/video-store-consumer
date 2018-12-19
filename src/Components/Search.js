@@ -40,6 +40,7 @@ class Search extends Component {
     .then((response) => {
       this.setState({
         results: response.data
+
       });
     })
     .catch((error) => {
@@ -56,6 +57,10 @@ class Search extends Component {
     }
   }
 
+  addToLibrary = () => {
+
+  }
+
   render() {
     const results = this.state.results
 
@@ -64,7 +69,8 @@ class Search extends Component {
         key={i}
         title={result.title}
         release_date={result.release_date}
-        image_url={result.image_url}/>
+        image_url={result.image_url}
+        buttonText="Add to Library"/>
     });
 
     return (
@@ -88,8 +94,5 @@ class Search extends Component {
     )
   }
 }
-
-
-
 
 export default Search;

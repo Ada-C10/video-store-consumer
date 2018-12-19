@@ -18,7 +18,7 @@ class Customer extends React.Component {
         <p>{this.props.count}</p>
         <button
           onClick={this.addToRentClickHander}>
-          Add to Rent
+          Select for Rental
           </button>
       </section>
     )

@@ -17,6 +17,15 @@ class Library extends React.Component {
 
   }
 
+  addToRent = (video) => {
+    let updatedMovie = video.title;
+
+    this.setState({
+      selectedMovie: updatedMovie
+    })
+
+  }
+
   render() {
     return (
       <Router>
@@ -58,7 +67,8 @@ class Library extends React.Component {
 
           <section className="showPageToUser">
             <Route exact={true} path="/Search" component={Search}/>
-            <Route exact={true} path="/VideoCollection" component={VideoCollection}/>
+            <Route path="/VideoCollection"
+            render={() => <VideoCollection  addToRentClickHander= {this.addToRent}/> } />
             <Route exact={true} path="/CustomerCollection" component={CustomerCollection }/>
           </section>
         </section>

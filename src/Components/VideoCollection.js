@@ -5,8 +5,8 @@ import Video from './Video';
 
 class VideoCollection extends React.Component {
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       videos: []
@@ -29,6 +29,7 @@ class VideoCollection extends React.Component {
 
 
 
+
   render() {
     const collection = this.state.videos
 
@@ -37,7 +38,8 @@ class VideoCollection extends React.Component {
       key={i}
       title={video.title}
       release_date={video.release_date}
-      image_url={video.image_url}/>
+      image_url={video.image_url}
+      addToRentClickHander={() => this.props.addToRentClickHander(video)}/>
     });
 
     return (
