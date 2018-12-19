@@ -31,6 +31,10 @@ class App extends Component {
     console.log(customer)
   }
 
+  rentMovie() {
+    console.log("in rentMovie")
+  }
+
 
   render() {
 
@@ -41,7 +45,7 @@ class App extends Component {
             <h1>Scarecrow Video</h1>
             <div>
               <Nav />
-              <NewRental selectedCustomer={this.state.selectedCustomer} selectedMovie={this.state.selectedMovie}/>
+              <NewRental selectedCustomer={this.state.selectedCustomer} selectedMovie={this.state.selectedMovie} rentMovieCallBack={this.rentMovie}/>
             </div>
           </header>
           <span>Status Bar goes here.</span>
