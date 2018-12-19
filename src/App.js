@@ -26,7 +26,7 @@ class App extends Component {
   onMovieCheckOut = (movie) => {
     this.setState({
       currentMovie: movie
-    })  
+    })
   }
 
   render() {
@@ -37,9 +37,9 @@ class App extends Component {
           <nav>
             <ul>
               <li><Link to="/" >Home</Link></li>
-              <li><Link to="/library" >All Movies</Link></li>
+              <li><Link to="/library" >All Rentals</Link></li>
               <li><Link to="/customer" >Customer List</Link></li>
-              <li><SearchBar /></li>
+              <li><Link to="/search">Search Movies</Link></li>
               <li><CheckOut
                   currentMovie={this.state.currentMovie}
                   currentCustomer={this.state.currentCustomer} />

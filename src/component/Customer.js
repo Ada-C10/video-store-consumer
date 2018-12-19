@@ -25,7 +25,6 @@ const Customer = (props) => {
     phone: PropTypes.string,
     callback: PropTypes.func,
     button: PropTypes.string
-
   }
 
 export default Customer;
