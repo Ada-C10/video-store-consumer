@@ -26,17 +26,6 @@ addmovie = (movie) => {
   axios.post("http://localhost:3000/movies", movie)
   .then((response) => {
       console.log(response);
-    // const movies = response.data.map((movie) => {
-    //   const newMovie = {
-    //     ...movie
-    //   }
-    //   return newMovie
-    // })
-    //
-    // this.setState({
-    //
-    // })
-
   })
   .catch((error) => {
     this.setState({

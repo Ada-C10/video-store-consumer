@@ -57,7 +57,21 @@ class VideoStore extends Component {
         this.setState({
           errorMessage: error.message
         })
+        console.log(this.state.errorMessage);
       });
+    } else if (this.state.selectedCustomer === "none" && this.state.selectedCustomer !== "none") {
+      this.setState({
+        errorMessage: "No movie selected, please select one"
+      })
+
+    } else if (this.state.selectedMovie === "none" && this.state.selectedCustomer !== "none") {
+      this.setState({
+        errorMessage: "No movie selected, please select one"
+      })
+    } else {
+      this.setState({
+        errorMessage: "No movie or customer selected"
+      })
     }
   }
 
@@ -109,7 +123,7 @@ class VideoStore extends Component {
       <Link to="/overdue">Overdue</Link>
       </li>
       </ul>
-
+      <h4>{this.state.errorMessage ? this.state.errorMessage: "" }</h4>
 
       <div>{this.state.selectedCustomer === "none" ? this.state.selectedCustomer
        : this.state.selectedCustomer.name}</div>
