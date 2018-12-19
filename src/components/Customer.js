@@ -4,16 +4,22 @@ import "./customer.css";
 class Customer extends Component {
   render() {
     return (
-      <div className="customer item">
-        <div className="item__details">
-          <h1>
-            {" "}
-            {this.props.customer.name}
-            <p> {this.props.customer.phone} </p>
-            <h2> {this.props.customer.movies_checked_out_count}</h2>
-          </h1>
+      <div className="customer-container-box">
+        <div className="customer item">
+          <div className="item__details">
+            <h1> {this.props.customer.name}</h1>
+            <div />
+            {this.props.customer.phone} <div />
+            <h1>
+              <h3>
+                {" "}
+                Movies checked out:{" "}
+                {this.props.customer.movies_checked_out_count}
+              </h3>
+            </h1>
+          </div>
           <button
-            className="item__button"
+            className="customer-item__button"
             onClick={() => {
               this.props.setCustomerCallback(
                 this.props.customer.id,
@@ -22,7 +28,7 @@ class Customer extends Component {
             }}
           >
             {" "}
-            Select Customer for rental
+            Select for rental
           </button>
         </div>
       </div>

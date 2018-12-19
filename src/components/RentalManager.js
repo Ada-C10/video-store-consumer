@@ -89,7 +89,7 @@ class RentalManager extends Component {
 
   render() {
     return (
-      <div>
+      <div className="rmField">
         <h2> {this.state.currentCustomerName}</h2>
         <h2> {this.state.currentMovieTitle}</h2>
         <RentalSelection checkOutCallback={this.checkOut} />

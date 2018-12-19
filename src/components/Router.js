@@ -15,7 +15,7 @@ const AppRouter = props => (
             <Link to="/">Home</Link>
           </li>
           <li className="nav-bar__nav-item">
-            <Link to="/search/">Search</Link>
+            <Link to="/search/">Go Fetch</Link>
           </li>
           <li className="nav-bar__nav-item">
             <Link to="/library/">Library</Link>

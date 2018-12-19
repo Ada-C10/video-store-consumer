@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import logo from "./logo.svg";
+import logo from "./dog-logo.svg";
 import "./App.css";
 
 import RentalManager from "./components/RentalManager";
@@ -20,14 +20,22 @@ class App extends Component {
     return (
       <div className="video-store">
         <header className="header">
+          <img
+            className="header-art"
+            src="http://icons.iconarchive.com/icons/designbolts/free-multimedia/96/Film-icon.png"
+          />
+          {<img src={logo} className="header-art" alt="logo" />}
+          <img
+            className="header-art"
+            src="http://icons.iconarchive.com/icons/designbolts/free-multimedia/96/Film-icon.png"
+          />
           <div className="header__controls">
-            <h1 className="App-title">Bonkers Video!</h1>
+            <h1 className="App-title">Bonkers Video</h1>
           </div>
         </header>
 
         <br />
 
-        <p>Customers</p>
         <MessageBar message={this.state.message} />
         <RentalManager changeMessageCallback={this.changeMessage} />
       </div>
@@ -36,6 +44,3 @@ class App extends Component {
 }
 
 export default App;
-{
-  // <img src={logo} className="App-logo" alt="logo" />
-}

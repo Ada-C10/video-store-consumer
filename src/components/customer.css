@@ -4,16 +4,14 @@
   background-color: white;
   display: grid;
   grid-template-columns: 4fr 1fr;
-}
-/* align-items: flex-start;
-  padding: 1em 0;
-  margin: 0.5rem;
-  padding: 1em 0;
-  margin: 0.5rem;
-  /* min-height: 80px;
-  min-width: 100px; */
-/* flex-basis: 18%; */
+  text-align: center;
 
+  align-content: center;
+}
+.customer-container-box {
+  width: 90%;
+  display: inline-block;
+}
 .customer__content {
   grid-column-start: 4;
 
@@ -25,3 +23,26 @@
   font-weight: 100;
   overflow: hidden;
 }
+.customer-item__button {
+  font-size: 18px;
+}
+.message p {
+  background-color: #8fb996;
+}
+/* .btn {
+  background-color: #90a959;
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  font-size: 16px;
+  margin: 4px 2px;
+  opacity: 100;
+  transition: 0.3s;
+}
+.hide {
+  color: #90a959;
+}
+.btn:hover {
+  opacity: 0;
+} */
