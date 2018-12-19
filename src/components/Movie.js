@@ -19,7 +19,7 @@ class Movie extends Component {
           <h3>{this.props.release_date}</h3>
           <p>{this.props.overview}</p>
       </div>
-      <button className="movie-item__select-button">select 4 rental</button>
+      <button className="movie-item__select-button">Select for rental</button>
 
       </div>
     )

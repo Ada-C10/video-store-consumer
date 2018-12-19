@@ -1,0 +1,28 @@
+
+.movie-item{
+  display: grid;
+  grid-column: 1fr 4fr 1fr;
+  grid-row: 1fr 1fr 1fr;
+  background-color: rgb(181, 170, 179);
+  padding: 3px;
+  margin: 5px;
+}
+
+.movie-item__image{
+  grid-column: 1 / 2;
+  grid-row: 1 / 4;
+}
+
+.movie-item__details{
+  padding: 15px;
+  padding-top: 0px;
+  grid-column: 2 / 3;
+  grid-row: 1 / 4;
+}
+
+.movie-item__select-button{
+  grid-column: 3 / 4;
+  grid-row: 2 / 3;
+  font-size: 1.5rem;
+  font-family: monospace;
+}

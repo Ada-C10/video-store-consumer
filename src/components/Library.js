@@ -34,7 +34,7 @@ class Library extends Component {
 
   render () {
     return (
-      <div>
+      <div className="movie-container">
         {this.state.movies}
       </div>
     );

@@ -10,9 +10,28 @@ class Customer extends Component {
 
   render () {
     return (
-      <p>Hello from Customer</p>
+      <div className="customer-item">
+        <div className="customer-item__details">
+          <h2>{this.props.name}</h2>
+          <p>{this.props.movies_checked_out_count} movies checked out</p>
+      </div>
+      <button className="customer-item__select-button">select 4 rental</button>
+
+      </div>
     )
   }
+}
+
+Customer.propTypes = {
+  id: PropTypes.number,
+  name: PropTypes.string,
+  address: PropTypes.string,
+  city: PropTypes.string,
+  state: PropTypes.string,
+  postal_code: PropTypes.string,
+  phone: PropTypes.string,
+  account_credit: PropTypes.number,
+  movies_checked_out_count: PropTypes.number
 }
 
 export default Customer;
