@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import axios from 'axios'
 import './App.css';
-import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
+import { Route, Link} from 'react-router-dom';
 import CustomerList from './Components/CustomerList'
-import SelectedCustomer from "./Components/SelectedCustomer";
+// import SelectedCustomer from "./Components/SelectedCustomer";
 // import Movie from './Components/movie'
-// import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 class App extends Component {
@@ -16,6 +16,7 @@ class App extends Component {
             movies: [],
             currentCustomer: '',
             currentMovie: '',
+            message: '',
         };
     }
 
@@ -33,14 +34,17 @@ class App extends Component {
                     return newCustomer
                 });
 
+                const count = Object.keys(customers).length;
+
                 this.setState({
                     customers,
+                    message: `Successfully loaded ${count} customers`
                 })
             })
             .catch((error) => {
                 console.log('errors:', error.message);
                 this.setState ({
-                    errorMessage: error.message
+                    message: error.message
                 });
             });
     }
@@ -77,32 +81,65 @@ class App extends Component {
 
   render() {
     return (
-            <div className="App">
-                <header className="App-header">
-                    <h1 className="App-title">Rent-O-Rama</h1>
-                    <nav className="nav-bar">
-                        <p><Link to="/movies" className="nav-bar-item">Movies</Link></p>
-                        <p><Link to="/customers" className="nav-bar-item">Customers</Link></p>
-                    </nav>
-                    <section className="search-bar">SearchBarComponentHere</section>
-                    <section className="rental-info-fields">
-                        <div className="selected-item"><p>Current Customer:</p>
-                            <p>{this.state.currentCustomer.name}</p>
+            <div className="video-store">
+                <header className="header">
+                    <section className="header-controls">
+                        <div className="navbar navbar-fixed-top">
+                            <nav className="nav-links">
+                                <Link to="/movies" className="movie-item">
+                                    <button type="button"
+                                            className="navbar-btn btn btn-default">
+                                        Movies</button>
+                                </Link>
+                                <Link to="/customers" className="customer-item">
+                                    <button type="button"
+                                            className="navbar-btn btn btn-default">
+                                        Customers</button>
+                                </Link>
+                                <form className="navbar-form navbar-left" role="search">
+                                    <div className="form-group">
+                                        <input type="text" className="form-control" placeholder="Search"/>
+                                    </div>
+                                    <button type="submit" className="btn btn-default"><span className="glyphicon glyphicon-search"></span></button>
+                                </form>
+                            </nav>
                         </div>
-                        <div>CurrentMovieField</div>
-                        <button type="button"
-                        onClick={this.onConfirmRental}>
-                        Confirm Rental</button>
+
+                        <div className="logo">
+                            <img src="../reel-icon.svg" alt="movie reel" className="mv-reel-img"/>
+                            <p className="title">Rent-O-Rama</p>
+                            <img src="../reel-icon.svg" alt="movie reel" className="mv-reel-img"/>
+                        </div>
+
+                        <div className="rental-info">
+                            <div className="selected-item"><h4>Selected Customer:</h4>
+                                <p>{this.state.currentCustomer.name}</p>
+                            </div>
+                            <div className="selected-item"><h4>Selected Movie:</h4>
+                                <p>Customer Placeholder{this.state.currentMovie.title}</p>
+                            </div>
+                            <button className="btn btn-success">Check Out Rental</button>
+                        </div>
+                    </section>
+
+                    <section className="alert alert-info">
+                        {this.state.message}
                     </section>
                 </header>
-                <section className="component">
-                <Route path="/customers"
-                       render={() => <CustomerList
-                           customers={this.state.customers}
-                           onSelectCallback={this.onSelectCustomer}
-                       state={this.state.customers}/>}
 
-                />
+
+
+
+                <section className="container">
+                    <div className="jumbotron">
+                        <Route path="/customers"
+                               render={() => <CustomerList
+                                   customers={this.state.customers}
+                                   onSelectCallback={this.onSelectCustomer}
+                               state={this.state.customers}/>}
+
+                        />
+                    </div>
                 </section>
             </div>
 

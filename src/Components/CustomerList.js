@@ -2,8 +2,8 @@ import PropTypes from 'prop-types';
 import Customer from './Customer';
 import React from 'react';
 import {Component} from 'react';
-import axios from "axios";
-// import 'bootstrap/dist/css/bootstrap.min.css';
+// import axios from "axios";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 class CustomerList extends Component {
     // constructor(props) {

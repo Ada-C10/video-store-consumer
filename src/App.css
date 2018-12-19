@@ -1,76 +1,48 @@
-/*html {*/
-  /*box-sizing: border-box;*/
-/*}*/
+@import url('https://fonts.googleapis.com/css?family=Bitter|Luckiest+Guy');
 
-/**, *::before, *::after {*/
-  /*box-sizing: inherit;*/
-  /*padding: 0;*/
-  /*margin: 0;*/
-/*}*/
-
-/*.app {*/
-  /*width: 960px;*/
-  /*margin: 0 auto;*/
-  /*padding: 20px;*/
-/*}*/
-
-/*nav ul {*/
-  /*list-style: none;*/
-  /*display: flex;*/
-  /*background-color: black;*/
-  /*margin-bottom: 20px;*/
-/*}*/
-
-/*nav ul li {*/
-  /*padding: 20px;*/
-/*}*/
-
-/*nav ul li a {*/
-  /*color: white;*/
-  /*text-decoration: none;*/
-/*}*/
-
-/*.current {*/
-  /*border-bottom: 4px solid white;*/
-/*}*/
-
-/*h1 {*/
-  /*margin-bottom: 20px;*/
-/*}*/
-
-/*p {*/
-  /*margin-bottom: 15px;*/
-/*}*/
-
-
-.App {
+.video-store {
   text-align: center;
   background-color: #222222;
 }
 
-.App-header {
+.header-controls {
+  display: grid;
+  /*grid-gap: 5px;*/
+  grid-template-columns: 2fr 1fr auto;
+}
+
+.nav-links{
+  /*grid-column-start: 1;*/
+  /*grid-column-end: 1;*/
+  display:flex;
+  height: 100%;
+  /*justify-content: space-evenly;*/
+}
+
+.mv-reel-img {
+  height: 5rem;
+  width: 5rem;
+}
+
+.logo {
+  grid-column: 2;
   display: flex;
-  background-color: darkslategrey;
-  height: 150px;
-  padding: 20px;
-  color: white;
+  font-family: 'Luckiest Guy', cursive;
+  font-size: 2rem;
 }
 
-.App-title {
-  font-size: 1.5em;
-}
-
-.App-intro {
-  font-size: large;
-}
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.rental-info{
+  background-color: hotpink;
+  display: flex;
 }
 
 .selected-item{
-  background-color: hotpink;
+  grid-column: 3;
+  text-align: center;
+  background-color: greenyellow;
   padding: 1rem;
   color: #222222;
+  border: 1px solid;
+  border-radius: 5px;
 }
+
