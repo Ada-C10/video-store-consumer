@@ -12,19 +12,6 @@ class Library extends Component {
     }
   }
 
-  componentDidMount = () => {
-    axios.get(`http://localhost:3000/movies`)
-    .then((response) => {
-      this.setState({
-        movies: response.data,
-        librarySummary: `${response.data.length} Movies loaded`
-      });
-    })
-    .catch((error) => {
-      this.setState({error: error.message})
-    });
-  }
-
   renderMovieList = () => {
     const componentList = this.state.movies.map((movie,index) =>{
       return (

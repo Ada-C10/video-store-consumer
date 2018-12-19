@@ -3,6 +3,8 @@ import axios from 'axios'
 import './App.css';
 import { Route, Link} from 'react-router-dom';
 import CustomerList from './Components/CustomerList'
+import SearchCollection from './Components/SearchCollection';
+import Library from './Components/Library';
 // import SelectedCustomer from "./Components/SelectedCustomer";
 // import Movie from './Components/movie'
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -41,13 +43,46 @@ class App extends Component {
                     message: `Successfully loaded ${count} customers`
                 })
             })
+
             .catch((error) => {
                 console.log('errors:', error.message);
                 this.setState ({
                     message: error.message
                 });
-            });
-    }
+
+              axios.get(`http://localhost:3000/movies`)
+              .then((response) => {
+                this.setState({
+                  movies: response.data,
+                  librarySummary: `${response.data.length} Movies loaded`
+                });
+              })
+              .catch((error) => {
+                this.setState({error: error.message})
+              });
+
+        });
+      }
+
+      onSelectMovie = (movieId) => {
+          console.log('', movieId);
+          const selectedMovie = this.state.movies.find((movie) => {
+              return movie.id === movieId;
+          });
+          console.log('selected movie', selectedMovie);
+          if (selectedMovie) {
+              this.setState({
+                  currentMovie: selectedMovie,
+              });
+          }
+      };
+
+ //  setSelectedMovie = (title) => {
+ //   this.setState({
+ //     selectedMovie: title,
+ //     currentMovie: title
+ //   });
+ // };
 
     onSelectCustomer = (customerId) => {
         console.log('cust id in customerlist compo', customerId);
@@ -86,7 +121,7 @@ class App extends Component {
                     <section className="header-controls">
                         <div className="navbar navbar-fixed-top">
                             <nav className="nav-links">
-                                <Link to="/movies" className="movie-item">
+                                <Link to="/library" className="movie-item">
                                     <button type="button"
                                             className="navbar-btn btn btn-default">
                                         Movies</button>
@@ -96,12 +131,16 @@ class App extends Component {
                                             className="navbar-btn btn btn-default">
                                         Customers</button>
                                 </Link>
-                                <form className="navbar-form navbar-left" role="search">
-                                    <div className="form-group">
-                                        <input type="text" className="form-control" placeholder="Search"/>
-                                    </div>
-                                    <button type="submit" className="btn btn-default"><span className="glyphicon glyphicon-search"></span></button>
-                                </form>
+                                <Link to="/" className="movie-item">
+                                    <button type="button"
+                                            className="navbar-btn btn btn-default">
+                                        Home</button>
+                                </Link>
+                                <Link to="/search" className="movie-item">
+                                    <button type="button"
+                                            className="navbar-btn btn btn-default">
+                                        <span className="glyphicon glyphicon-search"></span></button>
+                                </Link>
                             </nav>
                         </div>
 
@@ -130,11 +169,21 @@ class App extends Component {
 
                 <section className="container">
                     <div className="jumbotron">
+                    <Route path="/search" component={SearchCollection}/>
+
+
                         <Route path="/customers"
                                render={() => <CustomerList
                                    customers={this.state.customers}
                                    onSelectCallback={this.onSelectCustomer}
                                state={this.state.customers}/>}
+
+                        />
+                        <Route path="/library"
+                               render={() => <Library
+                                   movies={this.state.movies}
+                                   selectedMovieCallback={this.onSelectMovie}
+                               state={this.state.movies}/>}
 
                         />
                     </div>
