@@ -2,8 +2,6 @@ import React, { Component } from "react";
 import logo from "./logo.svg";
 import "./App.css";
 import RentalManager from './components/RentalManager';
-import MessageBar from './components/MessageBar';
-
 
 
 class App extends Component {
@@ -24,8 +22,8 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Welcome to React</h1>
         </header>
-        <p className="App-intro">Customers</p>
-        <MessageBar message={this.state.message}/>
+        <p className="App-intro">{this.state.message}</p>
+
         <RentalManager changeMessageCallback={this.changeMessage}/>
       </div>
     );

@@ -14,6 +14,7 @@ class Customers extends Component {
   }
 
   componentDidMount() {
+    this.props.changeMessageCallback("Loading Customers...");
     const url = "http://localhost:3000/customers";
     axios
       .get(url)
