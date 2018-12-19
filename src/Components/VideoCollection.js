@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import axios from 'axios';
 import Video from './Video';
 
@@ -48,7 +49,9 @@ class VideoCollection extends React.Component {
       </section>
     );
   }
-
 }
 
+VideoCollection.PropTypes = {
+
+};
 export default VideoCollection;

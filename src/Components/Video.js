@@ -1,5 +1,4 @@
 import React from 'react';
-
 import PropTypes from 'prop-types';
 
 class Video extends React.Component {
@@ -25,6 +24,10 @@ class Video extends React.Component {
       </section>
     )
   }
+}
+
+Video.propTypes = {
+
 }
 
 export default Video;
