@@ -47,8 +47,7 @@ class Search extends Component {
   }
 
   addToLibrary = (hit) => {
-    console.log("You are in add to library from search");
-    console.log(hit);
+    console.log(`You are the function addToLibrary from search. Clicked movie ${hit}`);
   }
 
   render () {
