@@ -86,23 +86,31 @@ class App extends Component {
     });
   }
 
-  makeRental = () => {
-    this.setState({
-      isRentalReady: (this.state.selectedMovie != "" && this.state.selectedCustomer != "")
-    });
-    console.log(this.state.isRentalReady);
-  }
+  // makeRental = () => {
+  //   this.setState({
+  //     isRentalReady: (this.state.selectedMovie != "" && this.state.selectedCustomer != "")
+  //   });
+  //   console.log(this.state.isRentalReady);
+  // }
 
   render() {
 
     const makeRental = () => {
-      this.setState({
-        isRentalReady: (this.state.selectedMovie != "" && this.state.selectedCustomer != "")
-      });
+      console.log(this.state.selectedMovie);
+      console.log(this.state.selectedCustomer);
+      
+      if (this.state.selectedMovie !== "" && this.state.selectedCustomer !== "") {
+        this.setState({
+          isRentalReady: true,
+        });
+      }
+
       console.log(this.state.isRentalReady);
+
       if (this.state.isRentalReady) {
         return <Rental customer={this.state.selectedCustomer} movie={this.state.selectedMovie} />
       }
+
       this.setState({
         message: `Successfully checked out ${this.state.selectedMovie} to ${this.state.selectedCustomer}`,
       });
