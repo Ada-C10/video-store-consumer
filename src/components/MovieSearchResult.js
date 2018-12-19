@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import './MovieSearchResult.css';
 
 //sends selected movie's id to parent's Component, moviesearch.js
+//renders searched movies after clicking on submit
 
 const MovieSearchResult = (props) => {
   const {title, release_date, overview, image_url, external_id} = props;
@@ -13,15 +14,16 @@ const MovieSearchResult = (props) => {
 
   return (
     <div className="movie">
-      <section>
-        {title} {release_date} {image_url} {overview}
-        <button
-          onClick={() => {onMovieSearchResultSelect()}}
-          className="movie-btn"
-          >
-          Select
-        </button>
-      </section>
+      <h4 className="movie-title"> {title} </h4>
+      <img src={image_url} alt={title} />
+      <p> {release_date} </p>
+      <p> {overview} </p>
+      <button
+        onClick={() => {onMovieSearchResultSelect()}}
+        className="movie-btn"
+        >
+        Select
+      </button>
     </div>
   );
 }

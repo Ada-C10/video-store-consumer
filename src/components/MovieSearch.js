@@ -70,7 +70,7 @@ class MovieSearch extends Component {
     }
 
     console.log(URL);
-    const image_url = selectedMovie.image_url;
+    const image_url = selectedMovie.image_url.slice(31);
     const apiPayload = {...selectedMovie, image_url: image_url}
     console.log(apiPayload);
 
@@ -83,9 +83,6 @@ class MovieSearch extends Component {
       console.log(error)
     })
   }
-
-
-
 
   render() {
     return (
