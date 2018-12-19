@@ -7,3 +7,6 @@
   background-color: white;
   border: 0.5em solid #7bf96c;
 }
+.rental-selection-container {
+  display: inline-block;
+}

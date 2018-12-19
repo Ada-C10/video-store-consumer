@@ -21,17 +21,13 @@ class App extends Component {
       <div className="video-store">
         <header className="header">
           <div className="header__controls">
-            {" "}
             <h1 className="App-title">Bonkers Video!</h1>
           </div>
         </header>
 
-        <p className="navbar__nav" />
         <br />
 
-        <RentalManager />
-
-        <p className="App-intro">Customers</p>
+        <p>Customers</p>
         <MessageBar message={this.state.message} />
         <RentalManager changeMessageCallback={this.changeMessage} />
       </div>
