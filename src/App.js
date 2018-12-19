@@ -49,7 +49,7 @@ class App extends Component {
    })
    .catch((error) => {
      console.log(error)
-     this.setStatusMessage(`Cound not add ${movie.title} to rental library`);
+     this.setStatusMessage(`${error}. Cound not add ${movie.title} to rental library.`);
    })
  };
 
@@ -58,33 +58,37 @@ class App extends Component {
  }
 
   checkoutMovie = () => {
-    const rentalUrl = this.state.selectedMovie ?
-   `${this.url}rentals/${this.state.selectedMovie.title}/check-out?` :
-   `${this.url}rentals/:title/check-out`;
-    console.log(rentalUrl);
+    if (this.state.selectedMove && this.state.selectedCustomer) {
+      const rentalUrl = this.state.selectedMovie ?
+      `${this.url}rentals/${this.state.selectedMovie.title}/check-out?` :
+      `${this.url}rentals/:title/check-out`;
+      console.log(rentalUrl);
 
-    const customerId = this.state.selectedCustomer ?
-    this.state.selectedCustomer.id : 0;
-    console.log(customerId);
+      const customerId = this.state.selectedCustomer ?
+      this.state.selectedCustomer.id : 0;
+      console.log(customerId);
 
-    const dueDate = new Date();
-    dueDate.setDate(dueDate.getDate() + 7);
-    console.log(dueDate);
+      const dueDate = new Date();
+      dueDate.setDate(dueDate.getDate() + 7);
+      console.log(dueDate);
 
-    const movie = this.state.selectedMovie.title;
-    const customer = this.state.selectedCustomer.name;
+      const movie = this.state.selectedMovie.title;
+      const customer = this.state.selectedCustomer.name;
 
-    axios.post(rentalUrl, {customer_id: customerId})
-    .then((response) => {
-      this.setStatusMessage(`Successfully checked out ${movie} to ${customer}`);
-      this.setState(
-        this.resetState(),
-      )
-    })
-    .catch((error) => {
-      console.log(error)
-      this.setStatusMessage(`Unable to check out ${movie} to ${customer}. ${error}`);
-    })
+      axios.post(rentalUrl, {customer_id: customerId, due_date: dueDate})
+      .then((response) => {
+        this.setStatusMessage(`Successfully checked out ${movie} to ${customer}`);
+        this.setState(
+          this.resetState(),
+        )
+      })
+      .catch((error) => {
+        console.log(error)
+        this.setStatusMessage(`Unable to check out ${movie} to ${customer}. ${error}`);
+      })
+    } else {
+      this.setStatusMessage(`Need to select a movie and customer.`);
+    }
   };
 
   render() {
