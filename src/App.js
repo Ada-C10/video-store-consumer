@@ -65,7 +65,7 @@ class App extends Component {
 
     onConfirmRental = () => {
         const customerId = this.state.currentCustomer.id;
-        const movieTitle = this.state.currentMovie.name;
+        const movieTitle = this.state.currentMovie.title;
         console.log('creating rental for:', customerId, movieTitle);
         axios.post(`http://localhost:3000/rentals/${movieTitle}/checkout?customer=${customerId}`)
             .then((response) => {
@@ -118,7 +118,8 @@ class App extends Component {
                             <div className="selected-item"><h4>Selected Movie:</h4>
                                 <p>Customer Placeholder{this.state.currentMovie.title}</p>
                             </div>
-                            <button className="btn btn-success">Check Out Rental</button>
+                            <button className="btn btn-success"
+                                onClick={this.onConfirmRental}>Confirm Rental</button>
                         </div>
                     </section>
 
@@ -126,9 +127,6 @@ class App extends Component {
                         {this.state.message}
                     </section>
                 </header>
-
-
-
 
                 <section className="container">
                     <div className="jumbotron">
