@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import MovieList from './MovieList';
 import CustomerList from './CustomerList';
 import Search from './Search';
+import axios from 'axios';
+
 
 
 
@@ -32,6 +34,29 @@ class VideoStore extends Component {
     console.log(this.state);
   }
 
+  checkOutRental  =() => {
+    let today = new Date();
+    today.setDate(today.getDate() + 7)
+    const apiPayload = {
+      title: this.state.selectedMovie.title,
+      customer_id: this.state.selectedCustomer.id,
+      due_date: today
+    }
+    console.log(apiPayload);
+    if (this.state.selectedCustomer !== "none" && this.state.selectedMovie !== "none") {
+      axios.post(`http://localhost:3000/rentals/${this.state.selectedMovie.title}/check-out`, apiPayload)
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => {
+        this.setState({
+          errorMessage: error.message
+        })
+      });
+    }
+    console.log(this.state.errorMessage);
+  }
+
   //      <Route path="/movies" render={(props) => <MovieListShow {...this.findMovie}/>}/>
   //      <Route path="/movies" component={() => <MovieListShow findMovief={this.findMovie}  />}/>
 
@@ -59,6 +84,9 @@ class VideoStore extends Component {
       <div>{this.state.selectedCustomer === "none" ? this.state.selectedCustomer
        : this.state.selectedCustomer.name}</div>
       <div>{this.state.selectedMovie === "none" ? this.state.selectedMovie : this.state.selectedMovie.title}</div>
+      <button
+      onClick ={this.checkOutRental}
+      type="button">Check Out New Rental</button>
       <hr />
 
       <Route exact path="/" component={Home} />
