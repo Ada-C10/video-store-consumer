@@ -5,21 +5,15 @@ import './MovieSearchResult.css';
 //sends selected movie's id to parent's Component, moviesearch.js
 
 const MovieSearchResult = (props) => {
-  const {title, release_date, overview, image_url, external_id} = props;
-  const onMovieSearchResultSelect = () => {
-    props.addMovietoLibraryCallback(external_id)
-  }
-
+  const {title, release_date, overview, image_url, external_id, addToLibraryCallback} = props;
+  const onMovieSelect = () => addToLibraryCallback(external_id);
 
   return (
     <div className="movie">
       <section>
         {title} {release_date} {image_url} {overview}
-        <button
-          onClick={() => {onMovieSearchResultSelect()}}
-          className="movie-btn"
-          >
-          Select
+        <button onClick={onMovieSelect} className="movie-btn">
+          Add Movie to Library
         </button>
       </section>
     </div>
@@ -32,7 +26,7 @@ MovieSearchResult.propTypes = {
   overview: PropTypes.string,
   image_url: PropTypes.string.isRequired,
   external_id: PropTypes.number.isRequired,
-  addMovietoLibraryCallback: PropTypes.func.isRequired,
+  addToLibraryCallback: PropTypes.func,
 
 };
 

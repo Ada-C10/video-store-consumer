@@ -5,23 +5,27 @@ import MovieSearchResult from './MovieSearchResult';
 //receives props from MovieSearchResult.js
 //maps through [resultListAxiosget] and passes its external_id to MovieSearchResult.js
 const MovieSearchList = (props) => {
-  const MovieSearchList = props.resultListAxiosget.map((result) => {
+  if (!props.resultListAxiosget) {
+    return null;
+  }
+
+  const movieSearchList = props.resultListAxiosget.map((result) => {
     return <MovieSearchResult key={result.external_id}
              {...result}
-             addMovietoLibraryCallback={props.addMovietoLibraryCallback}
+             addToLibraryCallback={props.addToLibraryCallback}
               />
   });
 
   return (
     <div className="card-group">
-      {MovieSearchList}
+      {movieSearchList}
     </div>
   )
 }
 
 MovieSearchList.propTypes = {
   resultListAxiosget: PropTypes.array.isRequired,
-  addMovietoLibraryCallback: PropTypes.func.isRequired
+  addToLibraryCallback: PropTypes.func,
 
 };
 

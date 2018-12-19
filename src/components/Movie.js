@@ -5,7 +5,10 @@ import './Movie.css';
 
 const Movie = (props) => {
   const { id, title, release_date, image_url } = props;
-  const onMovieClick = () => props.rentMovieCallback(id, title);
+  const onMovieClick = () => {
+    console.log(id);
+    props.rentMovieCallback(id);
+  }
 
   return (
     <div className="movie">
@@ -20,7 +23,7 @@ const Movie = (props) => {
 Movie.propTypes = {
   id: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
-  release_date: PropTypes.string.isRequired,
+  release_date: PropTypes.string,
   inventory: PropTypes.number,
   image_url: PropTypes.string.isRequired,
   external_id: PropTypes.number,
