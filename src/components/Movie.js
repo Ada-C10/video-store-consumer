@@ -17,9 +17,9 @@ class Movie extends Component {
         <img className="movie-item__image" src={this.props.image_url} alt={image_alt_tag}/>
         <div className="movie-item__details">
           <h2>{this.props.title}</h2>
-          <h3>{this.props.release_date}</h3>
+          <h4>{this.props.release_date}</h4>
           <p>{this.props.overview}</p>
-          <Button color="secondary"  className="movie-item__select-button">Select for rental</Button>
+          <Button color="secondary"  className="movie-item__select-button">{this.props.message}</Button>
         </div>
       </div>
     )
@@ -32,7 +32,8 @@ Movie.propTypes = {
   overview: PropTypes.string,
   release_date: PropTypes.string,
   image_url: PropTypes.string,
-  external_id: PropTypes.number
+  external_id: PropTypes.number,
+  message: PropTypes.string
 };
 
 export default Movie;

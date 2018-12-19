@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Form, FormGroup, Label, Input } from 'reactstrap';
 import './styles/Search.css';
-import SearchHit from './SearchHit';
+import Movie from './Movie';
 import axios from 'axios';
 
 
@@ -25,16 +25,15 @@ class Search extends Component {
   }
 
   searchMovieAPI =(query)=> {
-    // const URL = "https://api.themoviedb.org/3/search/movie?api_key=" + `${key}&query=${query}`;
+
     const URL = "http://localhost:3000/" + `movies?query=${query}`;
 
     axios.get(URL)
     .then((response) => {
       const searchResultList = response.data.map((hit, i) => {
-        return <SearchHit key={i} {...hit} />
+        return <Movie key={i} message="Add to library" {...hit} />
       })
       this.setState({searchResults: searchResultList});
-        console.log(this.state.searchResults);
     })
     .catch((error) => {
       this.setState({error: error.message})
