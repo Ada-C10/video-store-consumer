@@ -45,17 +45,25 @@ class Search extends Component {
 
   addToLibrary = (hit) => {
     const POSTURL = "http://localhost:3000/movies"
-    console.log(`You are the function addToLibrary from search. Clicked movie ${hit}`);
+    console.log(`You are the function addToLibrary from search. Clicked movie ${hit.title}`);
 
-    const hard_coded_data = {
-      title: 'test title',
-      overview: 'pls pls pls work',
-      release_date: '2010-01-01',
-      external_id: 4456,
-      image_url: 'image.jpg'
+    // const hard_coded_data = {
+    //   title: 'test title',
+    //   overview: 'pls pls pls work',
+    //   release_date: '2010-01-01',
+    //   external_id: 4456,
+    //   image_url: 'image.jpg'
+    // };
+
+    const movie_data = {
+      title: `${hit.title}`,
+      overview: `${hit.overview}`,
+      release_date: `${hit.release_date}`,
+      external_id: hit.id,
+      image_url: `${hit.poster_path}`
     };
 
-    axios.post(POSTURL, hard_coded_data)
+    axios.post(POSTURL, movie_data)
     .then((response) => {
       console.log(response.data)
     })

@@ -11,7 +11,7 @@ class Movie extends Component {
 
   clickHandler = () => {
     console.log("in movie click handler", this.props);
-    this.props.addToLibraryCallback(this.props.external_id);
+    this.props.addToLibraryCallback(this.props);
   }
 
   render () {
