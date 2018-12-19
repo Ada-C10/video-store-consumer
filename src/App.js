@@ -113,14 +113,31 @@ class App extends Component {
  render() {
    console.log("Rendering app with state", this.state);
    return (
-     <div className='App'>
-
-       <Router>
-         <div>
-           <nav>
-            <div className="line"></div>
-              <Link to='/'><h1 className="header"><span className="letter">V</span>ideo Stor<span className="letter">e</span></h1></Link>
-            <div className="line"></div>
+     <div className='App'><Router><div>
+       <nav>
+         <Link to='/'>
+           <div className="st">
+             <div className="st-top">
+               <div className="st-bound st-bound-full"></div>
+                 <p><span className="st-drop st-stranger-s">V</span>
+                    <span className="st-stranger-t">i</span>
+                    <span className="st-stranger-t">d</span>
+                    <span className="st-stranger-t">e</span>
+                    <span className="st-drop st-stranger-r-2">o</span>
+                 </p>
+                 <div className="st-bound st-bound-mini st-bound-left"></div>
+                 <div className="st-bound st-bound-mini st-bound-right"></div>
+                </div>
+                <div className="st-bottom">
+                  <p><span className="st-things-t">S</span>
+                     <span className="st-things-n">t</span>
+                     <span className="st-things-n">o</span>
+                     <span className="st-things-n">r</span>
+                     <span className="st-things-s">e</span>
+                  </p>
+                </div>
+              </div>
+            </Link>
              <ul className="navbar">
                <li><Link to='/library/'><button className="btn app-button">Library</button></Link></li>
                <li><Link to='/customers/'><button className="btn app-button">Customers</button></Link></li>

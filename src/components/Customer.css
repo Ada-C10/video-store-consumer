@@ -5,3 +5,7 @@
 .customer-btn:hover {
   opacity: .5;
 }
+
+.customers {
+  padding: 2rem 2rem;
+}
