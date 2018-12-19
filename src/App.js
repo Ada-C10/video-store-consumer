@@ -8,7 +8,8 @@ import LibrarySection from './components/LibrarySection';
 import CustomerSection from './components/CustomerSection';
 import SearchSection from './components/SearchSection';
 
-const RENT_MOVIE = "http://localhost:3000/rentals/"
+const RENT_MOVIE = "http://localhost:3000/rentals/";
+
 
 class App extends Component {
 
@@ -18,10 +19,10 @@ class App extends Component {
     this.state = {
       selectedCustomer: "",
       selectedCustomerID: "",
-      selectedMovie: ""
+      selectedMovie: "",
+      returnDate: this.getReturnDay(),
     }
   }
-
 
   selectMovie = (movie) => {
     this.setState({selectedMovie: movie.title })
@@ -34,11 +35,10 @@ class App extends Component {
       selectedCustomer: customer.name,
       selectedCustomerID: customer.id
     })
-    console.log(customer)
   }
 
   rentMovie = () => {
-    axios.post(RENT_MOVIE + this.state.selectedMovie + "/check-out?customer_id=" + this.state.selectedCustomerID + "&due_date=" + "2019/1/1")
+    axios.post(RENT_MOVIE + this.state.selectedMovie + "/check-out?customer_id=" + this.state.selectedCustomerID + "&due_date=" + this.state.returnDate)
     .then((response) => {
       // this.props.status(`Successfully loaded ${response.data.length} movies from the rental library`, 'success');
       this.setState({
@@ -52,9 +52,16 @@ class App extends Component {
     });
   }
 
+  getReturnDay = () => {
+
+    const date = new Date().getDate() + 5;
+    const month = new Date().getMonth() + 1;
+    const year = new Date().getFullYear();
+
+    return (year + '/' + month + '/' + date);
+  };
 
   render() {
-
 
     return (
       <div className="video-store">
