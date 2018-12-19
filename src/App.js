@@ -23,8 +23,6 @@ const searchConst = () => (
   </div>
 );
 
-
-
 class App extends Component {
   render() {
     return (

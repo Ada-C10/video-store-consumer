@@ -12,7 +12,7 @@ class Search extends Component {
       searchResults: [],
       searchTerm: ''
     };
-  } 
+  }
 
   componentDidMount() {
     this.getSearchResults();
@@ -51,24 +51,6 @@ class Search extends Component {
       searchTerm: ""
     });
   }
-
-
-
-
-
-  // addCard = (text, emoji) => {
-  //   axios.post(`https://inspiration-board.herokuapp.com/boards/Naheed/movies?text=${text}&emoji=${emoji}`)
-  //   .then((response) => {
-  //     this.getCards()
-  //   });
-  // }
-  //
-  // deleteCard = (id) => {
-  //   axios.delete(`https://inspiration-board.herokuapp.com/cards/${id}`, id)
-  //   .then((response) => {
-  //     this.getCards()
-  //   });
-  // }
 
   render () {
 
