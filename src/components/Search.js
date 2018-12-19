@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { Form, FormGroup, Label, Input } from 'reactstrap';
 import './styles/Search.css';
 import SearchHit from './SearchHit';
 import axios from 'axios';
@@ -46,19 +47,17 @@ class Search extends Component {
     this.searchMovieAPI(this.state.query);
   }
 
-
-
   render () {
     return (
       <div>
-        <form className="movie-search-form" onSubmit={this.onSearchSubmit}>
-          <div className="movie-search-form-container">
-            <label htmlFor="searchQuery"></label>
-            <input name="query" placeholder="Search by Movie"
+        <Form className="movie-search-form" onSubmit={this.onSearchSubmit}>
+          <FormGroup className="movie-search-form-container">
+            <Label htmlFor="searchQuery"></Label>
+            <Input name="query" placeholder="Search by Movie"
               onChange={this.onInputChange}
               />
-          </div>
-        </form>
+          </FormGroup>
+        </Form>
         <div>
           {this.state.searchResults}
         </div>
