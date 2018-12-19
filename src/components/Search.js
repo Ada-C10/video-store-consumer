@@ -9,11 +9,13 @@ class Search extends Component {
 
     this.state = {
       searchTerm: "",
-      movies: []
+      movies: [],
+      message: "",
     };
   }
 
   movieSearch = () => {
+    this.changeMessage(`Searching for ${this.state.searchTerm}...`)
     const url =
       "http://localhost:3000/movies?query=" +
       `${this.state.searchTerm}`;
@@ -26,10 +28,11 @@ class Search extends Component {
         });
 
         this.setState({ movies });
+        this.changeMessage(`Found ${movies.length} results for ${this.state.searchTerm}.`)
       })
       .catch(error => {
         const errorMessage = error.message;
-        this.setState({ errorMessage });
+        this.changeMessage({ errorMessage });
       });
   };
 
@@ -46,9 +49,15 @@ class Search extends Component {
     });
   };
 
+  changeMessage = (message) => {
+    this.setState({message});
+    setTimeout(() => this.setState({message: ""}), 2500)
+  }
+
   render() {
     return (
       <section>
+        <h2>{this.state.message}</h2>
         <input
           type="text"
           placeholder="Search..."
