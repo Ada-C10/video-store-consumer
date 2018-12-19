@@ -4,6 +4,7 @@ import './App.css';
 import MovieLibrary from './components/MovieLibrary.js';
 import CustomerLibrary from './components/CustomerLibrary.js';
 import Search from './components/Search.js';
+import Rental from './componenets/Rental.js';
 import StatusBar from './components/StatusBar.js';
 
 // const libraryConst = () => (
@@ -71,6 +72,21 @@ class App extends Component {
   }
 
   render() {
+
+    const makeRental = () => {
+      this.setState({
+        isRentalReady: (this.state.selectedMovie != "" && this.state.selectedCustomer != "")
+      });
+      console.log(this.state.isRentalReady);
+      if (this.state.isRentalReady) {
+        return <Rental customer={this.state.selectedCustomer} movie={this.state.selectedMovie} />
+      }
+      this.setState({
+        message: `Successfully checked out ${this.state.selectedMovie} to ${this.state.selectedCustomer}`,
+      });
+      console.log(this.state.message);
+    }
+
     return (
       <div>
         <ul>
@@ -86,7 +102,7 @@ class App extends Component {
           render={ (props) => <MovieLibrary {...props}
           movieCountCallback={this.movieCount}
           grabMovieTitleCallback={this.rentalsMovie} /> }
-        />
+          />
         <Route path="/customers"
           render={ (props) => <CustomerLibrary {...props}
           customerCountCallback={this.customerCount}
