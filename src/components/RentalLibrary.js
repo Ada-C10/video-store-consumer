@@ -16,7 +16,12 @@ class RentalLibrary  extends Component {
   displayMovies = () => {
   return this.state.movieList.map( (movie) => {
     console.log("printing movie",movie.title);
-    return <Movie title={movie.title} key={movie.id}/>
+    return <Movie
+            title={movie.title}
+            key={movie.external_id}
+            imageUrl={movie.image_url}
+            overview={movie.overview}
+            releaseDate={movie.releaseDate}/>
   });
 }
 
