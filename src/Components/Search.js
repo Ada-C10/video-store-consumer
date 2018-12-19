@@ -57,8 +57,15 @@ class Search extends Component {
     }
   }
 
-  addToLibrary = () => {
-
+  addMovieToCollection = (params) => {
+    console.log(params.image_url);
+    axios.post(`http://localhost:3001/movies?title=${params.title}&image_url=${params.image_url}&overview=${params.overview}&release_date=${params.release_date}`)
+    .then((response) => {
+      console.log(response.data);
+    })
+    .catch((errors) => {
+      console.log(errors);
+    })
   }
 
   render() {
@@ -70,7 +77,8 @@ class Search extends Component {
         title={result.title}
         release_date={result.release_date}
         image_url={result.image_url}
-        search={true}/>
+        search={true}
+        callback={this.addMovieToCollection}/>
     });
 
     return (

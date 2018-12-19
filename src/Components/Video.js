@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import axios from 'axios';
 
 class Video extends React.Component {
   constructor(props) {
@@ -11,8 +12,13 @@ class Video extends React.Component {
     this.props.addToRentClickHander(this.props);
   }
 
+  addMovieToCollection = () => {
+    this.props.callback(this.props);
+  }
+
+
+
   changeButton = () => {
-    console.log(this.props.search);
     if (this.props.search === false) {
       return <button
         onClick={ this.addToRentClickHander}>
@@ -20,9 +26,8 @@ class Video extends React.Component {
       </button>
     }
     else if (this.props.search === true) {
-      console.log("i'm in else if");
       return <button
-        onClick={ this.addToRentClickHander}>
+        onClick={ this.addMovieToCollection}>
         Add to Library
       </button>
     }
