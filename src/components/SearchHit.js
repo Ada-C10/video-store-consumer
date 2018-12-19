@@ -14,7 +14,7 @@ const SearchHit = ({id, title, overview, release_date, image_url}) => {
         <h3>{release_date}</h3>
         <p>{overview}</p>
       </div>
-      <button className="movie-item__select-button">Select for rental</button>
+      <button className="movie-item__select-button">Add to Library</button>
     </div>
   );
 };
