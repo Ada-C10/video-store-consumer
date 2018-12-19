@@ -28,8 +28,9 @@ class VideoStore extends Component {
 
   resetState = () => {
     this.setState({
-      selectedCustomer: '',
-      selectedMovie: '',
+      selectedCustomer: 'none',
+      selectedMovie: 'none',
+      errorMessage: ''
     });
   }
 
@@ -94,8 +95,20 @@ class VideoStore extends Component {
           errorMessage: error.message
         })
       });
+    } else if (this.state.selectedCustomer === "none" && this.state.selectedCustomer !== "none") {
+      this.setState({
+        errorMessage: "No movie selected, please select one"
+      })
+
+    } else if (this.state.selectedMovie === "none" && this.state.selectedCustomer !== "none") {
+      this.setState({
+        errorMessage: "No movie selected, please select one"
+      })
+    } else {
+      this.setState({
+        errorMessage: "No movie or customer selected"
+      })
     }
-    console.log(this.state.errorMessage);
   }
 
   //      <Route path="/movies" render={(props) => <MovieListShow {...this.findMovie}/>}/>
@@ -106,6 +119,7 @@ class VideoStore extends Component {
     return (
       <Router>
       <div>
+      <script src="path/to/flash.min.js"></script>
       <ul>
       <li>
       <Link to="/">Home</Link>
