@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import './styles/Search.css';
+import SearchHit from './SearchHit';
 import axios from 'axios';
-// import ENV from './.env';
 
 
 class Search extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       query: "",
@@ -19,25 +19,25 @@ class Search extends Component {
     console.log(`User changed input to ${event.target.value}`);
 
     this.setState({
-     query: event.target.value,
-   });
+      query: event.target.value,
+    });
   }
 
   searchMovieAPI =(query)=> {
-    const key = process.env.REACT_APP_MOVIEDB_KEY;
-    console.log(key);
     // const URL = "https://api.themoviedb.org/3/search/movie?api_key=" + `${key}&query=${query}`;
     const URL = "http://localhost:3000/" + `movies?query=${query}`;
 
     axios.get(URL)
-      .then((response) => {
-        this.setState({searchResults: response.data
-        });
-        console.log(response.data);
+    .then((response) => {
+      const searchResultList = response.data.map((hit, i) => {
+        return <SearchHit key={i} {...hit} />
       })
-      .catch((error) => {
-        this.setState({error: error.message})
-      })
+      this.setState({searchResults: searchResultList});
+        console.log(this.state.searchResults);
+    })
+    .catch((error) => {
+      this.setState({error: error.message})
+    })
   }
 
   onSearchSubmit = (event) => {
@@ -46,6 +46,8 @@ class Search extends Component {
     this.searchMovieAPI(this.state.query);
   }
 
+
+
   render () {
     return (
       <div>
@@ -53,12 +55,15 @@ class Search extends Component {
           <div className="movie-search-form-container">
             <label htmlFor="searchQuery"></label>
             <input name="query" placeholder="Search by Movie"
-                onChange={this.onInputChange}
-                />
+              onChange={this.onInputChange}
+              />
           </div>
         </form>
+        <div>
+          {this.state.searchResults}
+        </div>
       </div>
-      )
+    )
   }
 
 }
