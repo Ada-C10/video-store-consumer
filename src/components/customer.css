@@ -1,6 +1,6 @@
 .customer {
   border-radius: 20px;
-  border: 5px solid darkgreen;
+  border: 7px solid darkgreen;
   background-color: white;
   display: grid;
   grid-template-columns: 4fr 1fr;

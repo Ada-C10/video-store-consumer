@@ -4,5 +4,7 @@
   text-align: center;
 }
 .customer-container-box {
-  background-color: #6da34d;
+  background-color: red;
+  width: 45%;
+  margin: 5px;
 }

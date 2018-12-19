@@ -3,23 +3,25 @@
 }
 header.header {
   background-color: white;
-  border: 5px solid #111d13;
+  border: 5px solid #402300;
   border-radius: 15px;
+  width: 90%;
+  display: inline-block;
 }
 .header-art {
   margin-left: 10px;
   margin-right: 10px;
   padding-left: 10px;
   padding-right: 10px;
+  height: 80px;
 }
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 80px;
 }
-img.logo {
+div img .logo {
   width: 50;
   height: 50;
-  resizemode: "contain";
 }
 
 .App-header {
@@ -32,7 +34,7 @@ img.logo {
 .App-title {
   font-size: 2em;
   font-family: sans-serif;
-  color: #e6f14a;
+  color: red;
 }
 
 .App-intro {
@@ -49,7 +51,7 @@ img.logo {
 }
 .video-store {
   text-align: center;
-  background-color: #6da34d;
+  background-image: url("https://i.cdnraw.com/previews/downloads/d/e/r/p-christmas-gingerbread-ErwpwiowlN-1.jpg");
 }
 li.nav-bar__nav-item {
   list-style-type: none;

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-// import logo from "./dog-logo.svg";
+import logo from "./dog-logo.svg";
 import "./App.css";
-import { logo } from "./doghat.jpg";
+import { xmastree } from "./xmastree.gif";
 import RentalManager from "./components/RentalManager";
 
 class App extends Component {
@@ -20,18 +20,32 @@ class App extends Component {
       <div className="video-store">
         <header className="header">
           <img
-            className="header-art"
-            src="http://icons.iconarchive.com/icons/designbolts/free-multimedia/96/Film-icon.png"
+            className="App-logo"
+            src={
+              "http://icons.iconarchive.com/icons/shin-ui/christmas/128/gift-icon.png"
+            }
+            alt="xmas present"
           />
-          {
-            // {<img className="logo" src={require("./doghat.jpg")} alt="logo" />}
-          }{" "}
           <img
             className="header-art"
-            src="http://icons.iconarchive.com/icons/designbolts/free-multimedia/96/Film-icon.png"
+            src={require("./xmastree.gif")}
+            alt="xmas tree"
+          />
+          <img className="header-art" src={logo} alt="logo" />
+          <img
+            className="header-art"
+            src={require("./xmastree.gif")}
+            alt="xmas tree"
+          />
+          <img
+            className="App-logo"
+            src={
+              "http://icons.iconarchive.com/icons/shin-ui/christmas/128/gift-icon.png"
+            }
+            alt="xmas present"
           />
           <div className="header__controls">
-            <h1 className="App-title">Bonkers Video</h1>
+            <h1 className="App-title">Bonkers Holiday Videos</h1>
           </div>
         </header>
 
