@@ -77,7 +77,7 @@ class Library extends React.Component {
             <Route exact={true} path="/Search" component={Search}/>
             <Route path="/VideoCollection"
             render={() => <VideoCollection  addToRentClickHander= {this.addToRent}/> } />
-            <Route path="/CustomerCollection" render={() => <CustomerCollection addToSelectCustomerHandler={this.selectNewCustomer}/>}
+            <Route path="/CustomerCollection" render={() => <CustomerCollection addToSelectCustomerHandler={this.selectNewCustomer}/>}/>
           </section>
         </section>
       </Router>
