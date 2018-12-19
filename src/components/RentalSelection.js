@@ -5,20 +5,20 @@ import "./RentalSelection.css";
 class RentalSelection extends Component {
   render() {
     return (
-      <div>
-        <div className="new-rental-container" />
+      <div className="customer-content-box">
         <div className="customer__content">
-          <p className="rental-selection-name">
-            {this.props.currentCustomerName}
-          </p>{" "}
-          <p>{this.props.currentMovieTitle}</p>{" "}
+          <div className="rental-selection-name">
+            Rental name goes here
+            {this.props.currentCustomerName}{" "}
+            <p>{this.props.currentMovieTitle}</p>{" "}
+          </div>
+          <button
+            className="rental-item__button"
+            onClick={this.props.checkOutCallback}
+          >
+            Check Out
+          </button>
         </div>
-        <button
-          className="rental-item__button"
-          onClick={this.props.checkOutCallback}
-        >
-          Check Out
-        </button>
       </div>
     );
   }

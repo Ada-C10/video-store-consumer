@@ -3,10 +3,25 @@
   width: 1fr;
 }
 .rental-item__button {
-  width: 4rem;
+  width: 5rem;
+  border-radius: 5px;
   background-color: white;
   border: 0.5em solid #7bf96c;
+  align-self: center;
 }
 .rental-selection-container {
   display: inline-block;
+}
+.customer-content-box {
+  display: inline-flex;
+  min-width: 1000px;
+  padding: 5px;
+  margin: 5px;
+}
+.rental-selection-name {
+  width: auto;
+  height: 100px;
+  color: white;
+  padding: 5px;
+  border: 1px solid black;
 }

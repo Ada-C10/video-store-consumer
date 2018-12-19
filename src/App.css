@@ -16,6 +16,11 @@ header.header {
   animation: App-logo-spin infinite 20s linear;
   height: 80px;
 }
+img.logo {
+  width: 50;
+  height: 50;
+  resizemode: "contain";
+}
 
 .App-header {
   background-color: #6da34d;

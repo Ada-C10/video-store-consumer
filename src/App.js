@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import logo from "./dog-logo.svg";
+// import logo from "./dog-logo.svg";
 import "./App.css";
-
+import { logo } from "./doghat.jpg";
 import RentalManager from "./components/RentalManager";
 
 class App extends Component {
@@ -23,7 +23,9 @@ class App extends Component {
             className="header-art"
             src="http://icons.iconarchive.com/icons/designbolts/free-multimedia/96/Film-icon.png"
           />
-          {<img src={logo} className="header-art" alt="logo" />}
+          {
+            // {<img className="logo" src={require("./doghat.jpg")} alt="logo" />}
+          }{" "}
           <img
             className="header-art"
             src="http://icons.iconarchive.com/icons/designbolts/free-multimedia/96/Film-icon.png"
@@ -32,9 +34,8 @@ class App extends Component {
             <h1 className="App-title">Bonkers Video</h1>
           </div>
         </header>
-        <p className="App-intro">{this.state.message}</p>
 
-        <RentalManager changeMessageCallback={this.changeMessage}/>
+        <RentalManager changeMessageCallback={this.changeMessage} />
       </div>
     );
   }
