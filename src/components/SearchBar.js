@@ -43,9 +43,25 @@ class SearchBar extends Component {
     });
   }
 
+
+  handleRentalSelect = (movie) => {
+    const URL = MOVIES_URL
+    console.log(movie);
+    axios.post(URL, {...movie})
+    .then((response) => {
+      console.log(response);
+    })
+  }
+
   displayMovies = () => {
     return this.state.searchedMovies.map( (movie) => {
-      return <Movie key={movie.external_id} title={movie.title} imageUrl={movie.image_url} overview={movie.overview} />
+      return <Movie key={movie.external_id}
+      title={movie.title}
+      imageUrl={movie.image_url}
+      overview={movie.overview}
+      onRentalSelect={this.handleRentalSelect(movie)}
+
+       />
     });
   }
 
@@ -62,6 +78,7 @@ class SearchBar extends Component {
       <input type="submit" value="submit" onClick={ this.onSubmit } />
       {this.displayMovies()}
       </section>
+
 
 
     );

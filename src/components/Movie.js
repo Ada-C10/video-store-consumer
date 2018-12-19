@@ -10,6 +10,12 @@ class Movie extends Component {
     }
   }
 
+  handleClickAddRental =() =>{
+    if(this.props.onRentalSelect) {
+    this.props.onRentalSelect(this.props.id, this.props.title)
+  }
+}
+
   render() {
     return (
       <div>
@@ -21,6 +27,10 @@ class Movie extends Component {
         {this.props.isInLibrary && (
           <button onClick={this.handleClick}>Select for Rental</button>
         )}
+        {!this.props.isInLibrary && (
+          <button onClick={this.handleClickAddRental}>Add to Rental Library</button>
+        )}
+
       </div>
     )
   }
@@ -33,6 +43,8 @@ Movie.propTypes = {
   isInLibrary: PropTypes.bool, //check to see if in library and rentable
   id: PropTypes.number,
   onSelectMovie: PropTypes.func,
+  onRentalSelect: PropTypes.func,
+  //isInSearch: PropTypes.bool,
 };
 
 export default Movie ;

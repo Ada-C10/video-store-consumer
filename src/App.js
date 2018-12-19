@@ -62,8 +62,7 @@ class App extends Component {
         </li>
       </ul>
 
-//checkout pass customer id as a parameter in the api post with id in the url axios can post for you?
-//urlencode the movie's title use it as the path and send the cusomer id as the parameter
+
 
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
@@ -74,5 +73,7 @@ class App extends Component {
     );
   }
 }
+//checkout pass customer id as a parameter in the api post with id in the url axios can post for you?
+//urlencode the movie's title use it as the path and send the cusomer id as the parameter
 
 export default App;
