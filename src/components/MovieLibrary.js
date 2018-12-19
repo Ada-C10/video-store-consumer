@@ -14,11 +14,8 @@ class MovieLibrary extends Component {
       movies: [],
       moreMovies: '',
       buttonClassname: "movie__rent",
-<<<<<<< HEAD
-      movieToAddToLibrary: {}
-=======
+      movieToAddToLibrary: {},
       movieCount: 0,
->>>>>>> f9398d62186c82b1d562c47721f1fa740a17ec7a
     };
   }
 
@@ -60,9 +57,6 @@ class MovieLibrary extends Component {
 
     return (
       <div >
-<<<<<<< HEAD
-=======
-
         <form className="search-bar" onSubmit={this.onFormSubmit}>
           <input
             type="text"
@@ -73,8 +67,6 @@ class MovieLibrary extends Component {
             />
           <button type="submit" className="search-bar__submit"/>
         </form>
-
->>>>>>> f9398d62186c82b1d562c47721f1fa740a17ec7a
         <div className="library">
           {allMovies}
         </div>
