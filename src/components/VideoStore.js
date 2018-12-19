@@ -15,7 +15,8 @@ class VideoStore extends Component {
     this.state = {
       selectedCustomer: "none",
       selectedMovie: "none",
-      errorMessage: ""
+      errorMessage: "",
+      returnedMovie: null
     };
   }
 
@@ -70,12 +71,13 @@ class VideoStore extends Component {
       title: this.state.selectedMovie.title,
       customer_id: this.state.selectedCustomer.id,
     }
-    console.log("apiPayload v");
-    console.log(apiPayload);
     if (this.state.selectedCustomer !== "none" && this.state.selectedMovie !== "none") {
       axios.post(`http://localhost:3000/rentals/${this.state.selectedMovie.title}/return`, apiPayload)
       .then((response) => {
         console.log(response);
+        this.setState({
+          returnedMovie: this.state.selectedMovie
+        })
         this.resetState();
       })
       .catch((error) => {
@@ -143,7 +145,7 @@ class VideoStore extends Component {
       <Route path="/customers" render={(props) => <CustomerListShow {...props} findCustomerProp={this.findCustomer} />}/>
       <Route path="/search" component={SearchShow} />
 
-      <Route path="/overdue" render={(props) => <OverdueShow {...props} findMovieProp={this.findMovie} findCustomerProp={this.findCustomer} />}/>
+      <Route path="/overdue" render={(props) => <OverdueShow {...props} returnedMovieProp={this.state.returnedMovie} findMovieProp={this.findMovie} findCustomerProp={this.findCustomer} />}/>
 
       </div>
       </Router>)
@@ -163,7 +165,11 @@ class VideoStore extends Component {
     return (
       <div>
       <h2>Overdue Movies</h2>
-      <MovieList selectCustomerCallback={props.findCustomerProp} selectMovieCallback={props.findMovieProp} URL={"http://localhost:3000/rentals/overdue"}/>
+      <MovieList
+      selectCustomerCallback={props.findCustomerProp} selectMovieCallback={props.findMovieProp}
+
+      URL={"http://localhost:3000/rentals/overdue"}
+      movie={props.returnedMovieProp ? props.returnedMovieProp : "none"}/>
       </div>
     );
   }

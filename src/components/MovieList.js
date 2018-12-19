@@ -38,7 +38,28 @@ class MovieList extends Component {
     });
   }
 
+  componentDidUpdate(prevProps) {
+    let movieIndex = null
+    if (this.props.movie !== prevProps.movie) {
+      const movies = this.state.movies.map((movie, index) => {
+        const newMovie = {
+          ...movie
+        }
+        if ( movie.image_url === this.props.movie.image_url){
+          movieIndex = index
+        }
+        return newMovie
+      })
 
+      if (movieIndex !== null){
+        movies.splice(movieIndex, 1)
+      }
+
+      this.setState({
+        movies
+      })
+    }
+  }
 
   makeMovieList = (movies) => {
     const moviesList = movies.map((movie) => {
@@ -61,7 +82,7 @@ class MovieList extends Component {
         type="button">Select Customer</button>
         </li>
       } else {
-      return <li key={movie.id}>
+        return <li key={movie.id}>
         <Movie
         title={movie.title}
         overview={movie.overview}
@@ -71,7 +92,7 @@ class MovieList extends Component {
         onClick ={ () => {this.props.selectMovieCallback(movie)}}
         type="button">Select Movie</button>
         </li>
-    }
+      }
 
     });
 
@@ -80,7 +101,8 @@ class MovieList extends Component {
 
 
   render() {
-console.log(this.state);
+    console.log(this);
+
     return (
       <ul>
       { this.state.movies !== [] && this.makeMovieList(this.state.movies)}
