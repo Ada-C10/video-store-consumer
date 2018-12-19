@@ -50,6 +50,7 @@ class RentalManager extends Component {
   };
   changeMessage = (message) => {
     this.setState({message});
+    setTimeout(() => this.setState({message: ""}), 2500)
   }
 
   checkOut = () => {
@@ -57,19 +58,6 @@ class RentalManager extends Component {
     if (this.state.currentCustomerID && this.state.currentMovieTitle) {
       const date = new Date(Date.now());
       date.setDate(date.getDate() + 7);
-
-      console.log(date);
-
-      // const url = `http://localhost:3000/rentals/${this.state.currentMovieTitle}/check-out?customer_id=${this.state.currentCustomerID}&due_date=December 25, 2018` ;
-      // const url = `http://localhost:3000/rentals/Psycho/check-out?customer_id=1&due_date=${date}`;
-      //
-      // console.log(url);
-      // axios
-      //   .post(url)
-      //   .then(response => {
-      //     // success message to status bar
-      //     console.log(response);
-      //   })
 
       const url = `http://localhost:3000/rentals/${
         this.state.currentMovieTitle
