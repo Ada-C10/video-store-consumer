@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types'
 import Customer from './Customer'
 
 import axios from 'axios';
@@ -34,6 +35,12 @@ componentDidMount() {
   })
 }
 
+// onAddRental = (customer) => {
+//   ()updatedCustomerCallback(customer)
+//   // updateCurrentCustomer = {props.updatedCustomer(customer)}
+// }
+
+
 render() {
   const customers = this.state.customers.map((customer, i) => {
     return <Customer
@@ -41,6 +48,8 @@ render() {
       id={customer.id}
       name={customer.name}
       movies_checked_out_count={customer.movies_checked_out_count}
+      button="Add Customer"
+      callback={()=>this.props.updatedCustomerCallback(customer)}
      />
     })
 
@@ -53,9 +62,8 @@ render() {
 
 }
 
-// Board.propTypes = {
-//   url: PropTypes.string.isRequired,
-//   boardName: PropTypes.string.isRequired,
-// };
+AllCustomers.propTypes = {
+  updatedCustomerCallback: PropTypes.func,
+};
 
 export default AllCustomers;

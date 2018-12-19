@@ -1,0 +1,18 @@
+img {
+  float: left;
+  height: 175px;
+  width: auto;;
+}
+
+.movie-container {
+  margin-top: 2em;
+  margin-bottom: 6em;
+  padding-left: 1.5em;
+  padding-right: 2em;
+}
+
+button:hover {
+  cursor: pointer;
+  background-color: coral;
+  color: white;
+}

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types'
 import Movies from './Movies'
 
 import axios from 'axios';
@@ -35,12 +36,18 @@ componentDidMount() {
   })
 }
 
+// onAddRental = (movie) => {
+//   <CheckOut currentMovie={movie}/>
+//   console.log(movie)
+// }
+
+
 
 
 render() {
-  console.log("I made a bunch of movies");
+  console.log(`I made a bunch of movies rental library component`);
   const movies = this.state.movies.map((movie, i) => {
-
+    let title = `Rent ${movie.title}`
     return <Movies
       key={i}
       id={movie.id}
@@ -48,8 +55,8 @@ render() {
       overview={movie.overview}
       releaseDate={movie.release_date}
       image={movie.image_url}
-      button="Rent Me"
-      callback={() => {}}
+      button={title}
+      callback={() => this.onAddRental(movie)}
      />
     })
 
@@ -62,9 +69,8 @@ render() {
 
 }
 
-// Board.propTypes = {
-//   url: PropTypes.string.isRequired,
-//   boardName: PropTypes.string.isRequired,
-// };
+RentalLibrary.propTypes = {
+  onAddRental: PropTypes.func,
+};
 
 export default RentalLibrary;

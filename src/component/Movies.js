@@ -1,11 +1,12 @@
 import React from 'react';
+import './Movies.css'
 import PropTypes from 'prop-types';
 
 
 const Movies = (props) => {
 
     return (
-      <div>
+      <div className="movie-container">
         <img src={props.image} alt={props.title}/>
         <h4><strong>{props.title}</strong></h4>
         <p>{props.overview}</p>

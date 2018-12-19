@@ -8,6 +8,7 @@ const Customer = (props) => {
       <div>
         <h4><strong>{props.name}</strong></h4>
         <p>Movies Checked Out: {props.movies_checked_out_count}</p>
+        <button type="button" onClick={props.callback}>{props.button}</button>
     </div>
     )
   }
@@ -22,6 +23,8 @@ const Customer = (props) => {
     state: PropTypes.string,
     postal_code: PropTypes.string,
     phone: PropTypes.string,
+    callback: PropTypes.func,
+    button: PropTypes.string
 
   }
 

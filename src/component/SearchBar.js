@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import axios from 'axios';
 import Movies from './Movies'
 
-URL = "http://localhost:3000/movies?query="
+const URL = "http://localhost:3000/movies?query="
 
 class SearchBar extends Component {
     constructor() {
@@ -26,6 +25,7 @@ class SearchBar extends Component {
       axios.get(url)
       .then((response) => {
         const movies = response.data.map((movie, i) => {
+          let title = `Add ${movie.title} to Video Store`
           return <Movies
             key={i}
             id={movie.id}
@@ -33,13 +33,14 @@ class SearchBar extends Component {
             overview={movie.overview}
             releaseDate={movie.release_date}
             image={movie.image_url}
-            button="Add to Rental Library"
+            button={title}
             callback={() => this.onAddMovieToLib(movie)}
            />
         })
         this.setState({
           searchMovies: movies,
         })
+        console.log(this.state.searchMovies);
       })
       .catch((error) => {
         console.log(error.message);
@@ -67,26 +68,6 @@ class SearchBar extends Component {
       });
     }
 
-  movieList = () => {
-    console.log("Movie List Hit")
-      if (this.state.searchMovies.length >= 1) {
-        const list = this.state.searchMovies.map((movie, i) => {
-        return <Movies
-          key={i}
-          id={movie.id}
-          title={movie.title}
-          overview={movie.overview}
-          releaseDate={movie.release_date}
-          image={movie.image_url}
-          button="Add to Rental Library"
-          callback={() => this.onAddMovieToLib(movie)}
-         />
-
-         })
-         return list
-      }
-    };
-
     render() {
       return (
         <div className="search-container" >
@@ -99,7 +80,7 @@ class SearchBar extends Component {
           />
           <input type="submit" value="Submit" onClick={this.onSubmit}/>
         </section>
-          {this.movieList}
+          {this.state.searchMovies}
       </div>
     );
   }
