@@ -84,6 +84,18 @@ class VideoStore extends Component {
     console.log(this.state.errorMessage);
   }
 
+  // overdueMovies  =() => {
+  //
+  //   axios.get("http://localhost:3000/rentals/overdue")
+  //   .then((response) => {
+  //     console.log(response)
+  //   })
+  //   .catch((error) => {
+  //     this.setState({
+  //       errorMessage: error.message
+  //     })
+  //   });
+  // }
   //      <Route path="/movies" render={(props) => <MovieListShow {...this.findMovie}/>}/>
   //      <Route path="/movies" component={() => <MovieListShow findMovief={this.findMovie}  />}/>
 
@@ -105,6 +117,9 @@ class VideoStore extends Component {
       <li>
       <Link to="/search">Search</Link>
       </li>
+      <li>
+      <Link to="/overdue">Overdue</Link>
+      </li>
       </ul>
 
 
@@ -124,6 +139,8 @@ class VideoStore extends Component {
       <Route path="/movies" render={(props) => <MovieListShow {...props} findMovieProp={this.findMovie} />}/>
       <Route path="/customers" render={(props) => <CustomerListShow {...props} findCustomerProp={this.findCustomer} />}/>
       <Route path="/search" component={SearchShow} />
+      <Route path="/overdue" component={OverdueShow} />
+
       </div>
       </Router>)
     }
@@ -133,6 +150,16 @@ class VideoStore extends Component {
     return (
       <div>
       <h2>Home</h2>
+      </div>
+    );
+  }
+
+
+  function OverdueShow() {
+    return (
+      <div>
+      <h2>Overdue Movies</h2>
+      <MovieList URL={"http://localhost:3000/rentals/overdue"}/>
       </div>
     );
   }
@@ -149,7 +176,7 @@ class VideoStore extends Component {
 
     return (
       <section>
-      <MovieList selectMovieCallback={props.findMovieProp}/>
+      <MovieList selectMovieCallback={props.findMovieProp} URL = {"http://localhost:3000/movies"}/>
       </section>
     );
   }

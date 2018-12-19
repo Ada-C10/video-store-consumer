@@ -10,13 +10,12 @@ class MovieList extends Component {
 
     this.state = {
       errorMessage: "",
-      movies: []
+      movies: [],
     };
   }
 
   componentDidMount() {
-
-    axios.get("http://localhost:3000/movies")
+    axios.get(this.props.URL)
     .then((response) => {
 
       const movies = response.data.map((movie) => {
@@ -41,6 +40,7 @@ class MovieList extends Component {
 
   makeMovieList = (movies) => {
     const moviesList = movies.map((movie) => {
+      console.log(movie.customer_id);
       return <li key={movie.id}>
       <Movie
       title={movie.title}
@@ -49,17 +49,18 @@ class MovieList extends Component {
       image_url={movie.image_url}/>
       <button
       onClick ={ () => {this.props.selectMovieCallback(movie)}}
-      type="button">Select for Rental</button>
+      type="button">Select Movie</button>
       </li>
 
 
     });
+
     return moviesList
   }
 
 
   render() {
-
+console.log(this.state);
     return (
       <ul>
       { this.state.movies !== [] && this.makeMovieList(this.state.movies)}
