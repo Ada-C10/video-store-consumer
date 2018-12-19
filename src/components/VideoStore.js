@@ -58,7 +58,6 @@ class VideoStore extends Component {
         this.setState({
           errorMessage: error.message
         })
-        console.log(this.state.errorMessage);
       });
     } else if (this.state.selectedCustomer === "none" && this.state.selectedCustomer !== "none") {
       this.setState({
@@ -91,8 +90,12 @@ class VideoStore extends Component {
         this.resetState();
       })
       .catch((error) => {
+        let message = ""
+        if (error.message === "Request failed with status code 404") {
+          message = "This movie has not been checked by the customer selected"
+        }
         this.setState({
-          errorMessage: error.message
+          errorMessage: message
         })
       });
     } else if (this.state.selectedCustomer === "none" && this.state.selectedCustomer !== "none") {
