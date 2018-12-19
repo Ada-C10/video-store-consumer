@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react'
 import './Customer.css'
-// import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 const Customer = (props) => {
@@ -12,14 +12,14 @@ const Customer = (props) => {
         props.onSelectCallback(id)
     };
 
-
-
     return (
         <section className="card customer-card">
-            <p className="customer-name">{name}</p>
-            <p className="customer-movies-out">Movies Checked Out: {moviesCheckedOut}</p>
-            <p className="customer-credit">Rental Credit: ${rentalCredit}</p>
-            <button className="selectCustomer"
+            <section className="customer-card-content">
+                <p className="customer-name">{name}</p>
+                <p className="customer-movies-out">Movies Out: {moviesCheckedOut}</p>
+                <p className="customer-credit">Rental Credit: ${rentalCredit}</p>
+            </section>
+                <button className="selectCustomer btn btn-info"
                     onClick={handleSelect}
                     type="button">Select</button>
         </section>
