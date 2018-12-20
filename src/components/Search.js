@@ -32,7 +32,7 @@ addmovie = (movie) => {
   })
   .catch((error) => {
     let message = ""
-    if (error.message == "Request failed with status code 400") {
+    if (error.message === "Request failed with status code 400") {
       message = `The movie titled ${movie.title} is already in your list`
     }
 
@@ -44,7 +44,6 @@ addmovie = (movie) => {
 }
 
   makeMovieList = (movies) => {
-
     const moviesList = movies.map((movie, id) => {
       return (<li key={id}>
         <Movie
