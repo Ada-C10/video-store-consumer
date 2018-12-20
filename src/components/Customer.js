@@ -10,7 +10,7 @@ const Customer = (props) => {
         <br />
         {props.phone}
         <br />
-        <p>{props.movies} of movies checked out</p>
+        <p>{props.movies} movie(s) checked out</p>
         <button onClick={props.selectCustomerCallback}>Select for Rental</button>
       </div>
   )
