@@ -4,6 +4,9 @@ import CustomersCollection from './components/CustomersCollection.js';
 import RentalLibrary from './components/RentalLibrary.js';
 import SearchBar from './components/SearchBar.js';
 import { BrowserRouter as Router, Link, Route } from 'react-router-dom';
+import { Button } from 'react-bootstrap';
+import { ButtonToolbar } from 'react-bootstrap';
+
 
 
 //const Customers1 = () => <h2>customers</h2>;
@@ -47,11 +50,11 @@ class App extends Component {
       <div className="App">
 
       <nav>
-        <ul>
-          <li><Link to={'/customers'}>Customers</Link></li>
-          <li><Link to={'/library'}>Rental Library</Link></li>
-          <li><Link to={'/search'}>Search</Link></li>
-        </ul>
+        <ButtonToolbar>
+          <Button bsStyle="info"><Link to={'/customers'}>Customers</Link></Button>
+          <Button bsStyle="info"><Link to={'/library'}>Rental Library</Link></Button>
+          <Button bsStyle="info"><Link to={'/search'}>Search</Link></Button>
+       </ButtonToolbar>
       </nav>
 
 

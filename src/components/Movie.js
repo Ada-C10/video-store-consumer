@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { Media } from 'react-bootstrap';
+
 
 class Movie extends Component {
 
@@ -21,11 +23,17 @@ class Movie extends Component {
 
     return (
       <div>
+        <Media>
+         <Media.Left>
+             <img src={this.props.imageUrl} alt={this.props.title} />
+         </Media.Left>
+
+         
         <h4>{this.props.title}</h4>
         <section>
           {this.props.overview}
         </section>
-        <img src={this.props.imageUrl} alt={this.props.title} />
+
         {this.props.isInLibrary && (
           <button onClick={this.handleClick}>Select for Rental</button>
         )}
@@ -33,6 +41,7 @@ class Movie extends Component {
           <button onClick={this.handleClickAddRental}>Add to Rental Library</button>
         )}
 
+        </Media>
       </div>
     )
   }
