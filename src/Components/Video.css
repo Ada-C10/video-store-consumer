@@ -1,0 +1,24 @@
+.movie-item {
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr;
+  border: 1px solid black;
+  border-radius: 1em;
+  margin: 2em;
+  background-color: #e9e9e9;
+}
+
+.video-img {
+  padding: 10px;
+}
+
+.movie-button {
+  background-color: #cfcfcf;
+  border-top-right-radius: 1em;
+  border-bottom-right-radius: 1em;
+  font-size: 18px;
+}
+
+.movie-details {
+  border-left: 2px solid grey;
+  border-right: 2px solid grey;
+}
