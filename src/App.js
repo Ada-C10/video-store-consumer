@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import { Route } from 'react-router-dom'
 import axios from 'axios';
@@ -7,6 +8,7 @@ import Nav from './components/Nav';
 import LibrarySection from './components/LibrarySection';
 import CustomerSection from './components/CustomerSection';
 import SearchSection from './components/SearchSection';
+import StatusBar from './components/StatusBar';
 
 import './App.css';
 
@@ -22,6 +24,10 @@ class App extends Component {
       selectedCustomerID: "",
       selectedMovie: "",
       returnDate: this.getReturnDay(),
+      status: {
+        statusClass: 'default',
+        statusMessage: ''
+      }
     }
   }
 
@@ -38,18 +44,29 @@ class App extends Component {
     })
   }
 
+  changeStatus = (style, message) => {
+    this.setState({
+      status: {
+        statusClass: style,
+        statusMessage: message
+      }
+    })
+  }
+
   rentMovie = () => {
     axios.post(RENT_MOVIE + this.state.selectedMovie + "/check-out?customer_id=" + this.state.selectedCustomerID + "&due_date=" + this.state.returnDate)
     .then((response) => {
-      // this.props.status(`Successfully loaded ${response.data.length} movies from the rental library`, 'success');
       this.setState({
-        searchResults: response.data
+        searchResults: response.data,
       });
+
+      this.changeStatus('success', `${this.state.selectedCustomer} has successfully checked out ${this.state.selectedMovie}`)
     })
+
     .catch((error) => {
       console.log('API Library call error');
       console.log(error.message);
-      // this.props.status(`Failed to load movies: ${error.message}`, 'success');
+      this.changeStatus('error', `I'm sorry, there has been an error. Please try again.`)
     });
   }
 
@@ -71,15 +88,21 @@ class App extends Component {
             <Nav />
             <NewRental selectedCustomer={this.state.selectedCustomer} selectedMovie={this.state.selectedMovie} rentMovieCallBack={this.rentMovie}/>
           </header>
-          <div></div>
-          <span className="status-bar">Status Bar goes here.</span>
-          <Route path="/library" render={() => <LibrarySection selectMovieCallback = {this.selectMovie} />} />
-          <Route path="/customers" render={() => <CustomerSection selectCustomerCallback = {this.selectCustomer} />} />
-          <Route path="/search" render={() => <SearchSection />} />
+
+          <StatusBar statusClass={this.state.status.statusClass} statusMessage={this.state.status.statusMessage}/>
+
+          <Route path="/library" render={() => <LibrarySection selectMovieCallback = {this.selectMovie} changeStatusCallback = {this.changeStatus} />} />
+          <Route path="/customers" render={() => <CustomerSection selectCustomerCallback = {this.selectCustomer} changeStatusCallback = {this.changeStatus} />} />
+          <Route path="/search" render={() => <SearchSection changeStatusCallback = {this.changeStatus} />} />
 
       </div>
     );
   }
 }
+
+App.propTypes = {
+  changeStatusCallback: PropTypes.func.isRequired
+};
+
 
 export default App;

@@ -1,0 +1,15 @@
+.default {
+  display: none;
+}
+
+.loading {
+  background-color: lightblue;
+}
+
+.success {
+  background-color: lightgreen;
+}
+
+.error {
+  background-color: salmon;
+}

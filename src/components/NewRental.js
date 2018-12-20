@@ -30,6 +30,7 @@ class NewRental extends Component {
 NewRental.propTypes = {
   selectedCustomer: PropTypes.string,
   selectedMovie: PropTypes.string,
+  rentMovieCallBack: PropTypes.func.isRequired
 };
 
 export default NewRental;

@@ -12,28 +12,27 @@ class CustomerSection extends Component {
     super(props);
 
     this.state = {
-      customers: [],
-      errors: []
+      customers: []
     };
   }
 
   componentDidMount() {
-
+    this.props.changeStatusCallback('loading', 'waiting...')
     axios.get(ALL_CUSTOMERS_URL)
     .then((response) => {
       this.setState({
         customers: response.data,
       });
+      this.props.changeStatusCallback('success', `Successfully loaded ${this.state.customers.length} customers`)
     })
     .catch((error) => {
-      this.setState({
-        error: error.message
-      });
+      this.props.changeStatusCallback('error', `I'm sorry, there has been an error. Please try again.`)
+      console.log('API Library call error');
+      console.log(error.message);
     });
   }
 
   render() {
-
     const { customers } = this.state
 
     const allCustomers = customers.map((customer, i) => {
@@ -41,6 +40,7 @@ class CustomerSection extends Component {
         key={i}
         name={customer.name}
         phone={customer.phone}
+        movies={customer.movies_checked_out_count}
         selectCustomerCallback={() => this.props.selectCustomerCallback(customer)}
         />
 
@@ -55,6 +55,7 @@ class CustomerSection extends Component {
 }
 
 CustomerSection.propTypes = {
+  changeStatusCallback: PropTypes.func,
   selectCustomerCallback: PropTypes.func,
 };
 

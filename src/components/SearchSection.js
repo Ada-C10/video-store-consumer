@@ -23,29 +23,35 @@ class SearchSection extends Component {
   }
 
   queryApi = (props) => {
+    this.props.changeStatusCallback('loading', 'waiting...')
     axios.get(SEARCH_MOVIES + props)
     .then((response) => {
-      // this.props.status(`Successfully loaded ${response.data.length} movies from the rental library`, 'success');
       this.setState({
         searchResults: response.data
       });
+      if (response.data.length === 0) {
+        this.props.changeStatusCallback('error', 'There are no results that match your search.')
+      } else {
+        this.props.changeStatusCallback('success', `Successfully found ${response.data.length} movies containing ${props}`)
+      }
+
     })
     .catch((error) => {
+      this.props.changeStatusCallback('error', `I'm sorry, there has been an error. Please try again.`)
       console.log('API Library call error');
       console.log(error.message);
-      // this.props.status(`Failed to load movies: ${error.message}`, 'success');
     });
   }
 
   addToLibrary = (movie) => {
     let postUrl = `${ADD_MOVIE}?title=${movie.title}&overview=${movie.overview}&release_date=${movie.release_date}&image_url=${movie.image_url}&external_id=${movie.external_id}`
-    console.log(postUrl)
+
     axios.post(postUrl)
     .then((response) => {
       console.log(response)
+      this.props.changeStatusCallback('success', `Successfully added ${movie.title} to your library.`)
     })
 
-    // axios.post(`ADD_MOVIE + `)
 
   }
 
@@ -77,7 +83,7 @@ class SearchSection extends Component {
   }
 
   SearchSection.propTypes = {
-
+    changeStatusCallback: PropTypes.func.isRequired
   };
 
   export default SearchSection;
