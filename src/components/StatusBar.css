@@ -1,12 +1,20 @@
 .default {
   color: blue;
-  font-size: 2em;
   background-color: yellow;
   display: none;
 }
 
-.test {
-  color: white;
-  font-size: 2em;
-  background-color: purple;
+.success {
+  background-color: lightgreen;
+}
+
+
+.new {
+  background-color: blue;
+  color: yellow;
+}
+
+
+.loading {
+  background-color: lightblue;
 }
