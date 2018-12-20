@@ -11,7 +11,8 @@ const Movie = (props) => {
       <div className="movie-card">
         <img src={props.image_url} alt={`${props.title}`} />
         <div>
-          <h3>{props.title}, <small>{date}</small></h3>
+          <h3>{props.title}</h3>
+          <h3><small>{date}</small></h3>
           <button onClick={props.selectMovieCallback}>Select</button>
         </div>
       </div>

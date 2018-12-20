@@ -11,11 +11,21 @@
   height: 15vh;
 }
 
+.video-store__header a {
+  text-decoration: none;
+}
+
+.video-store__header h1:hover {
+  color: rgba(245, 178, 55, .6);
+    text-shadow:-24px -0px 10px rgba(255,255,255,.1), -10px -0px 8px rgba(255,255,255,.4);
+}
+
 .video-store__header h1 {
   font-size: 3vw;
-  color: rgba(253, 203, 110,1.0);
+  color: rgba(245, 178, 55, 1);
   margin-left: 1em;
   margin-right: 1em;
+  text-shadow:-24px -0px 10px rgba(255,255,255,.2), -10px -0px 8px rgba(255,255,255,.6);
 }
 
 h1, h2, h3 {

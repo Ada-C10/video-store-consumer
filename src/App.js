@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import { Route } from 'react-router-dom'
+import { Route, Link } from 'react-router-dom'
 import axios from 'axios';
 import NewRental from './components/NewRental';
 import Nav from './components/Nav';
@@ -84,13 +84,13 @@ class App extends Component {
     return (
       <div className="video-store">
           <header className="video-store__header">
-            <h1>Be Kind, Rewind &lt;&lt; </h1>
+            <Link to= "/"><h1>Be Kind, Rewind&lt;&lt;</h1></Link>
             <Nav />
             <NewRental selectedCustomer={this.state.selectedCustomer} selectedMovie={this.state.selectedMovie} rentMovieCallBack={this.rentMovie}/>
           </header>
 
           <StatusBar statusClass={this.state.status.statusClass} statusMessage={this.state.status.statusMessage}/>
-
+          <Route path="/" exact="true" render={() => <LibrarySection selectMovieCallback = {this.selectMovie} changeStatusCallback = {this.changeStatus} />} />
           <Route path="/library" render={() => <LibrarySection selectMovieCallback = {this.selectMovie} changeStatusCallback = {this.changeStatus} />} />
           <Route path="/customers" render={() => <CustomerSection selectCustomerCallback = {this.selectCustomer} changeStatusCallback = {this.changeStatus} />} />
           <Route path="/search" render={() => <SearchSection changeStatusCallback = {this.changeStatus} />} />

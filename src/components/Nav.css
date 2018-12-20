@@ -10,4 +10,10 @@
   margin: .8em;
   font-family: 'Raleway', sans-serif;
   color: #bdc3c7;
+  font-weight: lighter;
+  text-shadow: 1px 1px 1px rgba(250,250,250,.4);
+}
+
+.Nav a:hover {
+  color: rgba(245, 178, 55, 1);
 }
