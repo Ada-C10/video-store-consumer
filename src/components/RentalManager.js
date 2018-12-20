@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
 import RentalSelection from "./RentalSelection";
-import PropTypes from "prop-types";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import "./RentalManager.css";
 
@@ -82,6 +81,7 @@ class RentalManager extends Component {
                 </ul>
               </nav>
 
+<<<<<<< HEAD
               <Route path="/" exact component={Index} />
               <Route
                 path="/search/"
@@ -103,12 +103,36 @@ class RentalManager extends Component {
               />
             </div>
           </Router>
+=======
+
+                <Route path="/" exact component={Index} />
+                <Route
+                  path="/search/"
+                  component={() => {
+                    return <Search addToLibraryCallback={this.addToLibrary} />;
+                  }}
+                />
+                <Route
+                  path="/library/"
+                  component={() => {
+                    return <Library setMovieCallback={this.setMovie} />;
+                  }}
+                />
+                <Route
+                  path="/customers/"
+                  component={() => {
+                    return <Customers setCustomerCallback={this.setCustomer} />;
+                  }}
+                />
+              </div>
+            </Router>
+
+>>>>>>> 0cdeb687422c8771cb45c54d9de48ba1330e3ff1
         </header>
       </div>
     );
   }
 }
 
-RentalManager.propTypes = {};
 
 export default RentalManager;

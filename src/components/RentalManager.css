@@ -2,19 +2,16 @@
   text-align: center;
 }
 
-/* .header__controls {
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-} */
+.nav-bar {
+  display: inline-flex;
 
-/* .header__item {
-  border: .5em solid rgb(123, 249, 108);
-  border-radius: 1em;
-  -ms-flex: 0 1 auto;
-      flex: 0 1 auto;
-} */
 
 .navbar__nav {
+
+}
+
+.nav-bar__nav {
+
   display: -ms-flexbox;
   display: flex;
   -ms-flex-direction: row;
@@ -24,7 +21,7 @@
   height: 100%;
 }
 
-.navbar__nav-item {
+.nav-bar__nav-item {
   background-color: rgb(233, 233, 233);
   display: -ms-inline-flexbox;
   display: inline-flex;
@@ -33,11 +30,13 @@
   -ms-flex-align: center;
   align-items: center;
   font-size: 12px;
+  padding: 2rem;
+  width: 10rem;
 }
 
 /* Not sure if this is valid BEM, but need the
 increased specificity to override built-in styles */
-.navbar__nav .navbar__nav-item {
+.nav-bar__nav .nav-bar__nav-item {
   color: black;
   text-decoration: none;
 }
