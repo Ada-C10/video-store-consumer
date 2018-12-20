@@ -58,6 +58,10 @@ class App extends Component {
     this.setState({status: message});
   }
 
+  clearStatusMessage = (message) => {
+    this.setState({status: undefined});
+  }
+
   checkoutMovie = () => {
     if (this.state.selectedMovie && this.state.selectedCustomer) {
       const rentalUrl = this.state.selectedMovie ?
@@ -126,7 +130,7 @@ class App extends Component {
 
             <div className="status-bar">
               {this.state.status &&
-                <StatusBar message={this.state.status}/>}
+                <StatusBar message={this.state.status} clearMessageCallback={this.clearStatusMessage} />}
                 </div>
 
                 <Route path="/search"

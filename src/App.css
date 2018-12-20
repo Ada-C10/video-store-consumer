@@ -117,7 +117,18 @@ p.rental-selection__label {
 .status-bar {
   background-color: #7bf96c;
   border: 1px solid #000;
+  /* display: flex;
+  justify-content: space-between; */
+  padding: 0.5rem;
+}
+.status-bar div {
   display: flex;
   justify-content: space-between;
-  padding: 0.5rem;
+}
+
+.status-bar button{
+  background-color: inherit;
+  border: none;
+  cursor: pointer;
+  font: 400 11px system-ui;
 }
