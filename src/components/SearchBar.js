@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import './SearchBar.css';
 import axios from 'axios';
 import Movie from './Movie.js'
+import { Button } from 'react-bootstrap';
+
 
 const QUERY_URL ="http://localhost:3000/movies?query=";
 const MOVIES_URL ="http://localhost:3000/movies/";
@@ -85,7 +87,7 @@ class SearchBar extends Component {
       className="search-bar"
       placeholder="Filter Movies"
       />
-      <input type="submit" value="submit" onClick={ this.onSubmit } />
+      <Button bsStyle="info" type="submit" value="submit" onClick={ this.onSubmit } > Search</Button>
       {this.displayMovies()}
       </section>
 

@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Media } from 'react-bootstrap';
+import { Grid } from 'react-bootstrap';
+import { Row} from 'react-bootstrap';
+import { Col } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
+
 
 
 class Movie extends Component {
@@ -23,26 +27,50 @@ class Movie extends Component {
 
     return (
       <div>
-        <Media>
-         <Media.Left>
-             <img src={this.props.imageUrl} alt={this.props.title} />
-         </Media.Left>
 
-         
-        <h4>{this.props.title}</h4>
-        <section>
-          {this.props.overview}
-        </section>
+      <Grid>
 
-        {this.props.isInLibrary && (
-          <button onClick={this.handleClick}>Select for Rental</button>
-        )}
-        {!this.props.isInLibrary && (
-          <button onClick={this.handleClickAddRental}>Add to Rental Library</button>
-        )}
+       <Row className="show-grid">
+         <Col xs={6} md={4}>
+           <img src={this.props.imageUrl} alt={this.props.title}/>
+         </Col>
+         <Col xs={6}  md={4} className="align-items-center">
+           <h5>{this.props.overview}</h5>
+         </Col>
+         <Col xs={6} md={4}>
+           {this.props.isInLibrary && (
+             <Button bsStyle="info" onClick={this.handleClick}>Select for Rental</Button>
+           )}
+           {!this.props.isInLibrary && (
+             <Button bsStyle="info" onClick={this.handleClickAddRental}>Add to Rental Library</Button>
+           )}
+         </Col>
 
-        </Media>
+       </Row>
+      </Grid>
       </div>
+
+
+        // <Media>
+        //  <Media.Left>
+        //      <img src={this.props.imageUrl} alt={this.props.title} />
+        //  </Media.Left>
+        //
+        //  <Media.Body>
+        //    <Media.Heading>{this.props.title}</Media.Heading>
+        //    <p>
+        //     {this.props.overview}
+        //    </p>
+        //
+        //       {this.props.isInLibrary && (
+        //         <Button bsStyle="info" onClick={this.handleClick}>Select for Rental</Button>
+        //       )}
+        //       {!this.props.isInLibrary && (
+        //         <Button bsStyle="info" onClick={this.handleClickAddRental}>Add to Rental Library</Button>
+        //       )}
+        //
+        //   </Media.Body>
+        // </Media>
     )
   }
 }
