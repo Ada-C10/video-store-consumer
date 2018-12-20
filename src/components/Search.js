@@ -58,7 +58,7 @@ class Search extends Component {
 
     axios.post(POSTURL, movie_data)
     .then((response) => {
-      console.log("Axios post sent with: ", response.data)
+      console.log("Axios post sent with: ", movie_data)
     })
     .catch((error) => {
       // code here

@@ -11,7 +11,9 @@ class Movie extends Component {
 
   clickHandler = () => {
     console.log("in movie click handler", this.props);
+  // if movie is not in library, clickHander is addToLibray
     this.props.addToLibraryCallback(this.props);
+    // if movie is already in library, handler is to addRental
   }
 
   render () {
