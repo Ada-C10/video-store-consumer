@@ -1,16 +1,14 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import './styles/Customer.css';
+import React from 'react';
+import './styles/SelectedMovie.css';
 
+const SelectedMovie = ({id, title, overview, release_date, image_url}) => {
 
-class SelectedMovie extends Component {
-  constructor() {
-    super();
-  }
+  return (
+    <div className="selected-movie">
+      
+    </div>
+  );
+};
 
-  render () {
-    return
-  }
-}
 
 export default SelectedMovie;

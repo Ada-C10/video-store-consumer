@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
+import Navbar from './components/Navbar';
 import Library from './components/Library';
 import CustomerList from './components/CustomerList';
 import Search from './components/Search';
@@ -13,14 +14,7 @@ class App extends Component {
         <div className="App">
           <header className="App-header">
             <h1 className="App-title">Video Consumer Placeholder Title</h1>
-            <nav className="navbar">
-              <ul>
-                <li><Link to="/">Homepage</Link></li>
-                <li><Link to="/search">Search</Link></li>
-                <li><Link to="/library">Library</Link></li>
-                <li><Link to="/customers">Customers</Link></li>
-              </ul>
-            </nav>
+            <Navbar />
           </header>
 
           <Route path="/" exact component={Home} />
@@ -28,7 +22,9 @@ class App extends Component {
           <Route path="/search/" component={Search} />
           <Route path="/customers/" component={CustomerList} />
         </div>
+
       </Router>
+
     );
   }
 }
