@@ -11,12 +11,13 @@ class MovieList extends Component {
     super(props);
 
     this.state = {
-      errorMessage: "",
-      movies: []
+      status: "",
+      movies: [],
     };
   }
 
 addmovie = (movie) => {
+  console.log(movie);
 
   movie = {...movie};
   movie.inventory = 5
@@ -25,11 +26,18 @@ addmovie = (movie) => {
   movie.image_url = movie.image_url.slice(31,last)
   axios.post("http://localhost:3000/movies", movie)
   .then((response) => {
-      console.log(response);
+      this.setState({
+        status: `The movie titled ${movie.title} was sucessfully added`
+      })
   })
   .catch((error) => {
+    let message = ""
+    if (error.message == "Request failed with status code 400") {
+      message = `The movie titled ${movie.title} is already in your list`
+    }
+
     this.setState({
-      errorMessage: error.toString()
+      status: message
     })
   });
 
@@ -81,7 +89,7 @@ addmovie = (movie) => {
 
     return (
       <section>
-
+      <h4>{this.state.status !== "" ? this.state.status: "" }</h4>
       <SearchMovieForm searchResultsCallback= {this.returnResults}/>
       <ul>
       { this.state.movies !== [] && this.makeMovieList(this.state.movies)}

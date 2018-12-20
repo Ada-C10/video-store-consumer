@@ -16,7 +16,8 @@ class VideoStore extends Component {
       selectedCustomer: "none",
       selectedMovie: "none",
       errorMessage: "",
-      returnedMovie: null
+      returnedMovie: null,
+      statusSearch: ""
     };
   }
 
@@ -141,6 +142,7 @@ class VideoStore extends Component {
       </li>
       </ul>
       <h4>{this.state.errorMessage ? this.state.errorMessage: "" }</h4>
+      <h4>{this.state.errorMessage !== "" ? this.state.errorMessage: "" }</h4>
 
       <div>{this.state.selectedCustomer === "none" ? this.state.selectedCustomer
        : this.state.selectedCustomer.name}</div>
@@ -157,8 +159,7 @@ class VideoStore extends Component {
 
       <Route path="/movies" render={(props) => <MovieListShow {...props} findMovieProp={this.findMovie} />}/>
       <Route path="/customers" render={(props) => <CustomerListShow {...props} findCustomerProp={this.findCustomer} />}/>
-      <Route path="/search" component={SearchShow} />
-
+      <Route path="/search" render={(props) => <SearchShow {...props} statusSearchProp={this.state.statusSearch} />}/>
       <Route path="/overdue" render={(props) => <OverdueShow {...props} returnedMovieProp={this.state.returnedMovie} findMovieProp={this.findMovie} findCustomerProp={this.findCustomer} />}/>
 
       </div>
@@ -188,10 +189,10 @@ class VideoStore extends Component {
     );
   }
 
-  function SearchShow() {
+  function SearchShow(props) {
     return (
       <div>
-      <Search/>
+      <Search statusSearchProp={props.statusSearchProp}/>
       </div>
     );
   }
