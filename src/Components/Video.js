@@ -37,7 +37,7 @@ class Video extends React.Component {
     return (
       <section>
         <div className="movie-item">
-        <img src={this.props.image_url}/>
+        <img className="video-img"src={this.props.image_url}/>
           <div className="movie-details">
             <h2>{this.props.title}</h2>
             <p>{this.props.release_date}</p>
