@@ -17,7 +17,6 @@ const CustomerList = (props) => {
 
   return (
     <section>
-      <p>Loaded {customerList.length} customers </p>
       <div>
         {customerList}
       </div>

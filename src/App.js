@@ -34,12 +34,15 @@ class App extends Component {
          }
          return newMovie;
        })
-       this.setState({movieList: movies})
+       this.setState({
+         movieList: movies,
+         message: `Successfully loaded ${movies.length} movies from the rental library`
+       })
      })
      .catch((error) => {
        console.log(error.message);
        this.setState({
-         errorMessage: error.message,
+         message: error.message,
        })
      })
 
@@ -52,13 +55,16 @@ class App extends Component {
           }
           return newCustomer;
         })
-        this.setState({customerList: customers})
+        this.setState({
+          customerList: customers,
+          message: `Loaded ${customers.length} customers successfully`
+        })
         console.log(this.state);
       })
       .catch((error) => {
         console.log(error.message);
         this.setState({
-          errorMessage: error.message,
+          message: error.message,
         })
       })
  }
@@ -107,7 +113,7 @@ class App extends Component {
       })
       .catch( (error) => {
         this.setState({
-          errorMessage: `Failure ${error.message}`,
+          message: `Failure ${error.message}`,
         });
       });
     this.setState({
@@ -137,7 +143,9 @@ class App extends Component {
        return newResult
      })
      this.setState ({
-       queryList: searchResults
+       queryList: searchResults,
+       message: `Found ${searchResults.length} results for ${query}`
+
      });
      console.log(this.state);
 
@@ -146,7 +154,7 @@ class App extends Component {
      console.log(error.message);
      console.log("ERROR")
      this.setState({
-       errorMessage: error.message,
+       message: error.message,
      });
 
    });
@@ -174,10 +182,14 @@ class App extends Component {
      this.setState({
        movieList: movieList,
        message: messageAlert,
+
      })
    })
    .catch( (error) => {
      console.log(error)
+     this.setState({
+       message: error.message
+     })
    })
  }
 
@@ -218,7 +230,11 @@ class App extends Component {
                       addRentalCallback={this.checkOutRental} /></li>
              </ul>
            </nav>
-           <div>{this.state.message}</div>
+           <div className="alert">
+            <span className="closebtn"></span>
+            <a href="#" className="close" data-dismiss="alert" aria-label="close">&times;</a>
+            {this.state.message}
+           </div>
            <Route path='/library/' render={() =>
              <Library movies={this.state.movieList} rentMovieCallback={this.onSelectMovie} />} />
            <Route path='/customers/' render={() =>

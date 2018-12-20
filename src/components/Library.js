@@ -14,7 +14,6 @@ const Library = (props) => {
 
   return (
     <section>
-      <p>Successfully loaded {movieList.length} movies from the rental library</p>
       <div className="movie-list">
         {movieList}
       </div>
