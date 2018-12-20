@@ -24,9 +24,15 @@
 
 .showPageToUser {
   padding-top: 1em;
-  border: solid 2px black;
+  display: block;
 }
 
+.item-list__container {
+  display: block;
+  border: solid 1px black;
+  text-align: center;
+
+}
 nav ul {
   list-style: none;
   display: flex;

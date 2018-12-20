@@ -154,13 +154,10 @@ class Library extends React.Component {
               </ul>
             </nav>
           </header>
-          <div>
             {this.showMessageWhenAvailable()}
-          </div>
           <section className="showPageToUser">
-            <Route exact={true} path="/Search" render={() => <Search getMessage={this.showMessageSearch}/>} />
 
-
+              <Route exact={true} path="/Search" render={() => <Search getMessage={this.showMessageSearch}/>} />
             <Route path="/VideoCollection"
               render={() => <VideoCollection  addToRentClickHander= {this.addToRent} getMessage={this.showMessageVideo}/> } />
             <Route path="/CustomerCollection" render={() => <CustomerCollection addToSelectCustomerHandler={this.selectNewCustomer}

@@ -1,5 +1,6 @@
 import React from 'react';
 import propTypes from 'prop-types';
+import './Video.css'
 
 class Video extends React.Component {
   constructor(props) {
@@ -19,13 +20,13 @@ class Video extends React.Component {
 
   changeButton = () => {
     if (this.props.search === false) {
-      return <button
+      return <button className="movie-button"
         onClick={ this.addToRentClickHander}>
         Select for Rental
       </button>
     }
     else if (this.props.search === true) {
-      return <button
+      return <button className="movie-button"
         onClick={ this.addMovieToCollection}>
         Add to Library
       </button>
@@ -35,10 +36,14 @@ class Video extends React.Component {
   render () {
     return (
       <section>
-        <h3>{this.props.title}</h3>
-        <p>{this.props.release_date}</p>
+        <div className="movie-item">
         <img src={this.props.image_url}/>
-        {this.changeButton()}
+          <div className="movie-details">
+            <h2>{this.props.title}</h2>
+            <p>{this.props.release_date}</p>
+          </div>
+            {this.changeButton()}
+        </div>
       </section>
     )
   }
