@@ -19,18 +19,16 @@
   margin: 5px;
 }
 
-
 .status-bar {
   display: -ms-flexbox;
   display: flex;
   -ms-flex-pack: center;
   justify-content: center;
   padding: 2rem;
-
 }
 
 .status-bar__text {
-  margin: .4em;
+  margin: 0.4em;
 }
 
 .rental-selection {
@@ -39,40 +37,45 @@
   grid-template-rows: -webkit-min-content 1fr;
   grid-template-rows: min-content 1fr;
   text-align: center;
-
-  background-color: rgb(233, 233, 233);
+  border-radius: 25px;
+  background-color: red;
 
   width: 12em;
 
-  margin: 0 .5em;
+  margin: 0 0.5em;
 }
 
 .rental-selection__label {
   border-bottom: 2px solid rgb(89, 89, 89);
-  border-top-left-radius: .8em;
-  border-top-right-radius: .8em;
-  background-color: rgb(207, 207, 207);
-  padding: .3em;
+  border-top-left-radius: 0.8em;
+  border-top-right-radius: 0.8em;
+  background-color: white;
+  padding: 0.3em;
   font-size: 12px;
+  color: green;
+  font-weight: bold;
 }
 
 .rental-selection__name {
   margin: 0;
   font-size: 20px;
-  padding: .3em;
+  padding: 0.3em;
   overflow: hidden;
   max-height: 2.5em;
   align-self: center;
 }
 
-
 .new-rental {
   display: -ms-flexbox;
   display: flex;
   -ms-flex-pack: distribute;
-      justify-content: space-around;
+  justify-content: space-around;
 }
 
 .new-rental__check-out-button {
-  background-color: rgb(233, 233, 233);
+  background-color: white;
+  border: 3px solid red;
+  border-radius: 25px;
+  color: green;
+  font-weight: bold;
 }

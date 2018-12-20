@@ -4,11 +4,11 @@
   overflow: hidden;
   margin: 2em;
 
-  background-color: rgb(233, 233, 233);
+  background-color: blue;
 }
 
 .item__button {
-  background-color: rgb(207, 207, 207);
+  background-color: white;
   font-size: 18px;
 }
 

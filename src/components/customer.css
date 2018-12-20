@@ -5,7 +5,6 @@
   display: grid;
   grid-template-columns: 4fr 1fr;
   text-align: center;
-
   align-content: center;
 }
 .customer-container-box {
@@ -23,6 +22,7 @@
 }
 .customer-item__button {
   font-size: 18px;
+  background-color: white;
 }
 .message p {
   background-color: #8fb996;
