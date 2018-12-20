@@ -15,15 +15,18 @@ class LibraryContainer extends Component {
   }
 
   componentDidMount() {
-    const type = this.props.type
-    const URL = `http://localhost:3000/${ type.toLowerCase() }s`
+    const type = this.props.type;
+    const URL = `http://localhost:3000/${ type.toLowerCase() }s`;
+
+    const mediatype = type === 'Movie' ? 'animes' : 'custyBBs';
 
     axios.get(URL)
       .then((res) => {
-        this.setState({ collection: res.data })
+        this.setState({ collection: res.data });
+        this.props.statusCB(`Successfully loaded ${res.data.length} ${mediatype}!! *UwU*`);
       })
       .catch((err) => {
-        alert(`hm couldn't load ${this.props.type}s for some reason. try refresh.`)
+        this.props.statusCB(`hm.. couldn't the ${mediatype}... maybe try refresh?`);
         console.log(err);
       });
   }

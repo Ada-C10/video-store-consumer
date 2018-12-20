@@ -23,15 +23,14 @@ class SearchContainer extends React.Component {
 
 
   addMovieToLibrary = (movie) => {
-
-    console.log(movie.image_url, 'hi');
-
     const pic_url = movie.image_url.substring(31);
 
     axios.post(ADD_URL + `movies?title=${movie.title}&overview=${movie.overview}&release_date=${movie.rerelease_date}&pic_url=${pic_url}&external_id=${movie.external_id}`)
       .then(() => {
-        })
+        this.props.statusCB(`Successfully added ${movie.title} to the library!`);
+      })
       .catch((error) => {
+        this.props.statusCB(`Something went wrong when adding ${movie.title} to the library...`)
         console.log(error);
       });
   }

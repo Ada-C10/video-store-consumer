@@ -15,15 +15,14 @@ class NewRental extends Component {
     const due_date = [year, month, day].join('-')
 
     axios.post(`http://localhost:3000/rentals/${this.props.movie}/check-out?customer_id=${this.props.cust_id}&due_date=${due_date}`)
-      .then((res) => {
+      .then(() => {
+        this.props.statusCB(`"${this.props.movie}" successfully checked out by ${this.props.customer}!`);
         this.props.clearCB();
-        alert('consider that movie checkd out by that person you told me!')
-        // set status
       })
       .catch((err) => {
         console.log(err);
         this.props.clearCB();
-        alert('could not create new rental');
+        this.props.statusCB('could not create new rental :(')
       });
   }
 

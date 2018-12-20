@@ -27,7 +27,6 @@ class App extends Component {
       movie: '',
       customer: '',
       cust_id: '',
-      status: '',
     });
   }
 
@@ -37,6 +36,20 @@ class App extends Component {
     if (obj.name) {
       newState.cust_id = obj.id;
     }
+
+    this.setState(newState);
+  }
+
+  status = (txt) => {
+    let newState = this.state;
+    newState.status = txt;
+
+    this.setState(newState);
+  }
+
+  clearStatus = () => {
+    let newState = this.state;
+    newState.status = '';
 
     this.setState(newState);
   }
