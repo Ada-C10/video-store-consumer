@@ -5,7 +5,7 @@ import './Movie.css';
 
 const Movie = (props) => {
 
-  const date = props.release_date.slice(0,4);
+  const date = props.release_date === null ? "" : props.release_date.slice(0,4);
 
   return (
       <div className="movie-card">
