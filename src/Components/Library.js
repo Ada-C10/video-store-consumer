@@ -57,25 +57,14 @@ class Library extends React.Component {
     })
     .catch((errors) => {
       console.log(errors.response.data.errors);
-      // const currentErrors = this.state.errors;
-      // currentErrors.push(errors.response.data.errors)
-      //
-      //
-      // this.setState({
-      //   errors: currentErrors,
-      // })
 
-        this.setState({
-          message: `Unable to rent: no such  ${Object.keys(errors.response.data.errors)} as "None"`,
-        })
-        this.showMessageVideo(this.state.message);
+      this.setState({
+        message: `Unable to rent: no such  ${Object.keys(errors.response.data.errors)} as "None"`,
+      })
+      this.showMessageVideo(this.state.message);
 
     })
   }
-
-  // showErrors = () => {
-  //   this.state.
-  // }
 
   showMessageVideo = (message) => {
     this.setState({
@@ -106,19 +95,40 @@ class Library extends React.Component {
             <nav>
               <ul>
                 <li>
-                  <button>
-                    <Link to="/VideoCollection">Library</Link>
-                  </button>
+                  <Link to="/VideoCollection">
+                    <ul className="iconButtons">
+                      <li>
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTa5bvAuGdLZFQtPIMFfaadrp57KtLrRoWvbdro_GwMyALcM4y4UA" alt="film roll" className="Img"/>
+                      </li>
+                      <li>
+                        <label>Library</label>
+                      </li>
+                    </ul>
+                  </Link>
                 </li>
                 <li>
-                  <button>
-                    <Link to="/CustomerCollection">Customers</Link>
-                  </button>
+                  <Link to="/CustomerCollection">
+                    <ul className="iconButtons">
+                      <li>
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSclOKgNflUP6HlIJA0bZelbTjiQiZ4a-wgJWAkeU8wdzp314FE" alt="people to represent customers" className="Img"/>
+                      </li>
+                      <li>
+                        <label>Customers</label>
+                      </li>
+                    </ul>
+                  </Link>
                 </li>
                 <li>
-                  <button>
-                    <Link to="/Search">Search</Link>
-                  </button>
+                  <Link to="/Search">
+                    <ul className="iconButtons">
+                      <li>
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHvV7jmSzWk6CXp_l3bFBdY239ONNa6B6kWKFpzp9prf9uaDeOeg" alt="magnifying glass to represent search" className="Img"/>
+                      </li>
+                      <li>
+                        <label>Search</label>
+                      </li>
+                    </ul>
+                  </Link>
                 </li>
                 <li>
                   <label>Selected Movie</label>
@@ -145,9 +155,9 @@ class Library extends React.Component {
 
 
             <Route path="/VideoCollection"
-            render={() => <VideoCollection  addToRentClickHander= {this.addToRent} getMessage={this.showMessageVideo}/> } />
+              render={() => <VideoCollection  addToRentClickHander= {this.addToRent} getMessage={this.showMessageVideo}/> } />
             <Route path="/CustomerCollection" render={() => <CustomerCollection addToSelectCustomerHandler={this.selectNewCustomer}
-            getMessage={this.showMessageCust}/>}/>
+              getMessage={this.showMessageCust}/>}/>
           </section>
         </section>
       </Router>
