@@ -59,7 +59,8 @@ class LibrarySection extends Component {
 }
 
 LibrarySection.propTypes = {
-
+  changeStatusCallback: PropTypes.func.isRequired,
+  selectMovieCallback: PropTypes.func.isRequired
 };
 
 export default LibrarySection;

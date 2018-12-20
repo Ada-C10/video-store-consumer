@@ -18,7 +18,8 @@ const Customer = (props) => {
 
 Customer.propTypes = {
   name: PropTypes.string,
-  phone: PropTypes.string
+  phone: PropTypes.string,
+  selectCustomerCallback: PropTypes.func.isRequired
 };
 
 export default Customer;

@@ -23,17 +23,21 @@ class SearchSection extends Component {
   }
 
   queryApi = (props) => {
+    this.props.changeStatusCallback('loading', 'waiting...')
     axios.get(SEARCH_MOVIES + props)
     .then((response) => {
-      // this.props.status(`Successfully loaded ${response.data.length} movies from the rental library`, 'success');
       this.setState({
         searchResults: response.data
       });
+      this.props.changeStatusCallback('success', `Successfully found ${response.data.length} movies containing ${props}`)
+      console.log(response.data.length)
+
+      //should we add a different message if zero movies are found with the given props??
     })
     .catch((error) => {
+      this.props.changeStatusCallback('error', `I'm sorry, there has been an error. Please try again.`)
       console.log('API Library call error');
       console.log(error.message);
-      // this.props.status(`Failed to load movies: ${error.message}`, 'success');
     });
   }
 
@@ -81,7 +85,7 @@ class SearchSection extends Component {
   }
 
   SearchSection.propTypes = {
-
+    changeStatusCallback: PropTypes.func.isRequired
   };
 
   export default SearchSection;

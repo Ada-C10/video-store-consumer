@@ -19,7 +19,8 @@ const Movie = (props) => {
 
 Movie.propTypes = {
   title: PropTypes.string,
-  image_url: PropTypes.string
+  image_url: PropTypes.string,
+  selectMovieCallback: PropTypes.func.isRequired
 };
 
 export default Movie;

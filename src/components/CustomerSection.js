@@ -55,7 +55,8 @@ class CustomerSection extends Component {
 }
 
 CustomerSection.propTypes = {
-
+  selectCustomerCallback: PropTypes.func.isRequired,
+  changeStatusCallback: PropTypes.func.isRequired
 };
 
 export default CustomerSection;
