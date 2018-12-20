@@ -237,13 +237,13 @@ class App extends Component {
                                       onClick={this.fetchCustomersData}>
                                     <button type="button"
                                             className="navbar-btn btn btn-default">
-                                        Customers</button>
+                                        <span className="glyphicon glyphicon-user"></span></button>
                                 </Link>
                                 <Link to="/" className="home-item"
                                         onClick={this.fetchHome}>
                                     <button type="button"
                                             className="navbar-btn btn btn-default">
-                                        Home</button>
+                                        <span className="glyphicon glyphicon-home"></button>
                                 </Link>
                                 <Link to="/rentals" className="rentals-item"
                                       onClick={this.fetchOutRentalData}>

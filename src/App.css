@@ -1,8 +1,11 @@
 @import url('https://fonts.googleapis.com/css?family=Bitter|Luckiest+Guy');
+@import url('https://fonts.googleapis.com/css?family=Montserrat|Open+Sans');
 
 .video-store {
   text-align: center;
   background-color: #222222;
+  font-family: 'Montserrat', sans-serif;
+
 }
 
 .header-controls {

@@ -5,18 +5,34 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 const Rental= (props) => {
+    function getFormattedDate(date) {
+        var year = date.getFullYear();
+
+        var month = (1 + date.getMonth()).toString();
+        month = month.length > 1 ? month : '0' + month;
+
+        var day = date.getDate().toString();
+        day = day.length > 1 ? day : '0' + day;
+
+        return year + '-' + month + '-' + day;
+    }
+    // get today's date for overdue determination
+    const today = new Date();
+    const formToday = getFormattedDate(today);
     const { id, name, title, checkout_date, due_date } = props;
+    // let due = due_date.toLocaleString();
     const handleSelect = () => {
         props.onReturnCallback(id)
     };
+    console.log(formToday > due_date);
 
     return (
-        <section className="card customer-card">
-            <section className="customer-card-content">
-                <p className="customer-name">Customer: {name}</p>
-                <p className="customer-movies-out">Movie: {title}</p>
-                <p className="customer-credit">Checked Out: {checkout_date}</p>
-                <p className="customer-credit">Due: {due_date}</p>
+        <section className="card rental-card">
+            <section className={"rental-card-content " + (formToday > due_date ? "overdue" : "current") }>
+                <p className="rental-name">Customer: {name}</p>
+                <p className="rental-title">Movie: {title}</p>
+                <p className="rental-out">Checked Out: {checkout_date}</p>
+                <p className="rental-due">Due: {due_date}  </p>
             </section>
             <button className="selectCustomer btn btn-info"
                     onClick={handleSelect}
