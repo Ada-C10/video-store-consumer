@@ -59,9 +59,9 @@ class App extends Component {
         </ul>
 
         <div className="card bg-light" >
+          <h2 class="card-text ">{this.state.selectedCustomer.name}</h2>
           <img className="card-img-top" src={this.state.selectedMovie.imageUrl} alt={this.state.selectedMovie.title}/>
           <div class="card-body">
-            <h2 class="card-text">{this.state.selectedCustomer.name}</h2>
         </div>
 
         <section >
