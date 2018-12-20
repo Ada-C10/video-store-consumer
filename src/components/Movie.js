@@ -1,18 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-// import './Movie.css';
+import './Movie.css';
 
 
 const Movie = (props) => {
-  // console.log(props)
 
+  const date = props.release_date.slice(0,4);
 
   return (
-      <div>
-        {props.title}
+      <div className="movie-card">
         <img src={props.image_url} alt={`${props.title}`} />
-        <button onClick={props.selectMovieCallback}>Select for Rental</button>
-
+        <div>
+          <h3>{props.title}, <small>{date}</small></h3>
+          <button onClick={props.selectMovieCallback}>Select</button>
+        </div>
       </div>
   )
 }
@@ -20,7 +21,8 @@ const Movie = (props) => {
 Movie.propTypes = {
   title: PropTypes.string,
   image_url: PropTypes.string,
-  selectMovieCallback: PropTypes.func.isRequired
+  release_date: PropTypes.string,
+  selectMovieCallback: PropTypes.func,
 };
 
 export default Movie;

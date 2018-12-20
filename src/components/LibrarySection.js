@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import { BrowserRouter as Router, Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 import Movie from './Movie';
@@ -37,7 +36,7 @@ class LibrarySection extends Component {
 
   render() {
 
-    const { movies } = this.state
+    const { movies } = this.state;
 
     const allMovies = movies.map((movie, i) => {
 
@@ -59,8 +58,8 @@ class LibrarySection extends Component {
 }
 
 LibrarySection.propTypes = {
-  changeStatusCallback: PropTypes.func.isRequired,
-  selectMovieCallback: PropTypes.func.isRequired
-};
+  changeStatusCallback: PropTypes.func,
+  selectMovieCallback: PropTypes.func
+}
 
 export default LibrarySection;

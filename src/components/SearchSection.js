@@ -75,8 +75,6 @@ class SearchSection extends Component {
           {searchResults.map(movie => <li key={movie.id}>{movie.title} <img src={movie.image_url} /> <button onClick={() => this.addToLibrary(movie)}>Add to Library</button></li>)}
           </ul>
 
-
-
         </div>
       )
     }

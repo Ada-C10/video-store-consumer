@@ -10,6 +10,8 @@ import CustomerSection from './components/CustomerSection';
 import SearchSection from './components/SearchSection';
 import StatusBar from './components/StatusBar';
 
+import './App.css';
+
 const RENT_MOVIE = "http://localhost:3000/rentals/";
 
 class App extends Component {
@@ -81,14 +83,11 @@ class App extends Component {
 
     return (
       <div className="video-store">
-          <header>
-            <h1>Be Kind, Rewind</h1>
-            <div>
-              <Nav />
-              <NewRental selectedCustomer={this.state.selectedCustomer} selectedMovie={this.state.selectedMovie} rentMovieCallBack={this.rentMovie}/>
-            </div>
+          <header className="video-store__header">
+            <h1>Be Kind, Rewind &lt;&lt; </h1>
+            <Nav />
+            <NewRental selectedCustomer={this.state.selectedCustomer} selectedMovie={this.state.selectedMovie} rentMovieCallBack={this.rentMovie}/>
           </header>
-          <span>Status Bar goes here.</span>
 
           <StatusBar statusClass={this.state.status.statusClass} statusMessage={this.state.status.statusMessage}/>
 

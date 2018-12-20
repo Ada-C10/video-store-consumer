@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import './SearchBar.css';
+
 class SearchBar extends React.Component {
   constructor(props) {
     super(props);
@@ -25,7 +27,7 @@ class SearchBar extends React.Component {
     return (
       <div className="search-bar">
         <form onSubmit={this.onSubmit}>
-          <input type='text' placeholder='Search Movie Titles'
+          <input type='text' placeholder={'Search Titles >>'}
             onChange={this.handleChange} />
         </form>
       </div>
