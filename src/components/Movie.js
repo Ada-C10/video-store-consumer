@@ -34,10 +34,10 @@ class Movie extends Component {
          <Col xs={6} md={4}>
            <img src={this.props.imageUrl} alt={this.props.title}/>
          </Col>
-         <Col xs={6}  md={4} className="align-items-center">
+         <Col xs={6}  md={4} className="d-flex align-items-center">
            <h5>{this.props.overview}</h5>
          </Col>
-         <Col xs={6} md={4}>
+         <Col xs={6} md={4} className="d-flex align-items-center">
            {this.props.isInLibrary && (
              <Button bsStyle="info" onClick={this.handleClick}>Select for Rental</Button>
            )}
