@@ -114,14 +114,9 @@ p.rental-selection__label {
   margin: 0;
 }
 
-.status-bar {
-  background-color: #7bf96c;
-  border: 1px solid #000;
-  /* display: flex;
-  justify-content: space-between; */
-  padding: 0.5rem;
-}
 .status-bar div {
+  background-color: #7bf96c;
+  padding: 0.25rem;
   display: flex;
   justify-content: space-between;
 }
