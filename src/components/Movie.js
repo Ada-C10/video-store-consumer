@@ -4,9 +4,6 @@ import PropTypes from 'prop-types';
 import './Movie.css';
 
 class Movie extends Component {
-  constructor(props) {
-    super(props);
-  }
   render() {
 
     return (
@@ -24,7 +21,7 @@ class Movie extends Component {
 
 Movie.propTypes = {
   title: PropTypes.string.isRequired,
-  release_date: PropTypes.string.isRequired,
+  release_date: PropTypes.string,
   overview: PropTypes.string.isRequired,
   image_url: PropTypes.string.isRequired
 };

@@ -17,7 +17,8 @@ class VideoStore extends Component {
       selectedCustomer: "none",
       selectedMovie: "none",
       errorMessage: "",
-      returnedMovie: null
+      returnedMovie: null,
+      statusSearch: ""
     };
   }
 
@@ -25,23 +26,20 @@ class VideoStore extends Component {
     const movieSelectedState = {}
     movieSelectedState["selectedMovie"] = movie
     this.setState(movieSelectedState)
-    console.log(this.state);
   }
 
   resetState = () => {
     this.setState({
-      selectedCustomer: '',
-      selectedMovie: '',
+      selectedCustomer: 'none',
+      selectedMovie: 'none',
+      errorMessage: ''
     });
   }
 
   findCustomer =(customer) => {
-    console.log(customer);
     const customerSelectedState = {}
     customerSelectedState["selectedCustomer"] = customer
     this.setState(customerSelectedState)
-    console.log(customer);
-    console.log(this.state);
   }
 
   checkOutRental  =() => {
@@ -52,7 +50,6 @@ class VideoStore extends Component {
       customer_id: this.state.selectedCustomer.id,
       due_date: today
     }
-    console.log(apiPayload);
     if (this.state.selectedCustomer !== "none" && this.state.selectedMovie !== "none") {
       axios.post(`http://localhost:3000/rentals/${this.state.selectedMovie.title}/check-out`, apiPayload)
       .then((response) => {
@@ -64,6 +61,19 @@ class VideoStore extends Component {
           errorMessage: error.message
         })
       });
+    } else if (this.state.selectedCustomer === "none" && this.state.selectedCustomer !== "none") {
+      this.setState({
+        errorMessage: "No movie selected, please select one"
+      })
+
+    } else if (this.state.selectedMovie === "none" && this.state.selectedCustomer !== "none") {
+      this.setState({
+        errorMessage: "No movie selected, please select one"
+      })
+    } else {
+      this.setState({
+        errorMessage: "No movie or customer selected"
+      })
     }
   }
 
@@ -82,26 +92,30 @@ class VideoStore extends Component {
         this.resetState();
       })
       .catch((error) => {
+        let message = ""
+        if (error.message === "Request failed with status code 404") {
+          message = "This movie has not been checked by the customer selected"
+        }
         this.setState({
-          errorMessage: error.message
+          errorMessage: message
         })
       });
+    } else if (this.state.selectedCustomer === "none" && this.state.selectedCustomer !== "none") {
+      this.setState({
+        errorMessage: "No movie selected, please select one"
+      })
+
+    } else if (this.state.selectedMovie === "none" && this.state.selectedCustomer !== "none") {
+      this.setState({
+        errorMessage: "No movie selected, please select one"
+      })
+    } else {
+      this.setState({
+        errorMessage: "No movie or customer selected"
+      })
     }
-    console.log(this.state.errorMessage);
   }
 
-  // overdueMovies  =() => {
-  //
-  //   axios.get("http://localhost:3000/rentals/overdue")
-  //   .then((response) => {
-  //     console.log(response)
-  //   })
-  //   .catch((error) => {
-  //     this.setState({
-  //       errorMessage: error.message
-  //     })
-  //   });
-  // }
   //      <Route path="/movies" render={(props) => <MovieListShow {...this.findMovie}/>}/>
   //      <Route path="/movies" component={() => <MovieListShow findMovief={this.findMovie}  />}/>
 
@@ -128,7 +142,7 @@ class VideoStore extends Component {
       <Link to="/overdue">Overdue</Link>
       </li>
       </ul>
-
+      <h4>{this.state.errorMessage !== "" ? this.state.errorMessage: "" }</h4>
 
       <div>{this.state.selectedCustomer === "none" ? this.state.selectedCustomer
       : this.state.selectedCustomer.name}</div>
@@ -145,8 +159,7 @@ class VideoStore extends Component {
 
       <Route path="/movies" render={(props) => <MovieListShow {...props} findMovieProp={this.findMovie} />}/>
       <Route path="/customers" render={(props) => <CustomerListShow {...props} findCustomerProp={this.findCustomer} />}/>
-      <Route path="/search" component={SearchShow} />
-
+      <Route path="/search" render={(props) => <SearchShow {...props} resetStateProp={this.resetState} />}/>
       <Route path="/overdue" render={(props) => <OverdueShow {...props} returnedMovieProp={this.state.returnedMovie} findMovieProp={this.findMovie} findCustomerProp={this.findCustomer} />}/>
       </section>
       </div>
@@ -176,10 +189,10 @@ class VideoStore extends Component {
     );
   }
 
-  function SearchShow() {
+  function SearchShow(props) {
     return (
       <div>
-      <Search/>
+      <Search resetStateProp={props.resetStateProp}/>
       </div>
     );
   }
