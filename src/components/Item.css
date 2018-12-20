@@ -3,8 +3,7 @@
   border-radius: 1em;
   overflow: hidden;
   margin: 2em;
-
-  background-color: blue;
+  background-color: rgb(233, 233, 233);
 }
 
 .item__button {
