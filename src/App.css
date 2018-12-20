@@ -1,5 +1,6 @@
-.App {
+.video-store-main {
   text-align: center;
+  background-image: url("https://i.cdnraw.com/previews/downloads/d/e/r/p-christmas-gingerbread-ErwpwiowlN-1.jpg");
 }
 header.header {
   background-color: white;
@@ -24,11 +25,15 @@ div img .logo {
   height: 50;
 }
 
-.App-header {
-  background-color: #6da34d;
+.main-header {
+  background-color: darkgreen;
+  /* border: 5px solid #402300; */
+  border-radius: 15px;
   height: 150px;
   padding: 20px;
   color: white;
+  width: 90%;
+  display: inline-block;
 }
 
 .App-title {
@@ -49,16 +54,13 @@ div img .logo {
     transform: rotate(360deg);
   }
 }
-.video-store {
-  text-align: center;
-  background-image: url("https://i.cdnraw.com/previews/downloads/d/e/r/p-christmas-gingerbread-ErwpwiowlN-1.jpg");
-}
+
 li.nav-bar__nav-item {
   list-style-type: none;
 }
-.rental-selection-container {
+/* .rental-selection-container {
   display: inline-block;
-}
-.rmField {
+} */
+/* .rmField {
   background-color: white;
-}
+} */

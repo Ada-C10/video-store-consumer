@@ -1,6 +1,5 @@
-.video-store {
+.video-store-rm {
   text-align: center;
-  background-color: rgb(89, 89, 89);
 }
 
 /* .header__controls {
@@ -15,14 +14,13 @@
       flex: 0 1 auto;
 } */
 
-
 .navbar__nav {
   display: -ms-flexbox;
   display: flex;
   -ms-flex-direction: row;
-      flex-direction: row;
+  flex-direction: row;
   -ms-flex-pack: distribute;
-      justify-content: space-around;
+  justify-content: space-around;
   height: 100%;
 }
 
@@ -31,9 +29,9 @@
   display: -ms-inline-flexbox;
   display: inline-flex;
   -ms-flex-direction: column;
-      flex-direction: column;
+  flex-direction: column;
   -ms-flex-align: center;
-      align-items: center;
+  align-items: center;
   font-size: 12px;
 }
 

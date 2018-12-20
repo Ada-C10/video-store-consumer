@@ -17,8 +17,8 @@ class App extends Component {
 
   render() {
     return (
-      <div className="video-store">
-        <header className="header">
+      <div className="video-store-main">
+        <header className="main-header">
           <img
             className="App-logo"
             src={

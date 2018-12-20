@@ -53,56 +53,56 @@ class RentalManager extends Component {
     setTimeout(() => this.setState({ message: "" }), 2500);
   };
 
-
   render() {
     return (
-      <div className="video-store">
-
+      <div className="video-store-rm">
         <header className="header">
+          <RentalSelection
+            currentCustomerName={this.state.currentCustomerName}
+            currentCustomerID={this.state.currentCustomerID}
+            currentMovieTitle={this.state.currentMovieTitle}
+          />
 
-            <RentalSelection currentCustomerName={this.state.currentCustomerName} currentCustomerID={this.state.currentCustomerID} currentMovieTitle={this.state.currentMovieTitle} />
+          <Router>
+            <div className="navbar">
+              <nav className="nav-bar__nav">
+                <ul className="nav-bar">
+                  <li className="nav-bar__nav-item">
+                    <Link to="/">Home</Link>
+                  </li>
+                  <li className="nav-bar__nav-item">
+                    <Link to="/search/">Go Fetch</Link>
+                  </li>
+                  <li className="nav-bar__nav-item">
+                    <Link to="/library/">Library</Link>
+                  </li>
+                  <li className="nav-bar__nav-item">
+                    <Link to="/customers/">Customers</Link>
+                  </li>
+                </ul>
+              </nav>
 
-            <Router>
-              <div className="navbar">
-                <nav className="nav-bar__nav">
-                  <ul className="nav-bar">
-                    <li className="nav-bar__nav-item">
-                      <Link to="/">Home</Link>
-                    </li>
-                    <li className="nav-bar__nav-item">
-                      <Link to="/search/">Go Fetch</Link>
-                    </li>
-                    <li className="nav-bar__nav-item">
-                      <Link to="/library/">Library</Link>
-                    </li>
-                    <li className="nav-bar__nav-item">
-                      <Link to="/customers/">Customers</Link>
-                    </li>
-                  </ul>
-                </nav>
-
-                <Route path="/" exact component={Index} />
-                <Route
-                  path="/search/"
-                  component={() => {
-                    return <Search addToLibraryCallback={this.addToLibrary} />;
-                  }}
-                />
-                <Route
-                  path="/library/"
-                  component={() => {
-                    return <Library setMovieCallback={this.setMovie} />;
-                  }}
-                />
-                <Route
-                  path="/customers/"
-                  component={() => {
-                    return <Customers setCustomerCallback={this.setCustomer} />;
-                  }}
-                />
-              </div>
-            </Router>
-          
+              <Route path="/" exact component={Index} />
+              <Route
+                path="/search/"
+                component={() => {
+                  return <Search addToLibraryCallback={this.addToLibrary} />;
+                }}
+              />
+              <Route
+                path="/library/"
+                component={() => {
+                  return <Library setMovieCallback={this.setMovie} />;
+                }}
+              />
+              <Route
+                path="/customers/"
+                component={() => {
+                  return <Customers setCustomerCallback={this.setCustomer} />;
+                }}
+              />
+            </div>
+          </Router>
         </header>
       </div>
     );
