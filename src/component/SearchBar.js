@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import PropTypes from 'prop-types';
 import "./SearchBar.css"
 import "./Movies.css"
 import Movies from './Movies'
@@ -12,6 +13,7 @@ class SearchBar extends Component {
       this.state = {
         searchValue: '',
         searchMovies: [],
+        errors: undefined
       }
     }
 
@@ -45,11 +47,12 @@ class SearchBar extends Component {
         console.log(this.state.searchMovies);
       })
       .catch((error) => {
-        console.log(error.message);
+
         this.setState({
           error: error.message,
-          // add error messages buy mapping through check validations??
         })
+
+        this.props.errorCatcherCallback(error)
       })
     }
 
@@ -65,8 +68,10 @@ class SearchBar extends Component {
       .catch((error) => {
         // What should we do when we know the post request failed?
         this.setState({
-          errorMessage: `Failure ${error.message}`,
+          errors: `Unable to find the movies you are looking for: ${error.message}`,
         })
+
+        this.props.errorCatcherCallback(this.state.errors)
       });
     }
 
@@ -92,5 +97,8 @@ class SearchBar extends Component {
 
 }
 
+SearchBar.propTypes = {
+  errorCatcherCallback: PropTypes.func,
+}
 
 export default SearchBar;

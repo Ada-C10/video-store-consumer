@@ -11,27 +11,27 @@ class AllCustomers extends Component {
     super();
     this.state = {
       customers: [],
+      errors: ""
     }
   }
 
 componentDidMount() {
   axios.get(URL)
   .then((response) => {
-    // console.log(response);
     const customers = response.data.map((customer) => {
       return customer
     })
     this.setState({
       customers: customers,
     })
-    // console.log(this.state.customers)
   })
   .catch((error) => {
     console.log(error.message);
     this.setState({
-      error: error.message,
+      errors: `Unable to view cutomers: ${error.message}`,
       // add error messages buy mapping through check validations??
     })
+    this.props.errorCatcherCallback(error)
   })
 }
 
@@ -58,6 +58,7 @@ render() {
 
 AllCustomers.propTypes = {
   updatedCustomerCallback: PropTypes.func,
+  errorCatcherCallback: PropTypes.func,
 };
 
 export default AllCustomers;

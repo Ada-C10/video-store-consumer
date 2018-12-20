@@ -15,6 +15,7 @@ class App extends Component {
         isReavelad: false,
         currentCustomer: {},
         currentMovie: {},
+        errors: undefined
       }
     }
 
@@ -29,6 +30,13 @@ class App extends Component {
       currentMovie: movie
     })
   }
+
+addError = (error) => {
+  console.log('Here to add error')
+    this.setState({
+      errors: error
+    })
+}
 
   render() {
     return (
@@ -45,13 +53,21 @@ class App extends Component {
           <div> <CheckOut
           currentMovie={this.state.currentMovie}
           currentCustomer={this.state.currentCustomer}
+          errorCatcherCallback={this.addError}
           />
           </div>
+
+          <section className="errorMessage">
+            {console.log(this.state.error)}
+            {this.state.errors ? `${this.state.errors}` : ``}
+          </section>
 
           <div>
             <Route path="/search"
             render={() =>
-              <SearchBar /> }
+              <SearchBar
+              errorCatcherCallback={this.addError}
+              /> }
             />
           </div>
 
@@ -60,6 +76,7 @@ class App extends Component {
               render={() =>
                 <AllCustomers
                 updatedCustomerCallback={this.onCheckOutCallback}
+                errorCatcherCallback={this.addError}
                 />
               }
               />
@@ -70,6 +87,7 @@ class App extends Component {
               render={() =>
                 <RentalLibrary
                 updatedMovieCallback={this.onMovieCheckOut}
+                errorCatcherCallback={this.addError}
                 />
               }/>
             </div>
