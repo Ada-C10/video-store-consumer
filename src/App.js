@@ -13,7 +13,7 @@ import axios from 'axios';
 
 //const Customers1 = () => <h2>customers</h2>;
 const checkOutRentalUrl = (title, customer_id) => {
-  return `https:localhost:3000/rentals/${title}/check-out?customer_id=${customer_id};`
+  return `https:localhost:3000/rentals/${title}/check-out?customer_id=${customer_id}`;
 }
 
 class App extends Component {
@@ -43,20 +43,24 @@ class App extends Component {
         imageUrl,
       }
     });
-    const movie = this.props.selectedMovie;
-    const customer = this.props.selectedCustomer
 
-    const url = checkOutRentalUrl(this.selectedMovie.title, this.selectedCustomer.id);
+    // const title = this.state.selectedMovie.title;
+    // const customer = this.state.selectedCustomer;
+
+    const url = checkOutRentalUrl(this.state.selectedMovie.title, this.state.selectedCustomer.id);
+
     axios.post(url)
-      .then(() => {
-        this.props.setStatus(
-          `Successfully checked out ${movie.title} to ${customer.name}`,
-          'success');
+      .then((response) => {
+        console.log("rental check-out", response);
+        // this.props.setStatus(
+        //   `Successfully checked out ${movie.title} to ${customer.name}`,
+        //   'success');
       })
       .catch((error) => {
-        this.props.setStatus(
-          `Could not check out ${movie.title} to ${customer.name}: ${error.message}`,
-          'error');
+        console.log(error.message);
+        // this.props.setStatus(
+        //   `Could not check out ${movie.title} to ${customer.name}: ${error.message}`,
+        //   'error');
       });
   }
 
@@ -70,18 +74,18 @@ class App extends Component {
 
         <h1 className="store-name">Ada Movie Rental</h1>
 
-        <ul class="nav justify-content-center nav-justified">
+        <ul className="nav justify-content-center nav-justified">
           <ButtonToolbar>
-            <li class="nav-item"><Button bsStyle="info"><Link to={'/customers'}>Customers</Link></Button></li>
-            <li class="nav-item"><Button bsStyle="info"><Link to={'/library'}>Rental Library</Link></Button></li>
-            <li class="nav-item"><Button bsStyle="info"><Link to={'/search'}>Search</Link></Button></li>
+            <li className="nav-item"><Button bsStyle="info"><Link to={'/customers'}>Customers</Link></Button></li>
+            <li className="nav-item"><Button bsStyle="info"><Link to={'/library'}>Rental Library</Link></Button></li>
+            <li className="nav-item"><Button bsStyle="info"><Link to={'/search'}>Search</Link></Button></li>
          </ButtonToolbar>
         </ul>
 
         <div className="card bg-light" >
-          <h2 class="card-text ">{this.state.selectedCustomer.name}</h2>
+          <h2 className="card-text ">{this.state.selectedCustomer.name}</h2>
           <img className="card-img-top" src={this.state.selectedMovie.imageUrl} alt={this.state.selectedMovie.title}/>
-          <div class="card-body">
+          <div className="card-body">
         </div>
 
         <section >
