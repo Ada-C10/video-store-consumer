@@ -71,6 +71,7 @@
   display: flex;
   -ms-flex-pack: distribute;
       justify-content: space-around;
+  padding: 2rem;
 }
 
 .new-rental__check-out-button {
