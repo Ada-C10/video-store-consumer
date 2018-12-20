@@ -1,20 +1,20 @@
 .default {
-  color: blue;
-  background-color: yellow;
   display: none;
+}
+
+.loading {
+  background-color: lightblue;
 }
 
 .success {
   background-color: lightgreen;
 }
 
+.error {
+  background-color: salmon;
+}
 
 .new {
   background-color: blue;
   color: yellow;
-}
-
-
-.loading {
-  background-color: lightblue;
 }

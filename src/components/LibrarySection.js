@@ -17,7 +17,7 @@ class LibrarySection extends Component {
   }
 
   componentDidMount() {
-    this.props.changeStatusCallback('loading', 'waiting')
+    this.props.changeStatusCallback('loading', 'waiting...')
     axios.get(GET_MOVIES)
     .then((response) => {
       // this.props.status(`Successfully loaded ${response.data.length} movies from the rental library`, 'success');
@@ -25,10 +25,10 @@ class LibrarySection extends Component {
       this.setState({
         movies: response.data
       });
-      console.log(this.state.movies.length)
       this.props.changeStatusCallback('success', `Successfully loaded ${this.state.movies.length} movies`)
     })
     .catch((error) => {
+      this.props.changeStatusCallback('error', `I'm sorry, there has been an error. Please try again.`)
       console.log('API Library call error');
       console.log(error.message);
       // this.props.status(`Failed to load movies: ${error.message}`, 'success');

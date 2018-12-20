@@ -12,23 +12,23 @@ class CustomerSection extends Component {
     super(props);
 
     this.state = {
-      customers: [],
-      errors: []
+      customers: []
     };
   }
 
   componentDidMount() {
-
+    this.props.changeStatusCallback('loading', 'waiting...')
     axios.get(ALL_CUSTOMERS_URL)
     .then((response) => {
       this.setState({
         customers: response.data,
       });
+      this.props.changeStatusCallback('success', `Successfully loaded ${this.state.customers.length} customers`)
     })
     .catch((error) => {
-      this.setState({
-        error: error.message
-      });
+      this.props.changeStatusCallback('error', `I'm sorry, there has been an error. Please try again.`)
+      console.log('API Library call error');
+      console.log(error.message);
     });
   }
 
