@@ -9,9 +9,11 @@ const Movie = (props) => {
 
   return (
       <div className="movie-card">
-        <h3>{props.title}, {date}</h3>
         <img src={props.image_url} alt={`${props.title}`} />
-        <button onClick={props.selectMovieCallback}>Select for Rental</button>
+        <div>
+          <h3>{props.title}, <small>{date}</small></h3>
+          <button onClick={props.selectMovieCallback}>Select</button>
+        </div>
       </div>
   )
 }

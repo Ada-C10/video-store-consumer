@@ -67,7 +67,7 @@ class App extends Component {
     return (
       <div className="video-store">
           <header className="video-store__header">
-            <h1>Be Kind, Rewind</h1>
+            <h1>Be Kind, Rewind &lt;&lt; </h1>
             <Nav />
             <NewRental selectedCustomer={this.state.selectedCustomer} selectedMovie={this.state.selectedMovie} rentMovieCallBack={this.rentMovie}/>
           </header>
