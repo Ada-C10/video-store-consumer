@@ -30,7 +30,7 @@ class Customers extends React.Component {
   }
 
   componentDidMount(){
-    const customersURL = this.props.baseUrl + "customers/";
+    const customersURL = this.props.baseUrl + "customers?n=250";
 
     this.props.setStatusMessageCallback("Loading Customers...");
     axios.get(customersURL)
