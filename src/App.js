@@ -8,10 +8,10 @@ import SearchCollection from './Components/SearchCollection';
 import Library from './Components/Library';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faUsers, faHome, faFilm, faChevronCircleDown, faChevronCircleUp, faSearch } from '@fortawesome/free-solid-svg-icons';
+import { faUsers, faHome, faFilm, faChevronCircleDown, faChevronCircleUp, faSearch, faInfoCircle } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-library.add(faUsers, faHome, faFilm, faChevronCircleDown, faChevronCircleUp, faSearch);
+library.add(faUsers, faHome, faFilm, faChevronCircleDown, faChevronCircleUp, faSearch, faInfoCircle);
 
 class App extends Component {
     constructor(props) {

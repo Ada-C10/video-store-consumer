@@ -3,7 +3,7 @@ import React from 'react'
 import './Customer.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-
+import {Button, OverlayTrigger, Popover } from 'react-bootstrap'
 
 
 const Movie = (props) => {
@@ -15,6 +15,11 @@ const Movie = (props) => {
         // console.log('this props - movie', id);
         props.selectedMovieCallback(id)
     };
+    const popoverHoverFocus = (
+        <Popover id="popover-trigger-hover-focus" title="Movie Description">
+            <strong>{title}</strong> {overview}
+        </Popover>
+    );
 
     return (
         <section className="card customer-card">
@@ -22,7 +27,13 @@ const Movie = (props) => {
                 <p className="movie-name">{title}</p>
                 <p className="movie-releaseDate">{releaseDate}</p>
                 <img src={image} alt={`${title}`} className="movie-image_url" />
-                <p className="movie-overview">{overview}</p>
+                <OverlayTrigger
+                    trigger={['hover', 'focus']}
+                    placement="right"
+                    overlay={popoverHoverFocus}
+                >
+                    <Button><FontAwesomeIcon icon="info-circle" size='2x'/></Button>
+                </OverlayTrigger>
             </section>
                 <button className="selectCustomer btn btn-info"
                     onClick={handleSelect}
