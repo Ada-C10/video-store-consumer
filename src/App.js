@@ -79,6 +79,8 @@ class App extends Component {
             <li className="nav-item"><Button bsStyle="info"><Link to={'/customers'}>Customers</Link></Button></li>
             <li className="nav-item"><Button bsStyle="info"><Link to={'/library'}>Rental Library</Link></Button></li>
             <li className="nav-item"><Button bsStyle="info"><Link to={'/search'}>Search</Link></Button></li>
+            <li className="nav-item"><Button bsStyle="info" onClick={this.checkOut}>Check Out </Button></li>
+
          </ButtonToolbar>
         </ul>
 
