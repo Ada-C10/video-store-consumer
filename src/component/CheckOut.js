@@ -43,20 +43,21 @@ class CheckOut extends Component {
       due_date,
     }
 
-    axios.post(url, params)
+  axios.post(url, params)
     .then((response) => {
       console.log(response);
     })
     .catch((error) => {
-      // What should we do when we know the post request failed?
       this.setState({
         errorMessage: `Failure ${error.message}`,
       })
+      console.log(this.errorMessage)
     });
   };
 
   render() {
     return(
+      //need to fix this in place to view it when scrolling with movies
       <section>
         <section>{this.props.currentCustomer.name}</section>
         <section>{this.props.currentMovie.title}</section>

@@ -1,0 +1,21 @@
+.nav-item {
+  padding-left: 10px;
+}
+
+li > a{
+  color: black
+}
+
+li > a:hover {
+  color: coral;
+  text-decoration: none;
+}
+
+.search {
+  padding-right: 10px
+}
+
+.searchBar {
+  padding-left: 20em;
+  margin-left: 10px;
+}

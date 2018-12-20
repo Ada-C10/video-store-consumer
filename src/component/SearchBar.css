@@ -1,0 +1,20 @@
+.card-group {
+  display: flex;
+  height: 700px;
+
+  padding-top: 5%;
+  padding-bottom: 700px;
+  font-size: .85em;
+  display: inline-block;
+  margin: 1em;
+}
+
+.search-movies {
+width: 6000px;
+}
+
+.form {
+  position: fixed; /* or absolute */
+  top: 10%;
+  left: 40%;
+}

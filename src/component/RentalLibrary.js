@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types'
+import './RentalLibrary.css'
 import Movies from './Movies'
 
 import axios from 'axios';
@@ -52,8 +53,8 @@ render() {
     })
 
   return (
-    <div>
-    {movies}
+    <div className="card-group">
+      {movies}
     </div>
   )
 }

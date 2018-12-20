@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import "./SearchBar.css"
+import "./Movies.css"
 import Movies from './Movies'
 
 const URL = "http://localhost:3000/movies?query="
@@ -25,7 +27,7 @@ class SearchBar extends Component {
       axios.get(url)
       .then((response) => {
         const movies = response.data.map((movie, i) => {
-          let title = `Add ${movie.title} to Video Store`
+          let title = `Add ${movie.title} to Hollywood Video`
           return <Movies
             key={i}
             id={movie.id}
@@ -71,16 +73,19 @@ class SearchBar extends Component {
     render() {
       return (
         <div className="search-container" >
-        <section>
+        <section className="form">
           <input
           onChange={this.onSearchChange}
           value={this.state.searchValue}
           placeholder="Search.."
           name="search-bar"
           />
-          <input type="submit" value="Submit" onClick={this.onSubmit}/>
+          <input className="button" type="submit" value="Submit" onClick={this.onSubmit}/>
         </section>
+
+        <div className="card-group search-movies">
           {this.state.searchMovies}
+        </div>
       </div>
     );
   }

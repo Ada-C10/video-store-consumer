@@ -6,13 +6,16 @@ import PropTypes from 'prop-types';
 const Movies = (props) => {
 
     return (
-      <div className="movie-container">
-        <img src={props.image} alt={props.title}/>
-        <h4><strong>{props.title}</strong></h4>
-        <p>{props.overview}</p>
-        <p>{props.releaseDate}</p>
-        <button type="button" onClick={props.callback}>{props.button}</button>
-    </div>
+
+        <div className="card">
+          <img className="card-img-top" src={props.image} alt={props.title}/>
+          <div className="card-body">
+            <sub>{props.releaseDate}</sub>
+            <h5 className="card-title">{props.title} </h5>
+            <p className="card-text">{props.overview}</p>
+            <button type="button" onClick={props.callback}>{props.button}</button>
+          </div>
+        </div>
     )
   }
 

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Link, Route } from "react-router-dom";
 import RentalLibrary from './component/RentalLibrary';
 import AllCustomers from './component/AllCustomers'
+import Navbar from './component/Navbar'
 import SearchBar from './component/SearchBar'
 import CheckOut from './component/CheckOut'
 
@@ -34,46 +35,47 @@ class App extends Component {
       <div className="App">
       <Router>
         <div>
-          <nav>
-            <ul>
-              <li><Link to="/" >Home</Link></li>
-              <li><Link to="/library" >All Rentals</Link></li>
-              <li><Link to="/customer" >Customer List</Link></li>
-              <li><Link to="/search">Search Movies</Link></li>
-              <li><CheckOut
-                  currentMovie={this.state.currentMovie}
-                  currentCustomer={this.state.currentCustomer} />
-              </li>
-            </ul>
+          <Navbar
+          allMovies={<Link to="/library" >All Rentals</Link>}
+          customers={<Link to="/customer" >Customer List</Link>}
+          search={<Link to="/search">Search Movies</Link>}
+          />
 
-          </nav>
 
-          <div>
-            <Route path="/search" component={SearchBar} />
+          <div> <CheckOut
+          currentMovie={this.state.currentMovie}
+          currentCustomer={this.state.currentCustomer}
+          />
           </div>
 
           <div>
-            <Route path="/customer"
+            <Route path="/search"
             render={() =>
-              <AllCustomers
-              updatedCustomerCallback={this.onCheckOutCallback}
-              />
-            }
+              <SearchBar /> }
             />
           </div>
 
-          <div>
-            <Route path="/library"
-            render={() =>
-              <RentalLibrary
-              updatedMovieCallback={this.onMovieCheckOut}
+            <div>
+              <Route path="/customer"
+              render={() =>
+                <AllCustomers
+                updatedCustomerCallback={this.onCheckOutCallback}
+                />
+              }
               />
-            }/>
-          </div>
+            </div>
+
+            <div>
+              <Route path="/library"
+              render={() =>
+                <RentalLibrary
+                updatedMovieCallback={this.onMovieCheckOut}
+                />
+              }/>
+            </div>
 
           </div>
-        </Router>
-
+          </Router>
       </div>
     );
   }
