@@ -15,7 +15,6 @@ class Library extends React.Component {
       selectedCustomer: "None",
       customerInfo: {},
       message: "",
-      errors: [],
     })
 
   }
@@ -39,10 +38,6 @@ class Library extends React.Component {
   }
 
   createNewRental = (customer, video) => {
-    this.setState({
-      errors: [],
-    })
-
     console.log("im in create new rental");
     const days = 7;
     const date = new Date();
@@ -85,6 +80,14 @@ class Library extends React.Component {
     this.setState({
       message: message,
     })
+  }
+
+  showMessageWhenAvailable = () => {
+    if (this.state.message.length > 0) {
+      return <div className="msgToUser">
+        {this.state.message}
+      </div>
+    }
   }
 
   render() {
@@ -144,7 +147,7 @@ class Library extends React.Component {
                 </li>
                 <li>
                   <button
-                    onClick={this.createNewRental}>
+                    onClick={this.createNewRental} className="rentalButton">
                     Check Out New Rental
                   </button>
                 </li>
@@ -152,7 +155,7 @@ class Library extends React.Component {
             </nav>
           </header>
           <div>
-            {this.state.message}
+            {this.showMessageWhenAvailable()}
           </div>
           <section className="showPageToUser">
             <Route exact={true} path="/Search" render={() => <Search getMessage={this.showMessageSearch}/>} />
