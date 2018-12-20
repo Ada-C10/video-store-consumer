@@ -115,6 +115,7 @@ class App extends Component {
     }
 
     return (
+      
       <div className="outer-container">
         <Navbar className="nav-bar" color="light" light expand="lg">
           <Nav className="ml-auto" navbar>
