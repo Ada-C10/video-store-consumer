@@ -7,7 +7,6 @@ import RentalManager from "./components/RentalManager";
 class App extends Component {
   constructor(props) {
     super(props);
-
     this.state = { message: "" };
   }
 
@@ -20,33 +19,32 @@ class App extends Component {
       <div className="video-store-main">
         <header className="main-header">
           <img
-            className="App-logo"
+            className="item1"
             src={
               "http://icons.iconarchive.com/icons/shin-ui/christmas/128/gift-icon.png"
             }
             alt="xmas present"
           />
           <img
-            className="header-art"
+            className="item2"
             src={require("./xmastree.gif")}
             alt="xmas tree"
           />
-          <img className="header-art" src={logo} alt="logo" />
+          <img className="item3" src={logo} alt="logo" />
+
           <img
-            className="header-art"
+            className="item2"
             src={require("./xmastree.gif")}
             alt="xmas tree"
           />
           <img
-            className="App-logo"
+            className="item1a"
             src={
               "http://icons.iconarchive.com/icons/shin-ui/christmas/128/gift-icon.png"
             }
             alt="xmas present"
           />
-          <div className="header__controls">
-            <h1 className="App-title">Bonkers Holiday Videos</h1>
-          </div>
+          <div className="item4"> Bonkers Holiday Videos</div>
         </header>
 
         <RentalManager changeMessageCallback={this.changeMessage} />

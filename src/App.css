@@ -1,6 +1,7 @@
 .video-store-main {
   text-align: center;
-  background-image: url("https://i.cdnraw.com/previews/downloads/d/e/r/p-christmas-gingerbread-ErwpwiowlN-1.jpg");
+  padding-top: 10px;
+  /* background-image: url("https://i.cdnraw.com/previews/downloads/d/e/r/p-christmas-gingerbread-ErwpwiowlN-1.jpg"); */
 }
 header.header {
   opacity: 50;
@@ -9,37 +10,68 @@ header.header {
   width: 90%;
   display: inline-block;
 }
-.header-art {
-  margin-left: 10px;
-  margin-right: 10px;
-  padding-left: 10px;
-  padding-right: 10px;
+.item2 {
+  margin-left: 20px;
+  padding-left: 20px;
+
   height: 80px;
+  justify-content: center;
+  align-items: center;
 }
-.App-logo {
+
+.item1 {
   animation: App-logo-spin infinite 20s linear;
   height: 80px;
+  justify-content: center;
+  align-items: center;
+
+  margin-left: 20px;
+  padding-left: 20px;
 }
-div img .logo {
+.item1a {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
+  justify-content: center;
+  align-items: center;
+
+  margin-left: 20px;
+  padding-left: 20px;
+}
+.item3 {
   width: 50;
   height: 50;
+  justify-content: center;
+  align-items: center;
+
+  margin-left: 20px;
+  padding-left: 20px;
 }
 
 .main-header {
-  background-color: darkgreen;
-  border: 5px solid gold;
+  background-color: white;
+  border: 15px solid darkgreen;
   border-radius: 15px;
+  width: 90%;
   height: 150px;
   padding: 20px;
   color: white;
   width: 90%;
-  display: inline-block;
+  display: inline-grid;
+  grid-template-columns: 240px 240px 240px 240px 240px;
+  grid-template-rows: 80px;
+  align-items: center;
 }
 
-.App-title {
-  font-size: 2em;
-  font-family: sans-serif;
+.item4 {
+  font-family: Mountains of Christmas, cursive;
+  font-size: 3em;
   color: red;
+  grid-column: 2 / span 3;
+  grid-row: 2;
+  justify-content: center;
+  align-items: center;
+  margin-left: 20px;
+  padding-left: 20px;
 }
 
 .App-intro {
@@ -58,6 +90,7 @@ div img .logo {
 li.nav-bar__nav-item {
   list-style-type: none;
 }
+
 /* .rental-selection-container {
   display: inline-block;
 } */
