@@ -19,19 +19,13 @@ class Library extends Component {
 
     const regexSearch = new RegExp(movieSearch.toLowerCase());
 
-    if (movieSearch) {
-      const matchingMovieArray = this.state.masterLibrary.filter((movie) => {
-        return regexSearch.test(movie.title.toLowerCase()) || regexSearch.test(movie.release_date.toLowerCase()) || regexSearch.test(movie.overview.toLowerCase())
-      })
-      this.setState({
-        library: matchingMovieArray
-      })
-    }
-    else{
-      this.setState({
-        library: this.state.masterLibrary
-      })
-    }
+    const matchingMovieArray = this.state.masterLibrary.filter((movie) => {
+      return regexSearch.test(movie.title.toLowerCase()) ||
+       regexSearch.test(movie.release_date.toLowerCase()) || regexSearch.test(movie.overview.toLowerCase())
+    })
+    this.setState({
+      library: matchingMovieArray
+    })
   }
 
   componentDidMount() {
