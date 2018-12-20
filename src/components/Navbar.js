@@ -4,7 +4,7 @@ import './styles/Navbar.css';
 
 import navSearchIcon from '../images/search-icon.png';
 import navLibraryIcon from '../images/film-reel.png';
-import navCustomersIcon from '../images/customers.jpg';
+import navCustomersIcon from '../images/testimonial_icon.png';
 
 class NavBar extends Component {
   render() {

@@ -3,10 +3,11 @@
   font-size: 1.5em;
 }
 
-
 .navbar a {
   color: white;
+
 }
 .navbar-icon {
   height: 8rem;
+  padding: 5px;
 }
