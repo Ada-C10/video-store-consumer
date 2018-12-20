@@ -3,6 +3,7 @@ import Movie from './Movie';
 import PropTypes from 'prop-types'
 import './Library.css';
 import axios from 'axios';
+import SearchBar from './SearchBar';
 
 class Library extends Component {
   constructor(props) {
@@ -10,7 +11,28 @@ class Library extends Component {
 
     this.state = {
       library: [],
+      masterLibrary: []
     };
+  }
+
+  searchMovie = (movieSearch) => {
+
+    const regexSearch = new RegExp(movieSearch.toLowerCase());
+
+    if (movieSearch) {
+      const matchingMovieArray = this.state.masterLibrary.filter((movie) => {
+        return regexSearch.test(movie.title.toLowerCase()) || regexSearch.test(movie.release_date.toLowerCase()) || regexSearch.test(movie.overview.toLowerCase())
+      })
+      this.setState({
+        library: matchingMovieArray
+      })
+    }
+    else{
+      console.log("in here", this.state.library)
+      this.setState({
+        library: this.state.masterLibrary
+      })
+    }
   }
 
   componentDidMount() {
@@ -22,6 +44,7 @@ class Library extends Component {
     .then((response) => {
       this.setState({
         library: response.data,
+        masterLibrary: response.data,
         message: `Successfully loaded ${response.data.length} movies from the rental library.`
       });
       this.props.setStatusMessageCallback(this.state.message);
@@ -47,7 +70,11 @@ class Library extends Component {
     });
 
     return (
+
       <div className="library">
+        <section className="search-bar-wrapper">
+          <SearchBar searchMovieCallback={this.searchMovie}/>
+        </section>
         {rentalList}
       </div>
     );
