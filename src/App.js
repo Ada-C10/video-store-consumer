@@ -47,9 +47,7 @@ class App extends Component {
       message: "",
       selectedMovie: "None",
       selectedCustomer: "None",
-      isRentalReady: false,
       makeRentalUrl: "http://localhost:3000/rentals/:title/check-out",
-      rentals: [],
     };
   }
 
@@ -87,58 +85,31 @@ class App extends Component {
     });
   }
 
-  // makeRental = () => {
-  //   this.setState({
-  //     isRentalReady: (this.state.selectedMovie != "" && this.state.selectedCustomer != "")
-  //   });
-  //   console.log(this.state.isRentalReady);
-  // }
+  makeRental = () => {
+    const ready = (this.state.selectedMovie !== "None" && this.state.selectedCustomer !== "None");
+    if (ready) {
+      console.log("rental is ready");
+      this.setState({
+        message: `Successfully checked out ${this.state.selectedMovie} to ${this.state.selectedCustomer}`,
+      });
+      return (
+        <Rental
+          movie={this.state.selectedMovie}
+          customer={this.state.selectedCustomer}
+          />
+      )
+    }
 
-  getCheckout = () => {
-    axios.post(this.state.makeRentalUrl)
-    .then((response) => {
-      console.log(response);
-    })
-    .catch((error) => {
-      console.log(error);
+    this.setState({
+      selectedMovie: "None",
+      selectedCustomer: "None",
     });
   }
 
-  postRental = () => {
-
-  }
 
   render() {
 
-    const makeRental = () => {
-      console.log(this.state.selectedMovie);
-      console.log(this.state.selectedCustomer);
-
-      if (this.state.selectedMovie !== "None" && this.state.selectedCustomer !== "None") {
-        this.setState({
-          isRentalReady: true,
-        });
-        console.log(this.state.isRentalReady);
-        if (this.state.isRentalReady) {
-          this.setState({
-            message: `Successfully checked out ${this.state.selectedMovie} to ${this.state.selectedCustomer}`,
-          });
-          console.log(this.state.message);
-          return (
-            <Rental customer={this.state.selectedCustomer}        movie={this.state.selectedMovie} url={this.state.makeRentalUrl}
-              />
-          )
-        }
-      }
-
-      this.setState({
-        selectedMovie: "None",
-        selectedCustomer: "None",
-      });
-    }
-
     return (
-      
       <div className="outer-container">
         <Navbar className="nav-bar" color="light" light expand="lg">
           <Nav className="ml-auto" navbar>
@@ -159,7 +130,7 @@ class App extends Component {
             </NavItem>
             <NavItem className="nav__links">
               <div>
-                <Button onClick={makeRental}>Check Out New Rental</Button>
+                <Button onClick={this.makeRental}>Check Out New Rental</Button>
               </div>
             </NavItem>
           </Nav>
@@ -183,8 +154,8 @@ class App extends Component {
         <Route path="/search" component={searchConst}/>
       </div>
 
-    );
+    )
   }
 }
 
-  export default App;
+export default App;
