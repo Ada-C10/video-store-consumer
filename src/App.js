@@ -6,6 +6,8 @@ import SearchBar from './components/SearchBar.js';
 import { BrowserRouter as Router, Link, Route } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
 import { ButtonToolbar } from 'react-bootstrap';
+import axios from 'axios';
+
 
 
 
@@ -74,7 +76,6 @@ class App extends Component {
             <li class="nav-item"><Button bsStyle="info"><Link to={'/library'}>Rental Library</Link></Button></li>
             <li class="nav-item"><Button bsStyle="info"><Link to={'/search'}>Search</Link></Button></li>
          </ButtonToolbar>
->>>>>>> 74fe9bbdc8c01e3d2aeb19d26c20eed0d2d9a46d
         </ul>
 
         <div className="card bg-light" >
