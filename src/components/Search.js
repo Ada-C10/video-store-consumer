@@ -52,16 +52,39 @@ class Search extends Component {
     });
   }
 
+  addMovieToLibrary = (movieId) => {
+    const addedMovie = this.state.searchResults.find( movie => movie.external_id === movieId)
+    console.log(addedMovie)
+    const addedMovieData = {
+      title: addedMovie.title,
+      overview: addedMovie.overview,
+      release_date: addedMovie.release_date,
+      image_url: addedMovie.image_url,
+      external_id: addedMovie.external_id,
+      inventory: 10
+    }
+
+    axios.post('http://localhost:3000/movies/', addedMovieData)
+     .then((response) => {
+       console.log(`Sucessfully added ${addedMovieData.title} to rental library with id ${response.data.id}`);
+     })
+     .catch((error) => {
+       console.log(`Error: ${error.message}`);
+     })
+  }
+
   render () {
 
     const searchResults = this.state.searchResults.map((movie, i) => {
       return <Result
         key={i}
+        addMovieToLibraryCallback={this.addMovieToLibrary}
+        id={movie.external_id}
         title={movie.title}
         overview={movie.overview}
         release_date={movie.release_date}
         image_url={movie.image_url}
-        external_id={movie.external_id}/>
+        />
     });
 
     return (

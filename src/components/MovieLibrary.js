@@ -13,8 +13,6 @@ class MovieLibrary extends Component {
     this.state = {
       movies: [],
       moreMovies: '',
-      buttonClassname: "movie__rent",
-      movieToAddToLibrary: {},
       movieCount: 0,
     };
   }
@@ -57,16 +55,6 @@ class MovieLibrary extends Component {
 
     return (
       <div >
-        <form className="search-bar" onSubmit={this.onFormSubmit}>
-          <input
-            type="text"
-            placeholder="Search.."
-            name="searchTerm"
-            value={this.state.searchTerm}
-            onChange={this.onInputChange}
-            />
-          <button type="submit" className="search-bar__submit"/>
-        </form>
         <div className="library">
           {allMovies}
         </div>

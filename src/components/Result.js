@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import './Result.css';
 
 const Result = (props) => {
- 
+
 
   return (
     <div className="movie">
@@ -15,6 +15,7 @@ const Result = (props) => {
         <div className="movie__content-image_url"><img src={props.image_url} alt="new"/></div>
       </span>
       <button
+        onClick={() => props.addMovieToLibraryCallback(props.id)}
         className="movie__select">
         Add movie to library
       </button>
