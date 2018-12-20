@@ -4,6 +4,7 @@ import axios from 'axios';
 import VideoCollection from './VideoCollection'
 import Search from './Search'
 import CustomerCollection from './CustomerCollection';
+import './Library.css';
 
 class Library extends React.Component {
 
@@ -113,7 +114,7 @@ class Library extends React.Component {
                   <Link to="/CustomerCollection">
                     <ul className="iconButtons">
                       <li>
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSclOKgNflUP6HlIJA0bZelbTjiQiZ4a-wgJWAkeU8wdzp314FE" alt="people to represent customers" className="Img"/>
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSclOKgNflUP6HlIJA0bZelbTjiQiZ4a-wgJWAkeU8wdzp314FE" alt="people to represent customers" className="ImgForCustomer"/>
                       </li>
                       <li>
                         <label className="labelForCustomer">Customers</label>
