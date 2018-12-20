@@ -37,8 +37,8 @@ class App extends Component {
     this.setState({
       selectedCustomer: customer
     });
-     this.setStatusMessage(`Selected customer ${customer.name}.`);
-     window.scrollTo(0, 0);
+    this.setStatusMessage(`Selected customer ${customer.name}.`);
+    window.scrollTo(0, 0);
   };
 
   addMovie = (movie) => {
@@ -52,6 +52,7 @@ class App extends Component {
     .catch((error) => {
       this.setStatusMessage(`${error}. Cound not add ${movie.title} to rental library.`);
     })
+    window.scrollTo(0, 0);
   };
 
   setStatusMessage = (message) => {
