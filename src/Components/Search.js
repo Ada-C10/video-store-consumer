@@ -30,6 +30,7 @@ class Search extends Component {
   }
 
   onFormSubmit = (event) => {
+
     event.preventDefault();
     const newKeywordData = {
       keyword: this.state.keyword,
@@ -42,8 +43,8 @@ class Search extends Component {
       this.setState({
         results: response.data,
         message: `Found ${response.data.length} results for ${newKeywordData.keyword}`
-
       });
+      this.props.getMessage(this.state.message);
     })
     .catch((error) => {
       this.setState({
@@ -56,9 +57,7 @@ class Search extends Component {
   showMessage = () => {
     if (this.state.errors.length >= 1) {
       return <span>Failed to load movie about {this.state.keyword}: {this.state.errors}</span>
-    } else {
-      return <p>{this.state.message}</p>
-    }
+    } 
   }
 
   addMovieToCollection = (params) => {

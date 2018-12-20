@@ -65,7 +65,7 @@ class Library extends React.Component {
     })
     console.log("I'm in show message");
   }
-  
+
   showMessageCust = (message) => {
     // if (this.state.message.length >= 1) {
     //   return <p>{this.state.message}</p>
@@ -74,6 +74,13 @@ class Library extends React.Component {
       message: message
     })
     console.log("I'm in show message");
+  }
+
+  showMessageSearch = (message) => {
+    console.log("I'm in show msg search");
+    this.setState({
+      message: message,
+    })
   }
 
   render() {
@@ -119,7 +126,9 @@ class Library extends React.Component {
             {this.state.message}
           </div>
           <section className="showPageToUser">
-            <Route exact={true} path="/Search" component={Search}/>
+            <Route exact={true} path="/Search" render={() => <Search getMessage={this.showMessageSearch}/>} />
+
+
             <Route path="/VideoCollection"
             render={() => <VideoCollection  addToRentClickHander= {this.addToRent} getMessage={this.showMessageVideo}/> } />
             <Route path="/CustomerCollection" render={() => <CustomerCollection addToSelectCustomerHandler={this.selectNewCustomer}
