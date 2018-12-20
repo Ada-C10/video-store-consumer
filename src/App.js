@@ -15,6 +15,7 @@ class App extends Component {
             customers: [],
             movies: [],
             rentals: [],
+            overDueRentals: [],
             currentCustomer: '',
             currentMovie: '',
             message: '',
@@ -80,11 +81,51 @@ class App extends Component {
                 });
 
                 const count = Object.keys(rentals).length;
+                if (count > 0){
+                    this.setState({
+                        rentals,
+                        message: `Successfully loaded ${count} rentals`
+                    });
+                } else {
+                    this.setState({
+                        rentals,
+                        message: `There are no active rentals in the database.`
+                    });
+                }
 
+            })
+            .catch((error) => {
+                console.log('errors:', error.message);
                 this.setState({
-                    rentals,
-                    message: `Successfully loaded ${count} rentals`
+                    message: error.message
+                })
+            });
+    };
+
+    fetchOverdueRentalData = () => {
+        console.log('fetching rentals');
+        axios.get("http://localhost:3000/rentals/overdue")
+            .then((response) => {
+                console.log('response rents', response.data);
+                const overDueRentals = response.data.map((rental) => {
+                    console.log(response.data);
+                    const addODRental = {...rental };
+                    return addODRental
                 });
+
+                const count = Object.keys(overDueRentals).length;
+                if (count > 0){
+                    this.setState({
+                        overDueRentals,
+                        message: `Successfully loaded ${count} rentals`
+                    });
+                } else {
+                    this.setState({
+                        overDueRentals,
+                        message: `There are no overdue rentals in the database.`
+                    });
+                }
+
             })
             .catch((error) => {
                 console.log('errors:', error.message);
@@ -96,9 +137,9 @@ class App extends Component {
 
     fetchHome = () => {
         this.setState({
-            messages: 'Welcome to Rent-O-Rama!'
+            message: 'Welcome to Rent-O-Rama!'
         })
-    }
+    };
 
     onSelectMovie = (movieId) => {
           console.log('', movieId);
@@ -114,7 +155,7 @@ class App extends Component {
       };
 
     onSelectCustomer = (customerId) => {
-        console.log('cust id in customerlist compo', customerId);
+        // console.log('cust id in customerlist compo', customerId);
         const selectedCust = this.state.customers.find((customer) => {
             return customer.id === customerId;
         });
@@ -139,9 +180,10 @@ class App extends Component {
         console.log('creating rental for:', customerId, movieTitle, checkout);
         axios.post(`http://localhost:3000/rentals/${movieTitle}/check-out?customer_id=${customerId}&due_date=${checkout}`)
             .then((response) => {
-                console.log('rental created');
+                console.log('status', response.data.status);
+                let status = response.data.status;
                 this.setState({
-                    message: `Rental successfully created for ${this.state.customer.name} - ${this.state.movie.title}`
+                    message: `${status}: Rental successfully created for ${this.state.currentCustomer.name} - ${this.state.currentMovie.title}`
                 });
             })
             .catch((error) => {
@@ -152,7 +194,29 @@ class App extends Component {
             });
     };
 
-    onReturnRental = () => { };
+    onReturnRental = (returnRentalId) => {
+        console.log(returnRentalId);
+        const selectedRental = this.state.rentals.find((rental) => {
+            return rental.id === returnRentalId;
+        });
+        const customer_id = selectedRental.customer_id;
+        const title = selectedRental.title;
+        const payLoad = { customer_id };
+        console.log('rental to return', selectedRental);
+        axios.post(`http://localhost:3000/rentals/${title}/return`, payLoad)
+            .then((response) => {
+                const status = response.data.status;
+                this.setState({
+                    message: `${status}: Rental successfully returned for ${selectedRental.name} - ${selectedRental.title}`
+                });
+            })
+            .catch((error) => {
+                console.log('errors', error.message);
+                this.setState({
+                    errorMessage: `Failure! ${error.message}`,
+                })
+            });
+    };
 
   render() {
       // console.log('movies', this.state.movies);
@@ -184,8 +248,14 @@ class App extends Component {
                                 <Link to="/rentals" className="rentals-item"
                                       onClick={this.fetchOutRentalData}>
                                     <button type="button"
-                                            className="navbar-btn btn btn-default">
-                                        Rentals</button>
+                                            className="navbar-btn btn btn-info">
+                                        Active Rentals</button>
+                                </Link>
+                                <Link to="/overdue" className="overdue-item"
+                                      onClick={this.fetchOverdueRentalData}>
+                                    <button type="button"
+                                            className="navbar-btn btn btn-default btn-danger">
+                                        Overdue Rentals</button>
                                 </Link>
                                 <Link to="/search" className="search-item">
                                     <button type="button"
@@ -222,17 +292,27 @@ class App extends Component {
                     <div className="jumbotron">
                         <Route path="/search"
                                component={SearchCollection}/>
+
                         <Route path="/rentals"
                                render={() => <RentalList
                                    rentals={this.state.rentals}
-                                   onSelectCallback={this.onReturnRental}
+                                   onReturnCallback={this.onReturnRental}
                                    state={this.state.rentals}/>}
                                />
+
                         <Route path="/customers"
-                               render={() => <CustomerList
-                                   customers={this.state.customers}
-                                   onSelectCallback={this.onSelectCustomer}
-                               state={this.state.customers}/>}
+                                 render={() => <CustomerList
+                                     customers={this.state.customers}
+                                     onSelectCallback={this.onSelectCustomer}
+                                     state={this.state.customers}/>}
+
+                        />
+
+                        <Route path="/overdue"
+                               render={() => <RentalList
+                                   rentals={this.state.overDueRentals}
+                                   onReturnCallback={this.onReturnRental}
+                                   state={this.state.overDueRentals}/>}
 
                         />
                         <Route path="/library"
