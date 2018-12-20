@@ -24,15 +24,14 @@ class RentalManager extends Component {
   addToLibrary = movie => {
     const image_url = movie.image_url.slice(31);
     movie = { ...movie, image_url: image_url };
-
     axios
-      .post("http://localhost:3000/movies", { movie })
+      .post("http://localhost:3000/movies", { ...movie })
       .then(response => {
-        console.log(response);
+        this.changeMessage(`Successfully added ${movie.title} to Movie Library!`);
       })
       .catch(error => {
         const errorMessage = error.message;
-        this.setState({ errorMessage });
+        this.changeMessage(errorMessage);
       });
   };
 
@@ -60,7 +59,7 @@ class RentalManager extends Component {
         <header className="header">
 
             <RentalSelection currentCustomerName={this.state.currentCustomerName} currentCustomerID={this.state.currentCustomerID} currentMovieTitle={this.state.currentMovieTitle} />
-
+            <p className='message'>{this.state.message}</p>
             <Router>
               <div className="navbar">
                 <nav className="nav-bar__nav">
