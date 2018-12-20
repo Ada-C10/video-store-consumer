@@ -1,0 +1,17 @@
+.search-bar {
+  display: block;
+  text-align: center;
+}
+
+.search-bar input {
+  align-self: center;
+  width: 40%;
+  border: 3px solid transparent;
+  background-color: rgba(14, 16, 17, 1);
+  padding: 5px;
+  height: 50px;
+  font-size: 30px;
+  border-radius: 5px;
+  outline: none;
+  color: rgba(253, 203, 110,1.0);
+}

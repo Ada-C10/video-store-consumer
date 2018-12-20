@@ -52,7 +52,7 @@ class SearchSection extends Component {
       return (
         <div>
           <SearchBar searchCallback={this.onSearchSubmit}/>
-          <p>{returnedResults}</p>
+          <p className="search-section">{returnedResults}</p>
         </div>
       )
     }
