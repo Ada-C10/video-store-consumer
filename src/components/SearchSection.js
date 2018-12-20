@@ -43,17 +43,15 @@ class SearchSection extends Component {
 
   addToLibrary = (movie) => {
     let postUrl = `${ADD_MOVIE}?title=${movie.title}&overview=${movie.overview}&release_date=${movie.release_date}&image_url=${movie.image_url}&external_id=${movie.external_id}`
-    console.log(postUrl)
+
     axios.post(postUrl)
     .then((response) => {
       console.log(response)
-
+      this.props.changeStatusCallback('success', `Successfully added ${movie.title} to your library.`)
     })
 
 
   }
-
-
 
     render() {
 

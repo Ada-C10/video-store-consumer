@@ -58,7 +58,7 @@ class App extends Component {
         searchResults: response.data,
       });
 
-      this.changeStatus('test', `${this.state.selectedCustomer} has successfully checked out ${this.state.selectedMovie}`)
+      this.changeStatus('success', `${this.state.selectedCustomer} has successfully checked out ${this.state.selectedMovie}`)
     })
 
     .catch((error) => {
