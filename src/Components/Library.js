@@ -4,6 +4,7 @@ import axios from 'axios';
 import VideoCollection from './VideoCollection'
 import Search from './Search'
 import CustomerCollection from './CustomerCollection';
+import './Library.css';
 
 class Library extends React.Component {
 
