@@ -56,10 +56,24 @@ class Library extends React.Component {
     })
   }
 
-  showMessage = () => {
-    if (this.state.message.length >= 1) {
-      return <p>{this.state.message}</p>
-    }
+  showMessageVideo = (message) => {
+    // if (this.state.message.length >= 1) {
+    //   return <p>{this.state.message}</p>
+    // }
+    this.setState({
+      message: message
+    })
+    console.log("I'm in show message");
+  }
+  
+  showMessageCust = (message) => {
+    // if (this.state.message.length >= 1) {
+    //   return <p>{this.state.message}</p>
+    // }
+    this.setState({
+      message: message
+    })
+    console.log("I'm in show message");
   }
 
   render() {
@@ -94,7 +108,7 @@ class Library extends React.Component {
                 </li>
                 <li>
                   <button
-                    onClick={this.createNewRental}>
+                    onClick={this.createNewRenta}>
                     Check Out New Rental
                   </button>
                 </li>
@@ -102,14 +116,14 @@ class Library extends React.Component {
             </nav>
           </header>
           <div>
-          {this.showMessage()}
+            {this.state.message}
           </div>
-
           <section className="showPageToUser">
             <Route exact={true} path="/Search" component={Search}/>
             <Route path="/VideoCollection"
-            render={() => <VideoCollection  addToRentClickHander= {this.addToRent}/> } />
-            <Route path="/CustomerCollection" render={() => <CustomerCollection addToSelectCustomerHandler={this.selectNewCustomer}/>}/>
+            render={() => <VideoCollection  addToRentClickHander= {this.addToRent} getMessage={this.showMessageVideo}/> } />
+            <Route path="/CustomerCollection" render={() => <CustomerCollection addToSelectCustomerHandler={this.selectNewCustomer}
+            getMessage={this.showMessageCust}/>}/>
           </section>
         </section>
       </Router>

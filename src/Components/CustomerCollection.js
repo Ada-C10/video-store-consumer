@@ -21,6 +21,7 @@ class CustomerCollection extends React.Component {
         customers: response.data,
         message: `Successfully loaded ${response.data.length} customers`
       });
+      this.props.getMessage(this.state.message);
     })
     .catch((error) => {
       this.setState({
@@ -28,11 +29,14 @@ class CustomerCollection extends React.Component {
       });
     })
   }
-  showMessage = () => {
-    if (this.state.message.length >= 1) {
-      return <p>{this.state.message}</p>
-    }
-  }
+
+
+
+  // showMessage = () => {
+  //   if (this.state.message.length >= 1) {
+  //     return <p>{this.state.message}</p>
+  //   }
+  // }
 
 
   render() {
@@ -49,9 +53,6 @@ class CustomerCollection extends React.Component {
 
     return (
       <section>
-        <div>
-          {this.showMessage()}
-        </div>
           {customerCollection}
       </section>
     );

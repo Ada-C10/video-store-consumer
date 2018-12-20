@@ -22,6 +22,8 @@ class VideoCollection extends React.Component {
         videos: response.data,
         message: `Successfully loaded ${response.data.length} movies from the rental library`
       });
+      this.props.getMessage(this.state.message);
+
     })
     .catch((error) => {
       this.setState({
@@ -30,11 +32,11 @@ class VideoCollection extends React.Component {
     })
   }
 
-  showMessage = () => {
-    if (this.state.message.length >= 1) {
-      return <p>{this.state.message}</p>
-    }
-  }
+  // showMessage = () => {
+  //   if (this.state.message.length >= 1) {
+  //     return <p>{this.state.message}</p>
+  //   }
+  // }
 
 
   render() {
@@ -53,16 +55,13 @@ class VideoCollection extends React.Component {
     return (
 
       <section>
-        <div>
-          {this.showMessage()}
-        </div>
           {videoCollection}
       </section>
     );
   }
 }
 
-VideoCollection.PropTypes = {
+VideoCollection.propTypes = {
 
 };
 export default VideoCollection;
