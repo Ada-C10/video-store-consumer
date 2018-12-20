@@ -15,7 +15,8 @@ class MovieSearch extends Component {
     super()
     this.state = {
       resultListAxiosget:[],
-      movieSelect: ''
+      movieSelect: '',
+      apiPayload: ''
     }
   }
 
@@ -71,22 +72,30 @@ class MovieSearch extends Component {
 
     console.log(URL);
     const image_url = selectedMovie.image_url.slice(31);
-    const apiPayload = {...selectedMovie, image_url: image_url}
+    this.setState({
+      apiPayload: {...selectedMovie, image_url: image_url}
+    });
     console.log(apiPayload);
 
     axios.post(URL, apiPayload)
     .then( (response) => {
       console.log(response)
+      console.log(apiPayload.title)
       console.log("success")
+
     })
     .catch( (error) => {
       console.log(error)
     })
   }
 
+
   render() {
     return (
       <section>
+        if (apiPayload) {
+          <p>{apiPayload.title} added to libray</p>
+        }
         <MovieSearchBar
           onSearchChangeCallback={this.onSearchChange}/>
         <MovieSearchList

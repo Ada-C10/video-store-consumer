@@ -13,14 +13,14 @@ const MovieSearchResult = (props) => {
 
 
   return (
-    <div className="movie">
-      <h4 className="movie-title"> {title} </h4>
+    <div className="search app">
+      <h4 className="searchmovie-title"> {title} </h4>
       <img src={image_url} alt={title} />
       <p> {release_date} </p>
-      <p> {overview} </p>
+      <p className="overview">{ overview.length > 130 ? `${overview.substring(0, 130)}...` : overview} </p>
       <button
         onClick={() => {onMovieSearchResultSelect()}}
-        className="movie-btn"
+        className="searchmovie-btn"
         >
         Select
       </button>

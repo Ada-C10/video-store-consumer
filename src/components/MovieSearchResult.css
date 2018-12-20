@@ -1,12 +1,12 @@
-.movie {
+.search {
   padding: 1rem;
 }
 
-.movie-title {
+.searchmovie-title {
   color: #ed2b12;
 }
 
-.movie-btn {
+.searchmovie-btn {
   color: black;
 }
 
@@ -17,4 +17,20 @@
 movie-list {
   display: flex;
   flex-wrap: wrap;
+}
+
+.app {
+  text-align: center;
+  margin: 0 0;
+  padding: 2rem 2rem;
+  color: lightgray;
+}
+
+a:link {
+  text-decoration: none;
+}
+
+ul li {
+  list-style: none;
+  color: #ed2b12;
 }
