@@ -12,6 +12,8 @@ import { faUsers, faHome, faFilm, faChevronCircleDown, faChevronCircleUp, faSear
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 library.add(faUsers, faHome, faFilm, faChevronCircleDown, faChevronCircleUp, faSearch, faInfoCircle);
+const LOCALURL = 'http://localhost:3000/';
+const URL = 'https://rent-o-rama-app-api.herokuapp.com/';
 
 class App extends Component {
     constructor(props) {
@@ -28,7 +30,7 @@ class App extends Component {
     }
 
     fetchCustomersData = () => {
-        axios.get("http://localhost:3000/customers")
+        axios.get(URL + "customers")
             .then((response) => {
                 // console.log('response custs', response.data);
                 const customers = response.data.map((customer) => {
@@ -57,7 +59,7 @@ class App extends Component {
     };
 
     fetchMoviesData = () => {
-        axios.get(`http://localhost:3000/movies`)
+        axios.get(URL + 'movies')
             .then((response) => {
                 // console.log('resp movies', response.data);
                 const movies = response.data.map((movie) => {
@@ -76,7 +78,7 @@ class App extends Component {
 
     fetchOutRentalData = () => {
         console.log('fetching rentals');
-        axios.get("http://localhost:3000/rentals/out")
+        axios.get(URL + "rentals/out")
             .then((response) => {
                 console.log('response rents', response.data);
                 const rentals = response.data.map((rental) => {
@@ -109,7 +111,7 @@ class App extends Component {
 
     fetchOverdueRentalData = () => {
         console.log('fetching rentals');
-        axios.get("http://localhost:3000/rentals/overdue")
+        axios.get(URL + "rentals/overdue")
             .then((response) => {
                 console.log('response rents', response.data);
                 const overDueRentals = response.data.map((rental) => {
@@ -184,7 +186,7 @@ class App extends Component {
         const customerId = this.state.currentCustomer.id;
         const movieTitle = this.state.currentMovie.title;
         console.log('creating rental for:', customerId, movieTitle, checkout);
-        axios.post(`http://localhost:3000/rentals/${movieTitle}/check-out?customer_id=${customerId}&due_date=${checkout}`)
+        axios.post(URL + `rentals/${movieTitle}/check-out?customer_id=${customerId}&due_date=${checkout}`)
             .then((response) => {
                 console.log('status', response.data.status);
                 let status = response.data.status;
@@ -209,7 +211,7 @@ class App extends Component {
         const title = selectedRental.title;
         const payLoad = {customer_id};
         console.log('rental to return', selectedRental);
-        axios.post(`http://localhost:3000/rentals/${title}/return`, payLoad)
+        axios.post(URL + `rentals/${title}/return`, payLoad)
             .then((response) => {
                 const status = response.data.status;
                 this.setState({
