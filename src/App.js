@@ -22,37 +22,41 @@ class App extends Component {
     }
   };
 
- url = "http://localhost:3000/";
+  url = "http://localhost:3000/";
 
- selectMovie = (movie) => {
-   this.setState({
-     selectedMovie: movie
-   });
- };
+  selectMovie = (movie) => {
+    this.setState({
+      selectedMovie: movie
+    });
+    this.setStatusMessage(`Selected movie ${movie.title}.`);
+    window.scrollTo(0, 0);
+  };
 
- selectCustomer = (customer) => {
+  selectCustomer = (customer) => {
 
-   this.setState({
-     selectedCustomer: customer
-   });
- };
+    this.setState({
+      selectedCustomer: customer
+    });
+     this.setStatusMessage(`Selected customer ${customer.name}.`);
+     window.scrollTo(0, 0);
+  };
 
- addMovie = (movie) => {
+  addMovie = (movie) => {
 
-   const addMovieURL = this.url + 'movies';
+    const addMovieURL = this.url + 'movies';
 
-   axios.post(addMovieURL, {id: movie.external_id})
-   .then((response) => {
-     this.setStatusMessage(`Successfully added ${movie.title} to rental library`);
-   })
-   .catch((error) => {
-     this.setStatusMessage(`${error}. Cound not add ${movie.title} to rental library.`);
-   })
- };
+    axios.post(addMovieURL, {id: movie.external_id})
+    .then((response) => {
+      this.setStatusMessage(`Successfully added ${movie.title} to rental library`);
+    })
+    .catch((error) => {
+      this.setStatusMessage(`${error}. Cound not add ${movie.title} to rental library.`);
+    })
+  };
 
- setStatusMessage = (message) => {
-   this.setState({status: message});
- }
+  setStatusMessage = (message) => {
+    this.setState({status: message});
+  }
 
   checkoutMovie = () => {
     if (this.state.selectedMovie && this.state.selectedCustomer) {
@@ -88,66 +92,66 @@ class App extends Component {
     return (
       <div className="App">
         <Router>
-         <div>
-           <div className='top-bar'>
-             <ul className='nav-links'>
-               <li>
-                 <Link to="/search"><img className="navbar__icon"
-                   src="https://adagold.github.io/video-store-consumer/static/media/magnifying-glass-search.6c42d201.svg"/><p>Search</p></Link>
-               </li>
-               <li>
+          <div>
+            <div className='top-bar'>
+              <ul className='nav-links'>
+                <li>
+                  <Link to="/search"><img className="navbar__icon"
+                    src="https://adagold.github.io/video-store-consumer/static/media/magnifying-glass-search.6c42d201.svg"/><p>Search</p></Link>
+                </li>
+                <li>
 
-                 <Link to="/library"><img className="navbar__icon"
-                   src="https://adagold.github.io/video-store-consumer/static/media/film-reel.6794d2f3.svg"/><p>Library</p></Link>
-               </li>
-               <li>
-                 <Link to="/customers"><img className="navbar__icon"
-                      src="https://adagold.github.io/video-store-consumer/static/media/people.2aa64ca8.svg"/><p>Customers</p></Link>
-               </li>
-             </ul>
-             <section className="rentalDisplay">
-               <div>
-                 <p className="rental-selection__label">Selected Movie</p>
-                 {this.state.selectedMovie && <p>{this.state.selectedMovie.title}</p>}
-               </div>
-               <div>
-                 <p className="rental-selection__label">Selected Customer</p>
-                 {this.state.selectedCustomer && <p>{this.state.selectedCustomer.name}</p>}
-               </div>
-               <div>
-                 <button onClick={this.checkoutMovie}>Check Out New Rental</button>
-               </div>
-             </section>
-           </div>
+                  <Link to="/library"><img className="navbar__icon"
+                    src="https://adagold.github.io/video-store-consumer/static/media/film-reel.6794d2f3.svg"/><p>Library</p></Link>
+                </li>
+                <li>
+                  <Link to="/customers"><img className="navbar__icon"
+                    src="https://adagold.github.io/video-store-consumer/static/media/people.2aa64ca8.svg"/><p>Customers</p></Link>
+                </li>
+              </ul>
+              <section className="rentalDisplay">
+                <div>
+                  <p className="rental-selection__label">Selected Movie</p>
+                  {this.state.selectedMovie && <p>{this.state.selectedMovie.title}</p>}
+                </div>
+                <div>
+                  <p className="rental-selection__label">Selected Customer</p>
+                  {this.state.selectedCustomer && <p>{this.state.selectedCustomer.name}</p>}
+                </div>
+                <div>
+                  <button onClick={this.checkoutMovie}>Check Out New Rental</button>
+                </div>
+              </section>
+            </div>
 
             <div className="status-bar">
               {this.state.status &&
                 <StatusBar message={this.state.status}/>}
-            </div>
+                </div>
 
-           <Route path="/search"
-             render={() => <Search baseUrl={this.url}
-             addMovieCallback={this.addMovie}
-             setStatusMessageCallback={this.setStatusMessage} />}
-             />
-           <Route
-             path="/library"
-             render={() => <Library selectMovieCallback={this.selectMovie}
-             baseUrl={this.url} setStatusMessageCallback={this.setStatusMessage}/>}
-             />
-           <Route
-             path="/customers"
-             render={() => <Customers selectCustomerCallback={this.selectCustomer}
-             baseUrl={this.url} setStatusMessageCallback={this.setStatusMessage}/>}
-             />
-         </div>
-       </Router>
+                <Route path="/search"
+                  render={() => <Search baseUrl={this.url}
+                  addMovieCallback={this.addMovie}
+                  setStatusMessageCallback={this.setStatusMessage} />}
+                  />
+                <Route
+                  path="/library"
+                  render={() => <Library selectMovieCallback={this.selectMovie}
+                  baseUrl={this.url} setStatusMessageCallback={this.setStatusMessage}/>}
+                  />
+                <Route
+                  path="/customers"
+                  render={() => <Customers selectCustomerCallback={this.selectCustomer}
+                  baseUrl={this.url} setStatusMessageCallback={this.setStatusMessage}/>}
+                  />
+              </div>
+            </Router>
 
 
 
-      </div>
-    );
-  }
-}
+          </div>
+        );
+      }
+    }
 
-export default App;
+    export default App;
