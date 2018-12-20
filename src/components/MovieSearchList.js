@@ -17,7 +17,7 @@ const MovieSearchList = (props) => {
   });
 
   return (
-    <div className="card-group">
+    <div className="movie-list">
       {movieSearchList}
     </div>
   )

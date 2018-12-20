@@ -36,7 +36,7 @@ class App extends Component {
        })
        this.setState({
          movieList: movies,
-         message: `Successfully loaded ${movies.length} movies from the rental library`
+         message: `Successfully loaded ${movies.length} movies from the rental library!`
        })
      })
      .catch((error) => {
@@ -57,7 +57,7 @@ class App extends Component {
         })
         this.setState({
           customerList: customers,
-          message: `Loaded ${customers.length} customers successfully`
+          message: `Loaded ${customers.length} customers successfully!`
         })
         console.log(this.state);
       })
@@ -178,7 +178,7 @@ class App extends Component {
      const movieList = this.state.movieList;
      movieList.push(selectedMovie);
 
-     const messageAlert = `${selectedMovie.title} is added to the library`
+     const messageAlert = `${selectedMovie.title} is now added to the library`
      this.setState({
        movieList: movieList,
        message: messageAlert,
@@ -223,7 +223,7 @@ class App extends Component {
              <ul className="navbar">
                <li><Link to='/library/'><button className="btn app-button">Library</button></Link></li>
                <li><Link to='/customers/'><button className="btn app-button">Customers</button></Link></li>
-               <li><Link to='/search/'>Search Movie</Link></li>
+               <li><Link to='/search/'><button className="btn app-button">Search Movie</button></Link></li>
                <li><CurrentRental
                       movie={this.state.movie}
                       customer={this.state.customer}
@@ -232,7 +232,6 @@ class App extends Component {
            </nav>
            <div className="alert">
             <span className="closebtn"></span>
-            <a href="#" className="close" data-dismiss="alert" aria-label="close">&times;</a>
             {this.state.message}
            </div>
            <Route path='/library/' render={() =>

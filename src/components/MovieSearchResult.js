@@ -14,7 +14,7 @@ const MovieSearchResult = (props) => {
       <h4 className="searchmovie-title"> {title} </h4>
       <img src={image_url} alt={title} />
       <p> {release_date} </p>
-      <p className="overview">{ overview.length > 130 ? `${overview.substring(0, 130)}...` : overview} </p>
+      <p className="overview">{ overview.length > 120 ? `${overview.substring(0, 120)}...` : overview} </p>
       <button
         onClick={onMovieSelect}
         className="movie-btn"
