@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e972fd33-1176-4f60-8991-8c89ba0f8004" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Customer.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Customer.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/CustomerList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CustomerList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Rental.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Rental.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/RentalList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RentalList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/RentalsList.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RentalsList.css" afterDir="false" />
-    </list>
+    <list default="true" id="e972fd33-1176-4f60-8991-8c89ba0f8004" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -81,9 +74,10 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/App.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="64">
-                  <caret line="4" column="49" lean-forward="true" selection-start-line="4" selection-start-column="49" selection-end-line="4" selection-end-column="49" />
+                <state relative-caret-position="428">
+                  <caret line="17" column="29" lean-forward="true" selection-start-line="17" selection-start-column="29" selection-end-line="17" selection-end-column="29" />
                   <folding>
+                    <element signature="e#0#41#0" expanded="true" />
                     <element signature="n#!!block;n#constructor#0;n#App#0" />
                   </folding>
                 </state>
@@ -189,6 +183,12 @@
               <item name="video-store-consumer" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="video-store-consumer" type="b2602c69:ProjectViewProjectNode" />
+              <item name="video-store-consumer" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -230,12 +230,12 @@
       <workItem from="1545084413183" duration="32365000" />
       <workItem from="1545285773413" duration="6254000" />
       <workItem from="1545326809058" duration="895000" />
-      <workItem from="1545327746452" duration="4071000" />
+      <workItem from="1545327746452" duration="4274000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="68738000" />
+    <option name="totallyTimeSpent" value="68941000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1349" height="877" extended-state="0" />
@@ -516,15 +516,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Search.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/SearchCollection.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1064">
@@ -535,11 +526,21 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Search.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/App.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="64">
-          <caret line="4" column="49" lean-forward="true" selection-start-line="4" selection-start-column="49" selection-end-line="4" selection-end-column="49" />
+        <state relative-caret-position="428">
+          <caret line="17" column="29" lean-forward="true" selection-start-line="17" selection-start-column="29" selection-end-line="17" selection-end-column="29" />
           <folding>
+            <element signature="e#0#41#0" expanded="true" />
             <element signature="n#!!block;n#constructor#0;n#App#0" />
           </folding>
         </state>
