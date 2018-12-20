@@ -84,6 +84,7 @@ class Search extends Component {
         key={i}
         title={result.title}
         release_date={result.release_date}
+        overview={result.overview}
         image_url={result.image_url}
         search={true}
         callback={this.addMovieToCollection}/>

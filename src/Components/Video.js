@@ -41,6 +41,7 @@ class Video extends React.Component {
           <div className="movie-details">
             <h2>{this.props.title}</h2>
             <p>{this.props.release_date}</p>
+            <p>{this.props.overview}</p>
           </div>
             {this.changeButton()}
         </div>
