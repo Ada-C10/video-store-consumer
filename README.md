@@ -147,11 +147,16 @@ Please include the following things in your demo:
   - I can look at the customers and see a customer
 - Describe the process of this project:
   - What were some of the challenges and victories of this project?
+    - We had an issue adding a video to the library, the image would not show up. This took a while to debug because initially we didn't realize the issue was in the API, not the react portion.
   - What is an interesting front-end thing that your team accomplished?
+    - Streamlining messages so that regardless of which component the message is generated at, it will feed back into the message state in `App.js` and be displayed there.
   - What is an interesting back-end thing that your team accomplished?
+    - Fixing the `image_url` and `poster_path` issue between existing and new movies.
 - Reflect on this project in the context of your time at Ada:
   - How was this project different from the first Video Store API project you worked on?
+    - Building our own API then consuming it. Updating our API with a 'movie'/data from the external API.
   - What is something you observed in this project that you want to take forward with you in order to succeed in your capstone project?
+    - Read documentation
 
 There is no expectation for a slideshow.
 
