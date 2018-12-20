@@ -95,3 +95,7 @@ p.rental-selection__label {
     padding: .3em;
     font-size: 12px;
 }
+
+.nav-links li p {
+  margin: 0;
+}

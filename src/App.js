@@ -58,7 +58,7 @@ class App extends Component {
  }
 
   checkoutMovie = () => {
-    if (this.state.selectedMove && this.state.selectedCustomer) {
+    if (this.state.selectedMovie && this.state.selectedCustomer) {
       const rentalUrl = this.state.selectedMovie ?
       `${this.url}rentals/${this.state.selectedMovie.title}/check-out?` :
       `${this.url}rentals/:title/check-out`;
@@ -100,19 +100,17 @@ class App extends Component {
            <div className='top-bar'>
              <ul className='nav-links'>
                <li>
-                 <img className="navbar__icon"
-                   src="https://adagold.github.io/video-store-consumer/static/media/magnifying-glass-search.6c42d201.svg"/>
-                 <Link to="/search">Search</Link>
+                 <Link to="/search"><img className="navbar__icon"
+                   src="https://adagold.github.io/video-store-consumer/static/media/magnifying-glass-search.6c42d201.svg"/><p>Search</p></Link>
                </li>
                <li>
-                 <img className="navbar__icon"
-                   src="https://adagold.github.io/video-store-consumer/static/media/film-reel.6794d2f3.svg"/>
-                 <Link to="/library">Library</Link>
+
+                 <Link to="/library"><img className="navbar__icon"
+                   src="https://adagold.github.io/video-store-consumer/static/media/film-reel.6794d2f3.svg"/><p>Library</p></Link>
                </li>
                <li>
-                 <img className="navbar__icon"
-                   src="https://adagold.github.io/video-store-consumer/static/media/people.2aa64ca8.svg"/>
-                 <Link to="/customers">Customers</Link>
+                 <Link to="/customers"><img className="navbar__icon"
+                      src="https://adagold.github.io/video-store-consumer/static/media/people.2aa64ca8.svg"/><p>Customers</p></Link>
                </li>
              </ul>
              <section className="rentalDisplay">
