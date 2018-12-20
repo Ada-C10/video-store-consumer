@@ -20,6 +20,8 @@ class MovieResult extends Component {
     return (
       <article className="movie-details">
         <img src={this.props.image} alt="movie-selected"/>
+
+        <img src={this.props.image} alt={this.props.title}/>
         <p>{this.props.title}</p>
       <form onSubmit={this.onFormSubmit}>
         <input type='submit' value='Add to Library' />
