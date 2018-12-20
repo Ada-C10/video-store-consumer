@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Grid } from 'react-bootstrap';
-import { Row} from 'react-bootstrap';
-import { Col } from 'react-bootstrap';
-import { Button } from 'react-bootstrap';
+import { Grid, Row, Col, Button } from 'react-bootstrap';
 
 
 
@@ -26,7 +23,7 @@ class Movie extends Component {
 
 
     return (
-      <div>
+      <div className="pb-4">
 
       <Grid>
 
@@ -35,7 +32,7 @@ class Movie extends Component {
            <img src={this.props.imageUrl} alt={this.props.title}/>
          </Col>
          <Col xs={6}  md={4} className="d-flex align-items-center">
-           <h5>{this.props.overview}</h5>
+           <h4>{this.props.overview}</h4>
          </Col>
          <Col xs={6} md={4} className="d-flex align-items-center">
            {this.props.isInLibrary && (

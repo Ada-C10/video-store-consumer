@@ -49,13 +49,13 @@ class App extends Component {
 
       <div className="App">
 
-      <nav>
+      <ul class="nav justify-content-center nav-justified">
         <ButtonToolbar>
-          <Button bsStyle="info"><Link to={'/customers'}>Customers</Link></Button>
-          <Button bsStyle="info"><Link to={'/library'}>Rental Library</Link></Button>
-          <Button bsStyle="info"><Link to={'/search'}>Search</Link></Button>
+          <li class="nav-item"><Button bsStyle="info"><Link to={'/customers'}>Customers</Link></Button></li>
+          <li class="nav-item"><Button bsStyle="info"><Link to={'/library'}>Rental Library</Link></Button></li>
+          <li class="nav-item"><Button bsStyle="info"><Link to={'/search'}>Search</Link></Button></li>
        </ButtonToolbar>
-      </nav>
+      </ul>
 
 
       <h1>{this.state.selectedMovie.title}</h1>
