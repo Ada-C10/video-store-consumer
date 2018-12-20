@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import axios from 'axios';
 import Movie from './Movie.js'
 
+
 class RentalLibrary  extends Component {
 
   constructor(props){
@@ -13,9 +14,9 @@ class RentalLibrary  extends Component {
     }
   }
 
-  handleSelectMovie = (id, title) => {
+  handleSelectMovie = (id, title, imageUrl) => {
     if (this.props.onSelectMovie) { //if onSelectMovie is defined then execute it
-      this.props.onSelectMovie(id, title);
+      this.props.onSelectMovie(id, title, imageUrl);
     }
   }
 

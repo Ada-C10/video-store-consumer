@@ -25,7 +25,8 @@ class CustomersCollection  extends Component {
     // console.log("printing customer",customer.name);
     return <Customer
             name={customer.name}
-            key={customer.id}
+            key={customer.phone}
+            phone={customer.phone}
             onSelectCustomer={this.handleSelectCustomer}
             />
   });

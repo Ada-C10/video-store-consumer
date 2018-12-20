@@ -4,7 +4,9 @@ import CustomersCollection from './components/CustomersCollection.js';
 import RentalLibrary from './components/RentalLibrary.js';
 import SearchBar from './components/SearchBar.js';
 import { BrowserRouter as Router, Link, Route } from 'react-router-dom';
-import axios from 'axios';
+import { Button } from 'react-bootstrap';
+import { ButtonToolbar } from 'react-bootstrap';
+
 
 
 //const Customers1 = () => <h2>customers</h2>;
@@ -31,11 +33,12 @@ class App extends Component {
     })
   }
 
-  handleSelectMovie = (id, title) => {
+  handleSelectMovie = (id, title, imageUrl) => {
     this.setState({ //make custom object
       selectedMovie: {
         id, //equal to id: id
         title,
+        imageUrl,
       }
     });
     const movie = this.props.selectedMovie;
@@ -63,21 +66,32 @@ class App extends Component {
 
       <div className="App">
 
+<<<<<<< HEAD
       <nav>
         <ul>
           <li>< Link to={'/customers'}>Customers</Link></li>
           <li><Link to={'/library'}>Rental Library</Link></li>
           <li><Link to={'/search'}>Search</Link></li>
+=======
+        <ul class="nav justify-content-center nav-justified">
+          <ButtonToolbar>
+            <li class="nav-item"><Button bsStyle="info"><Link to={'/customers'}>Customers</Link></Button></li>
+            <li class="nav-item"><Button bsStyle="info"><Link to={'/library'}>Rental Library</Link></Button></li>
+            <li class="nav-item"><Button bsStyle="info"><Link to={'/search'}>Search</Link></Button></li>
+         </ButtonToolbar>
+>>>>>>> 74fe9bbdc8c01e3d2aeb19d26c20eed0d2d9a46d
         </ul>
-      </nav>
 
+        <div className="card bg-light" >
+          <h2 class="card-text ">{this.state.selectedCustomer.name}</h2>
+          <img className="card-img-top" src={this.state.selectedMovie.imageUrl} alt={this.state.selectedMovie.title}/>
+          <div class="card-body">
+        </div>
 
-      <h1>{this.state.selectedMovie.title}</h1>
-      <h1>{this.state.selectedCustomer.name}</h1>
-
-      <section className="search-bar">
-        <Route path="/search" component={ SearchBar }/>
-      </section>
+        <section >
+          <Route path="/search" component={ SearchBar }/>
+        </section>
+      </div>
 
 
       <section>
