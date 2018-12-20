@@ -25,7 +25,6 @@ class App extends Component {
  url = "http://localhost:3000/";
 
  selectMovie = (movie) => {
-   console.log(movie);
    this.setState({
      selectedMovie: movie
    });
@@ -44,11 +43,9 @@ class App extends Component {
 
    axios.post(addMovieURL, {id: movie.external_id})
    .then((response) => {
-     console.log(response)
      this.setStatusMessage(`Successfully added ${movie.title} to rental library`);
    })
    .catch((error) => {
-     console.log(error)
      this.setStatusMessage(`${error}. Cound not add ${movie.title} to rental library.`);
    })
  };
@@ -62,15 +59,12 @@ class App extends Component {
       const rentalUrl = this.state.selectedMovie ?
       `${this.url}rentals/${this.state.selectedMovie.title}/check-out?` :
       `${this.url}rentals/:title/check-out`;
-      console.log(rentalUrl);
 
       const customerId = this.state.selectedCustomer ?
       this.state.selectedCustomer.id : 0;
-      console.log(customerId);
 
       const dueDate = new Date();
       dueDate.setDate(dueDate.getDate() + 7);
-      console.log(dueDate);
 
       const movie = this.state.selectedMovie.title;
       const customer = this.state.selectedCustomer.name;
@@ -83,7 +77,6 @@ class App extends Component {
         )
       })
       .catch((error) => {
-        console.log(error)
         this.setStatusMessage(`Unable to check out ${movie} to ${customer}. ${error}`);
       })
     } else {
@@ -92,7 +85,6 @@ class App extends Component {
   };
 
   render() {
-    console.log(this.state.status);
     return (
       <div className="App">
         <Router>

@@ -28,7 +28,6 @@ class Library extends Component {
       })
     }
     else{
-      console.log("in here", this.state.library)
       this.setState({
         library: this.state.masterLibrary
       })
