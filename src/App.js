@@ -2,11 +2,10 @@ import React, { Component } from 'react';
 import axios from 'axios'
 import './App.css';
 import { Route, Link} from 'react-router-dom';
+import RentalList from './Components/RentalList'
 import CustomerList from './Components/CustomerList'
 import SearchCollection from './Components/SearchCollection';
 import Library from './Components/Library';
-// import SelectedCustomer from "./Components/SelectedCustomer";
-// import Movie from './Components/movie'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
@@ -16,6 +15,7 @@ class App extends Component {
         this.state = {
             customers: [],
             movies: [],
+            rentals: [],
             currentCustomer: '',
             currentMovie: '',
             message: '',
@@ -71,6 +71,26 @@ class App extends Component {
 
   }
 
+    fetchOutRentalData = () => {
+        console.log('fetching rentals');
+        axios.get("http://localhost:3000/rentals/out")
+            .then((response) => {
+                console.log('response rents', response.data);
+                const rentals = response.data.map((rental) => {
+                    console.log(response.data);
+                    const addRental = {...rental };
+                    return addRental
+                });
+
+                const count = Object.keys(rentals).length;
+
+                this.setState({
+                    rentals,
+                    message: `Successfully loaded ${count} rentals`
+                })
+            })
+    };
+
     onSelectMovie = (movieId) => {
           console.log('', movieId);
           const selectedMovie = this.state.movies.find((movie) => {
@@ -84,7 +104,6 @@ class App extends Component {
           }
       };
 
-
     onSelectCustomer = (customerId) => {
         console.log('cust id in customerlist compo', customerId);
         const selectedCust = this.state.customers.find((customer) => {
@@ -97,7 +116,6 @@ class App extends Component {
             });
         }
     };
-
 
     onConfirmRental = () => {
         function addDays(date, days) {
@@ -125,6 +143,8 @@ class App extends Component {
             });
     };
 
+    onReturnRental = () => { };
+
   render() {
       // console.log('movies', this.state.movies);
       // console.log('customers', this.state.customers);
@@ -134,22 +154,28 @@ class App extends Component {
                     <section className="header-controls">
                         <div className="navbar navbar-fixed-top">
                             <nav className="nav-links">
-                                <Link to="/library" className="movie-item">
+                                <Link to="/library" className="library-item">
                                     <button type="button"
                                             className="navbar-btn btn btn-default">
                                         Movies</button>
                                 </Link>
-                                <Link to="/customers" className="customer-item">
+                                <Link to="/customers" className="customers-item">
                                     <button type="button"
                                             className="navbar-btn btn btn-default">
                                         Customers</button>
                                 </Link>
-                                <Link to="/" className="movie-item">
+                                <Link to="/" className="home-item">
                                     <button type="button"
                                             className="navbar-btn btn btn-default">
                                         Home</button>
                                 </Link>
-                                <Link to="/search" className="movie-item">
+                                <Link to="/rentals" className="rentals-item"
+                                      onClick={this.fetchOutRentalData}>
+                                    <button type="button"
+                                            className="navbar-btn btn btn-default">
+                                        Rentals</button>
+                                </Link>
+                                <Link to="/search" className="search-item">
                                     <button type="button"
                                             className="navbar-btn btn btn-default">
                                         <span className="glyphicon glyphicon-search"></span></button>
@@ -182,9 +208,14 @@ class App extends Component {
 
                 <section className="container">
                     <div className="jumbotron">
-                    <Route path="/search" component={SearchCollection}/>
-
-
+                        <Route path="/search"
+                               component={SearchCollection}/>
+                        <Route path="/rentals"
+                               render={() => <RentalList
+                                   rentals={this.state.rentals}
+                                   onSelectCallback={this.onReturnRental}
+                                   state={this.state.rentals}/>}
+                               />
                         <Route path="/customers"
                                render={() => <CustomerList
                                    customers={this.state.customers}
