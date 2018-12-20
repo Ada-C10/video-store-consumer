@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import { Route } from 'react-router-dom'
 import axios from 'axios';
@@ -53,7 +54,6 @@ class App extends Component {
   rentMovie = () => {
     axios.post(RENT_MOVIE + this.state.selectedMovie + "/check-out?customer_id=" + this.state.selectedCustomerID + "&due_date=" + this.state.returnDate)
     .then((response) => {
-      // this.props.status(`Successfully loaded ${response.data.length} movies from the rental library`, 'success');
       this.setState({
         searchResults: response.data,
       });
@@ -64,7 +64,7 @@ class App extends Component {
     .catch((error) => {
       console.log('API Library call error');
       console.log(error.message);
-      // this.props.status(`Failed to load movies: ${error.message}`, 'success');
+      this.changeStatus('error', `I'm sorry, there has been an error. Please try again.`)
     });
   }
 
@@ -90,9 +90,7 @@ class App extends Component {
           </header>
           <span>Status Bar goes here.</span>
 
-
           <StatusBar statusClass={this.state.status.statusClass} statusMessage={this.state.status.statusMessage}/>
-
 
           <Route path="/library" render={() => <LibrarySection selectMovieCallback = {this.selectMovie} changeStatusCallback = {this.changeStatus} />} />
           <Route path="/customers" render={() => <CustomerSection selectCustomerCallback = {this.selectCustomer} changeStatusCallback = {this.changeStatus} />} />
@@ -102,5 +100,10 @@ class App extends Component {
     );
   }
 }
+
+App.propTypes = {
+  changeStatusCallback: PropTypes.func.isRequired
+};
+
 
 export default App;
