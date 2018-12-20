@@ -1,4 +1,3 @@
-import axios from 'axios';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 
@@ -20,7 +19,8 @@ class StatusBar extends Component {
 }
 
 StatusBar.propTypes = {
-
+  statusMessage: PropTypes.func.isRequired,
+  statusClass: PropTypes.string
 };
 
 export default StatusBar;
