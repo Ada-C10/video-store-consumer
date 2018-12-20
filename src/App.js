@@ -4,11 +4,13 @@ import CustomersCollection from './components/CustomersCollection.js';
 import RentalLibrary from './components/RentalLibrary.js';
 import SearchBar from './components/SearchBar.js';
 import { BrowserRouter as Router, Link, Route } from 'react-router-dom';
+import axios from 'axios';
 
 
 //const Customers1 = () => <h2>customers</h2>;
-
-
+const checkOutRentalUrl = (title, customer_id) => {
+  return `https:localhost:3000/rentals/${title}/check-out?customer_id=${customer_id};`
+}
 
 class App extends Component {
 
@@ -36,6 +38,21 @@ class App extends Component {
         title,
       }
     });
+    const movie = this.props.selectedMovie;
+    const customer = this.props.selectedCustomer
+
+    const url = checkOutRentalUrl(this.selectedMovie.title, this.selectedCustomer.id);
+    axios.post(url)
+      .then(() => {
+        this.props.setStatus(
+          `Successfully checked out ${movie.title} to ${customer.name}`,
+          'success');
+      })
+      .catch((error) => {
+        this.props.setStatus(
+          `Could not check out ${movie.title} to ${customer.name}: ${error.message}`,
+          'error');
+      });
   }
 
   render() {
@@ -48,7 +65,7 @@ class App extends Component {
 
       <nav>
         <ul>
-          <li><Link to={'/customers'}>Customers</Link></li>
+          <li>< Link to={'/customers'}>Customers</Link></li>
           <li><Link to={'/library'}>Rental Library</Link></li>
           <li><Link to={'/search'}>Search</Link></li>
         </ul>
