@@ -101,7 +101,7 @@ class Library extends React.Component {
                         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTa5bvAuGdLZFQtPIMFfaadrp57KtLrRoWvbdro_GwMyALcM4y4UA" alt="film roll" className="Img"/>
                       </li>
                       <li>
-                        <label>Library</label>
+                        <label className="labelForLibrary">Library</label>
                       </li>
                     </ul>
                   </Link>
@@ -113,7 +113,7 @@ class Library extends React.Component {
                         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSclOKgNflUP6HlIJA0bZelbTjiQiZ4a-wgJWAkeU8wdzp314FE" alt="people to represent customers" className="Img"/>
                       </li>
                       <li>
-                        <label>Customers</label>
+                        <label className="labelForCustomer">Customers</label>
                       </li>
                     </ul>
                   </Link>
@@ -122,21 +122,25 @@ class Library extends React.Component {
                   <Link to="/Search">
                     <ul className="iconButtons">
                       <li>
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHvV7jmSzWk6CXp_l3bFBdY239ONNa6B6kWKFpzp9prf9uaDeOeg" alt="magnifying glass to represent search" className="Img"/>
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHvV7jmSzWk6CXp_l3bFBdY239ONNa6B6kWKFpzp9prf9uaDeOeg" alt="magnifying glass to represent search" className="Img" lable="Search"/>
                       </li>
                       <li>
-                        <label>Search</label>
+                        <label className="labelForSearch">Search</label>
                       </li>
                     </ul>
                   </Link>
                 </li>
                 <li>
-                  <label>Selected Movie</label>
-                  <p>{this.state.selectedMovie}</p>
+                  <div className="selectedMovie">
+                    <label>Selected Movie</label>
+                    <p className="selectedName">{this.state.selectedMovie}</p>
+                  </div>
                 </li>
                 <li>
-                  <label>Selected Customer</label>
-                  <p>{this.state.selectedCustomer}</p>
+                  <div className="selectedMovie">
+                    <label>Selected Customer</label>
+                    <p className="selectedName">{this.state.selectedCustomer}</p>
+                  </div>
                 </li>
                 <li>
                   <button
