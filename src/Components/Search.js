@@ -11,7 +11,7 @@ class Search extends Component {
     this.state = {
       results: [],
       keyword: "",
-      errors: [],
+      errors: "",
       message: "",
     }
   }
@@ -48,26 +48,33 @@ class Search extends Component {
     })
     .catch((error) => {
       this.setState({
-        errors: error.response.statusText
+        errors: `Could not search for "${this.state.keyword}": ${error.response.statusText}`
       });
-      this.showErrors
+      this.props.getMessage(this.state.errors);
     })
   };
 
   showMessage = () => {
     if (this.state.errors.length >= 1) {
       return <span>Failed to load movie about {this.state.keyword}: {this.state.errors}</span>
-    } 
+    }
   }
 
   addMovieToCollection = (params) => {
     console.log(params.image_url);
     axios.post(`http://localhost:3001/movies?title=${params.title}&image_url=${params.image_url}&overview=${params.overview}&release_date=${params.release_date}`)
     .then((response) => {
-      console.log(response.data);
+      this.setState({
+        message: `Successfully added "${params.title}" to library`,
+      });
+      this.props.getMessage(this.state.message);
     })
     .catch((errors) => {
-      console.log(errors);
+      console.log(errors.response.statusText);
+      this.setState({
+        errors: errors.response.statusText,
+      })
+      this.props.getMessage(this.state.errors);
     })
   }
 
@@ -86,9 +93,6 @@ class Search extends Component {
 
     return (
       <section>
-        <div>
-          {this.showMessage()}
-        </div>
         <form onSubmit={this.onFormSubmit}>
           <div>
             <label htmlFor="keyword">Search: </label>

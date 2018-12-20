@@ -67,9 +67,6 @@ class Library extends React.Component {
   }
 
   showMessageCust = (message) => {
-    // if (this.state.message.length >= 1) {
-    //   return <p>{this.state.message}</p>
-    // }
     this.setState({
       message: message
     })
