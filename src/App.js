@@ -46,8 +46,8 @@ class App extends Component {
     this.state = {
       message: "",
       selectedMovie: "None",
+      selectedCustomerId: 0,
       selectedCustomer: "None",
-      makeRentalUrl: "http://localhost:3000/rentals/:title/check-out",
     };
   }
 
@@ -78,34 +78,13 @@ class App extends Component {
     });
   }
 
-  rentalsCustomer = (customerName) => {
+  rentalsCustomer = (customerName, customerId) => {
     console.log(`Selected customer = ${customerName}`);
     this.setState({
       selectedCustomer: customerName,
+      selectedCustomerId: customerId,
     });
   }
-
-  makeRental = () => {
-    const ready = (this.state.selectedMovie !== "None" && this.state.selectedCustomer !== "None");
-    if (ready) {
-      console.log("rental is ready");
-      this.setState({
-        message: `Successfully checked out ${this.state.selectedMovie} to ${this.state.selectedCustomer}`,
-      });
-      return (
-        <Rental
-          movie={this.state.selectedMovie}
-          customer={this.state.selectedCustomer}
-          />
-      )
-    }
-
-    this.setState({
-      selectedMovie: "None",
-      selectedCustomer: "None",
-    });
-  }
-
 
   render() {
 
@@ -122,19 +101,17 @@ class App extends Component {
             <NavItem className="nav__links">
               <NavLink tag={Link} to="/search">Search</NavLink>
             </NavItem>
-            <NavItem className="nav__links">
-              <div>{this.state.selectedMovie}</div>
-            </NavItem>
-            <NavItem className="nav__links">
-              <div>{this.state.selectedCustomer}</div>
-            </NavItem>
-            <NavItem className="nav__links">
-              <div>
-                <Button onClick={this.makeRental}>Check Out New Rental</Button>
-              </div>
-            </NavItem>
+            <div className="rental">
+              <Rental
+                  movie={this.state.selectedMovie}
+                  customer={this.state.selectedCustomer}
+                  customerId={this.state.selectedCustomerId}
+                  url={`http://localhost:3000/rentals/${this.state.selectedMovie}/check-out`}
+                />
+            </div>
           </Nav>
         </Navbar>
+
         <div className="status-bar status-bar--success">
           <Alert color="success">
             <StatusBar className="status-br__text" status={this.state.message}/>

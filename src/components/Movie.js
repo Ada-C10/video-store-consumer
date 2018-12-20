@@ -6,7 +6,7 @@ import './Movie.css';
 const Movie = (props) => {
 
   const onClickMovie = () => {
-    props.grabMovieTitleCallback(props.title)
+    props.grabMovieTitleCallback(props.title, props.id)
   }
 
 

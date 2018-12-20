@@ -6,7 +6,7 @@ import './Customer.css';
 const Customer = (props) => {
 
   const onClickCustomer = () => {
-    props.grabCustomerNameCallback(props.name)
+    props.grabCustomerNameCallback(props.name, props.id)
   }
 
   return (
