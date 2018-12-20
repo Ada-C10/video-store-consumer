@@ -23,8 +23,6 @@ const Result = (props) => {
   )
 }
 
-// onClick={() => props.deleteCardCallback(props.id)}
-
 Result.propTypes = {
   id:PropTypes.integer,
   title:PropTypes.string,
@@ -32,7 +30,7 @@ Result.propTypes = {
   release_date:PropTypes.string,
   image_url:PropTypes.string,
   external_id:PropTypes.integer,
-  buttonClassname:PropTypes.string
+  addMovieToLibraryCallback:PropTypes.func
 };
 
 export default Result;

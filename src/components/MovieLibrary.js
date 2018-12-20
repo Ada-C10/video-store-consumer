@@ -24,12 +24,11 @@ class MovieLibrary extends Component {
   getMovies = () => {
     axios.get('http://localhost:3000/movies')
     .then((response) => {
-      console.log(response.data.length);
       this.setState({
         movies: response.data,
         movieCount: response.data.length,
       });
-      this.props.movieCountCallback(this.state.movieCount)
+      this.props.movieCountCallback(`Successfully loaded ${this.state.movieCount} movies`)
     })
     .catch((error) => {
       this.setState({ error: error.message });

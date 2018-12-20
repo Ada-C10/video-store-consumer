@@ -29,24 +29,16 @@ class Search extends Component {
   }
 
   onInputChange = (event) => {
-    console.log("on input change")
-    // event.target.className = ' '
     const field = event.target.name;
     const value = event.target.value;
-    console.log(field, value)
     const newState = {}
     newState[field] = value;
     this.setState(newState);
-    console.log(this.state.searchTerm)
   }
 
   onFormSubmit = (event) => {
     event.preventDefault();
-    console.log("form submit")
-    console.log(this.state.searchTerm)
-
     this.getSearchResults(this.state.searchTerm);
-    console.log(this.state.searchResults)
     this.setState({
       searchTerm: ""
     });
@@ -54,7 +46,6 @@ class Search extends Component {
 
   addMovieToLibrary = (movieId) => {
     const addedMovie = this.state.searchResults.find( movie => movie.external_id === movieId)
-    console.log(addedMovie)
     const addedMovieData = {
       title: addedMovie.title,
       overview: addedMovie.overview,

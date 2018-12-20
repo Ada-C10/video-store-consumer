@@ -22,18 +22,6 @@ import Search from './components/Search.js';
 import Rental from './components/Rental.js';
 import StatusBar from './components/StatusBar.js';
 
-// const libraryConst = () => (
-//   <div>
-//     <MovieLibrary />
-//   </div>
-// );
-
-// const customerConst = () => (
-//   <div>
-//     <CustomerLibrary />
-//   </div>
-// );
-
 const searchConst = () => (
   <div>
     <Search/>
@@ -51,21 +39,7 @@ class App extends Component {
     };
   }
 
-  customerCount = (allCustomers) => {
-    const newMessage = `Successfully loaded ${allCustomers} customers`;
-
-    console.log(`New Status = ${newMessage}`);
-
-    this.setState({
-      message: newMessage,
-    });
-  }
-
-  movieCount = (allMovies) => {
-    const newMessage = `Successfully loaded ${allMovies} movies from the rental library`;
-
-    console.log(`New Status = ${newMessage}`);
-
+  changeMessage = (newMessage) => {
     this.setState({
       message: newMessage,
     });
@@ -93,7 +67,7 @@ class App extends Component {
         <Navbar className="nav-bar" color="light" light expand="lg">
           <Nav className="ml-auto" navbar>
             <NavItem className="nav__links">
-              <NavLink tag={Link} to="/movies">Movie Library</NavLink>
+              <NavLink tag={Link} to="/">Movie Library</NavLink>
             </NavItem>
             <NavItem className="nav__links">
               <NavLink tag={Link} to="/customers">Customers</NavLink>
@@ -106,8 +80,7 @@ class App extends Component {
                   movie={this.state.selectedMovie}
                   customer={this.state.selectedCustomer}
                   customerId={this.state.selectedCustomerId}
-                  url={`http://localhost:3000/rentals/${this.state.selectedMovie}/check-out`}
-                />
+                  rentalCallback={this.changeMessage}/>
             </div>
           </Nav>
         </Navbar>
@@ -118,17 +91,17 @@ class App extends Component {
           </Alert>
         </div>
 
-        <Route path="/movies"
+        <Route exact path="/"
           render={ (props) => <MovieLibrary {...props}
-          movieCountCallback={this.movieCount}
+          movieCountCallback={this.changeMessage}
           grabMovieTitleCallback={this.rentalsMovie} /> }
           />
-        <Route path="/customers"
+        <Route exact path="/customers"
           render={ (props) => <CustomerLibrary {...props}
-          customerCountCallback={this.customerCount}
+          customerCountCallback={this.changeMessage}
           grabCustomerNameCallback={this.rentalsCustomer} /> }
           />
-        <Route path="/search" component={searchConst}/>
+        <Route exact path="/search" component={searchConst}/>
       </div>
 
     )

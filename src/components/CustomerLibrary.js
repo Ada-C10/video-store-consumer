@@ -21,12 +21,11 @@ class CustomerLibrary extends Component {
   getCustomers = () => {
     axios.get('http://localhost:3000/customers')
     .then((response) => {
-      console.log(response.data.length);
       this.setState({
         customers: response.data,
         customerCount: response.data.length,
       });
-      this.props.customerCountCallback(this.state.customerCount)
+      this.props.customerCountCallback(`Successfully loaded ${this.state.customerCount} customers`)
     })
     .catch((error) => {
       this.setState({ error: error.message });
