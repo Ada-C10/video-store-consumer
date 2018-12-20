@@ -50,27 +50,24 @@ class App extends Component {
 
       <div className="App">
 
-      <ul class="nav justify-content-center nav-justified">
-        <ButtonToolbar>
-          <li class="nav-item"><Button bsStyle="info"><Link to={'/customers'}>Customers</Link></Button></li>
-          <li class="nav-item"><Button bsStyle="info"><Link to={'/library'}>Rental Library</Link></Button></li>
-          <li class="nav-item"><Button bsStyle="info"><Link to={'/search'}>Search</Link></Button></li>
-       </ButtonToolbar>
-      </ul>
+        <ul class="nav justify-content-center nav-justified">
+          <ButtonToolbar>
+            <li class="nav-item"><Button bsStyle="info"><Link to={'/customers'}>Customers</Link></Button></li>
+            <li class="nav-item"><Button bsStyle="info"><Link to={'/library'}>Rental Library</Link></Button></li>
+            <li class="nav-item"><Button bsStyle="info"><Link to={'/search'}>Search</Link></Button></li>
+         </ButtonToolbar>
+        </ul>
 
-      <div className="card" >
-        <img className="card-img-top" src={this.state.selectedMovie.imageUrl} alt={this.state.selectedMovie.title}/>
-        <div class="card-body">
-          <h2 class="card-text"> {this.state.selectedMovie.title}</h2>
-          <h2 class="card-text">{this.state.selectedCustomer.name}</h2>
+        <div className="card bg-light" >
+          <img className="card-img-top" src={this.state.selectedMovie.imageUrl} alt={this.state.selectedMovie.title}/>
+          <div class="card-body">
+            <h2 class="card-text">{this.state.selectedCustomer.name}</h2>
+        </div>
+
+        <section >
+          <Route path="/search" component={ SearchBar }/>
+        </section>
       </div>
-
-      </div>
-
-
-      <section className="search-bar">
-        <Route path="/search" component={ SearchBar }/>
-      </section>
 
 
       <section>

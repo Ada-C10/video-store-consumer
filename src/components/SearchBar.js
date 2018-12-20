@@ -79,7 +79,7 @@ class SearchBar extends Component {
 
   render() {
     return (
-      <section>
+      <section className="search-bar">
       <input
       onChange={this.onSearchChange}
       value={this.state.searchValue}
@@ -90,9 +90,6 @@ class SearchBar extends Component {
       <Button bsStyle="info" type="submit" value="submit" onClick={ this.onSubmit } > Search</Button>
       {this.displayMovies()}
       </section>
-
-
-
     );
 
   }
