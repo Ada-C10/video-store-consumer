@@ -35,13 +35,11 @@ class SearchCollection extends Component {
   }
 
   addToLibrary = (movie) => {
+    console.log(movie)
     axios.post(`http://localhost:3000/movies`, movie)
     .then((response) => {
       console.log(response);
       console.log(response.data);
-      this.setState({
-        message: "Added movie to library",
-      })
     })
     .catch((error) => {
       console.log(error.message);
@@ -66,7 +64,6 @@ class SearchCollection extends Component {
             image={movie.image_url}
             details={movies[index]}
             addToLibraryCallback={this.addToLibrary}
-
           />
       )
     } );
