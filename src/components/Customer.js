@@ -13,9 +13,6 @@ class Customer  extends Component {
     return (
       <div>
       <section>
-      <h1>Testing That the Customers Pg shows up! </h1>
-      </section>
-      <section>
       {this.props.name}
       </section>
       <button onClick={this.handleClickOnCustomer}>Select A Customer</button>

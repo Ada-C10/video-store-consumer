@@ -45,42 +45,38 @@ class App extends Component {
       <Router>
 
       <div className="App">
+
       <nav>
-      <Link to={'/search'}>Search Bar </Link>
-      <Link to={'/customers'}>Customers</Link>
-        <Link to={'/library'}>Rental Library</Link>
+        <ul>
+          <li><Link to={'/customers'}>Customers</Link></li>
+          <li><Link to={'/library'}>Rental Library</Link></li>
+          <li><Link to={'/search'}>Search</Link></li>
+        </ul>
       </nav>
+
+
       <h1>{this.state.selectedMovie.title}</h1>
       <h1>{this.state.selectedCustomer.name}</h1>
+
       <section className="search-bar">
         <Route path="/search" component={ SearchBar }/>
       </section>
 
 
-      <ul>
-        <li>
-
+      <section>
         <Route
           path="/customers"
           render={() => <CustomersCollection onSelectCustomer={this.handleSelectCustomer} />}
         />
+      </section>
 
-        </li>
-
-        <li>
-
+      <section>
         <Route
           path="/library"
           render={() => <RentalLibrary onSelectMovie={this.handleSelectMovie} />}
         />
-        </li>
-      </ul>
+      </section>
 
-
-
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
       </div>
 
     </Router>

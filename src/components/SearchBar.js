@@ -5,7 +5,7 @@ import axios from 'axios';
 import Movie from './Movie.js'
 
 const QUERY_URL ="http://localhost:3000/movies?query=";
-const MOVIES_URL ="http://localhost:3000/movies/  ";
+const MOVIES_URL ="http://localhost:3000/movies/";
 
 class SearchBar extends Component {
 

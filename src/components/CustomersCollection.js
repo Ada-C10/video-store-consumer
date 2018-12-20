@@ -52,9 +52,6 @@ class CustomersCollection  extends Component {
     return (
       <div>
       <section>
-      <h1>Testing That the Customers Pg shows up! </h1>
-      </section>
-      <section>
       {this.displayCustomers()}
       </section>
       </div>

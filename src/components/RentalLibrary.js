@@ -35,13 +35,14 @@ class RentalLibrary  extends Component {
   });
 }
 
+
   componentDidMount() {
     console.log("The component did in fact mount");
     const GET_ALL_MOVIES = "http://localhost:3000/movies";
 
     axios.get(GET_ALL_MOVIES)
     .then((response) => {
-      console.log("in get movies", response);
+      console.log("in rental library axios.get", response);
       this.setState({
         movieList: response.data,
       });
@@ -61,9 +62,6 @@ class RentalLibrary  extends Component {
   render() {
     return (
       <div>
-      <section>
-      <h1>Testing That the Movie Pg shows up! </h1>
-      </section>
       <section>
       {this.displayMovies()}
       </section>
