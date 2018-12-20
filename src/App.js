@@ -62,20 +62,22 @@ class App extends Component {
           <h1 className="App-title">Welcome to React Video Store</h1>
         </header>
         <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
+          To get started, edit <code>kawaii/Anime.mkv</code> and save to reload.
         </p>
-        <NavBar />
+        <NavBar clearCB={ this.clearStatus } />
         <NewRental
           movie={ this.state.movie }
           customer={ this.state.customer }
           cust_id={ this.state.cust_id }
-          clearCB={ this.clearSelections } />
+          clearCB={ this.clearSelections }
+          statusCB={ this.status } />
         <StatusBar status={ this.state.status } />
-        <Route path="/library" render={() => <LibraryContainer type="Movie" selectCB = {this.select} />} />
-        <Route path="/customers" render={() => <LibraryContainer type="Customer" selectCB = {this.select} />} />
-        <Route path="/search" render={() => <SearchContainer />} />
 
-</div>
+        <Route path="/" exact="true" render={() => <LibraryContainer type="Movie" selectCB={this.select} statusCB={ this.status } />} />
+        <Route path="/library" render={() => <LibraryContainer type="Movie" selectCB={this.select} statusCB={ this.status } />} />
+        <Route path="/customers" render={() => <LibraryContainer type="Customer" selectCB={this.select} statusCB={ this.status } />} />
+        <Route path="/search" render={() => <SearchContainer statusCB={ this.status } />} />
+      </div>
     );
   }
 }
