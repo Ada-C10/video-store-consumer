@@ -21,7 +21,7 @@ class App extends Component {
     }
   };
 
-  url = "http://localhost:3000/";
+  url = "https://chanibel-video-store-api.herokuapp.com/";
 
   selectMovie = (movie) => {
     this.setState({
