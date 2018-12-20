@@ -29,10 +29,12 @@ class SearchSection extends Component {
       this.setState({
         searchResults: response.data
       });
-      this.props.changeStatusCallback('success', `Successfully found ${response.data.length} movies containing ${props}`)
-      console.log(response.data.length)
+      if (response.data.length === 0) {
+        this.props.changeStatusCallback('error', 'There are no results that match your search.')
+      } else {
+        this.props.changeStatusCallback('success', `Successfully found ${response.data.length} movies containing ${props}`)
+      }
 
-      //should we add a different message if zero movies are found with the given props??
     })
     .catch((error) => {
       this.props.changeStatusCallback('error', `I'm sorry, there has been an error. Please try again.`)

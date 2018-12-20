@@ -33,7 +33,6 @@ class CustomerSection extends Component {
   }
 
   render() {
-
     const { customers } = this.state
 
     const allCustomers = customers.map((customer, i) => {
@@ -41,6 +40,7 @@ class CustomerSection extends Component {
         key={i}
         name={customer.name}
         phone={customer.phone}
+        movies={customer.movies_checked_out_count}
         selectCustomerCallback={() => this.props.selectCustomerCallback(customer)}
         />
 
