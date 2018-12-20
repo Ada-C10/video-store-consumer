@@ -14,7 +14,7 @@ class SearchCollection extends Component {
   }
 
   searchMovie = (movie) => {
-    axios.get(`http://localhost:3000/movies?query=${movie}`)
+    axios.get(URL + `movies?query=${movie}`)
     .then((response) => {
       this.setState({
         matchingMovies: response.data,
@@ -36,7 +36,7 @@ class SearchCollection extends Component {
 
   addToLibrary = (movie) => {
     console.log(movie)
-    axios.post(`http://localhost:3000/movies`, movie)
+    axios.post(URL + `movies`, movie)
     .then((response) => {
       console.log(response);
       console.log(response.data);

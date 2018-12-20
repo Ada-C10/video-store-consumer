@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import axios from 'axios'
 import './App.css';
 import { Route, Link} from 'react-router-dom';
-import RentalList from './Components/RentalList'
-import CustomerList from './Components/CustomerList'
+import RentalList from './Components/RentalList';
+import CustomerList from './Components/CustomerList';
 import SearchCollection from './Components/SearchCollection';
 import Library from './Components/Library';
 import 'bootstrap/dist/css/bootstrap.min.css';
