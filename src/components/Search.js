@@ -79,24 +79,27 @@ class Search extends Component {
     });
 
     return (
-      <div>
-        <form className="search-bar" onSubmit={this.onFormSubmit}>
+      <div className="wrap">
+        <form className="search" onSubmit={this.onFormSubmit}>
           <input
+            className="searchTerm"
             type="text"
-            placeholder="Search.."
+            placeholder="Find more movies"
             name="searchTerm"
             value={this.state.searchTerm}
             onChange={this.onInputChange}
           />
-          <button type="submit" className="search-bar__submit"/>
+        <button className="searchButton" type="submit"> Search </button>
         </form>
-        <div className="searchResults">
+        <div >
           {searchResults}
         </div>
       </div>
     );
   }
 }
+
+
 
 Search.propTypes = {
 
