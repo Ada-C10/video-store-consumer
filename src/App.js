@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import Customers from './Components/Customers';
@@ -46,7 +45,7 @@ class App extends Component {
     const addMovieURL = this.url + 'movies';
 
     axios.post(addMovieURL, {id: movie.external_id})
-    .then((response) => {
+    .then(() => {
       this.setStatusMessage(`Successfully added ${movie.title} to rental library`);
     })
     .catch((error) => {
@@ -59,7 +58,7 @@ class App extends Component {
     this.setState({status: message});
   }
 
-  clearStatusMessage = (message) => {
+  clearStatusMessage = () => {
     this.setState({status: undefined});
   }
 
@@ -79,7 +78,7 @@ class App extends Component {
       const customer = this.state.selectedCustomer.name;
 
       axios.post(rentalUrl, {customer_id: customerId, due_date: dueDate})
-      .then((response) => {
+      .then(() => {
         this.setStatusMessage(`Successfully checked out ${movie} to ${customer}`);
         this.setState(
           this.resetState(),
@@ -101,27 +100,32 @@ class App extends Component {
             <div className='top-bar'>
               <ul className='nav-links'>
                 <li>
-                  <Link to="/search"><img className="navbar__icon"
-                    src="https://adagold.github.io/video-store-consumer/static/media/magnifying-glass-search.6c42d201.svg"/><p>Search</p></Link>
+                  <Link to="/search"><img className="navbar__icon" src=
+                    "https://adagold.github.io/video-store-consumer/static/media/magnifying-glass-search.6c42d201.svg"/>
+                  <p>Search</p></Link>
                 </li>
                 <li>
 
                   <Link to="/library"><img className="navbar__icon"
-                    src="https://adagold.github.io/video-store-consumer/static/media/film-reel.6794d2f3.svg"/><p>Library</p></Link>
+                    src="https://adagold.github.io/video-store-consumer/static/media/film-reel.6794d2f3.svg"/>
+                  <p>Library</p></Link>
                 </li>
                 <li>
                   <Link to="/customers"><img className="navbar__icon"
-                    src="https://adagold.github.io/video-store-consumer/static/media/people.2aa64ca8.svg"/><p>Customers</p></Link>
+                    src="https://adagold.github.io/video-store-consumer/static/media/people.2aa64ca8.svg"/>
+                  <p>Customers</p></Link>
                 </li>
               </ul>
               <section className="rentalDisplay">
                 <div>
                   <p className="rental-selection__label">Selected Movie</p>
-                  {this.state.selectedMovie && <p>{this.state.selectedMovie.title}</p>}
+                  {this.state.selectedMovie &&
+                    <p className="rental-selection__name">{this.state.selectedMovie.title}</p>}
                 </div>
                 <div>
                   <p className="rental-selection__label">Selected Customer</p>
-                  {this.state.selectedCustomer && <p>{this.state.selectedCustomer.name}</p>}
+                  {this.state.selectedCustomer &&
+                    <p className="rental-selection__name">{this.state.selectedCustomer.name}</p>}
                 </div>
                 <div>
                   <button onClick={this.checkoutMovie}>Check Out New Rental</button>

@@ -2,31 +2,6 @@
   text-align: center;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-}
-
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
-}
-
-.App-title {
-  font-size: 1.5em;
-}
-
-.App-intro {
-  font-size: large;
-}
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
 body {
   margin: 0;
   padding: 0;
@@ -90,6 +65,18 @@ ul {
 .rentalDisplay div button{
   width: 100%;
   min-height: 100%;
+  border-radius: 0.75em;
+  font: 400 11px system-ui;
+}
+
+.rentalDisplay div:nth-child(3) {
+  width: 4rem;
+}
+
+.rentalDisplay div {
+
+  width: 12em;
+  margin: 0 .5em;
 }
 
 .navbar__icon {
@@ -130,4 +117,12 @@ p.rental-selection__label {
 
 label {
   padding: 0.25rem;
+}
+
+p.rental-selection__name {
+  margin: 0;
+  font-size: 20px;
+  padding: .3em;
+  overflow: hidden;
+  max-height: 2.5em;
 }
