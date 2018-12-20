@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Route, Link } from 'react-router-dom';
+import axios from 'axios';
 import './App.css';
 import {
   Alert,
@@ -47,6 +48,8 @@ class App extends Component {
       selectedMovie: "None",
       selectedCustomer: "None",
       isRentalReady: false,
+      makeRentalUrl: "http://localhost:3000/rentals/:title/check-out",
+      rentals: [],
     };
   }
 
@@ -91,6 +94,20 @@ class App extends Component {
   //   console.log(this.state.isRentalReady);
   // }
 
+  getCheckout = () => {
+    axios.post(this.state.makeRentalUrl)
+    .then((response) => {
+      console.log(response);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+  }
+
+  postRental = () => {
+
+  }
+
   render() {
 
     const makeRental = () => {
@@ -101,17 +118,23 @@ class App extends Component {
         this.setState({
           isRentalReady: true,
         });
+        console.log(this.state.isRentalReady);
+        if (this.state.isRentalReady) {
+          this.setState({
+            message: `Successfully checked out ${this.state.selectedMovie} to ${this.state.selectedCustomer}`,
+          });
+          console.log(this.state.message);
+          return (
+            <Rental customer={this.state.selectedCustomer}        movie={this.state.selectedMovie} url={this.state.makeRentalUrl}
+              />
+          )
+        }
       }
 
-      console.log(this.state.isRentalReady);
-      if (this.state.isRentalReady) {
-        return <Rental customer={this.state.selectedCustomer} movie={this.state.selectedMovie} />
-      }
       this.setState({
-        message: `Successfully checked out ${this.state.selectedMovie} to ${this.state.selectedCustomer}`,
+        selectedMovie: "None",
+        selectedCustomer: "None",
       });
-      console.log(this.state.message);
-      console.log(this.state.selectedCustomer);
     }
 
     return (
@@ -163,4 +186,4 @@ class App extends Component {
   }
 }
 
-export default App;
+  export default App;
