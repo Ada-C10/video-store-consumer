@@ -100,18 +100,18 @@ class App extends Component {
             <div className='top-bar'>
               <ul className='nav-links'>
                 <li>
-                  <Link to="/search"><img className="navbar__icon" src=
+                  <Link to="/search"><img className="navbar__icon" alt="maginifying glass icon" src=
                     "https://adagold.github.io/video-store-consumer/static/media/magnifying-glass-search.6c42d201.svg"/>
                   <p>Search</p></Link>
                 </li>
                 <li>
 
-                  <Link to="/library"><img className="navbar__icon"
+                  <Link to="/library"><img className="navbar__icon" alt="film reel icon"
                     src="https://adagold.github.io/video-store-consumer/static/media/film-reel.6794d2f3.svg"/>
                   <p>Library</p></Link>
                 </li>
                 <li>
-                  <Link to="/customers"><img className="navbar__icon"
+                  <Link to="/customers"><img className="navbar__icon" alt="person icon"
                     src="https://adagold.github.io/video-store-consumer/static/media/people.2aa64ca8.svg"/>
                   <p>Customers</p></Link>
                 </li>
@@ -132,12 +132,10 @@ class App extends Component {
                 </div>
               </section>
             </div>
-
             <div className="status-bar">
               {this.state.status &&
                 <StatusBar message={this.state.status} clearMessageCallback={this.clearStatusMessage} />}
                 </div>
-
                 <Route path="/search"
                   render={() => <Search baseUrl={this.url}
                   addMovieCallback={this.addMovie}
@@ -155,9 +153,6 @@ class App extends Component {
                   />
               </div>
             </Router>
-
-
-
           </div>
         );
       }
