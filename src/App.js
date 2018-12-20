@@ -101,15 +101,12 @@ class App extends Component {
         this.setState({
           isRentalReady: true,
         });
-
       }
 
       console.log(this.state.isRentalReady);
-
       if (this.state.isRentalReady) {
         return <Rental customer={this.state.selectedCustomer} movie={this.state.selectedMovie} />
       }
-
       this.setState({
         message: `Successfully checked out ${this.state.selectedMovie} to ${this.state.selectedCustomer}`,
       });
@@ -118,25 +115,25 @@ class App extends Component {
     }
 
     return (
-      <div>
-        <Navbar color="faded">
-          <Nav>
-            <NavItem>
-              <Link to="/movies">Movie Library</Link>
+      <div className="outer-container">
+        <Navbar className="nav-bar" color="light" light expand="lg">
+          <Nav className="ml-auto" navbar>
+            <NavItem className="nav__links">
+              <NavLink tag={Link} to="/movies">Movie Library</NavLink>
             </NavItem>
-            <NavItem>
-              <Link to="/customers">Customers</Link>
+            <NavItem className="nav__links">
+              <NavLink tag={Link} to="/customers">Customers</NavLink>
             </NavItem>
-            <NavItem>
-              <Link to="/search">Search</Link>
+            <NavItem className="nav__links">
+              <NavLink tag={Link} to="/search">Search</NavLink>
             </NavItem>
-            <NavItem>
+            <NavItem className="nav__links">
               <div>{this.state.selectedMovie}</div>
             </NavItem>
-            <NavItem>
+            <NavItem className="nav__links">
               <div>{this.state.selectedCustomer}</div>
             </NavItem>
-            <NavItem>
+            <NavItem className="nav__links">
               <div>
                 <Button onClick={makeRental}>Check Out New Rental</Button>
               </div>

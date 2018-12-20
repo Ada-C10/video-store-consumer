@@ -11,7 +11,7 @@ const Rental = (props) => {
       <h2>{props.customer}</h2>
     </div>
   )
-  
+
 }
 
 Rental.propTypes = {

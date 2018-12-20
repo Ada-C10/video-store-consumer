@@ -1,0 +1,25 @@
+div.outer-container {
+  margin: 0;
+  background-color: blue;
+  /* max-width: 1559px; */
+  width: 100%;
+  padding: 0;
+}
+
+.nav-bar {
+  margin: 0;
+}
+
+.ml-auto {
+  /* background-color: red; */
+  width: 100%;
+  margin: 0px;
+  display: flex;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.nav__links {
+  flex-direction: column;
+
+}
