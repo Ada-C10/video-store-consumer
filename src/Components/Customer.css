@@ -1,3 +1,7 @@
+.jumbotron {
+    background-color: #BECFA1;
+}
+
 .jumbotron .customer-name{
     margin-left: 3rem;
     font-weight: 800;
@@ -22,7 +26,7 @@
 .card {
     margin: 0.5rem 2rem 0.5rem 2rem;
     border: 1px solid black;
-    background-color: lightgrey;
+    background-color: #737890;
     border-radius: 5px;
 }
 

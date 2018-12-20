@@ -7,6 +7,11 @@ import CustomerList from './Components/CustomerList'
 import SearchCollection from './Components/SearchCollection';
 import Library from './Components/Library';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faUsers, faHome, faFilm, faChevronCircleDown, faChevronCircleUp, faSearch } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+library.add(faUsers, faHome, faFilm, faChevronCircleDown, faChevronCircleUp, faSearch);
 
 class App extends Component {
     constructor(props) {
@@ -52,21 +57,21 @@ class App extends Component {
     };
 
     fetchMoviesData = () => {
-      axios.get(`http://localhost:3000/movies`)
-          .then((response) => {
-              // console.log('resp movies', response.data);
-              const movies = response.data.map((movie) => {
-                  const newMovie = {...movie};
-                  return newMovie
-              });
-            this.setState({
-              movies,
-              message: `${response.data.length} Movies loaded`
-            });
-          })
-          .catch((error) => {
-            this.setState({error: error.message})
-          })
+        axios.get(`http://localhost:3000/movies`)
+            .then((response) => {
+                // console.log('resp movies', response.data);
+                const movies = response.data.map((movie) => {
+                    const newMovie = {...movie};
+                    return newMovie
+                });
+                this.setState({
+                    movies,
+                    message: `${response.data.length} Movies loaded`
+                });
+            })
+            .catch((error) => {
+                this.setState({error: error.message})
+            })
     };
 
     fetchOutRentalData = () => {
@@ -76,12 +81,12 @@ class App extends Component {
                 console.log('response rents', response.data);
                 const rentals = response.data.map((rental) => {
                     console.log(response.data);
-                    const addRental = {...rental };
+                    const addRental = {...rental};
                     return addRental
                 });
 
                 const count = Object.keys(rentals).length;
-                if (count > 0){
+                if (count > 0) {
                     this.setState({
                         rentals,
                         message: `Successfully loaded ${count} rentals`
@@ -109,12 +114,12 @@ class App extends Component {
                 console.log('response rents', response.data);
                 const overDueRentals = response.data.map((rental) => {
                     console.log(response.data);
-                    const addODRental = {...rental };
+                    const addODRental = {...rental};
                     return addODRental
                 });
 
                 const count = Object.keys(overDueRentals).length;
-                if (count > 0){
+                if (count > 0) {
                     this.setState({
                         overDueRentals,
                         message: `Successfully loaded ${count} rentals`
@@ -142,17 +147,17 @@ class App extends Component {
     };
 
     onSelectMovie = (movieId) => {
-          console.log('', movieId);
-          const selectedMovie = this.state.movies.find((movie) => {
-              return movie.id === movieId;
-          });
-          console.log('selected movie', selectedMovie);
-          if (selectedMovie) {
-              this.setState({
-                  currentMovie: selectedMovie,
-              });
-          }
-      };
+        console.log('', movieId);
+        const selectedMovie = this.state.movies.find((movie) => {
+            return movie.id === movieId;
+        });
+        console.log('selected movie', selectedMovie);
+        if (selectedMovie) {
+            this.setState({
+                currentMovie: selectedMovie,
+            });
+        }
+    };
 
     onSelectCustomer = (customerId) => {
         // console.log('cust id in customerlist compo', customerId);
@@ -173,6 +178,7 @@ class App extends Component {
             result.setDate(result.getDate() + days);
             return result;
         }
+
         const date = new Date(Date.now()).toLocaleString();
         const checkout = addDays(date, 7);
         const customerId = this.state.currentCustomer.id;
@@ -201,7 +207,7 @@ class App extends Component {
         });
         const customer_id = selectedRental.customer_id;
         const title = selectedRental.title;
-        const payLoad = { customer_id };
+        const payLoad = {customer_id};
         console.log('rental to return', selectedRental);
         axios.post(`http://localhost:3000/rentals/${title}/return`, payLoad)
             .then((response) => {
@@ -218,74 +224,86 @@ class App extends Component {
             });
     };
 
-  render() {
-      // console.log('movies', this.state.movies);
-      // console.log('customers', this.state.customers);
-    return (
+    render() {
+        // console.log('movies', this.state.movies);
+        // console.log('customers', this.state.customers);
+        return (
             <div className="video-store">
                 <header className="header">
-                    <section className="header-controls">
-                        <div className="navbar navbar-fixed-top">
+                    <section className="header-controls navbar-fixed-top">
+                        <div className="navbar">
                             <nav className="nav-links">
-                                <Link to="/library" className="library-item"
-                                      onClick={this.fetchMoviesData}>
-                                    <button type="button"
-                                            className="navbar-btn btn btn-default">
-                                        Movies</button>
-                                </Link>
-                                <Link to="/customers" className="customers-item"
-                                      onClick={this.fetchCustomersData}>
-                                    <button type="button"
-                                            className="navbar-btn btn btn-default">
-                                        <span className="glyphicon glyphicon-user"></span></button>
-                                </Link>
-                                <Link to="/" className="home-item"
-                                        onClick={this.fetchHome}>
-                                    <button type="button"
-                                            className="navbar-btn btn btn-default">
-                                        <span className="glyphicon glyphicon-home"></button>
-                                </Link>
-                                <Link to="/rentals" className="rentals-item"
-                                      onClick={this.fetchOutRentalData}>
-                                    <button type="button"
-                                            className="navbar-btn btn btn-info">
-                                        Active Rentals</button>
-                                </Link>
-                                <Link to="/overdue" className="overdue-item"
-                                      onClick={this.fetchOverdueRentalData}>
-                                    <button type="button"
-                                            className="navbar-btn btn btn-default btn-danger">
-                                        Overdue Rentals</button>
-                                </Link>
-                                <Link to="/search" className="search-item">
-                                    <button type="button"
-                                            className="navbar-btn btn btn-default">
-                                        <span className="glyphicon glyphicon-search"></span></button>
-                                </Link>
+                                <div id="button-icons">
+                                    <Link to="/library" className="icon-item"
+                                          onClick={this.fetchMoviesData}>
+                                        <button type="button"
+                                                className="navbar-btn btn btn-default">
+                                            <FontAwesomeIcon icon="film" size='2x'/>
+                                        </button>
+                                    </Link>
+                                    <Link to="/customers" className="icon-item"
+                                          onClick={this.fetchCustomersData}>
+                                        <button type="button"
+                                                className="navbar-btn btn btn-default"><FontAwesomeIcon icon="users" size='2x'/>
+                                        </button>
+                                    </Link>
+                                    <Link to="/" className="icon-item"
+                                          onClick={this.fetchHome}>
+                                        <button type="button"
+                                                className="navbar-btn btn btn-default">
+                                            <FontAwesomeIcon icon="home" size='2x'/></button>
+                                    </Link>
+
+                                    <Link to="/search" className="icon-item">
+                                        <button type="button"
+                                                className="navbar-btn btn btn-default">
+                                            <FontAwesomeIcon icon="search" size='2x'/></button>
+                                    </Link>
+                                </div>
+
+                                <div id="rental-buttons">
+                                    <Link to="/rentals" className="rental-item"
+                                          onClick={this.fetchOutRentalData}>
+                                        <button type="button"
+                                                className="navbar-btn btn btn-info">
+                                            Active Rentals
+                                        </button>
+                                    </Link>
+                                    <Link to="/overdue" className="rental-item"
+                                          onClick={this.fetchOverdueRentalData}>
+                                        <button type="button"
+                                                className="navbar-btn btn btn-default btn-danger">
+                                            Overdue Rentals
+                                        </button>
+                                    </Link>
+                                </div>
                             </nav>
                         </div>
 
                         <div className="logo">
-                            <img src="../reel-icon.svg" alt="movie reel" className="mv-reel-img"/>
-                            <p className="title">Rent-O-Rama</p>
-                            <img src="../reel-icon.svg" alt="movie reel" className="mv-reel-img"/>
+
+                            <p className="title">Rent-<img src="../reel-icon.svg" alt="movie reel" className="mv-reel-img"/>-Rama</p>
+
                         </div>
 
                         <div className="rental-info">
-                            <div className="selected-item"><h4>Selected Customer:</h4>
-                                <p>{this.state.currentCustomer.name}</p>
+                            <div className="panel panel-info"><h6>Selected Customer:</h6>
+                                <p><strong>{this.state.currentCustomer.name}</strong></p>
                             </div>
-                            <div className="selected-item"><h4>Selected Movie:</h4>
-                                <p>{this.state.currentMovie.title}</p>
+                            <div className="panel panel-info"><h6>Selected Movie:</h6>
+                                <p><strong>{this.state.currentMovie.title}</strong></p>
                             </div>
                             <button className="btn btn-success"
-                                onClick={this.onConfirmRental}>Confirm Rental</button>
+                                    onClick={this.onConfirmRental}>Confirm Rental
+                            </button>
                         </div>
                     </section>
-
-                    <section className="alert alert-info">
-                        {this.state.message}
-                    </section>
+                    <div className="messages">
+                        <section className="info-alert alert alert-info alert-dismissible">
+                            <a href="#" className="close" data-dismiss="alert" aria-label="close">&times;</a>
+                            <strong>{this.state.message}</strong>
+                        </section>
+                    </div>
                 </header>
 
                 <section className="container">
@@ -298,13 +316,13 @@ class App extends Component {
                                    rentals={this.state.rentals}
                                    onReturnCallback={this.onReturnRental}
                                    state={this.state.rentals}/>}
-                               />
+                        />
 
                         <Route path="/customers"
-                                 render={() => <CustomerList
-                                     customers={this.state.customers}
-                                     onSelectCallback={this.onSelectCustomer}
-                                     state={this.state.customers}/>}
+                               render={() => <CustomerList
+                                   customers={this.state.customers}
+                                   onSelectCallback={this.onSelectCustomer}
+                                   state={this.state.customers}/>}
 
                         />
 
@@ -319,15 +337,14 @@ class App extends Component {
                                render={() => <Library
                                    movies={this.state.movies}
                                    selectedMovieCallback={this.onSelectMovie}
-                               state={this.state.movies}/>}
+                                   state={this.state.movies}/>}
 
                         />
                     </div>
                 </section>
             </div>
-
-    );
-  }
+        );
+    }
 }
 
 export default App;

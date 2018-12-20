@@ -3,23 +3,58 @@
 
 .video-store {
   text-align: center;
-  background-color: #222222;
+  background-color: #3B4052;
   font-family: 'Montserrat', sans-serif;
 
 }
 
 .header-controls {
+  height: 15rem;
   display: grid;
-  /*grid-gap: 5px;*/
   grid-template-columns: 2fr 1fr auto;
+  background-color: #ABADC1;
+  align-items: center;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
 }
+
+.navbar {
+  /*background-color: greenyellow;*/
+  /*display: grid;*/
+  /*grid-template-rows: 1fr 1fr;*/
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding-left: 4rem;
+}
+
+
+.info-alert {
+  margin-top: 75px;
+}
+
+.panel {
+  display: flex;
+  /*flex-wrap: wrap;*/
+  flex-direction: column;
+  margin: 3px;
+  width: 12rem;
+
+}
+
+.panel > * {
+
+  word-wrap: break-word;
+}
+
 
 .nav-links{
   /*grid-column-start: 1;*/
   /*grid-column-end: 1;*/
   display:flex;
   height: 100%;
-  /*justify-content: space-evenly;*/
+  /*padding: 5px;*/
+  justify-content: space-evenly;
 }
 
 .mv-reel-img {
@@ -31,21 +66,39 @@
   grid-column: 2;
   display: flex;
   font-family: 'Luckiest Guy', cursive;
-  font-size: 2rem;
+  font-size: 4rem;
 }
 
 .rental-info{
-  background-color: hotpink;
   display: flex;
+  padding-left: 3rem;
+  padding-top: 3rem;
+  padding-right: 5rem;
+  height: 75%;
+  align-items: center;
+
 }
 
-.selected-item{
-  grid-column: 3;
-  text-align: center;
-  background-color: greenyellow;
-  padding: 1rem;
-  color: #222222;
-  border: 1px solid;
-  border-radius: 5px;
+
+.rental-info > * {
+  display: flex;
+  padding: 20px;
 }
+
+.messages {
+  position: -webkit-sticky; /* Safari */
+  position: sticky;
+  top: 0;
+  background-color: hotpink;
+  padding-top: 10rem;
+}
+/*.selected-item{*/
+  /*grid-column: 3;*/
+  /*text-align: center;*/
+  /*background-color: greenyellow;*/
+  /*padding: 1rem;*/
+  /*color: #222222;*/
+  /*border: 1px solid;*/
+  /*border-radius: 5px;*/
+/*}*/
 

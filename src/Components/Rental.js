@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react'
 import './Rental.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 
 const Rental= (props) => {
@@ -36,7 +37,7 @@ const Rental= (props) => {
             </section>
             <button className="selectCustomer btn btn-info"
                     onClick={handleSelect}
-                    type="button">Return</button>
+                    type="button">Return <FontAwesomeIcon icon="chevron-circle-down"/></button>
         </section>
     );
 };
