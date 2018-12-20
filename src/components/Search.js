@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import SearchResult from "./SearchResult";
 import PropTypes from "prop-types";
+import './Search.css';
 
 class Search extends Component {
   constructor(props) {
@@ -60,6 +61,7 @@ class Search extends Component {
       <section>
         <h2>{this.state.message}</h2>
         <input
+          className="search"
           type="text"
           placeholder="Search..."
           onChange={event => {

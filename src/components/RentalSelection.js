@@ -56,6 +56,9 @@ class RentalSelection extends Component {
     return (
 
       <div className="header__controls">
+        <div className="status-bar">
+          <p className="status-bar__text">{this.state.message}</p>
+        </div>
         <div className="new-rental">
 
             <div className="rental-selection header__item">
@@ -75,9 +78,7 @@ class RentalSelection extends Component {
               Check Out New Rental
             </button>
         </div>
-        <div className="status-bar">
-          <p className="status-bar__text">{this.state.message}</p>
-        </div>
+
       </div>
 
     );

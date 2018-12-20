@@ -24,15 +24,16 @@ class RentalManager extends Component {
   addToLibrary = movie => {
     const image_url = movie.image_url.slice(31);
     movie = { ...movie, image_url: image_url };
-
     axios
-      .post("http://localhost:3000/movies", { movie })
+      .post("http://localhost:3000/movies", { ...movie })
       .then(response => {
-        console.log(response);
+        this.changeMessage(
+          `Successfully added ${movie.title} to Movie Library!`
+        );
       })
       .catch(error => {
         const errorMessage = error.message;
-        this.setState({ errorMessage });
+        this.changeMessage(errorMessage);
       });
   };
 
@@ -61,7 +62,7 @@ class RentalManager extends Component {
             currentCustomerID={this.state.currentCustomerID}
             currentMovieTitle={this.state.currentMovieTitle}
           />
-
+          <p className="message">{this.state.message}</p>
           <Router>
             <div className="navbar">
               <nav className="nav-bar__nav">
@@ -81,7 +82,6 @@ class RentalManager extends Component {
                 </ul>
               </nav>
 
-<<<<<<< HEAD
               <Route path="/" exact component={Index} />
               <Route
                 path="/search/"
@@ -103,36 +103,10 @@ class RentalManager extends Component {
               />
             </div>
           </Router>
-=======
-
-                <Route path="/" exact component={Index} />
-                <Route
-                  path="/search/"
-                  component={() => {
-                    return <Search addToLibraryCallback={this.addToLibrary} />;
-                  }}
-                />
-                <Route
-                  path="/library/"
-                  component={() => {
-                    return <Library setMovieCallback={this.setMovie} />;
-                  }}
-                />
-                <Route
-                  path="/customers/"
-                  component={() => {
-                    return <Customers setCustomerCallback={this.setCustomer} />;
-                  }}
-                />
-              </div>
-            </Router>
-
->>>>>>> 0cdeb687422c8771cb45c54d9de48ba1330e3ff1
         </header>
       </div>
     );
   }
 }
-
 
 export default RentalManager;
