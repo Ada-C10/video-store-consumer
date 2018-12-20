@@ -11,7 +11,7 @@ class Nav extends Component {
   render() {
 
     return (
-        <div>
+        <div className="Nav">
           <h2><Link to= "/search">Search</Link></h2>
           <h2><Link to= "/customers">Customers</Link></h2>
           <h2><Link to= "/library">Library</Link></h2>

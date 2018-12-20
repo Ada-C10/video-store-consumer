@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import axios from 'axios';
 import Customer from './Customer';
 
-// import './CustomersSection.css';
+import './CustomerSection.css';
 
 const ALL_CUSTOMERS_URL = "http://localhost:3000/customers"
 
@@ -47,7 +47,7 @@ class CustomerSection extends Component {
     });
 
     return (
-      <div>
+      <div className="customer-section">
         {allCustomers}
       </div>
     )

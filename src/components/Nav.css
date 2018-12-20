@@ -1,0 +1,13 @@
+.Nav {
+  margin-top: 1em;
+  display: flex;
+  flex-direction: row;
+}
+
+.Nav a {
+  text-decoration: none;
+  font-size: 2vw;
+  margin: .8em;
+  font-family: 'Raleway', sans-serif;
+  color: #bdc3c7;
+}

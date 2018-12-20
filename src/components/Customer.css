@@ -1,0 +1,9 @@
+.customer-card {
+  background-color: rgba(14, 16, 17, 1);
+  margin: 3vh;
+  box-shadow: 5px 8px 15px rgba(14, 16, 17, .7);
+  display: flex;
+  flex-direction: row;
+  width: 375px;
+  height: 275px;
+}

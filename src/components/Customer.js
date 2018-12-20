@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-// import './Customer.css';
+import './Customer.css';
 
 
 const Customer = (props) => {
   return (
-      <div>
+      <div className="customer-card">
         {props.name}
         <br />
         {props.phone}
