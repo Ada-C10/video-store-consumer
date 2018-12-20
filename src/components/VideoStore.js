@@ -125,35 +125,46 @@ class VideoStore extends Component {
       <Router>
       <div>
       <header>
-      <ul>
-      <li>
-      <Link to="/">Home</Link>
-      </li>
-      <li>
-      <Link to="/movies">Movies</Link>
-      </li>
-      <li>
-      <Link to="/customers">Customers</Link>
-      </li>
-      <li>
-      <Link to="/search">Search</Link>
-      </li>
-      <li>
-      <Link to="/overdue">Overdue</Link>
-      </li>
-      </ul>
-      <h4>{this.state.errorMessage !== "" ? this.state.errorMessage: "" }</h4>
-
-      <div>{this.state.selectedCustomer === "none" ? this.state.selectedCustomer
-      : this.state.selectedCustomer.name}</div>
-      <div>{this.state.selectedMovie === "none" ? this.state.selectedMovie : this.state.selectedMovie.title}</div>
-      <button
-      onClick ={this.checkOutRental}
-      type="button">Check Out New Rental</button>
-      <button
-      onClick ={this.checkInRental}
-      type="button">Check In Movie</button>
+      <nav className={"navbar navbar-expand-lg navbar-dark bg-dark fixed-top"}>
+      <div className={"container"}>
+      <a className="navbar-brand" href="#">
+        <img src="https://cdn2.bigcommerce.com/server4900/364bb/product_images/usa_movie_store.gif" width="150" height="30" alt="">
+      </img></a>
+      <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+         <span className="navbar-toggler-icon"></span>
+       </button>
+      <div className={"collapse navbar-collapse"} id={"navbarResponsive"}>
+          <ul className ={"navbar-nav ml-auto"} >
+          <li className ={"nav-item"}>
+          <Link to="/">Home</Link>
+          </li>
+          <li className={"nav-item"}>
+          <Link to="/movies">Movies</Link>
+          </li>
+          <li className={"nav-item"}>
+          <Link to="/customers">Customers</Link>
+          </li>
+          <li className={"nav-item"}>
+          <Link to="/search">Search</Link>
+          </li>
+          <li className={"nav-item"}>
+          <Link to="/overdue">Overdue</Link>
+          </li>
+          </ul>
+          <h4>{this.state.errorMessage !== "" ? this.state.errorMessage: "" }</h4>
+          <button
+          onClick ={this.checkOutRental}
+          type="button">Check Out New Rental</button>
+          <button
+          onClick ={this.checkInRental}
+          type="button">Check In Movie</button>
+      </div>
+      </div>
+      </nav>
       </header>
+      <div>Selected Customer: {this.state.selectedCustomer === "none" ? this.state.selectedCustomer
+      : this.state.selectedCustomer.name}</div>
+      <div>Selected Movie: {this.state.selectedMovie === "none" ? this.state.selectedMovie : this.state.selectedMovie.title}</div>
       <section className={"main-content"}>
       <Route exact path="/" component={Home} />
 
@@ -162,6 +173,8 @@ class VideoStore extends Component {
       <Route path="/search" render={(props) => <SearchShow {...props} resetStateProp={this.resetState} />}/>
       <Route path="/overdue" render={(props) => <OverdueShow {...props} returnedMovieProp={this.state.returnedMovie} findMovieProp={this.findMovie} findCustomerProp={this.findCustomer} />}/>
       </section>
+      <script src="vendor/jquery/jquery.min.js"></script>
+      <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
       </div>
       </Router>)
     }

@@ -5,8 +5,27 @@ body {
 .main-content {
     background-color: #343a40 !important;
     height: 100vh;
+    padding-top: 100px;
 }
 
 .overdue-heading {
   color: white;
+}
+
+.space {
+  display: flex;
+  justify-content: space-around;
+}
+
+header {
+  padding-bottom: 120px;
+}
+
+a {
+  padding-right: 50px;
+}
+
+nav {
+  padding-bottom: 75px;
+  font-size: 20px;
 }
