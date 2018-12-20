@@ -30,15 +30,6 @@ class CustomerCollection extends React.Component {
     })
   }
 
-
-
-  // showMessage = () => {
-  //   if (this.state.message.length >= 1) {
-  //     return <p>{this.state.message}</p>
-  //   }
-  // }
-
-
   render() {
     const collection = this.state.customers
 

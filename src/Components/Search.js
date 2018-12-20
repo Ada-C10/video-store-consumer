@@ -61,7 +61,6 @@ class Search extends Component {
   }
 
   addMovieToCollection = (params) => {
-    console.log(params.image_url);
     axios.post(`http://localhost:3001/movies?title=${params.title}&image_url=${params.image_url}&overview=${params.overview}&release_date=${params.release_date}`)
     .then((response) => {
       this.setState({
@@ -70,7 +69,6 @@ class Search extends Component {
       this.props.getMessage(this.state.message);
     })
     .catch((errors) => {
-      console.log(errors.response.statusText);
       this.setState({
         errors: errors.response.statusText,
       })
@@ -106,8 +104,6 @@ class Search extends Component {
         <section>
           <ul>{resultCollection}</ul>
         </section>
-
-
       </section>
     )
   }

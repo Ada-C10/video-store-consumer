@@ -38,21 +38,23 @@ class Library extends React.Component {
   }
 
   createNewRental = (customer, video) => {
-    const days = 7; // Days you want to subtract
+    console.log("im in create new rental");
+    const days = 7;
     const date = new Date();
     let last = new Date(date.getTime() + (days * 24 * 60 * 60 * 1000));
-
-
 
     axios.post(`http://localhost:3001/rentals/${this.state.selectedMovie}/${this.state.customerInfo.id}/check-out?due_date=${last}`)
     .then((response) => {
       this.setState({
-        message: `Successfully checked out ${this.state.selectedMovie} to ${this.state.customerInfo.name}`
+        message: `Successfully checked out ${this.state.selectedMovie} to ${this.state.customerInfo.name}`,
       });
-      console.log(response);
+      this.showMessageVideo(this.state.message);
     })
     .catch((errors) => {
-      console.log(errors);
+      this.setState({
+        message: errors.response.data.statusText,
+      })
+      this.showMessageVideo(this.state.message);
     })
   }
 
@@ -63,18 +65,18 @@ class Library extends React.Component {
     this.setState({
       message: message
     })
-    console.log("I'm in show message");
+    console.log("I'm in show message VIDEO");
   }
 
   showMessageCust = (message) => {
     this.setState({
       message: message
     })
-    console.log("I'm in show message");
+    console.log("I'm in show message CUST");
   }
 
   showMessageSearch = (message) => {
-    console.log("I'm in show msg search");
+    console.log("I'm in show msg SEARCH");
     this.setState({
       message: message,
     })
@@ -112,7 +114,7 @@ class Library extends React.Component {
                 </li>
                 <li>
                   <button
-                    onClick={this.createNewRenta}>
+                    onClick={this.createNewRental}>
                     Check Out New Rental
                   </button>
                 </li>
