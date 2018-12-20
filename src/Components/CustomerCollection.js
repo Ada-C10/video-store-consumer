@@ -9,7 +9,8 @@ class CustomerCollection extends React.Component {
     super();
 
     this.state = {
-      customers: []
+      customers: [],
+      message: "",
     };
   }
 
@@ -17,7 +18,8 @@ class CustomerCollection extends React.Component {
     axios.get('http://localhost:3001/customers')
     .then((response) => {
       this.setState({
-        customers: response.data
+        customers: response.data,
+        message: `Successfully loaded ${response.data.length} customers`
       });
     })
     .catch((error) => {
@@ -26,7 +28,11 @@ class CustomerCollection extends React.Component {
       });
     })
   }
-
+  showMessage = () => {
+    if (this.state.message.length >= 1) {
+      return <p>{this.state.message}</p>
+    }
+  }
 
 
   render() {
@@ -43,6 +49,9 @@ class CustomerCollection extends React.Component {
 
     return (
       <section>
+        <div>
+          {this.showMessage()}
+        </div>
           {customerCollection}
       </section>
     );

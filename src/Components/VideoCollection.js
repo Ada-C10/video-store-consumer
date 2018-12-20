@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import propTypes from 'prop-types';
 import axios from 'axios';
 import Video from './Video';
 
@@ -10,7 +10,8 @@ class VideoCollection extends React.Component {
     super(props);
 
     this.state = {
-      videos: []
+      videos: [],
+      message: ""
     };
   }
 
@@ -18,7 +19,8 @@ class VideoCollection extends React.Component {
     axios.get('http://localhost:3001/')
     .then((response) => {
       this.setState({
-        videos: response.data
+        videos: response.data,
+        message: `Successfully loaded ${response.data.length} movies from the rental library`
       });
     })
     .catch((error) => {
@@ -28,7 +30,11 @@ class VideoCollection extends React.Component {
     })
   }
 
-
+  showMessage = () => {
+    if (this.state.message.length >= 1) {
+      return <p>{this.state.message}</p>
+    }
+  }
 
 
   render() {
@@ -45,7 +51,11 @@ class VideoCollection extends React.Component {
     });
 
     return (
+
       <section>
+        <div>
+          {this.showMessage()}
+        </div>
           {videoCollection}
       </section>
     );

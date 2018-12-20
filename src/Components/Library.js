@@ -13,7 +13,8 @@ class Library extends React.Component {
     this.state = ({
       selectedMovie: "None",
       selectedCustomer: "None",
-      customerInfo: {}
+      customerInfo: {},
+      message: "",
     })
 
   }
@@ -45,11 +46,20 @@ class Library extends React.Component {
 
     axios.post(`http://localhost:3001/rentals/${this.state.selectedMovie}/${this.state.customerInfo.id}/check-out?due_date=${last}`)
     .then((response) => {
+      this.setState({
+        message: `Successfully checked out ${this.state.selectedMovie} to ${this.state.customerInfo.name}`
+      });
       console.log(response);
     })
     .catch((errors) => {
       console.log(errors);
     })
+  }
+
+  showMessage = () => {
+    if (this.state.message.length >= 1) {
+      return <p>{this.state.message}</p>
+    }
   }
 
   render() {
@@ -91,6 +101,9 @@ class Library extends React.Component {
               </ul>
             </nav>
           </header>
+          <div>
+          {this.showMessage()}
+          </div>
 
           <section className="showPageToUser">
             <Route exact={true} path="/Search" component={Search}/>

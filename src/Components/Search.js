@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import propTypes from 'prop-types';
 import axios from 'axios';
 import Video from './Video.js';
 
@@ -12,6 +12,7 @@ class Search extends Component {
       results: [],
       keyword: "",
       errors: [],
+      message: "",
     }
   }
 
@@ -39,7 +40,8 @@ class Search extends Component {
     axios.get(SEARCH_URL)
     .then((response) => {
       this.setState({
-        results: response.data
+        results: response.data,
+        message: `Found ${response.data.length} results for ${newKeywordData.keyword}`
 
       });
     })
@@ -51,9 +53,11 @@ class Search extends Component {
     })
   };
 
-  showErrors = () => {
+  showMessage = () => {
     if (this.state.errors.length >= 1) {
       return <span>Failed to load movie about {this.state.keyword}: {this.state.errors}</span>
+    } else {
+      return <p>{this.state.message}</p>
     }
   }
 
@@ -83,6 +87,9 @@ class Search extends Component {
 
     return (
       <section>
+        <div>
+          {this.showMessage()}
+        </div>
         <form onSubmit={this.onFormSubmit}>
           <div>
             <label htmlFor="keyword">Search: </label>
@@ -90,14 +97,14 @@ class Search extends Component {
             <input type="submit" value="Search" />
           </div>
         </form>
+        <div>
 
+        </div>
         <section>
           <ul>{resultCollection}</ul>
         </section>
 
-        <section>
-          {this.showErrors()}
-        </section>
+
       </section>
     )
   }
