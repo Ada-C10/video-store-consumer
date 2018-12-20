@@ -47,23 +47,23 @@ class App extends Component {
     // const title = this.state.selectedMovie.title;
     // const customer = this.state.selectedCustomer;
 
-    const url = checkOutRentalUrl(this.state.selectedMovie.title, this.state.selectedCustomer.id);
-
-    axios.post(url)
-      .then((response) => {
-        console.log("rental check-out", response);
-        // this.props.setStatus(
-        //   `Successfully checked out ${movie.title} to ${customer.name}`,
-        //   'success');
-      })
-      .catch((error) => {
-        console.log(error.message);
-        // this.props.setStatus(
-        //   `Could not check out ${movie.title} to ${customer.name}: ${error.message}`,
-        //   'error');
-      });
   }
-
+  checkOut = () => {
+  const url = checkOutRentalUrl(this.state.selectedMovie.title, this.state.selectedCustomer.id);
+  axios.post(url)
+    .then((response) => {
+      console.log("rental check-out", response);
+      // this.props.setStatus(
+      //   `Successfully checked out ${movie.title} to ${customer.name}`,
+      //   'success');
+    })
+    .catch((error) => {
+      console.log(error.message);
+      // this.props.setStatus(
+      //   `Could not check out ${movie.title} to ${customer.name}: ${error.message}`,
+      //   'error');
+    });
+  }
   render() {
     return (
 
