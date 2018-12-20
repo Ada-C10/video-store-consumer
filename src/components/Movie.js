@@ -9,7 +9,7 @@ class Movie extends Component {
   handleClick = () => {
     //console.log(this.props.title, this.props.id);
     if (this.props.onSelectMovie) { //if onSelectMovie is defined then execute it
-      this.props.onSelectMovie(this.props.id, this.props.title);
+      this.props.onSelectMovie(this.props.id, this.props.title, this.props.imageUrl);
     }
   }
 

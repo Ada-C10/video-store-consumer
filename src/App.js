@@ -32,11 +32,12 @@ class App extends Component {
     })
   }
 
-  handleSelectMovie = (id, title) => {
+  handleSelectMovie = (id, title, imageUrl) => {
     this.setState({ //make custom object
       selectedMovie: {
         id, //equal to id: id
         title,
+        imageUrl,
       }
     });
   }
@@ -57,9 +58,15 @@ class App extends Component {
        </ButtonToolbar>
       </ul>
 
+      <div className="card" >
+        <img className="card-img-top" src={this.state.selectedMovie.imageUrl} alt={this.state.selectedMovie.title}/>
+        <div class="card-body">
+          <h2 class="card-text"> {this.state.selectedMovie.title}</h2>
+          <h2 class="card-text">{this.state.selectedCustomer.name}</h2>
+      </div>
 
-      <h1>{this.state.selectedMovie.title}</h1>
-      <h1>{this.state.selectedCustomer.name}</h1>
+      </div>
+
 
       <section className="search-bar">
         <Route path="/search" component={ SearchBar }/>

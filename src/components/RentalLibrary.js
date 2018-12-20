@@ -14,9 +14,9 @@ class RentalLibrary  extends Component {
     }
   }
 
-  handleSelectMovie = (id, title) => {
+  handleSelectMovie = (id, title, imageUrl) => {
     if (this.props.onSelectMovie) { //if onSelectMovie is defined then execute it
-      this.props.onSelectMovie(id, title);
+      this.props.onSelectMovie(id, title, imageUrl);
     }
   }
 
