@@ -71,7 +71,7 @@ class Library extends Component {
         <section className="search-bar-wrapper">
           <SearchBar searchMovieCallback={this.searchMovie}/>
         </section>
-        {rentalList}
+        <div> {rentalList}</div>
       </div>
     );
   }
