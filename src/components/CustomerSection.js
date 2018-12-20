@@ -55,7 +55,7 @@ class CustomerSection extends Component {
 }
 
 CustomerSection.propTypes = {
-
+  selectCustomerCallback: PropTypes.func,
 };
 
 export default CustomerSection;

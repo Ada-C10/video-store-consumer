@@ -49,8 +49,6 @@ class SearchSection extends Component {
 
   }
 
-
-
     render() {
 
       const { searchResults } = this.state;
@@ -72,8 +70,6 @@ class SearchSection extends Component {
           <ul>
           {searchResults.map(movie => <li key={movie.id}>{movie.title} <img src={movie.image_url} /> <button onClick={() => this.addToLibrary(movie)}>Add to Library</button></li>)}
           </ul>
-
-
 
         </div>
       )
