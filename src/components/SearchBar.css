@@ -17,3 +17,8 @@
   outline: none;
   color: rgba(253, 203, 110,1.0);
 }
+
+input:focus {
+  transition: box-shadow 2s;
+  box-shadow: 0 0 25px rgba(129, 236, 236,.7);
+}

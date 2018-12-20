@@ -6,6 +6,7 @@
   flex-direction: row;
   width: 375px;
   height: 275px;
+  transition: box-shadow 2s;
 }
 
 .movie-card:hover{
@@ -23,6 +24,7 @@
   font-weight: 700;
   text-shadow: 1px 1px 1px rgba(250,250,250,.4);
   margin: .3em;
+  transition: text-shadow 2s;
 }
 
 .movie-card:hover h3 {
@@ -45,14 +47,14 @@
   position: relative;
   display: inline-block;
   background-color: rgba(253, 203, 110,1.0);
-  border:3px solid rgba(253, 203, 110,1.0);
+  border:none;
   box-shadow: none;
   text-align: center;
+  transition: background-color 1s;
 }
 
 .movie-card button:hover {
   background-color: rgba(245, 178, 55, 1);
-  border:3px solid rgba(245, 178, 55, 1);
 }
 
 .movie-card button:active {
