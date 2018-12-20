@@ -8,7 +8,6 @@ import SearchCollection from './Components/SearchCollection';
 import Library from './Components/Library';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-
 class App extends Component {
     constructor(props) {
         super(props);
@@ -22,7 +21,7 @@ class App extends Component {
         };
     }
 
-    componentDidMount() {
+    fetchCustomersData = () => {
         axios.get("http://localhost:3000/customers")
             .then((response) => {
                 // console.log('response custs', response.data);
@@ -41,16 +40,17 @@ class App extends Component {
                 this.setState({
                     customers,
                     message: `Successfully loaded ${count} customers`
-                })
+                });
             })
-
             .catch((error) => {
                 console.log('errors:', error.message);
                 this.setState({
                     message: error.message
-                });
+                })
             });
+    };
 
+    fetchMoviesData = () => {
       axios.get(`http://localhost:3000/movies`)
           .then((response) => {
               // console.log('resp movies', response.data);
@@ -58,7 +58,6 @@ class App extends Component {
                   const newMovie = {...movie};
                   return newMovie
               });
-
             this.setState({
               movies,
               message: `${response.data.length} Movies loaded`
@@ -66,10 +65,8 @@ class App extends Component {
           })
           .catch((error) => {
             this.setState({error: error.message})
-          });
-
-
-  }
+          })
+    };
 
     fetchOutRentalData = () => {
         console.log('fetching rentals');
@@ -87,9 +84,21 @@ class App extends Component {
                 this.setState({
                     rentals,
                     message: `Successfully loaded ${count} rentals`
-                })
+                });
             })
+            .catch((error) => {
+                console.log('errors:', error.message);
+                this.setState({
+                    message: error.message
+                })
+            });
     };
+
+    fetchHome = () => {
+        this.setState({
+            messages: 'Welcome to Rent-O-Rama!'
+        })
+    }
 
     onSelectMovie = (movieId) => {
           console.log('', movieId);
@@ -154,17 +163,20 @@ class App extends Component {
                     <section className="header-controls">
                         <div className="navbar navbar-fixed-top">
                             <nav className="nav-links">
-                                <Link to="/library" className="library-item">
+                                <Link to="/library" className="library-item"
+                                      onClick={this.fetchMoviesData}>
                                     <button type="button"
                                             className="navbar-btn btn btn-default">
                                         Movies</button>
                                 </Link>
-                                <Link to="/customers" className="customers-item">
+                                <Link to="/customers" className="customers-item"
+                                      onClick={this.fetchCustomersData}>
                                     <button type="button"
                                             className="navbar-btn btn btn-default">
                                         Customers</button>
                                 </Link>
-                                <Link to="/" className="home-item">
+                                <Link to="/" className="home-item"
+                                        onClick={this.fetchHome}>
                                     <button type="button"
                                             className="navbar-btn btn btn-default">
                                         Home</button>
