@@ -10,8 +10,9 @@ import { ButtonToolbar } from 'react-bootstrap';
 
 
 //const Customers1 = () => <h2>customers</h2>;
-
-
+const checkOutRentalUrl = (title, customer_id) => {
+  return `https:localhost:3000/rentals/${title}/check-out?customer_id=${customer_id};`
+}
 
 class App extends Component {
 
@@ -40,6 +41,21 @@ class App extends Component {
         imageUrl,
       }
     });
+    const movie = this.props.selectedMovie;
+    const customer = this.props.selectedCustomer
+
+    const url = checkOutRentalUrl(this.selectedMovie.title, this.selectedCustomer.id);
+    axios.post(url)
+      .then(() => {
+        this.props.setStatus(
+          `Successfully checked out ${movie.title} to ${customer.name}`,
+          'success');
+      })
+      .catch((error) => {
+        this.props.setStatus(
+          `Could not check out ${movie.title} to ${customer.name}: ${error.message}`,
+          'error');
+      });
   }
 
   render() {
@@ -58,6 +74,7 @@ class App extends Component {
             <li class="nav-item"><Button bsStyle="info"><Link to={'/library'}>Rental Library</Link></Button></li>
             <li class="nav-item"><Button bsStyle="info"><Link to={'/search'}>Search</Link></Button></li>
          </ButtonToolbar>
+>>>>>>> 74fe9bbdc8c01e3d2aeb19d26c20eed0d2d9a46d
         </ul>
 
         <div className="card bg-light" >
