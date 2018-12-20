@@ -170,7 +170,7 @@ class App extends Component {
      const movieList = this.state.movieList;
      movieList.push(selectedMovie);
 
-     const messageAlert = `${selectedMovie.title} is added`
+     const messageAlert = `${selectedMovie.title} is added to the library`
      this.setState({
        movieList: movieList,
        message: messageAlert,
