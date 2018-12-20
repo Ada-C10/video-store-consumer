@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import './SearchBar.css';
+
 class SearchBar extends React.Component {
 
   onSubmit = (event) => {
@@ -14,8 +16,9 @@ class SearchBar extends React.Component {
         <form onSubmit={this.onSubmit}>
           <input
             type='text'
-            placeholder='Search by Movie Title'
-            onChange={(movie) => this.setState({searchTitle: movie.target.value})} />
+            placeholder='Search animes...'
+            onChange={(movie) => this.setState({searchTitle: movie.target.value})}
+            className='searchinput' />
         </form>
       </div>
     );

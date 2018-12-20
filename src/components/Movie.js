@@ -16,11 +16,11 @@ const Movie = (props) => {
           { props.data.release_date }
         </p>
       </div>
-      <div className="movie__select">
+      <button className="movie__select">
         <p className="movie__select-link" onClick={ props.selectCB }>
           { props.type === "Search" ? "add to library" : "select me!" }
         </p>
-      </div>
+      </button>
     </div>
   )
 }

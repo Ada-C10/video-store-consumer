@@ -17,11 +17,11 @@ const Customer = (props) => {
           { props.data.movies_checked_out_count } AMVs checked out
         </p>
       </div>
-      <div className="customer__select">
+      <button className="customer__select">
         <p className="customer__select-link" onClick={ props.selectCB }>
           select me!
         </p>
-      </div>
+      </button>
     </div>
   )
 }

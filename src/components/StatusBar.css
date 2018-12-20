@@ -1,0 +1,24 @@
+.statuscontainer {
+  display: flex;
+  justify-content: center;
+}
+
+.statusbar {
+  margin-top: 0px;
+  margin-bottom: 0px;
+  width: 60vw;
+}
+
+.status {
+  border: 1px solid limegreen;
+  background-color: limegreen;
+  border-radius: 35px;
+  padding: 15px;
+  color: white;
+}
+
+.blankstatus {
+  border: none;
+  background-color: white;
+  padding: 0;
+}

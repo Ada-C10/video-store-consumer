@@ -29,15 +29,17 @@ class NewRental extends Component {
   render () {
     return (
       <div className="newrental">
-        <div className="newrental__selection">
-          <p className="newrental__selectionheader">Selected Movie</p>
-          <h3 className="newrental__selectiontitle">{ this.props.movie }</h3>
+        <button onClick={ this.submitNew } className="submitbutton">Check Out New Anime</button>
+        <div className="newrental__container">
+          <div className="newrental__selection">
+            <p className="newrental__selectionheader">Selected Movie</p>
+            <h3 className="newrental__selectiontitle">{ this.props.movie }</h3>
+          </div>
+          <div className="newrental__selection newrental__selection2">
+            <p className="newrental__selectionheader">Selected Customer</p>
+            <h3 className="newrental__selectioncustomer">{ this.props.customer }</h3>
+          </div>
         </div>
-        <div className="newrental__selection">
-          <p className="newrental__selectionheader">Selected Customer</p>
-          <h3 className="newrental__selectioncustomer">{ this.props.customer }</h3>
-        </div>
-        <button onClick={ this.submitNew }>Check Out New Anime</button>
       </div>
     )
   }

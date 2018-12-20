@@ -59,18 +59,24 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React Video Store</h1>
+          <div className="App-titles">
+            <h1 className="App-title">Welcome to</h1>
+            <h1 className="App-title App-title2">React Video Store</h1>
+            <p className="App-intro">
+              "To get started, edit <code>kawaii/Anime.mkv</code> and save to reload..."
+            </p>
+          </div>
         </header>
-        <p className="App-intro">
-          To get started, edit <code>kawaii/Anime.mkv</code> and save to reload.
-        </p>
-        <NavBar clearCB={ this.clearStatus } />
-        <NewRental
-          movie={ this.state.movie }
-          customer={ this.state.customer }
-          cust_id={ this.state.cust_id }
-          clearCB={ this.clearSelections }
-          statusCB={ this.status } />
+        <div className="uppercontainer">
+          <NavBar clearCB={ this.clearStatus } />
+          <NewRental
+            movie={ this.state.movie }
+            customer={ this.state.customer }
+            cust_id={ this.state.cust_id }
+            clearCB={ this.clearSelections }
+            statusCB={ this.status } />
+        </div>
+        
         <StatusBar status={ this.state.status } />
 
         <Route path="/" exact="true" render={() => <LibraryContainer type="Movie" selectCB={this.select} statusCB={ this.status } />} />

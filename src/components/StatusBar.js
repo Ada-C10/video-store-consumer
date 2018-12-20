@@ -4,10 +4,12 @@ import './StatusBar.css';
 
 const StatusBar = (props) => {
   return (
-    <div className="statusbar">
-      <p className="status">
-        { props.status }
-      </p> 
+    <div className="statuscontainer">
+      <div className="statusbar">
+        <p className={ props.status ? "status" : "blankstatus" }>
+          { props.status }
+        </p>
+      </div>
     </div>
   )
 }

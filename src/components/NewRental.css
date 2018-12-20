@@ -1,4 +1,60 @@
 .newrental {
   display: flex;
-  justify-content: space-around;
+  flex-direction: column;
+  justify-content: flex-end;
+  margin-left: auto;
+  margin-right: 2.25vw;
+  padding: 0 14px 0 14px;
+  border-left: 1px solid #222;
+  border-right: 1px solid #222;
+  border-bottom: 1px solid #222;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  padding-bottom: 15px;
+}
+
+.newrental__container {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.newrental__selection {
+  padding: 10px 10px 0 10px;
+  border: 1px solid black;
+  border-radius: 15px;
+  height: 55px;
+  box-shadow: 0px 1px 1px #222;
+}
+
+.newrental__selection2 {
+  margin-left: 6px;
+}
+
+.newrental__selectionheader {
+  margin: 0;
+  padding: 0 50px 0 50px;
+  color: #222;
+}
+
+.newrental__selectiontitle, .newrental__selectioncustomer {
+  margin: 4px 0 0 0;
+  padding: 0;
+  color: #222;
+}
+
+.submitbutton {
+  margin-top: 8px;
+  border-radius: 15px;
+  height: 40px;
+  align-self: flex-end;
+  margin-bottom: 9px;
+  border: 1px solid black;
+  box-shadow: 0px 1px 0px #222;
+}
+
+.submitbutton:hover {
+  background-color: #222;
+  color: white;
+  border: 1px solid white;
+  cursor: not-allowed;
 }

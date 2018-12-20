@@ -4,9 +4,27 @@
 
 .pic {
   width: 180px;
+  border: 1px solid steelblue;
+  border-radius: 5px;
+  box-shadow: 0px 6px 0px steelblue;
 }
 
 h3 {
   text-overflow: wrap;
   padding: 0 1em 0 1em;
+}
+
+.movie__select {
+  border-radius: 15px;
+  height: 40px;
+  align-self: flex-end;
+  border: 1px solid steelblue;
+  box-shadow: 0px 1px 0px steelblue;
+}
+
+.movie__select:hover {
+  background-color: steelblue;
+  color: white;
+  border: 1px solid white;
+  cursor: not-allowed;
 }
