@@ -106,3 +106,10 @@ body {
   padding-top: 5.5em;
   padding-bottom: 5.5em;
 }
+
+.msgToUser {
+  background-color: green;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  border: .1em solid #cfcfcf;
+}

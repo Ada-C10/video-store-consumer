@@ -93,7 +93,7 @@ class Search extends Component {
       <section>
         <form onSubmit={this.onFormSubmit}>
           <div>
-            <label htmlFor="keyword">Search: </label>
+            <label htmlFor="keyword"></label>
             <input type="text" name="keyword"    value={this.state.keyword} onChange={this.onInputChange} required/>
             <input type="submit" value="Search" />
           </div>
