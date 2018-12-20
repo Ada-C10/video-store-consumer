@@ -144,7 +144,7 @@ class Library extends React.Component {
                 </li>
                 <li>
                   <button
-                    onClick={this.createNewRental}>
+                    onClick={this.createNewRental} className="rentalButton">
                     Check Out New Rental
                   </button>
                 </li>
