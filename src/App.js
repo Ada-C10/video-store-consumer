@@ -50,6 +50,8 @@ class App extends Component {
 
       <div className="App">
 
+        <h1 className="store-name">Ada Movie Rental</h1>
+
         <ul class="nav justify-content-center nav-justified">
           <ButtonToolbar>
             <li class="nav-item"><Button bsStyle="info"><Link to={'/customers'}>Customers</Link></Button></li>
