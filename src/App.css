@@ -24,6 +24,7 @@
 
 .showPageToUser {
   padding-top: 1em;
+  border: solid 2px black;
 }
 
 nav ul {
