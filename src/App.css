@@ -127,3 +127,8 @@ p.rental-selection__name {
   overflow: hidden;
   max-height: 2.5em;
 }
+
+.search-bar-form {
+  border-bottom: 1px solid black;
+  padding-bottom: 1.5rem;
+}
