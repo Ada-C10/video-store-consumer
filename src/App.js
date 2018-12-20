@@ -100,23 +100,28 @@ class App extends Component {
            <div className='top-bar'>
              <ul className='nav-links'>
                <li>
+                 <img className="navbar__icon"
+                   src="https://adagold.github.io/video-store-consumer/static/media/magnifying-glass-search.6c42d201.svg"/>
                  <Link to="/search">Search</Link>
                </li>
                <li>
+                 <img className="navbar__icon"
+                   src="https://adagold.github.io/video-store-consumer/static/media/film-reel.6794d2f3.svg"/>
                  <Link to="/library">Library</Link>
                </li>
                <li>
+                 <img className="navbar__icon"
+                   src="https://adagold.github.io/video-store-consumer/static/media/people.2aa64ca8.svg"/>
                  <Link to="/customers">Customers</Link>
                </li>
              </ul>
-
              <section className="rentalDisplay">
                <div>
-                 <p>Selected Movie</p>
+                 <p className="rental-selection__label">Selected Movie</p>
                  {this.state.selectedMovie && <p>{this.state.selectedMovie.title}</p>}
                </div>
                <div>
-                 <p>Selected Customer</p>
+                 <p className="rental-selection__label">Selected Customer</p>
                  {this.state.selectedCustomer && <p>{this.state.selectedCustomer.name}</p>}
                </div>
                <div>

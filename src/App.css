@@ -34,21 +34,64 @@ button:hover {
 }
 
 button {
-    background-color: #cfcfcf;
-    font-size: 1.25rem;
+  background-color: #cfcfcf;
+  font-size: 1.25rem;
 }
 
 .top-bar {
-  display: flex;
-  /* border: 1px blue solid;  */
+  /* border: 1px blue solid; */
+  display: grid;
+  grid-template-columns: 1fr 2fr;
 }
 
 .nav-links {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
+  justify-content: space-around;
+  justify-content: space-between;
 }
 
 .rentalDisplay {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  display: flex;
+  justify-content: space-around;
+}
+
+.nav-links li, .rentalDisplay div{
+  color: #000;
+  text-decoration: none;
+  background-color: #e9e9e9;
+  align-items: center;
+  font-size: 12px;
+  border: .5em solid #7bf96c;
+  border-radius: 1em;
+  flex-direction: column;
+
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+.rentalDisplay div button{
+  width: 100%;
+  min-height: 100%;
+}
+
+.navbar__icon {
+  width: 4rem;
+  height: 4rem;
+}
+
+p.rental-selection__label {
+  margin: 0;
+}
+
+.rental-selection__label {
+    border-bottom: 2px solid #595959;
+    border-top-left-radius: .8em;
+    border-top-right-radius: .8em;
+    background-color: #cfcfcf;
+    padding: .3em;
+    font-size: 12px;
 }
