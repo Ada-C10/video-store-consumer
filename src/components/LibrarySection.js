@@ -17,12 +17,15 @@ class LibrarySection extends Component {
   }
 
   componentDidMount() {
+    console.log('waiting...')
     axios.get(GET_MOVIES)
     .then((response) => {
       // this.props.status(`Successfully loaded ${response.data.length} movies from the rental library`, 'success');
+
       this.setState({
         movies: response.data
       });
+      console.log(this.state.movies.length)
     })
     .catch((error) => {
       console.log('API Library call error');

@@ -8,16 +8,12 @@ class StatusBar extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      statusClass: 'default'
-    }
   }
 
   render() {
-    console.log(this.props)
     return (
       <div className={this.props.statusClass}>
-        Successfully checked out {this.props.movie} to {this.props.customer}
+        {this.props.statusMessage}
       </div>
     )
   }

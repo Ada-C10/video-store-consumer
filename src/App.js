@@ -41,19 +41,26 @@ class App extends Component {
     })
   }
 
+  changeStatus = (style, message) => {
+    this.setState({
+      status: {
+        statusClass: style,
+        statusMessage: message
+      }
+    })
+  }
+
   rentMovie = () => {
     axios.post(RENT_MOVIE + this.state.selectedMovie + "/check-out?customer_id=" + this.state.selectedCustomerID + "&due_date=" + this.state.returnDate)
     .then((response) => {
       // this.props.status(`Successfully loaded ${response.data.length} movies from the rental library`, 'success');
       this.setState({
         searchResults: response.data,
-
-        status: {
-          statusClass: 'test'
-        }
-
       });
+
+      this.changeStatus('test', `${this.state.selectedCustomer} has successfully checked out ${this.state.selectedMovie}`)
     })
+
     .catch((error) => {
       console.log('API Library call error');
       console.log(error.message);
@@ -82,10 +89,14 @@ class App extends Component {
             </div>
           </header>
           <span>Status Bar goes here.</span>
-          <StatusBar statusClass={this.state.status.statusClass} movie={this.state.selectedMovie} customer={this.state.selectedCustomer}/>
-          <Route path="/library" render={() => <LibrarySection selectMovieCallback = {this.selectMovie} />} />
-          <Route path="/customers" render={() => <CustomerSection selectCustomerCallback = {this.selectCustomer} />} />
-          <Route path="/search" render={() => <SearchSection />} />
+
+
+          <StatusBar statusClass={this.state.status.statusClass} statusMessage={this.state.status.statusMessage}/>
+
+
+          <Route path="/library" render={() => <LibrarySection selectMovieCallback = {this.selectMovie} changeStatusCallback = {this.changeStatus} />} />
+          <Route path="/customers" render={() => <CustomerSection selectCustomerCallback = {this.selectCustomer} changeStatusCallback = {this.changeStatus} />} />
+          <Route path="/search" render={() => <SearchSection changeStatusCallback = {this.changeStatus} />} />
 
       </div>
     );
