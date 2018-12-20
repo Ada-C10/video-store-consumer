@@ -15,6 +15,7 @@ class Library extends React.Component {
       selectedCustomer: "None",
       customerInfo: {},
       message: "",
+      errors: [],
     })
 
   }
@@ -38,6 +39,10 @@ class Library extends React.Component {
   }
 
   createNewRental = (customer, video) => {
+    this.setState({
+      errors: [],
+    })
+
     console.log("im in create new rental");
     const days = 7;
     const date = new Date();
@@ -51,17 +56,28 @@ class Library extends React.Component {
       this.showMessageVideo(this.state.message);
     })
     .catch((errors) => {
-      this.setState({
-        message: errors.response.data.statusText,
-      })
-      this.showMessageVideo(this.state.message);
+      console.log(errors.response.data.errors);
+      // const currentErrors = this.state.errors;
+      // currentErrors.push(errors.response.data.errors)
+      //
+      //
+      // this.setState({
+      //   errors: currentErrors,
+      // })
+
+        this.setState({
+          message: `Unable to rent: no such  ${Object.keys(errors.response.data.errors)} as "None"`,
+        })
+        this.showMessageVideo(this.state.message);
+
     })
   }
 
+  // showErrors = () => {
+  //   this.state.
+  // }
+
   showMessageVideo = (message) => {
-    // if (this.state.message.length >= 1) {
-    //   return <p>{this.state.message}</p>
-    // }
     this.setState({
       message: message
     })
