@@ -51,6 +51,7 @@ class Search extends React.Component {
     return (
       <div >
         <section className="search-bar">
+          <label htmlForfor="hit-enter">Hit Enter!</label>
           <input
             type="text"
             name="search"

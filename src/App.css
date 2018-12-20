@@ -127,3 +127,7 @@ p.rental-selection__label {
   cursor: pointer;
   font: 400 11px system-ui;
 }
+
+label {
+  padding: 0.25rem;
+}
