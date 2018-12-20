@@ -24,8 +24,11 @@ class Library extends Component {
        regexSearch.test(movie.release_date.toLowerCase()) || regexSearch.test(movie.overview.toLowerCase())
     })
     this.setState({
-      library: matchingMovieArray
+      library: matchingMovieArray,
+      message: `Found ${matchingMovieArray.length} movies.`
     })
+
+    this.props.setStatusMessageCallback(this.state.message);
   }
 
   componentDidMount() {

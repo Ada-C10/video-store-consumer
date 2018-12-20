@@ -10,7 +10,7 @@ class Customers extends React.Component {
     super(props)
     this.state = {
       customers: [],
-      masterCustomersList: []
+      masterCustomerList: []
     }
   }
 
@@ -18,13 +18,15 @@ class Customers extends React.Component {
 
     const regexSearch = new RegExp(customerSearch.toLowerCase());
 
-    const matchingCustomerArray = this.state.masterCustomersList.filter((cust) => {
+    const matchingCustomerArray = this.state.masterCustomerList.filter((cust) => {
       return regexSearch.test(cust.name.toLowerCase()) ||
       regexSearch.test(cust.id)
     })
     this.setState({
-      customers: matchingCustomerArray
+      customers: matchingCustomerArray,
+      message: `Found ${matchingCustomerArray.length} customers.`
     })
+    this.props.setStatusMessageCallback(this.state.message);
   }
 
   componentDidMount(){
@@ -35,7 +37,7 @@ class Customers extends React.Component {
     .then((response) => {
       this.setState({
         customers: response.data,
-        masterCustomersList: response.data,
+        masterCustomerList: response.data,
         message: `Loaded ${response.data.length} customers`
       })
       this.props.setStatusMessageCallback(this.state.message);
