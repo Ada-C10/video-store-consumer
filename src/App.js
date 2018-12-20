@@ -1,23 +1,26 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import Library from './components/Library';
+import CustomerList from './components/CustomerList';
 import CurrentRental from './components/CurrentRental';
 import MovieSearch from './components/MovieSearch';
 import axios from 'axios';
 
 import './App.css';
 
-const URL='http://localhost:3000/';
+const URL='http://localhost:3000';
 
 class App extends Component {
  constructor(props) {
    super(props);
 
    this.state = {
+     queryList: [],
      movieList: [],
      customerList: [],
      movie: 'none',
      customer: 'none',
+     message: '',
    };
  }
 
@@ -39,15 +42,143 @@ class App extends Component {
          errorMessage: error.message,
        })
      })
+
+     axios.get(`${URL}/customers`)
+      .then((response) => {
+        console.log(response);
+        const customers = response.data.map((customer) => {
+          const newCustomer = {
+            ...customer,
+          }
+          return newCustomer;
+        })
+        this.setState({customerList: customers})
+        console.log(this.state);
+      })
+      .catch((error) => {
+        console.log(error.message);
+        this.setState({
+          errorMessage: error.message,
+        })
+      })
  }
 
- selectMovie = (movieId, movieTitle) => {
-   let currentMovie = movieTitle
-   this.setState({movie: currentMovie})
+ onSelectMovie = (movieId) => {
+   const selectedMovie = this.state.movieList.find((movie) => {
+     return movie.id === movieId;
+   });
+   if (selectedMovie) {
+     this.setState({movie: selectedMovie})
+   }
  }
 
- checkOutRental = (newRental) => {
-   console.log(newRental);
+ onSelectCustomer = (customerId) => {
+   const selectedCustomer = this.state.customerList.find((customer) => {
+     return customer.id === customerId;
+   });
+   if (selectedCustomer) {
+     this.setState({customer: selectedCustomer})
+   }
+ }
+
+ getDueDate = () => {
+   let dueDate = new Date(Date.now() + 12096e5);
+   console.log(dueDate);
+   const dd = dueDate.getDate();
+   const mm = dueDate.getMonth()+1;
+   const yyyy = dueDate.getFullYear();
+
+   return dueDate = yyyy + '-' + mm + '-' + dd;
+ }
+
+ checkOutRental = () => {
+    const apiPostInfo = {
+      customer_id: this.state.customer.id,
+      due_date: this.getDueDate(),
+    };
+    const customer = this.state.customer.name;
+    const movie = this.state.movie.title;
+
+    axios.post(`${URL}/rentals/${this.state.movie.title}/check-out`, apiPostInfo)
+      .then( (response) => {
+        const myNewRental = response.data;
+        console.log("myNewRental", myNewRental);
+        console.log(response);
+      })
+      .catch( (error) => {
+        this.setState({
+          errorMessage: `Failure ${error.message}`,
+        });
+      });
+    this.setState({
+      message: `${customer} checked out ${movie}`,
+      movie: 'none',
+      customer: 'none',
+    })
+  }
+
+ //retrieves the data react app --> rails api -->external api
+ //using the rails APi to query the external API
+ //result from axios.get -> [resultListAxiosget]
+ listResults = (query) => {
+   axios.get(URL + `/movies?query=${query}`)
+
+   .then((response) => {
+     console.log(response)
+     const searchResults = response.data.map((result) => {
+       console.log(result)
+       const newResult = {
+         ...result,
+         imageURL:result.image_url,
+         title: result.title,
+         releaseDate: result.release_date,
+         overview: result.overview ? result.overview: "",
+       }
+       return newResult
+     })
+     this.setState ({
+       queryList: searchResults
+     });
+     console.log(this.state);
+
+   })
+   .catch((error) => {
+     console.log(error.message);
+     console.log("ERROR")
+     this.setState({
+       errorMessage: error.message,
+     });
+
+   });
+ }
+
+ addToLibrary = (externalId) => {
+   console.log('adding to library');
+   const selectedMovie = this.state.queryList.find((movie) => {
+     return movie.external_id === externalId;
+   });
+
+   const image_url = selectedMovie.image_url.slice(31);
+   const movieData = {...selectedMovie, image_url: image_url}
+   console.log(movieData);
+
+   axios.post(`${URL}/movies`, movieData)
+   .then( (response) => {
+     console.log(response)
+     console.log("success")
+
+     const movieList = this.state.movieList;
+     movieList.push(selectedMovie);
+
+     const messageAlert = `${selectedMovie.title} is added`
+     this.setState({
+       movieList: movieList,
+       message: messageAlert,
+     })
+   })
+   .catch( (error) => {
+     console.log(error)
+   })
  }
 
  render() {
@@ -80,17 +211,23 @@ class App extends Component {
              <ul className="navbar">
                <li><Link to='/library/'><button className="btn app-button">Library</button></Link></li>
                <li><Link to='/customers/'><button className="btn app-button">Customers</button></Link></li>
+               <li><Link to='/search/'>Search Movie</Link></li>
                <li><CurrentRental
                       movie={this.state.movie}
                       customer={this.state.customer}
                       addRentalCallback={this.checkOutRental} /></li>
-              <li><Link to='/search/'>Search Movie</Link></li>
              </ul>
            </nav>
+           <div>{this.state.message}</div>
            <Route path='/library/' render={() =>
-             <Library movies={this.state.movieList} rentMovieCallback={this.selectMovie} />} />
+             <Library movies={this.state.movieList} rentMovieCallback={this.onSelectMovie} />} />
+           <Route path='/customers/' render={() =>
+             <CustomerList customers={this.state.customerList} rentCustomerCallback={this.onSelectCustomer} /> } />
            <Route path='/search/' render={() =>
-             <MovieSearch/>} />
+             <MovieSearch
+                onSearchChangeCallback={this.listResults}
+                queryList={this.state.queryList}
+                addToLibraryCallback={this.addToLibrary} /> } />
          </div>
        </Router>
        <div>

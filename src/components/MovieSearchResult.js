@@ -6,11 +6,8 @@ import './MovieSearchResult.css';
 //renders searched movies after clicking on submit
 
 const MovieSearchResult = (props) => {
-  const {title, release_date, overview, image_url, external_id} = props;
-  const onMovieSearchResultSelect = () => {
-    props.addMovietoLibraryCallback(external_id)
-  }
-
+  const {title, release_date, overview, image_url, external_id, addToLibraryCallback} = props;
+  const onMovieSelect = () => addToLibraryCallback(external_id);
 
   return (
     <div className="search app">
@@ -19,8 +16,8 @@ const MovieSearchResult = (props) => {
       <p> {release_date} </p>
       <p className="overview">{ overview.length > 130 ? `${overview.substring(0, 130)}...` : overview} </p>
       <button
-        onClick={() => {onMovieSearchResultSelect()}}
-        className="searchmovie-btn"
+        onClick={onMovieSelect}
+        className="movie-btn"
         >
         Select
       </button>
@@ -34,7 +31,7 @@ MovieSearchResult.propTypes = {
   overview: PropTypes.string,
   image_url: PropTypes.string.isRequired,
   external_id: PropTypes.number.isRequired,
-  addMovietoLibraryCallback: PropTypes.func.isRequired,
+  addToLibraryCallback: PropTypes.func,
 
 };
 

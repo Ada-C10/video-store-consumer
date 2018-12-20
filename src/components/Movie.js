@@ -3,9 +3,12 @@ import PropTypes from 'prop-types';
 
 import './Movie.css';
 
-const Movie = (props) => {
-  const { id, title, release_date, image_url } = props;
-  const onMovieClick = () => props.rentMovieCallback(id, title);
+const Movie = ({ id, title, release_date, image_url, rentMovieCallback }) => {
+  //const { id, title, release_date, image_url } = props;
+  const onMovieClick = () => {
+    console.log(id);
+    rentMovieCallback(id);
+  }
 
   return (
     <div className="movie">
@@ -20,7 +23,7 @@ const Movie = (props) => {
 Movie.propTypes = {
   id: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
-  release_date: PropTypes.string.isRequired,
+  release_date: PropTypes.string,
   inventory: PropTypes.number,
   image_url: PropTypes.string.isRequired,
   external_id: PropTypes.number,
