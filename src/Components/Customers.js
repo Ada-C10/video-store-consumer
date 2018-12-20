@@ -3,13 +3,28 @@ import PropTypes from 'prop-types';
 import axios from 'axios';
 import Customer from './Customer';
 // import './Customers.css';
+import SearchBar from './SearchBar';
 
 class Customers extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      customers: ["sample customer"],
+      customers: [],
+      masterCustomersList: []
     }
+  }
+
+  searchCustomer = (customerSearch) => {
+
+    const regexSearch = new RegExp(customerSearch.toLowerCase());
+
+    const matchingCustomerArray = this.state.masterCustomersList.filter((cust) => {
+      return regexSearch.test(cust.name.toLowerCase()) ||
+      regexSearch.test(cust.id)
+    })
+    this.setState({
+      customers: matchingCustomerArray
+    })
   }
 
   componentDidMount(){
@@ -20,6 +35,7 @@ class Customers extends React.Component {
     .then((response) => {
       this.setState({
         customers: response.data,
+        masterCustomersList: response.data,
         message: `Loaded ${response.data.length} customers`
       })
       this.props.setStatusMessageCallback(this.state.message);
@@ -34,24 +50,26 @@ class Customers extends React.Component {
   }
 
   render() {
+
     const customers = this.state.customers.map( (cust) => {
       return (<Customer key={`${cust.name}${cust.id}`} name={cust.name}
         id={cust.id} moviesCheckedOutCount={cust.movies_checked_out_count}
-         selectCustomerCallback={() => this.props.selectCustomerCallback(cust)}/>) });
-    return (
-      <div >
-        <h1>
-          {customers}
-        </h1>
-      </div>
-    );
-  }
-}
+        selectCustomerCallback={() => this.props.selectCustomerCallback(cust)}/>) });
+        return (
+          <div >
+            <SearchBar searchCustomerCallback={this.searchCustomer} customerSearch={true}/>
+            <h1>
+              {customers}
+            </h1>
+          </div>
+        );
+      }
+    }
 
-export default Customers;
+    export default Customers;
 
-Customers.propTypes = {
-  baseUrl: PropTypes.string.isRequired,
-  selectCustomerCallback: PropTypes.func.isRequired,
-  setStatusMessageCallback: PropTypes.func.isRequired
-};
+    Customers.propTypes = {
+      baseUrl: PropTypes.string.isRequired,
+      selectCustomerCallback: PropTypes.func.isRequired,
+      setStatusMessageCallback: PropTypes.func.isRequired
+    };

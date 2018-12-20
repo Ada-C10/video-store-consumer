@@ -7,7 +7,7 @@ const Customer = (props) => {
   return(
     <div className="customer item">
     <section className="item__details"><ul>
-    <h2>Customer {name}</h2>
+    <h2>{name}</h2>
     <p>{moviesCheckedOutCount} movies checked out</p>
     </ul></section>
     <button className="item__button" onClick={selectCustomerCallback}>Select for Rental</button>
