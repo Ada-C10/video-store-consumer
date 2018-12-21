@@ -56,13 +56,9 @@ class App extends Component {
   rentMovie = () => {
     axios.post(RENT_MOVIE + this.state.selectedMovie + "/check-out?customer_id=" + this.state.selectedCustomerID + "&due_date=" + this.state.returnDate)
     .then((response) => {
-
       this.changeStatus('success', `${this.state.selectedCustomer} has checked out ${this.state.selectedMovie}`)
     })
-
     .catch((error) => {
-      console.log('API Library call error');
-      console.log(error.message);
       this.changeStatus('error', `I'm sorry, there has been an error. Please try again.`)
     });
   }

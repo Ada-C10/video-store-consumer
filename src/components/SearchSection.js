@@ -38,8 +38,6 @@ class SearchSection extends Component {
     })
     .catch((error) => {
       this.props.changeStatusCallback('error', `I'm sorry, there has been an error. Please try again.`)
-      console.log('API Library call error');
-      console.log(error.message);
     });
   }
 
@@ -48,7 +46,6 @@ class SearchSection extends Component {
 
     axios.post(postUrl)
     .then((response) => {
-      console.log(response)
       this.props.changeStatusCallback('success', `Successfully added ${movie.title} to your library.`)
     })
   }
