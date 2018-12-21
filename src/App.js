@@ -18,7 +18,8 @@ class App extends Component {
   }
 
   selectCustomer = (fullName) => {
-  this.setState({selectedCustomer: {fullName}});
+    this.setState({selectedCustomer: {fullName}});
+  }
 
   showSelectedMovie = (movieId) => {
     console.log(`App - selected movie is ${movieId}`);
@@ -38,7 +39,7 @@ class App extends Component {
           <Route path="/" exact component={Home} />
           <Route path="/library/"
             render={(props) => <Library {...props} displaySelectedMovie={this.showSelectedMovie} />}
-              />
+            />
           <Route path="/search/" component={Search} />
           <Route path="/customers/" render={() => <CustomerList selectCustomerCallback={this.selectCustomer}/> } />
         </div>
