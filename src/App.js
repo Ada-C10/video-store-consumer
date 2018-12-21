@@ -16,10 +16,10 @@ class App extends Component {
     };
   }
 
-  showSelectedMovie = (movie) => {
-    console.log(`App - selected movie is ${movie}`);
+  showSelectedMovie = (movieId) => {
+    console.log(`App - selected movie is ${movieId}`);
     this.setState = ({
-      selectedMovie: movie,
+      selectedMovie: movieId,
     })
   }
 
