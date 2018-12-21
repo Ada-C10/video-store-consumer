@@ -62,7 +62,7 @@ class RentalManager extends Component {
             currentCustomerID={this.state.currentCustomerID}
             currentMovieTitle={this.state.currentMovieTitle}
           />
-          <p className="message">{this.state.message}</p>
+        <h2 className="message">{this.state.message}</h2>
           <Router>
             <div className="navbar">
               <nav className="nav-bar__nav">

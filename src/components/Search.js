@@ -59,7 +59,7 @@ class Search extends Component {
   render() {
     return (
       <section>
-        <h2>{this.state.message}</h2>
+        <h2 className="message">{this.state.message}</h2>
         <input
           className="search"
           type="text"

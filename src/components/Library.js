@@ -24,7 +24,7 @@ class Library extends Component {
         });
 
         this.setState({ movies });
-  
+
 
       })
       .catch(error => {
@@ -54,7 +54,7 @@ class Library extends Component {
   render() {
     return (
       <section>
-        <h1> {this.state.message} </h1>
+        <h2 className="message"> {this.state.message} </h2>
         {this.populateMovies()}
       </section>
     );

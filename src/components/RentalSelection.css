@@ -27,9 +27,6 @@
   padding: 2rem;
 }
 
-.status-bar__text {
-  margin: 0.4em;
-}
 
 .rental-selection {
   display: inline-grid;

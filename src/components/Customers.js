@@ -66,7 +66,7 @@ class Customers extends Component {
       //   </audio>   </div>
 
       <section>
-        <h1 className="customers"> {this.state.message} </h1>
+        <h2 className="message"> {this.state.message} </h2>
         {this.populateCustomers()}
       </section>
     );
