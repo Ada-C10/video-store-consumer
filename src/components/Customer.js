@@ -16,7 +16,7 @@ class Customer extends Component {
           <h2>{this.props.name}</h2>
           <p>{this.props.movies_checked_out_count} movies checked out</p>
       </div>
-      <Button className="customer-item__select-button">Select for rental</Button>
+      <Button className="customer-item__select-button" onClick={() => this.props.selectCustomerCallback(this.props.name)}>Select for rental</Button>
 
       </div>
     )
