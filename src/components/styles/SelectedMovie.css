@@ -1,1 +1,10 @@
+.selected-movie__container {
+  border: 2px solid white;
+  padding: 10px;
+  padding-top: 20px;
+  text-align: center;
+}
 
+.selected-movie__label {
+  color: rgb(65, 47, 74);
+}
