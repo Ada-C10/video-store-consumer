@@ -4,6 +4,8 @@ import axios from 'axios';
 import SearchBar from './SearchBar';
 import Movie from './Movie';
 
+import './SearchContainer.css';
+
 
 const SEARCH_URL = 'https://ada-video-store-api.herokuapp.com/movies?query=';
 const ADD_URL = 'http://localhost:3000/';
@@ -53,17 +55,18 @@ class SearchContainer extends React.Component {
       return <Movie
                 key={movie.id}
                 data={movie}
-                selectCB={()=>{
-                  this.addMovieToLibrary(movie);
-                }}
+                selectCB={ () => { this.addMovieToLibrary(movie) } }
                 type="Search"
+                className="movie"
               />
   });
 
     return (
       <div className="item-list">
         <SearchBar searchCallback={this.searchMovieByTitle} />
-        { movieCollection }
+        <div className="searchcontainer">
+          { movieCollection }
+        </div>
       </div>
     );
   }

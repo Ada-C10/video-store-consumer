@@ -17,8 +17,8 @@ const Customer = (props) => {
           { props.data.movies_checked_out_count } AMVs checked out
         </p>
       </div>
-      <button className="customer__select">
-        <p className="customer__select-link" onClick={ props.selectCB }>
+      <button className="customer__select" onClick={ props.selectCB }>
+        <p className="customer__select-link">
           select me!
         </p>
       </button>

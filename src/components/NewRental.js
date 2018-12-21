@@ -22,7 +22,7 @@ class NewRental extends Component {
       .catch((err) => {
         console.log(err);
         this.props.clearCB();
-        this.props.statusCB('could not create new rental :(')
+        this.props.statusCB('could not create new anime rental :\'(')
       });
   }
 
