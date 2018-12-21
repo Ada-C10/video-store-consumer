@@ -6,20 +6,22 @@ import "./Item.css";
 class Movie extends Component {
   render() {
     return (
-      <div className="movie item">
-        <img src={this.props.movie.image_url} alt="movie poster" />
-        <div className="item__details">
-          <h2>{this.props.movie.title}</h2>
-          <p>{this.props.movie.release_date}</p>
+      <div className="movie-container-box">
+        <div className="movie ">
+          <img src={this.props.movie.image_url} alt="movie poster" />
+          <div className="item__details">
+            <h2 className="titlefont">{this.props.movie.title}</h2>
+            <p>{this.props.movie.release_date}</p>
+          </div>
+          <button
+            onClick={() => {
+              this.props.setMovieCallback(this.props.movie.title);
+            }}
+            className="item__button"
+          >
+            Select for Rental
+          </button>
         </div>
-        <button
-          onClick={() => {
-            this.props.setMovieCallback(this.props.movie.title);
-          }}
-          className="item__button"
-        >
-          Select for Rental
-        </button>
       </div>
     );
   }

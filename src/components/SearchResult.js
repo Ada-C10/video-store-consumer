@@ -6,7 +6,7 @@ import "./Item.css";
 class SearchResult extends Component {
   render() {
     return (
-      <div className="movie item">
+      <div className="movie-item">
         <img src={this.props.movie.image_url} alt="movie poster" />
         <div className="item__details">
           <h2>{this.props.movie.title}</h2>
@@ -27,7 +27,7 @@ class SearchResult extends Component {
 
 SearchResult.propTypes = {
   movie: PropTypes.object,
-  addToLibraryCallback: PropTypes.func,
+  addToLibraryCallback: PropTypes.func
 };
 
 export default SearchResult;

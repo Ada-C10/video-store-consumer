@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import logo from "./dog-logo.svg";
 import "./App.css";
 import { xmastree } from "./xmastree.gif";
+import xmassong from "./xmassong.mp3";
 import RentalManager from "./components/RentalManager";
 
 class App extends Component {
