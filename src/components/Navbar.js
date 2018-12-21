@@ -1,17 +1,21 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-
 import navSearchIcon from '../images/search-icon.png';
 import navLibraryIcon from '../images/film-reel.png';
 import navCustomersIcon from '../images/testimonial_icon.png';
 import SelectedCustomer from './SelectedCustomer';
 import SelectedMovie from './SelectedMovie';
+import './styles/Navbar.css';
 
-import './styles/Navbar.css';;
+
 
 class NavBar extends Component {
+
   render() {
+
 console.log(this.props.displayedMovie);
+    const selectedCustomerName = this.props.selectedCustomer.fullName;
+
 
     return (
       <div className='navbar-div'>
@@ -28,8 +32,10 @@ console.log(this.props.displayedMovie);
           <img className="navbar-icon" src={navCustomersIcon}/>
             <label>Customers</label>
           </Link>
-          <SelectedCustomer fullName="None" />
+
           <SelectedMovie title={this.props.displayedMovie}/>
+          <SelectedCustomer fullName={selectedCustomerName} />
+
         </nav>
       </div>
     );

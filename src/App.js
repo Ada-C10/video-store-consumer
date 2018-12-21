@@ -8,6 +8,7 @@ import Home from './components/Home';
 import './App.css';
 
 class App extends Component {
+
   constructor() {
     super();
     this.state = {
@@ -16,12 +17,14 @@ class App extends Component {
     };
   }
 
+  selectCustomer = (fullName) => {
+  this.setState({selectedCustomer: {fullName}});
+
   showSelectedMovie = (movieId) => {
     console.log(`App - selected movie is ${movieId}`);
     this.setState = ({
       selectedMovie: movieId
     });
-    console.log(`from app ${this.state.selectedMovie}`);
   }
 
   render() {
@@ -29,7 +32,7 @@ class App extends Component {
       <Router>
         <div className="App">
           <header className="App-header">
-            <Navbar displayedMovie={this.state.selectedMovie}/>
+            <Navbar displayedMovie={this.state.selectedMovie} selectedCustomer={this.state.selectedCustomer} />
           </header>
 
           <Route path="/" exact component={Home} />
@@ -37,7 +40,7 @@ class App extends Component {
             render={(props) => <Library {...props} displaySelectedMovie={this.showSelectedMovie} />}
               />
           <Route path="/search/" component={Search} />
-          <Route path="/customers/" component={CustomerList} />
+          <Route path="/customers/" render={() => <CustomerList selectCustomerCallback={this.selectCustomer}/> } />
         </div>
 
       </Router>

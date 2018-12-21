@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import './styles/Customer.css';
+import { Button } from 'reactstrap';
 
 
 class Customer extends Component {
@@ -15,7 +16,7 @@ class Customer extends Component {
           <h2>{this.props.name}</h2>
           <p>{this.props.movies_checked_out_count} movies checked out</p>
       </div>
-      <button className="customer-item__select-button">select 4 rental</button>
+      <Button className="customer-item__select-button" onClick={() => this.props.selectCustomerCallback(this.props.name)}>Select for rental</Button>
 
       </div>
     )
