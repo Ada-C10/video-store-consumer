@@ -47,10 +47,10 @@ class SearchCollection extends Component {
       })
     })
     .catch((error) => {
-      console.log(error.errors.message);
+      console.log(error.message);
       // console.log(error.message);
       this.setState({
-        message: error.errors.message,
+        message: error.message,
       })
     });
   };
