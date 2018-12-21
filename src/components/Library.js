@@ -22,7 +22,7 @@ class Library extends Component {
     axios.get(URL)
     .then((response) => {
       const allMovies = response.data.map((movie, i) => {
-        return <Movie key={i} message="Select for rental"  {...movie}/>
+        return <Movie key={i} selectMovieCallback={this.selectRental} message="Select for rental"  {...movie}/>
       });
 
       const alertMessage = `Successfully loaded ${response.data.length} movies from the rental library`
@@ -34,6 +34,13 @@ class Library extends Component {
     .catch((error) => {
       this.setState({error: error.message});
     });
+  }
+
+
+  selectRental = (movie) => {
+    console.log(`Selected a movie to rent: ${movie.title}, id ${movie.id}`);
+    const selectedMovie = movie.external_id
+    // save to state? or props?
   }
 
 
