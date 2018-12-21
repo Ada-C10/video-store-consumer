@@ -8,18 +8,31 @@ import Home from './components/Home';
 import './App.css';
 
 class App extends Component {
+
+  constructor(){
+    super();
+
+    this.state = {
+      selectedCustomer: "None"
+    }
+  }
+
+  selectCustomer = (fullName) => {
+    this.setState({selectedCustomer: {fullName}});
+  }
+
   render() {
     return (
       <Router>
         <div className="App">
           <header className="App-header">
-            <Navbar />
+            <Navbar selectedCustomer={this.state.selectedCustomer} />
           </header>
 
           <Route path="/" exact component={Home} />
           <Route path="/library/" component={Library} />
           <Route path="/search/" component={Search} />
-          <Route path="/customers/" component={CustomerList} />
+          <Route path="/customers/" render={() => <CustomerList selectCustomerCallback={this.selectCustomer}/> } />
         </div>
 
       </Router>
