@@ -25,6 +25,8 @@ return (
           {props.search}
         </li>
 
+        <li>{props.errors}</li>
+
         <li className="nav-item dropdown">
           <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
             {props.allMovies}
@@ -49,6 +51,7 @@ Navbar.propTypes = {
   search: PropTypes.object,
   searchBar: PropTypes.object,
   customers: PropTypes.object,
+  errors: PropTypes.object,
 }
 
 export default Navbar;

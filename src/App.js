@@ -50,10 +50,12 @@ addError = (error) => {
       <div className="App">
       <Router>
         <div>
+        
           <Navbar
           allMovies={<Link to="/library" >All Rentals</Link>}
           customers={<Link to="/customer" >Customer List</Link>}
           search={<Link to="/search">Search Movies</Link>}
+          errors={this.state.errors ? `${this.state.errors}` : ``}
           />
 
 
@@ -63,11 +65,6 @@ addError = (error) => {
           errorCatcherCallback={this.addError}
           />
           </div> }
-
-          <section className="errorMessage">
-            {console.log(this.state.error)}
-            {this.state.errors ? `${this.state.errors}` : ``}
-          </section>
 
           <div>
             <Route path="/search"
