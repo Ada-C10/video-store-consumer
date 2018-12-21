@@ -51,5 +51,5 @@
 
 @font-face {
   font-family: 'BOMBFONT';
-  src: local('BOMBFONT'), url(./assets/fonts/BOMBFONT.ttf) format('ttf');
+  src: url(./assets/fonts/BOMBFONT.ttf) format('ttf');
 }
