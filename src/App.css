@@ -1,13 +1,6 @@
 .main-container {
   background-color: #17a2b8;
 }
-div.outer-container {
-  margin: 0;
-  /* max-width: 1559px; */
-  width: 100%;
-  padding: 0;
- .main-container {
-  background-color: #17a2b8;
 
 .app_name {
   font-size: 80px;
