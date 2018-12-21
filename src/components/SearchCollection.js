@@ -78,23 +78,16 @@ class SearchCollection extends Component {
 
   render() {
     return(
-        <div>
-        <div className="messages">
-          <section className="info-alert alert alert-info alert-dismissible">
-            <a href="#" className="close" data-dismiss="alert" aria-label="close">&times;</a>
-            <strong>{this.state.message}</strong>
-          </section>
-        </div>
         <section className="collection">
-          {this.state.message &&<div className="error">{this.state.message}</div>}
-        <section className="results-bar">{this.state.resultsSummary}</section>
-        <Search
-          searchMovieCallback={this.searchMovie}
-        />
-        <div className="add-message">{this.renderMessage()}</div>
-        <div className="search-list">{this.renderMovieList() }</div>
+            {this.state.message &&<div className="error">{this.state.message}</div>}
+          <section className="results-bar">{this.state.resultsSummary}</section>
+          <Search
+            searchMovieCallback={this.searchMovie}
+          />
+          <div className="add-message">{this.renderMessage()}</div>
+          <div className="search-list">{this.renderMovieList() }</div>
         </section>
-        </div>
+        
     )
   }
 }

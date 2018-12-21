@@ -300,15 +300,16 @@ class App extends Component {
                             </button>
                         </div>
                     </section>
-                    <div className="messages">
+
+                </header>
+
+                <section className="container">
+                    <div className="messages position-sticky">
                         <section className="info-alert alert alert-info alert-dismissible">
                             <a href="#" className="close" data-dismiss="alert" aria-label="close">&times;</a>
                             <strong>{this.state.message}</strong>
                         </section>
                     </div>
-                </header>
-
-                <section className="container">
                     <div className="jumbotron">
                         <Route path="/search"
                                component={SearchCollection}/>

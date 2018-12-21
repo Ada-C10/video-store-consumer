@@ -86,11 +86,9 @@
 }
 
 .messages {
-  position: -webkit-sticky; /* Safari */
+  
   position: sticky;
   top: 0;
-  background-color: hotpink;
-  padding-top: 10rem;
 }
 /*.selected-item{*/
   /*grid-column: 3;*/
