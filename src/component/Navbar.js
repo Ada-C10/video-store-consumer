@@ -45,8 +45,8 @@ return (
 }
 
 Navbar.propTypes = {
-  allMovies: PropTypes.number,
-  search: PropTypes.string,
+  allMovies: PropTypes.object,
+  search: PropTypes.object,
   searchBar: PropTypes.string,
   customers: PropTypes.string,
 }

@@ -64,9 +64,15 @@ class SearchBar extends Component {
       axios.post(url, { ...movie })
       .then((response) => {
         console.log(response);
+
+        this.setState({
+          errors: `${movie.title} successfully added to rental library`,
+        })
+
+        this.props.errorCatcherCallback(this.state.errors)
       })
       .catch((error) => {
-        // What should we do when we know the post request failed?
+
         this.setState({
           errors: `Unable to find the movies you are looking for: ${error.message}`,
         })

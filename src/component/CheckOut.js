@@ -28,6 +28,13 @@ class CheckOut extends Component {
   axios.post(url, params)
     .then((response) => {
       console.log(response);
+
+      this.setState({
+        errors: `Successfully Checked out ${this.props.currentMovie.title}`,
+      })
+
+      this.props.errorCatcherCallback(this.state.errors)
+
     })
     .catch((error) => {
       this.setState({
