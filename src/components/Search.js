@@ -63,9 +63,11 @@ class Search extends Component {
     axios.post(POSTURL, movie_data)
     .then((response) => {
       console.log("Axios post sent with: ", response.data)
+      const successfulPost = `Successfully added "${movie_data.title}" to library`
+      this.setState({alert: successfulPost})
     })
     .catch((error) => {
-      // code here
+      this.setState({error: error.message})
     })
   }
 
@@ -77,6 +79,8 @@ class Search extends Component {
       alert = <Alert color="danger">{this.state.alert}</Alert>
     } else if (madeRequest) {
       alert = <Alert color="success">{this.state.alert}</Alert>
+    } else if (this.state.error) {
+      alert = <Alert color="danger">{this.state.error}</Alert>
     }
 
     return (
