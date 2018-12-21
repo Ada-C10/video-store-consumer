@@ -1,17 +1,13 @@
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-// PureComponents only rerender if at least one state or prop value changes.
-// Change is determined by doing a shallow comparison of state and prop keys.
 
-
-class AlertMessage extends PureComponent {
+class AlertMessage extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      showing: true,
-      message: this.props.message
+      showing: !!this.props.message
     };
   }
 
@@ -19,11 +15,14 @@ class AlertMessage extends PureComponent {
     this.setState({showing: false});
   }
 
+  UNSAFE_componentWillReceiveProps(nextProps) {
+    if (nextProps.message != this.props.message && nextProps.message) {
+      this.setState({showing: true});
+    }
+  }
 
   render() {
-    // The render method on this PureComponent is called only if
-    // props.list or state.filterText has changed.
-    if (this.state.message) {
+    if (this.state.showing) {
       setTimeout(
         this.hideMessage,
         3000
