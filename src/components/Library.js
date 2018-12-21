@@ -7,8 +7,8 @@ import './styles/Library.css';
 
 
 class Library extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       movies: [],
@@ -64,6 +64,10 @@ class Library extends Component {
 
     );
   }
+}
+
+Library.propTypes = {
+  displaySelectedMovie: PropTypes.func,
 }
 
 export default Library;
