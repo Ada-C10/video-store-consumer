@@ -22,7 +22,9 @@ class Library extends Component {
     axios.get(URL)
     .then((response) => {
       const allMovies = response.data.map((movie, i) => {
-        return <Movie key={i} selectMovieCallback={this.props.displaySelectedMovie} message="Select for rental"  {...movie}/>
+        return <Movie key={i}
+          selectMovieCallback={this.props.displaySelectedMovie}
+          message="Select for rental"  {...movie}/>
       });
 
       const alertMessage = `Successfully loaded ${response.data.length} movies from the rental library`
