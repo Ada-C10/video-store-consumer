@@ -89,9 +89,9 @@ class Search extends Component {
             value={this.state.searchTerm}
             onChange={this.onInputChange}
           />
-        <button className="searchButton" type="submit"> Search </button>
+          <button className="searchButton" onClick={this.onFormSubmit} type="submit"> Search </button>
         </form>
-        <div >
+        <div className="library">
           {searchResults}
         </div>
       </div>

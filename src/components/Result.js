@@ -5,23 +5,34 @@ import './Result.css';
 
 const Result = (props) => {
 
+return (
+  <div className="movie">
+    <head><link href="https://fonts.googleapis.com/css?family=Major+Mono+Display|Montserrat" rel="stylesheet">
 
-  return (
-    <div className="movie">
-      <span className="movie__content">
-        <div className="movie__content-title">{props.title}</div>
-        <div className="movie__content-overview">{props.overview}</div>
-        <div className="movie__content-release_date">{props.release_date}</div>
-        <div className="movie__content-image_url"><img src={props.image_url} alt="new"/></div>
-      </span>
-      <button
-        onClick={() => props.addMovieToLibraryCallback(props.id)}
-        className="movie__select">
-        Add movie to library
-      </button>
-    </div>
-  )
+    </link>
+    </head>
+    <li>
+      <div className="movie__block">
+          <img className="image" src={props.image_url} alt="new"/>
+          <div class="middle">
+            <div class="text">{props.overview}</div>
+          </div>
+        <div className="movie__info">
+          <span>
+            <button
+              onClick={() => props.addMovieToLibraryCallback(props.id)}
+              className="movie__select">
+              Add movie to library
+            </button>
+          </span>
+          <h3 className="movie__title">{props.title}</h3>
+        </div>
+      </div>
+    </li>
+  </div>
+)
 }
+
 
 Result.propTypes = {
   id:PropTypes.integer,

@@ -21,7 +21,7 @@
 }
 
 .searchButton {
-  position: absolute;
+  position: relative;
   right: -50px;
   opacity: 0;
   cursor: pointer;
