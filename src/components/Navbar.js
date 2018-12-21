@@ -27,7 +27,7 @@ class NavBar extends Component {
             <label>Customers</label>
           </Link>
           <SelectedCustomer fullName="None" />
-          <SelectedMovie title="None" />
+          <SelectedMovie title={this.props.displayedMovie}/>
         </nav>
       </div>
     );

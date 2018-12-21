@@ -45,11 +45,14 @@ class Library extends Component {
     this.setState({
       selectedMovie: movieClicked
     });
-    this.displaySelectedMovie;
-  }
+    // this.displaySelectedMovie;
+    console.log(movie);
+    console.log(this.state.selectedMovie);
+  // }
 
-  displaySelectedMovie = () => {
+  // displaySelectedMovie = () => {
     this.props.displaySelectedMovie(this.state.selectedMovie);
+    console.log(this.state.selectedMovie);
   }
 
 
