@@ -8,6 +8,10 @@
 
 }
 
+header {
+  padding-bottom: 20px;
+}
+
 .header-controls {
   height: 15rem;
   display: grid;
@@ -86,7 +90,7 @@
 }
 
 .messages {
-  
+
   position: sticky;
   top: 0;
 }
