@@ -12,7 +12,7 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      selectedMovie: "falk",
+      selectedMovie: "None",
       selectedCustomer: "None",
     };
   }
