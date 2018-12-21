@@ -1,0 +1,12 @@
+.library_title {
+    text-align: center;
+    padding: 1rem;
+    color:white;
+    font-size: 3rem;
+}
+
+.movies_container {
+    display: flex;
+    flex-wrap: wrap;
+    background-color: black;
+}

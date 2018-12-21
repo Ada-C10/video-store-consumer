@@ -1,0 +1,29 @@
+.search_title {
+    text-align: center;
+    padding: 1rem;
+    color: white;
+    font-size: 3rem;
+}
+
+.search_container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    outline: none;
+}
+
+input {
+    height: 2.4rem;
+    width: 15rem;
+    border-radius: 4px;
+}
+
+.movies_container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.search_bar {
+    padding-bottom: 2rem;
+}

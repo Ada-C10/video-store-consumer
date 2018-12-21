@@ -1,0 +1,52 @@
+.customer_card {
+    display: flex;
+    border: 1px white solid;
+    border-radius: 15px;
+    justify-content: center;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 2rem;
+    padding: 2rem 0;
+    color: white;
+    background-color: black;
+}
+
+.customer_name {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-right: 1px white solid;
+    padding: 10px;
+    flex: 1;
+    font-size: 18px;
+}
+
+.customer_movies {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border-right: 1px white solid;
+    padding: 10px;
+    flex: 1;
+}
+
+.select_customer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    flex: 1;
+}
+
+.select_button{
+    font-size: 16px;
+    color: white;
+    background-color: #7E7F9A;
+    border-radius: 5px;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    outline:none;
+    padding: 0.5rem 0.5rem;
+}

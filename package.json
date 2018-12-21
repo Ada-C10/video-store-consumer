@@ -2,15 +2,21 @@
   "name": "video-store-consumer",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://the-katie-alice-video-store.surge.sh/",
   "dependencies": {
+    "axios": "^0.18.0",
+    "gh-pages": "^2.0.1",
+    "prop-types": "^15.6.2",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
+    "react-router-dom": "^4.3.1",
     "react-scripts": "1.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "PORT=3006 react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "deploy": "npm run build && mv build/index.html build/200.html && surge build the-katie-alice-video-store.surge.sh"
   }
 }
