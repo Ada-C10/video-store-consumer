@@ -67,6 +67,36 @@ header.header {
   align-items: center;
 }
 
+@-webkit-keyframes borderBlink {
+   from, to {
+      border: 15px dashed darkgreen;
+
+   }
+
+   50% {
+     border: 15px dotted red;
+   }
+
+}
+@keyframes borderBlink {
+   from, to {
+     border: 15px dashed darkgreen;
+
+   }
+
+   50% {
+     border: 15px dotted red;
+   }
+
+}
+
+.main-header{
+   -webkit-animation: borderBlink 1s step-end infinite;
+   animation: borderBlink 1s step-end infinite;
+}
+
+
+
 .item4 {
   font-family: "Mountains of Christmas", cursive;
 
