@@ -8,6 +8,13 @@ import Home from './components/Home';
 import './App.css';
 
 class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      selectedMovie: "None",
+      selectedCustomer: "None",
+    };
+  }
   render() {
     return (
       <Router>
@@ -17,7 +24,9 @@ class App extends Component {
           </header>
 
           <Route path="/" exact component={Home} />
-          <Route path="/library/" component={Library} />
+          <Route path="/library/"
+            render={(props) => <Library {...props} displaySelectedMovie={this.showSelectedMovie} />}
+              />
           <Route path="/search/" component={Search} />
           <Route path="/customers/" component={CustomerList} />
         </div>
