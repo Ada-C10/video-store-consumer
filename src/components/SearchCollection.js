@@ -10,7 +10,8 @@ class SearchCollection extends Component {
     super(props);
     this.state = {
       matchingMovies: [],
-      resultsSummary: ""
+      resultsSummary: "",
+      message: 'Search The Movie Database'
     }
   }
 
@@ -20,11 +21,11 @@ class SearchCollection extends Component {
       this.setState({
         matchingMovies: response.data,
         resultsSummary: `Found ${response.data.length} results for ${movie}`,
-        error: ""
+        message: ""
       });
     })
     .catch((error) => {
-      this.setState({error: error.message})
+      this.setState({message: error.message})
     });
   };
   renderMessage = () => {
@@ -41,6 +42,9 @@ class SearchCollection extends Component {
     .then((response) => {
       console.log(response);
       console.log(response.data);
+      this.setState({
+        message: `${movie.title} has been added to Rent-O-Rama's Collection`
+      })
     })
     .catch((error) => {
       console.log(error.message);
