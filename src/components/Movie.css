@@ -20,7 +20,7 @@
 
 .movie-card h3 {
   font-family: "Raleway", sans-serif;
-  font-size: 20px;
+  font-size: 22px;
   font-weight: 700;
   text-shadow: 1px 1px 1px rgba(250,250,250,.4);
   margin: .3em;
@@ -40,9 +40,10 @@
   font-family: 'Raleway', sans-serif;
   border-radius: 5px;
   padding: 15px 25px;
-  font-size: 14px;
+  font-size: 18px;
   font-weight: 700;
   text-decoration: none;
+  text-shadow: 1px 1px 1px rgba(250,250,250,.4);
   margin: 20px;
   position: relative;
   display: inline-block;

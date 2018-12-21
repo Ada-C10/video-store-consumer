@@ -22,7 +22,7 @@
   margin-left: 1em;
   margin-right: 1em;
   text-shadow:-24px -0px 10px rgba(255,255,255,.2), -10px -0px 8px rgba(255,255,255,.6);
-  transition: color 6s;
+  transition: color 4s;
 }
 
 .video-store__header h1:hover {

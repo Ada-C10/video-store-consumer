@@ -90,7 +90,7 @@ class App extends Component {
           </header>
 
           <StatusBar statusClass={this.state.status.statusClass} statusMessage={this.state.status.statusMessage}/>
-          <Route path="/" exact="true" render={() => <LibrarySection selectMovieCallback = {this.selectMovie} changeStatusCallback = {this.changeStatus} />} />
+          <Route path="/" exact="true" render={() => <SearchSection changeStatusCallback = {this.changeStatus} />} />
           <Route path="/library" render={() => <LibrarySection selectMovieCallback = {this.selectMovie} changeStatusCallback = {this.changeStatus} />} />
           <Route path="/customers" render={() => <CustomerSection selectCustomerCallback = {this.selectCustomer} changeStatusCallback = {this.changeStatus} />} />
           <Route path="/search" render={() => <SearchSection changeStatusCallback = {this.changeStatus} />} />

@@ -12,7 +12,7 @@ class StatusBar extends Component {
   render() {
     return (
       <div className={this.props.statusClass}>
-        {this.props.statusMessage}
+        <p>{this.props.statusMessage}</p>
       </div>
     )
   }
