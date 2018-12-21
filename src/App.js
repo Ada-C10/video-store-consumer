@@ -15,12 +15,20 @@ class App extends Component {
       selectedCustomer: "None",
     };
   }
+
+  showSelectedMovie = (movie) => {
+    console.log(`App - selected movie is ${movie}`);
+    this.setState = ({
+      selectedMovie: movie,
+    })
+  }
+
   render() {
     return (
       <Router>
         <div className="App">
           <header className="App-header">
-            <Navbar />
+            <Navbar displayedMovie={this.state.selectedMovie}/>
           </header>
 
           <Route path="/" exact component={Home} />
