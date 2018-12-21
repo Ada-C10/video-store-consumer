@@ -13,10 +13,10 @@ class CustomersCollection  extends Component {
     }
   }
 
-  handleSelectCustomer = (name) => {
-    console.log("printing name in hnadleSelectCustoomer in customerscollect", name);
+  handleSelectCustomer = (name, id) => {
+    console.log("printing customer id in hnadleSelectCustoomer in customerscollect", id);
     if (this.props.onSelectCustomer) {
-      this.props.onSelectCustomer( name);
+      this.props.onSelectCustomer( name, id);
     }
   }
 
@@ -25,6 +25,7 @@ class CustomersCollection  extends Component {
     // console.log("printing customer",customer.name);
     return <Customer
             name={customer.name}
+            id={customer.id}
             key={customer.phone}
             phone={customer.phone}
             onSelectCustomer={this.handleSelectCustomer}
@@ -63,7 +64,7 @@ class CustomersCollection  extends Component {
 
 CustomersCollection.propTypes = {
   customerList: PropTypes.array.isRequired,
-  onSelecCustomer: PropTypes.func,
+  onSelectCustomer: PropTypes.func.isRequired,
 };
 
 export default CustomersCollection ;

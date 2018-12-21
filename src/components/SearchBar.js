@@ -22,7 +22,9 @@ class SearchBar extends Component {
     };
   }
 
-  onSubmit =() =>{
+
+
+  onSubmit = () => {
     // console.log(`searching for $`);
     axios.get(QUERY_URL + this.state.searchValue)
     .then((response) =>{

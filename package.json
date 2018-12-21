@@ -6,14 +6,28 @@
     "axios": "^0.18.0",
     "react": "^16.7.0",
     "react-bootstrap": "^0.32.4",
+    "react-datetime": "^2.16.3",
     "react-dom": "^16.7.0",
     "react-router-dom": "^4.3.1",
     "react-scripts": "1.1.4"
+  },
+  "eslintConfig": {
+    "extends": "react-app",
+    "parser": "babel-eslint"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.10.0",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-node": "^8.0.0",
+    "eslint-plugin-promise": "^4.0.1",
+    "eslint-plugin-standard": "^4.0.0"
   }
 }

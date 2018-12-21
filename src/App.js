@@ -11,10 +11,7 @@ import axios from 'axios';
 
 
 
-//const Customers1 = () => <h2>customers</h2>;
-const checkOutRentalUrl = (title, customer_id) => {
-  return `https:localhost:3000/rentals/${title}/check-out?customer_id=${customer_id}`;
-}
+
 
 class App extends Component {
 
@@ -24,16 +21,21 @@ class App extends Component {
     this.state = {
       selectedMovie: {},
       selectedCustomer: {},
+      alertMessage: '',
     }
   }
 
-  handleSelectCustomer = (name) => {
+
+  handleSelectCustomer = (name, id) => {
     this.setState({
       selectedCustomer: {
         name,
+        id,
       }
     })
   }
+
+
 
   handleSelectMovie = (id, title, imageUrl) => {
     this.setState({ //make custom object
@@ -43,27 +45,40 @@ class App extends Component {
         imageUrl,
       }
     });
-
-    // const title = this.state.selectedMovie.title;
-    // const customer = this.state.selectedCustomer;
-
   }
+
+
+
+
   checkOut = () => {
-  const url = checkOutRentalUrl(this.state.selectedMovie.title, this.state.selectedCustomer.id);
-  axios.post(url)
+    const due_date = new Date();
+    due_date.setDate(due_date.getDate() + 7 );
+    const checkoutUrl = `http://localhost:3000/rentals/${this.state.selectedMovie.title}/check-out`;
+    const params = {
+      due_date: due_date,
+      customer_id: this.state.selectedCustomer.id,
+    };
+
+
+  axios.post(checkoutUrl, params)
     .then((response) => {
-      console.log("rental check-out", response);
-      // this.props.setStatus(
-      //   `Successfully checked out ${movie.title} to ${customer.name}`,
-      //   'success');
+      console.log("API response success!", response);
+      this.setState({
+        alertMessage: `Sucessfully checkedout ${this.state.selectedMovie.title}
+                      to ${this.state.selectedCustomer.name}`
+      });
     })
     .catch((error) => {
-      console.log(error.message);
-      // this.props.setStatus(
-      //   `Could not check out ${movie.title} to ${customer.name}: ${error.message}`,
-      //   'error');
+      console.log("Logging out error message in 'App checkout axios.post' ",error.message);
+      this.setState({
+        alertMessage: error.message
+      });
     });
-  }
+  };
+
+
+
+
   render() {
     return (
 
@@ -83,6 +98,8 @@ class App extends Component {
 
          </ButtonToolbar>
         </ul>
+
+        <p>{this.state.alertMessage}</p>
 
         <div className="card bg-light" >
           <h2 className="card-text ">{this.state.selectedCustomer.name}</h2>

@@ -1,17 +1,13 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Button } from 'react-bootstrap';
-import { Grid } from 'react-bootstrap';
-import { Row } from 'react-bootstrap';
-import { Col } from 'react-bootstrap';
-
+import { Button, Grid, Row, Col } from 'react-bootstrap';
 
 
 class Customer  extends Component {
 
   handleClickOnCustomer = () => {
     if (this.props.onSelectCustomer) {
-      this.props.onSelectCustomer(this.props.name);
+      this.props.onSelectCustomer(this.props.name, this.props.id);
     }
   }
 
@@ -40,7 +36,9 @@ class Customer  extends Component {
 
 Customer.propTypes = {
   name: PropTypes.string.isRequired,
-  onSelectCustomer: PropTypes.func,
+  phone: PropTypes.string.isRequired,
+  onSelectCustomer: PropTypes.func.isRequired,
+  id: PropTypes.number.isRequired,
 };
 
 export default Customer ;
