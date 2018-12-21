@@ -11,7 +11,7 @@ import StatusBar from './components/StatusBar';
 
 import './App.css';
 
-const RENT_MOVIE = "http://localhost:3000/rentals/";
+const MOVIE_RENTALS = "http://localhost:3000/rentals/";
 
 class App extends Component {
 
@@ -54,12 +54,22 @@ class App extends Component {
   }
 
   rentMovie = () => {
-    axios.post(RENT_MOVIE + this.state.selectedMovie + "/check-out?customer_id=" + this.state.selectedCustomerID + "&due_date=" + this.state.returnDate)
+    axios.post(MOVIE_RENTALS + this.state.selectedMovie + "/check-out?customer_id=" + this.state.selectedCustomerID + "&due_date=" + this.state.returnDate)
     .then((response) => {
       this.changeStatus('success', `${this.state.selectedCustomer} has checked out ${this.state.selectedMovie}`)
     })
     .catch((error) => {
       this.changeStatus('error', `I'm sorry, there has been an error. Please try again.`)
+    });
+  }
+
+  checkInMovie = () => {
+    axios.post(MOVIE_RENTALS + this.state.selectedMovie + "/return?customer_id=" + this.state.selectedCustomerID)
+    .then((response) => {
+      this.changeStatus('success', `${this.state.selectedCustomer} has checked in ${this.state.selectedMovie}`)
+    })
+    .catch((error) => {
+      this.changeStatus('error', `I'm sorry, there has been an error. Please try again. ${error.response}`)
     });
   }
 
@@ -79,7 +89,8 @@ class App extends Component {
         <header className="video-store__header">
           <Link to= "/"><h1>Be Kind, Rewind&lt;&lt;</h1></Link>
           <Nav />
-          <NewRental selectedCustomer={this.state.selectedCustomer} selectedMovie={this.state.selectedMovie} rentMovieCallBack={this.rentMovie}/>
+          <NewRental selectedCustomer={this.state.selectedCustomer} selectedMovie={this.state.selectedMovie} rentMovieCallBack={this.rentMovie}
+              checkInMovieCallBack={this.checkInMovie}/>
         </header>
 
         <StatusBar statusClass={this.state.status.statusClass} statusMessage={this.state.status.statusMessage}/>

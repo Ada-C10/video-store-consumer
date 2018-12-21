@@ -11,8 +11,12 @@ class NewRental extends Component {
     super(props);
   }
 
-  checkoutMovie = () => {
+  checkOutMovie = () => {
     this.props.rentMovieCallBack();
+  }
+
+  checkInMovie = () => {
+    this.props.checkInMovieCallBack();
   }
 
   render() {
@@ -20,7 +24,10 @@ class NewRental extends Component {
     return (
       <div className="new-rental">
         <div><Selector selectorType="Customer" selected={this.props.selectedCustomer}/><Selector selectorType="Movie" selected={this.props.selectedMovie}/></div>
-        <button onClick={this.checkoutMovie}>Check Out</button>
+        <div className="new-rental-buttons">
+          <button onClick={this.checkOutMovie}>Check Out</button>
+          <button onClick={this.checkInMovie}>Check In</button>
+        </div>
       </div>
     )
   }
@@ -30,6 +37,7 @@ NewRental.propTypes = {
   selectedCustomer: PropTypes.string,
   selectedMovie: PropTypes.string,
   rentMovieCallBack: PropTypes.func,
+  checkInMovieCallBack: PropTypes.func,
 };
 
 export default NewRental;

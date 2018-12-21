@@ -67,10 +67,10 @@
 }
 
 .member-date {
-  display: none;
+  opacity: 0;
+  transition: 2s;
 }
 
 .customer-card:hover .member-date {
-  display: inline;
-  transition: display 6s;
+  opacity: 1;
 }

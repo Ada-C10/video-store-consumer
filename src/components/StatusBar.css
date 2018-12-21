@@ -1,5 +1,5 @@
 .default {
-  display: none;
+  display: hidden;
   transition: color 6s;
 }
 

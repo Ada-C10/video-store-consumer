@@ -6,7 +6,7 @@
   border-radius: 5px;
   padding: 5px 10px;
   margin: 2px;
-  margin-left: 75px;
+  margin-left: 4px;
   margin-top: 4px;
   font-size: 14px;
   font-weight: 400;
@@ -18,15 +18,23 @@
   border:none;
   box-shadow: none;
   text-align: center;
-  transition: background-color 1s;
+  transition: background-color 1s, color 2s;
 }
 
 .new-rental button:hover {
-  background-color: rgba(46, 204, 113,1.0);
+  background-color: rgba(41, 128, 185,1);
+  color: white;
 }
 
 .new-rental button:active {
   transform: translate(0px, 1px);
   -webkit-transform: translate(0px, 1px);
-  box-shadow: inset -2px -2px 0px 0px rgba(39, 174, 96,1.0);
+  box-shadow: inset -2px -2px 0px 0px rgba(41, 128, 185,1);
+}
+
+.new-rental-buttons {
+  display: flex;
+  flex-direction: row;
+  margin-left: 22px;
+  margin-top: 6px;
 }
