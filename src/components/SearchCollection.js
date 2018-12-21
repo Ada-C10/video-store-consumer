@@ -47,7 +47,7 @@ class SearchCollection extends Component {
       })
     })
     .catch((error) => {
-      console.log(error.message);
+      // console.log(error.message);
       // console.log(error.message);
       this.setState({
         message: error.message,
