@@ -33,7 +33,7 @@ class Library extends Component {
 
   componentDidMount() {
 
-    const VIDEO_STORE_API = this.props.baseUrl + 'movies';
+    const VIDEO_STORE_API = this.props.baseUrl + 'movies?n=500';
     this.props.setStatusMessageCallback("Loading Libary...");
 
     axios.get(VIDEO_STORE_API)
