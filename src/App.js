@@ -70,13 +70,12 @@ class App extends Component {
           customer={this.state.selectedCustomer}
           customerId={this.state.selectedCustomerId}
           rentalCallback={this.changeMessage}/>
-
         <div className="status-bar">
           <Alert color="success">
             <StatusBar className="status-br__text" status={this.state.message} />
           </Alert>
         </div>
-        
+
         <Route exact path="/"
           render={ (props) => <MovieLibrary {...props}
           movieCountCallback={this.changeMessage}
