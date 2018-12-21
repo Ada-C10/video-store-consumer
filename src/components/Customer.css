@@ -1,0 +1,15 @@
+.customer-btn {
+  color: black;
+}
+
+.customer-btn:hover {
+  opacity: .5;
+}
+
+.customers {
+  padding: 2rem 2rem;
+}
+
+.customer-name {
+  color: #ed2b12;
+}

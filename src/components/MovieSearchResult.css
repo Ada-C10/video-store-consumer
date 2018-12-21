@@ -1,0 +1,36 @@
+.search {
+  padding: 1rem;
+}
+
+.searchmovie-title {
+  color: #ed2b12;
+}
+
+.searchmovie-btn {
+  color: black;
+}
+
+.movie-btn:hover {
+  opacity: .5;
+}
+
+movie-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.app {
+  text-align: center;
+  margin: 0 0;
+  padding: 2rem 2rem;
+  color: lightgray;
+}
+
+a:link {
+  text-decoration: none;
+}
+
+ul li {
+  list-style: none;
+  color: #ed2b12;
+}
