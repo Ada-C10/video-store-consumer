@@ -1,0 +1,18 @@
+.profpic {
+  width: 50%;
+}
+
+.customer__select {
+  border-radius: 15px;
+  height: 40px;
+  align-self: flex-end;
+  border: 1px solid steelblue;
+  box-shadow: 0px 1px 0px steelblue;
+}
+
+.customer__select:hover {
+  background-color: steelblue;
+  color: white;
+  border: 1px solid white;
+  cursor: not-allowed;
+}

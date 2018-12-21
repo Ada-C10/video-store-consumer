@@ -1,0 +1,25 @@
+.customer-container, .movie-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.movie {
+  width: 14em;
+  border: 1px solid steelblue;
+  border-radius: 10px;
+  margin: .5em;
+  margin-bottom: 2em;
+  padding: 1.4em 0 .4em 0;
+  box-shadow: 0px 2px 1px steelblue;
+}
+
+.customer {
+  width: 14em;
+  border: 1px solid steelblue;
+  border-radius: 10px;
+  margin: .5em;
+  margin-bottom: 2em;
+  padding: .9em 0 .85em 0;
+  box-shadow: 0px 2px 1px steelblue;
+}
