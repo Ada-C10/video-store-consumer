@@ -25,7 +25,7 @@ return (
           {props.search}
         </li>
 
-        <li>{props.errors}</li>
+        <section>{props.errors}</section>
 
         <li className="nav-item dropdown">
           <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
@@ -41,6 +41,7 @@ return (
        </source>
      </audio>
      </div>
+
    </div>
   </nav>
   )

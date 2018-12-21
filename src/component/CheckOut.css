@@ -26,4 +26,5 @@
 .image {
     height: 50px;
     width: 45px;
+    border-style: inset;
 }
