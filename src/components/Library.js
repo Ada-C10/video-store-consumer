@@ -41,9 +41,15 @@ class Library extends Component {
   selectRental = (movie) => {
     console.log(`Selected a movie to rent: ${movie.title}, id ${movie.id}`);
     const movieClicked = movie;
+
     this.setState({
       selectedMovie: movieClicked
     });
+    this.displaySelectedMovie;
+  }
+
+  displaySelectedMovie = () => {
+    this.props.displaySelectedMovie(this.state.selectedMovie);
   }
 
 
