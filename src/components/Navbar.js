@@ -5,6 +5,7 @@ import navLibraryIcon from '../images/film-reel.png';
 import navCustomersIcon from '../images/testimonial_icon.png';
 import SelectedCustomer from './SelectedCustomer';
 import SelectedMovie from './SelectedMovie';
+import CheckoutRental from './CheckoutRental';
 import './styles/Navbar.css';
 
 
@@ -33,7 +34,8 @@ class NavBar extends Component {
 
           <SelectedMovie title={selectedMovieName}/>
           <SelectedCustomer fullName={selectedCustomerName} />
-
+          <CheckoutRental rentalCustomer={selectedCustomerName}
+              rentalMovie={selectedMovieName} />
         </nav>
       </div>
     );
