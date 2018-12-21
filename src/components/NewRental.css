@@ -1,9 +1,13 @@
+.new-rental{
+  margin-top: 4px;
+}
 .new-rental button {
   font-family: 'Raleway', sans-serif;
   border-radius: 5px;
   padding: 5px 10px;
   margin: 2px;
-  margin-left: 25px;
+  margin-left: 75px;
+  margin-top: 4px;
   font-size: 14px;
   font-weight: 400;
   text-decoration: none;

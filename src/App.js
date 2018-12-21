@@ -56,11 +56,8 @@ class App extends Component {
   rentMovie = () => {
     axios.post(RENT_MOVIE + this.state.selectedMovie + "/check-out?customer_id=" + this.state.selectedCustomerID + "&due_date=" + this.state.returnDate)
     .then((response) => {
-      this.setState({
-        searchResults: response.data,
-      });
 
-      this.changeStatus('success', `${this.state.selectedCustomer} has successfully checked out ${this.state.selectedMovie}`)
+      this.changeStatus('success', `${this.state.selectedCustomer} has checked out ${this.state.selectedMovie}`)
     })
 
     .catch((error) => {
