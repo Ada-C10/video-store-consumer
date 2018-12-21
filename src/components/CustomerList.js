@@ -36,9 +36,9 @@ class CustomerList extends Component {
 
   render () {
     return (
-      <div className="customer-list-container">
+      <div className="customer-list__container">
         <Alert color="success">{this.state.alert}</Alert>
-        <div>
+        <div className="customer-list">
           {this.state.customers}
         </div>
       </div>
