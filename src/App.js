@@ -68,7 +68,7 @@ class App extends Component {
                 });
                 this.setState({
                     movies,
-                    message: `${response.data.length} Movies loaded`
+                    message: `Successfully loaded ${response.data.length} movies.`
                 });
             })
             .catch((error) => {
@@ -91,7 +91,7 @@ class App extends Component {
                 if (count > 0) {
                     this.setState({
                         rentals,
-                        message: `Successfully loaded ${count} rentals`
+                        message: `There are ${count} active rentals`
                     });
                 } else {
                     this.setState({
@@ -124,7 +124,7 @@ class App extends Component {
                 if (count > 0) {
                     this.setState({
                         overDueRentals,
-                        message: `Successfully loaded ${count} rentals`
+                        message: `There are ${count} overdue rentals.`
                     });
                 } else {
                     this.setState({
@@ -191,7 +191,7 @@ class App extends Component {
                 console.log('status', response.data.status);
                 let status = response.data.status;
                 this.setState({
-                    message: `${status}: Rental successfully created for ${this.state.currentCustomer.name} - ${this.state.currentMovie.title}`
+                    message: `$Rental successfully created for ${this.state.currentCustomer.name} - ${this.state.currentMovie.title}`
                 });
             })
             .catch((error) => {
@@ -215,7 +215,7 @@ class App extends Component {
             .then((response) => {
                 const status = response.data.status;
                 this.setState({
-                    message: `${status}: Rental successfully returned for ${selectedRental.name} - ${selectedRental.title}`
+                    message: `$Rental successfully returned for ${selectedRental.name} - ${selectedRental.title}`
                 });
             })
             .catch((error) => {
