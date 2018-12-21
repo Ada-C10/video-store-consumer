@@ -1,9 +1,8 @@
 .movie {
   background-color: white;
-  padding: 1em 0;
-  margin: 0.5rem;
+  padding: 1em 3em 0 0;
 
-  min-height: 250px;
+  min-height: 150px;
   min-width: 225px;
   flex-basis: 18%;
 
@@ -18,9 +17,9 @@
   grid-column-start: 2;
 
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: space-around;
-
+  align-items: center;
   text-align: center;
   font-weight: 100;
   overflow: hidden;
@@ -51,8 +50,7 @@
   border: 1px solid black;
   font-size: 1em;
   width: 200px;
-  height: 40px;
+  height: 80px;
   margin:0 auto;
   display:block;
 }
- 

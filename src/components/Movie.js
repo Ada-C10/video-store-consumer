@@ -13,10 +13,12 @@ const Movie = (props) => {
   return (
     <div className="movie">
       <span className="movie__content">
-        <div className="movie__content-title">{props.title}</div>
+        <div className="movie__content-thumb">
+          <div className="movie__content-title">{props.title}</div>
+          <div className="movie__content-image_url"><img src={props.image_url} alt="new"/></div>
+        </div>
         <div className="movie__content-overview">{props.overview}</div>
         <div className="movie__content-release_date">{props.release_date}</div>
-        <div className="movie__content-image_url"><img src={props.image_url} alt="new"/></div>
       </span>
       <button onClick={onClickMovie}
         className="movie__select">

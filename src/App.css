@@ -63,3 +63,11 @@
   background: url(https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/High-contrast-system-search.svg/2000px-High-contrast-system-search.svg.png);
   background-size: 100px 82px;
 }
+
+.status-bar {
+  height: 85px;
+}
+
+.alert {
+  padding: 0px;
+}
