@@ -2,7 +2,7 @@
   display: flex;
   height: 700px;
 
-  padding-top: 15%;
+  padding-top: 18%;
   padding-bottom: 700px;
   font-size: .85em;
   display: inline-block;
@@ -10,9 +10,12 @@
 }
 
 .search-movies {
-width: 6000px;
+width: 5000px;
 padding-top: 21em;
+}
 
+.search-container {
+  padding-top: 50px;
 }
 
 .form {

@@ -16,8 +16,8 @@ const Customer = (props) => {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>{props.name}</td>
+            <tr className="table-row">
+              <td className="name">{props.name}</td>
               <td>{props.movies_checked_out_count}</td>
               <td><button className="button" type="button" onClick={props.callback}>{props.button}</button></td>
             </tr>

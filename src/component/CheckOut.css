@@ -1,5 +1,5 @@
 .check-out {
-  padding-top: 5.75%;
+  padding-top: 6.90%;
   position: fixed;
   width: 100%;
   z-index: 1
@@ -23,8 +23,15 @@
   border-bottom: 1px solid lightgrey;
 }
 
-.image {
+.image-nav {
     height: 50px;
     width: 45px;
     border-style: inset;
+}
+
+.name-checkout {
+    font-family: 'Reem Kufi', sans-serif;
+    text-align: center;
+    font-size: 1.5em;
+    padding-top: .75em;
 }

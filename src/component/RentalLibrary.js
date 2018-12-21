@@ -31,9 +31,7 @@ componentDidMount() {
     this.setState({
       errorMessage: `Unable to view movies: ${error.message}`,
     })
-
     this.props.errorCatcherCallback(this.state.errors)
-
   })
 }
 

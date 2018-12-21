@@ -48,14 +48,25 @@ class SearchBar extends Component {
         console.log(this.state.searchMovies);
       })
       .catch((error) => {
-
         this.setState({
-          error: error.message,
+          errors: error.message,
         })
-
         this.props.errorCatcherCallback(error)
       })
     }
+
+    onClickSubmit = () => {
+      if (this.state.searchValue.length !== 0) {
+        return this.onSubmit()
+      }
+      else {
+        this.setState({
+          errors: `Search can't be blank`,
+        })
+        this.props.errorCatcherCallback(this.state.errors)
+      }
+    }
+
 
 
     onAddMovieToLib = (movie) => {
@@ -65,11 +76,9 @@ class SearchBar extends Component {
       axios.post(url, { ...movie })
       .then((response) => {
         console.log(response);
-
         this.setState({
-          errors: `${movie.title} successfully added to rental library`,
+          errors: `${movie.title} successfully added to Netflix & Chill`,
         })
-
         this.props.errorCatcherCallback(this.state.errors)
       })
       .catch((error) => {
@@ -84,20 +93,11 @@ class SearchBar extends Component {
 
     render() {
       const image = "http://www.myiconfinder.com/uploads/iconsets/256-256-42777f4dee0832bd856f069b91e56b60-reel.png"
+
       return (
-        // <div className="search-container" >
-        // <section className="form">
-        //   <input
-        //   onChange={this.onSearchChange}
-        //   value={this.state.searchValue}
-        //   placeholder="Search.."
-        //   name="search-bar"
-        //   />
-        //   <input className="button" type="submit" value="Submit" onClick={this.onSubmit}/>
-        // </section>
       <div className="search-container">
         <Search
-          onSubmit={this.onSubmit}
+          onSubmit={() => this.onClickSubmit()}
           onChange={this.onSearchChange}
           search={this.state.searchValue}
           image={image}

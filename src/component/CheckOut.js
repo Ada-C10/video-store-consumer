@@ -14,29 +14,12 @@ class CheckOut extends Component {
       }
     }
 
-    // updateCurrentCustomer = (updatedCustomer) => {
-    //   console.log(updatedCustomer);
-    //   console.log("before state");
-    //   this.setState({
-    //     currentCustomer: updatedCustomer
-    //   });
-    //   console.log(updatedCustomer);
-    //   console.log("after state");
-    //
-    // }
-
-    // updateCurrentMovie = (updatedMovie) => {
-    //   this.setState({
-    //     currentMovie: updatedMovie
-    //   });
-    // }
-
   renderButton = () => {
     const customer = this.props.currentCustomer.name
     const movie = this.props.currentMovie.title
 
     if (customer !== undefined && movie !== undefined) {
-      return <button className="button" type="button" onClick={this.onRental}>Check Out {movie}</button>
+      return <button className="button" type="button" onClick={this.onRental}>Check Out {movie} for {customer}</button>
     }
   }
 
@@ -57,19 +40,15 @@ class CheckOut extends Component {
   axios.post(url, params)
     .then((response) => {
       console.log(response);
-
       this.setState({
-        errors: `Successfully Checked out ${this.props.currentMovie.title}`,
+        errors: `Successfully Checked out ${this.props.currentMovie.title} for ${this.props.currentCustomer.name}`,
       })
-
       this.props.errorCatcherCallback(this.state.errors)
-
     })
     .catch((error) => {
       this.setState({
         errors: `Unable to checkout: ${error.message}`,
       })
-
       this.props.errorCatcherCallback(this.state.errors)
     });
   };
@@ -88,8 +67,8 @@ class CheckOut extends Component {
           </thead>
           <tbody>
             <tr className="tr-background">
-              <td>{this.props.currentCustomer.name}</td>
-              <td><img className="image" src={this.props.currentMovie.image_url} alt={this.props.currentMovie.title}/></td>
+              <td className="name-checkout">{this.props.currentCustomer.name}</td>
+              <td><img className="image-nav" src={this.props.currentMovie.image_url} alt={this.props.currentMovie.title}/></td>
               <td>{this.renderButton()}</td>
             </tr>
           </tbody>

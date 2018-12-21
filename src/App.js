@@ -33,15 +33,13 @@ class App extends Component {
   }
 
 addError = (error) => {
-  console.log('Here to add error')
-
   this.setState({errors: error})
 
   setTimeout(() =>
     this.setState({
       errors: undefined
     }),
-    2500
+    7000
   )
 }
 
@@ -50,7 +48,7 @@ addError = (error) => {
       <div className="App">
       <Router>
         <div>
-        
+
           <Navbar
           allMovies={<Link to="/library" >All Rentals</Link>}
           customers={<Link to="/customer" >Customer List</Link>}
@@ -63,12 +61,13 @@ addError = (error) => {
           currentMovie={this.state.currentMovie}
           currentCustomer={this.state.currentCustomer}
           errorCatcherCallback={this.addError}
+          erros={this.state.errors ? `${this.state.errors}` : ``}
           />
           </div> }
 
           <div>
             <Route path="/search"
-            render={() =>
+              render={() =>
               <SearchBar
               errorCatcherCallback={this.addError}
               /> }
@@ -88,7 +87,7 @@ addError = (error) => {
 
             <div>
               <Route path="/library"
-              render={() =>
+                render={() =>
                 <RentalLibrary
                 updatedMovieCallback={this.onMovieCheckOut}
                 errorCatcherCallback={this.addError}
@@ -98,6 +97,10 @@ addError = (error) => {
 
           </div>
           </Router>
+          <audio controls autoPlay>
+            <source src="https://t4.bcbits.com/stream/d9477fcf09cee0a5e20fb4df83fed430/mp3-128/67056078?p=0&ts=1545503066&t=fac502a030da0627f67edc867dc5de4bada0e57e&token=1545503066_0e7c7296e15da8a59299d52f308fe1030ad5dc29" type="audio/mpeg">
+            </source>
+          </audio>
 
       </div>
     );
