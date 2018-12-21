@@ -58,7 +58,7 @@ class CheckOut extends Component {
 
 CheckOut.propTypes = {
   currentCustomer: PropTypes.object,
-  currentMovie: PropTypes.currentMovie,
+  currentMovie: PropTypes.object,
   errorCatcherCallback: PropTypes.func,
 }
 

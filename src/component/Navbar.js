@@ -47,8 +47,8 @@ return (
 Navbar.propTypes = {
   allMovies: PropTypes.object,
   search: PropTypes.object,
-  searchBar: PropTypes.string,
-  customers: PropTypes.string,
+  searchBar: PropTypes.object,
+  customers: PropTypes.object,
 }
 
 export default Navbar;

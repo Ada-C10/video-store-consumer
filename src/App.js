@@ -34,7 +34,7 @@ class App extends Component {
 addError = (error) => {
   console.log('Here to add error')
 
-  this.setState({errors: error}),
+  this.setState({errors: error})
 
     setTimeout(
       () =>
