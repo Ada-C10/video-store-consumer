@@ -7,7 +7,13 @@ const Movie = ({title, imageURL, releaseDate, selectMovieCallback, buttonText}) 
 
   const date = releaseDate === null ? "" : releaseDate.slice(0,4);
   const buttonDisplayText = buttonText === undefined ? "Select" : buttonText;
-  const displayTitle = title.length > 45 ? title.slice(0,45) + "..." : title;
+
+  let displayTitle
+  if (title === null) {
+    displayTitle = ""
+  } else if (title.length > 45) {
+    displayTitle = (title.slice(0,45) + "...")
+  } else {displayTitle = title}
 
   return (
       <div className="movie-card">
