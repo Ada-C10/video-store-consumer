@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Alert } from 'reactstrap';
-import './styles/Customer.css';
+import './styles/CustomerList.css';
 import axios from 'axios';
 import Customer from './Customer';
 
@@ -36,7 +36,7 @@ class CustomerList extends Component {
 
   render () {
     return (
-      <div>
+      <div className="customer-list-container">
         <Alert color="success">{this.state.alert}</Alert>
         <div>
           {this.state.customers}

@@ -39,9 +39,9 @@ class Library extends Component {
 
   render () {
     return (
-      <div>
+      <div className="movie-container">
         <Alert color="success">{this.state.alert}</Alert>
-        <div className="movie-container">
+        <div>
           {this.state.movies}
         </div>
       </div>

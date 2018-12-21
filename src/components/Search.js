@@ -84,7 +84,7 @@ class Search extends Component {
     }
 
     return (
-      <div>
+      <div className="search-container">
         <Form className="movie-search-form" onSubmit={this.onSearchSubmit}>
           <FormGroup className="movie-search-form-container">
             <Label htmlFor="searchQuery"></Label>
