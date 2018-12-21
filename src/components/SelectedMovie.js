@@ -11,7 +11,7 @@ class SelectedMovie extends Component {
     return (
       <div className="selected-movie__container">
         <p className="selected-movie__label">Selected Movie</p>
-        <p>{this.props.title}</p>
+        <p>{this.props.title.id || "None"}</p>
       </div>
     );
 

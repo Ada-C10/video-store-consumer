@@ -12,7 +12,7 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      selectedMovie: "None",
+      selectedMovie: "falk",
       selectedCustomer: "None",
     };
   }
@@ -22,10 +22,9 @@ class App extends Component {
   }
 
   showSelectedMovie = (movieId) => {
-    console.log(`App - selected movie is ${movieId}`);
-    this.setState = ({
-      selectedMovie: movieId
-    });
+    let id = movieId.id
+    console.log(`App - selected movie is ${id}`);
+    this.setState({selectedMovie: {id}});
   }
 
   render() {

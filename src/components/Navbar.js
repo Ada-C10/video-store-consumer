@@ -13,9 +13,9 @@ class NavBar extends Component {
 
   render() {
 
-console.log(this.props.displayedMovie);
+    console.log("this is to display movie in navbar:");
+    console.log(this.props.displayedMovie);
     const selectedCustomerName = this.props.selectedCustomer.fullName;
-
 
     return (
       <div className='navbar-div'>
@@ -29,7 +29,7 @@ console.log(this.props.displayedMovie);
             <label>Library</label>
           </Link>
           <Link to='/customers' className='navbar-link'>
-          <img className="navbar-icon" src={navCustomersIcon}/>
+            <img className="navbar-icon" src={navCustomersIcon}/>
             <label>Customers</label>
           </Link>
 
