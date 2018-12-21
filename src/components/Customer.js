@@ -5,7 +5,7 @@ import "./Customer.css"
 const Customer = (props) => {
   const { customerCallback } = props;
   return (
-    <div className="item-list_container">
+    <div className="customer-container">
       <div className="customer item">
         <div className="item__details">
           <h2>{props.name}</h2>

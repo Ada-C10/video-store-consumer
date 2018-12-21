@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import SearchForm from './SearchForm';
 import axios from 'axios';
 import Movie from './Movie';
+import './Movies.css'
+
 
 
 class Movies extends Component {
@@ -27,6 +29,7 @@ class Movies extends Component {
       this.setState({
         movies: response.data,
       });
+      this.props.moviesCount(this.state.movies.length, queryInput.query)
     })
     .catch((error) => {
       this.setState({
@@ -68,8 +71,8 @@ class Movies extends Component {
     });
 
     return(
-      <div>
-        <h1>Movies</h1>
+      <div className="Movie-container">
+        <h1>Search for a movie</h1>
         <SearchForm searchQueryCallback={this.searchMovie}/>
         <div className="item-list_container">
               {moviesList}

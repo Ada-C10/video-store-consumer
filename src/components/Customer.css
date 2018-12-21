@@ -25,7 +25,7 @@
 }
 
 .status-bar--success {
-    background-color: #7bf96c;
+    background-color: rgb(180,213,180);
 }
 
 .status-bar--hide {
@@ -48,4 +48,9 @@ p {
     margin-block-end: 1em;
     margin-inline-start: 0px;
     margin-inline-end: 0px;
+}
+
+.customer-container {
+  margin-left: 10rem;
+  margin-right: 10rem;
 }

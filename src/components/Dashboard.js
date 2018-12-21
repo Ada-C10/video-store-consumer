@@ -83,7 +83,7 @@ class Dashboard extends Component {
   customerCountCallback = (count) => {
     this.setState({
       showStatus: true,
-      message: `Loaded ${count} customers.`
+      message: `Successfully loaded ${count} customers.`
     })
   }
 
@@ -94,14 +94,19 @@ class Dashboard extends Component {
     })
   }
 
-
-
-
+  searchMovieCount = (count, query) => {
+    console.log("In search movie");
+    this.setState({
+      showStatus: true,
+      message: `Successfully found ${count} movies for '${query}'.`
+    })
+  }
   render() {
     return(
       <Router>
         <div>
-          <nav className="item-list_container">
+
+          <nav className="nav-list_container">
             <button className="dashboard-item">
               <Link to="/"  className="dashboard-link">Home</Link>
             </button>
@@ -114,22 +119,29 @@ class Dashboard extends Component {
             <button className="dashboard-item">
               <Link to="/customers/" className="dashboard-link">Customers</Link>
             </button>
-            <div className="dashboard-item">
-              <label htmlFor="movie" className="movie-customer-label">Selected Movie</label>
-              <button id="movie" className="selected-movie-customer" >
-                {this.state.movie.title? this.state.movie.title : "None"}
-              </button>
-            </div>
-            <div className="dashboard-item">
-              <label htmlFor="customer" className="movie-customer-label">Selected Customer</label>
-              <button className="selected-movie-customer">
-                {this.state.customer.name ? this.state.customer.name : "None"}
-              </button>
-            </div>
-            <button onClick={this.checkout} className="dashboard-item movie-customer-label">
-              Check Out New Rental
-            </button>
           </nav>
+
+          <div className="selected-container">
+            <div className="dashboard-item container-selected-item">
+              <label htmlFor="movie" className="movie-customer-label">Selected Movie</label>
+              <h3 id="movie" className="selected-movie-customer" >
+                {this.state.movie.title? this.state.movie.title : "None"}
+              </h3>
+            </div>
+
+            <div>
+              <button onClick={this.checkout} className="dashboard-item movie-customer-label">
+                Check Out Rental
+              </button>
+            </div>
+
+            <div className="dashboard-item container-selected-item">
+              <label htmlFor="customer" className="movie-customer-label">Selected Customer</label>
+              <h3 className="selected-movie-customer">
+                {this.state.customer.name ? this.state.customer.name : "None"}
+              </h3>
+            </div>
+          </div>
 
           <div>
               <div className={this.state.showStatus ? "status-bar status-bar--success" : "status-bar--hide"}>
@@ -140,14 +152,11 @@ class Dashboard extends Component {
 
           <Route path="/" exact component={Home} />
           <Route path="/search/"
-            render={() => <Movies addMovieStatusCallback={this.addMovieStatus}/>}
-          />
-
-
+            render={() => <Movies addMovieStatusCallback={this.addMovieStatus}
+                moviesCount={this.searchMovieCount}/>}/>
           <Route path="/library/"
             render={() => <Library movieActionCallback={this.movieActionCallback}
                 movieCount={this.movieCountCallback}/>} />
-
           <Route path="/customers/" render={() => <Customers customerCallback={this.addCustomerName}
               customerCount={this.customerCountCallback}/>} />
 

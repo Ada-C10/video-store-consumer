@@ -1,0 +1,8 @@
+.Movie-container {
+  height: 100vh;
+  background-color: black;
+}
+
+.Movie-container h1 {
+  color: white;
+}
