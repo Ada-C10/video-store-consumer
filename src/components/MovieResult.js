@@ -19,8 +19,6 @@ class MovieResult extends Component {
   render() {
     return (
       <article className="movie-details">
-        <img src={this.props.image} alt="movie-selected"/>
-
         <img src={this.props.image} alt={this.props.title}/>
         <p>{this.props.title}</p>
       <form onSubmit={this.onFormSubmit}>
@@ -39,6 +37,6 @@ MovieResult.propTypes = {
   // release_date: PropTypes.instanceOf(Date),
   external_id: PropTypes.number.isRequired,
   addToLibraryCallback: PropTypes.func.isRequired
-}
+};
 
 export default MovieResult;

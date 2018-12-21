@@ -11,7 +11,7 @@ class SearchCollection extends Component {
     this.state = {
       matchingMovies: [],
       resultsSummary: "",
-      message: 'Search The Movie Database'
+      message: ''
     }
   }
 
@@ -48,9 +48,9 @@ class SearchCollection extends Component {
     })
     .catch((error) => {
       console.log(error.errors.message);
-      console.log(error.message);
+      // console.log(error.message);
       this.setState({
-        message: error.message,
+        message: error.errors.message,
       })
     });
   };

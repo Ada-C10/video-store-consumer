@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e972fd33-1176-4f60-8991-8c89ba0f8004" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/components/SearchCollection.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SearchCollection.js" afterDir="false" />
-    </list>
+    <list default="true" id="e972fd33-1176-4f60-8991-8c89ba0f8004" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -86,8 +84,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/components/SearchCollection.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="336">
-                  <caret line="49" column="30" selection-start-line="49" selection-start-column="30" selection-end-line="49" selection-end-column="30" />
+                <state relative-caret-position="420">
+                  <caret line="52" column="22" selection-start-line="52" selection-start-column="22" selection-end-line="52" selection-end-column="22" />
                   <folding>
                     <element signature="e#0#41#0" expanded="true" />
                   </folding>
@@ -276,12 +274,12 @@
       <workItem from="1545084413183" duration="32365000" />
       <workItem from="1545285773413" duration="6254000" />
       <workItem from="1545326809058" duration="895000" />
-      <workItem from="1545327746452" duration="10050000" />
+      <workItem from="1545327746452" duration="10318000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="74717000" />
+    <option name="totallyTimeSpent" value="74985000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-2560" y="-264" width="1401" height="1417" extended-state="0" />
@@ -594,8 +592,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/SearchCollection.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="49" column="30" selection-start-line="49" selection-start-column="30" selection-end-line="49" selection-end-column="30" />
+        <state relative-caret-position="420">
+          <caret line="52" column="22" selection-start-line="52" selection-start-column="22" selection-end-line="52" selection-end-column="22" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
           </folding>
