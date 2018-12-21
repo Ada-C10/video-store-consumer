@@ -161,11 +161,14 @@ class VideoStore extends Component {
       </div>
       </nav>
       </header>
-      <h4 className ={"sticky"}>{this.state.errorMessage !== "" ? this.state.errorMessage: "" }</h4>
-      <div className ={"sticky"}>Selected Customer: {this.state.selectedCustomer === "none" ? this.state.selectedCustomer
+      <section className ={"sticky"}>
+      <h4>{this.state.errorMessage !== "" ? this.state.errorMessage: "" }</h4>
+      <div>Selected Customer: {this.state.selectedCustomer === "none" ? this.state.selectedCustomer
       : this.state.selectedCustomer.name}</div>
-      <div className ={"sticky"}>Selected Movie: {this.state.selectedMovie === "none" ? this.state.selectedMovie : this.state.selectedMovie.title}</div>
+      <div>Selected Movie: {this.state.selectedMovie === "none" ? this.state.selectedMovie : this.state.selectedMovie.title}</div>
+      </section>
       <section className={"main-content"}>
+
       <Route exact path="/" component={Home} />
 
       <Route path="/movies" render={(props) => <MovieListShow {...props} findMovieProp={this.findMovie} />}/>
