@@ -25,7 +25,7 @@ class LibrarySection extends Component {
       this.props.changeStatusCallback('success', `Successfully loaded ${this.state.movies.length} movies`);
     })
     .catch((error) => {
-      this.props.changeStatusCallback('error', `I'm sorry, there has been an error. Please try again.`);
+      this.props.changeStatusCallback('error', `${error.response.status}: ${error.response.statusText}`);
     });
   }
 

@@ -37,7 +37,7 @@ class SearchSection extends Component {
 
     })
     .catch((error) => {
-      this.props.changeStatusCallback('error', `I'm sorry, there has been an error. Please try again.`)
+      this.props.changeStatusCallback('error', `${error.response.status}: ${error.response.statusText}`)
     });
   }
 
@@ -46,7 +46,7 @@ class SearchSection extends Component {
 
     axios.post(postUrl)
     .then((response) => {
-      this.props.changeStatusCallback('success', `Successfully added ${movie.title} to your library.`)
+      this.props.changeStatusCallback('success', `Successfully added ${response.data.title} to your library.`)
     })
   }
 

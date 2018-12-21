@@ -57,9 +57,11 @@ class App extends Component {
     axios.post(MOVIE_RENTALS + this.state.selectedMovie + "/check-out?customer_id=" + this.state.selectedCustomerID + "&due_date=" + this.state.returnDate)
     .then((response) => {
       this.changeStatus('success', `${this.state.selectedCustomer} has checked out ${this.state.selectedMovie}`)
+      console.log(response.data)
     })
     .catch((error) => {
-      this.changeStatus('error', `I'm sorry, there has been an error. Please try again.`)
+      this.changeStatus('error', `${error.response.status}: ${error.response.statusText}`)
+      console.log(error.response)
     });
   }
 
@@ -67,9 +69,10 @@ class App extends Component {
     axios.post(MOVIE_RENTALS + this.state.selectedMovie + "/return?customer_id=" + this.state.selectedCustomerID)
     .then((response) => {
       this.changeStatus('success', `${this.state.selectedCustomer} has checked in ${this.state.selectedMovie}`)
+      console.log(response.data)
     })
     .catch((error) => {
-      this.changeStatus('error', `I'm sorry, there has been an error. Please try again. ${error.response}`)
+      this.changeStatus('error', `${error.response.status}: ${error.response.statusText}`)
     });
   }
 
