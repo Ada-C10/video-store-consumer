@@ -51,8 +51,15 @@
   background-size: 100px 82px;
 }
 
-.customers {
+.cust {
   display: block;
+  text-indent: -9999px;
+  width: 200px;
+  height: 82px;
+  background: url(https://img.freepik.com/free-icon/users-group_318-48680.jpg?size=338c&ext=jpg);
+  background-repeat: no-repeat;
+  background-size: 100px 82px;
+  margin-left: 75px;
 }
 
 .searchbar {
