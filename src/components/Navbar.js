@@ -14,7 +14,14 @@ class NavBar extends Component {
 
   render() {
     const selectedCustomerName = this.props.selectedCustomer.fullName;
+    console.log('selected customer name', this.props.selectedCustomer.fullName);
+
     const selectedMovieName = this.props.displayedMovie.title;
+    console.log('selected movie title', selectedMovieName);
+
+    const rentalCustomerId = this.props.selectedCustomerId;
+      console.log('customer id', rentalCustomerId.id);
+
     console.log("in nav bar", selectedMovieName); // Psycho
 
     return (
@@ -35,7 +42,7 @@ class NavBar extends Component {
 
           <SelectedMovie title={selectedMovieName}/>
           <SelectedCustomer fullName={selectedCustomerName} />
-          <CheckoutRental rentalCustomer={2}
+          <CheckoutRental customerName={selectedCustomerName} rentalCustomer={rentalCustomerId}
               rentalMovie={selectedMovieName} />
         </nav>
       </div>

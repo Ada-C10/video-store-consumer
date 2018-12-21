@@ -14,11 +14,13 @@ class App extends Component {
     this.state = {
       selectedMovie: "None",
       selectedCustomer: "None",
+      selectedCustomerId: 1,
     };
   }
 
-  selectCustomer = (fullName) => {
+  selectCustomer = (fullName, id) => {
     this.setState({selectedCustomer: {fullName}});
+    this.setState({selectedCustomerId: {id}});
   }
 
   showSelectedMovie = (title) => {
@@ -30,7 +32,8 @@ class App extends Component {
       <Router>
         <div className="App">
           <header className="App-header">
-            <Navbar displayedMovie={this.state.selectedMovie} selectedCustomer={this.state.selectedCustomer} />
+            <Navbar displayedMovie={this.state.selectedMovie} selectedCustomer={this.state.selectedCustomer}
+              selectedCustomerId={this.state.selectedCustomerId} />
           </header>
 
           <Route path="/" exact component={Home} />
