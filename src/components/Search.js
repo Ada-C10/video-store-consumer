@@ -57,7 +57,7 @@ class Search extends Component {
 
     axios.post('http://localhost:3000/movies/', addedMovieData)
      .then((response) => {
-       console.log(`Sucessfully added ${addedMovieData.title} to rental library with id ${response.data.id}`);
+       this.props.searchCallback(`Successfully added ${addedMovieData.title} to library`)
      })
      .catch((error) => {
        console.log(`Error: ${error.message}`);

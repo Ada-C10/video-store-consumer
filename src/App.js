@@ -9,11 +9,6 @@ import Search from './components/Search.js';
 import Rental from './components/Rental.js';
 import StatusBar from './components/StatusBar.js';
 
-const searchConst = () => (
-  <div>
-    <Search/>
-  </div>
-);
 
 class App extends Component {
   constructor(props){
@@ -86,9 +81,10 @@ class App extends Component {
           customerCountCallback={this.changeMessage}
           grabCustomerNameCallback={this.rentalsCustomer} /> }
           />
-        <Route exact path="/search" component={searchConst}/>
-
-
+        <Route exact path="/search"
+          render={ (props) => <Search {...props}
+          searchCallback={this.changeMessage} /> }
+          />
       </div>
 
     )
