@@ -21,7 +21,7 @@ class Movie extends Component {
     const image_alt_tag = `Movie poster for ${this.props.title}`;
     const task = this.props.message;
 
-    // change conditional to be if is included in library rather than on message??
+    // change click handler conditional to if included in library rather than message text??
     return (
       <div className="movie-item">
         <img className="movie-item__image" src={this.props.image_url} alt={image_alt_tag}/>
