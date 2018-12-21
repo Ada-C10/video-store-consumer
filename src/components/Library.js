@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { Alert } from 'reactstrap';
 import axios from 'axios';
 import Movie from './Movie';
 import './styles/Library.css';
@@ -15,15 +16,19 @@ class Library extends Component {
   }
 
   componentDidMount () {
-    const URL = 'http://localhost:3000/movies'
+    const URL = 'http://localhost:3000/movies';
+    this.setState({alert: 'Loading library...'});
 
     axios.get(URL)
     .then((response) => {
       const allMovies = response.data.map((movie, i) => {
         return <Movie key={i} message="Select for rental"  {...movie}/>
       });
+
+      const alertMessage = `Successfully loaded ${response.data.length} movies from the rental library`
       this.setState({
         movies: allMovies,
+        alert: alertMessage
       });
     })
     .catch((error) => {
@@ -35,8 +40,12 @@ class Library extends Component {
   render () {
     return (
       <div className="movie-container">
-        {this.state.movies}
+        <Alert color="success">{this.state.alert}</Alert>
+        <div>
+          {this.state.movies}
+        </div>
       </div>
+
     );
   }
 }

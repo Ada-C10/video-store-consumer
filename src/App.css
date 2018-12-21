@@ -1,6 +1,4 @@
 .App {
-  padding-left: 100px;
-  padding-right: 100px;
   text-decoration: none;
 }
 
@@ -31,9 +29,4 @@ ul {
   display: flex;
   padding: 10px;
   justify-content: space-between;
-}
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
 }

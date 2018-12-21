@@ -1,15 +1,20 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import './styles/Customer.css';
-
+import './styles/SelectedCustomer.css';
 
 class SelectedCustomer extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
   }
 
   render () {
-    return
+    return (
+      <div className="selected-customer__container">
+        <p className="selected-customer__label">Selected Customer</p>
+        <p>{this.props.fullName}</p>
+      </div>
+    );
+
   }
 }
 

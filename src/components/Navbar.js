@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import './styles/Navbar.css';
 
 import navSearchIcon from '../images/search-icon.png';
 import navLibraryIcon from '../images/film-reel.png';
 import navCustomersIcon from '../images/testimonial_icon.png';
+import SelectedCustomer from './SelectedCustomer';
+
+import './styles/Navbar.css';;
 
 class NavBar extends Component {
   render() {
@@ -23,10 +25,8 @@ class NavBar extends Component {
           <img className="navbar-icon" src={navCustomersIcon}/>
             <label>Customers</label>
           </Link>
+          <SelectedCustomer fullName="None" />
         </nav>
-
-
-
       </div>
     );
   }
