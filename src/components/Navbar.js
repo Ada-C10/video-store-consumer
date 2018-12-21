@@ -5,6 +5,7 @@ import navSearchIcon from '../images/search-icon.png';
 import navLibraryIcon from '../images/film-reel.png';
 import navCustomersIcon from '../images/testimonial_icon.png';
 import SelectedCustomer from './SelectedCustomer';
+import SelectedMovie from './SelectedMovie';
 
 import './styles/Navbar.css';;
 
@@ -26,6 +27,7 @@ class NavBar extends Component {
             <label>Customers</label>
           </Link>
           <SelectedCustomer fullName="None" />
+          <SelectedMovie title="None" />
         </nav>
       </div>
     );
