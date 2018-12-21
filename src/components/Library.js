@@ -4,6 +4,7 @@ import { Alert } from 'reactstrap';
 import axios from 'axios';
 import Movie from './Movie';
 import './styles/Library.css';
+import ScrollUpButton from "react-scroll-up-button";
 
 
 class Library extends Component {
@@ -46,8 +47,9 @@ class Library extends Component {
         <div>
           {this.state.movies}
         </div>
+        <ScrollUpButton/>
       </div>
-
+      
     );
   }
 }
