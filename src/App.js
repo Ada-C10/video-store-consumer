@@ -21,10 +21,8 @@ class App extends Component {
     this.setState({selectedCustomer: {fullName}});
   }
 
-  showSelectedMovie = (movieId) => {
-    let id = movieId.id
-    console.log(`App - selected movie is ${id}`);
-    this.setState({selectedMovie: {id}});
+  showSelectedMovie = (title) => {
+    this.setState({selectedMovie: {title}});
   }
 
   render() {

@@ -12,10 +12,8 @@ import './styles/Navbar.css';
 class NavBar extends Component {
 
   render() {
-
-    console.log("this is to display movie in navbar:");
-    console.log(this.props.displayedMovie);
     const selectedCustomerName = this.props.selectedCustomer.fullName;
+    const selectedMovieName = this.props.displayedMovie.title;
 
     return (
       <div className='navbar-div'>
@@ -33,7 +31,7 @@ class NavBar extends Component {
             <label>Customers</label>
           </Link>
 
-          <SelectedMovie title={this.props.displayedMovie}/>
+          <SelectedMovie title={selectedMovieName}/>
           <SelectedCustomer fullName={selectedCustomerName} />
 
         </nav>

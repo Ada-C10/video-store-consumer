@@ -14,7 +14,7 @@ class Movie extends Component {
   }
 
   selectMovieHandler = () => {
-    this.props.selectMovieCallback(this.props);
+    this.props.selectMovieCallback(this.props.title);
   }
 
   render () {
