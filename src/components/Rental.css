@@ -1,0 +1,14 @@
+.rental-component-container {
+  display: flex;
+  padding: 1em;
+  justify-content: space-around;
+}
+
+p, h2 {
+  padding-left: 1em;
+  padding-right: 1em;
+}
+
+p {
+  font-size: 1.5em;
+}
