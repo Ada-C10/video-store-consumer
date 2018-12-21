@@ -3,10 +3,11 @@ import PropTypes from 'prop-types';
 import './Movie.css';
 
 
-const Movie = ({title, imageURL, releaseDate, selectMovieCallback, buttonText}) => {
+const Movie = ({title, imageURL, releaseDate, selectMovieCallback, buttonText, currentSelected}) => {
 
   const date = releaseDate === null ? "" : releaseDate.slice(0,4);
   const buttonDisplayText = buttonText === undefined ? "Select" : buttonText;
+  const styling = title === currentSelected ? "movie-card-selected" : "movie-card";
 
   let displayTitle
   if (title === null) {
@@ -16,7 +17,7 @@ const Movie = ({title, imageURL, releaseDate, selectMovieCallback, buttonText}) 
   } else {displayTitle = title}
 
   return (
-      <div className="movie-card">
+      <div className={styling}>
         <img src={imageURL} alt={`${title}`} />
         <div>
           <h3>{displayTitle}</h3>
@@ -33,6 +34,7 @@ Movie.propTypes = {
   releaseDate: PropTypes.string,
   selectMovieCallback: PropTypes.func,
   buttonText: PropTypes.string,
+  currentSelected: PropTypes.string,
 };
 
 export default Movie;

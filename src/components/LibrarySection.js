@@ -45,6 +45,7 @@ class LibrarySection extends Component {
         imageURL={movie.image_url}
         selectMovieCallback={() => this.props.selectMovieCallback(movie)}
         buttonText={"Select"}
+        currentSelected={this.props.currentSelected}
         />)
       });
 
@@ -58,7 +59,8 @@ class LibrarySection extends Component {
 
   LibrarySection.propTypes = {
     changeStatusCallback: PropTypes.func,
-    selectMovieCallback: PropTypes.func
+    selectMovieCallback: PropTypes.func,
+    currentSelected: PropTypes.string,
   }
 
   export default LibrarySection;

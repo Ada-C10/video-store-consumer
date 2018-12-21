@@ -95,8 +95,8 @@ class App extends Component {
 
         <StatusBar statusClass={this.state.status.statusClass} statusMessage={this.state.status.statusMessage}/>
         <Route path="/" exact="true" render={() => <SearchSection changeStatusCallback = {this.changeStatus} />} />
-        <Route path="/library" render={() => <LibrarySection selectMovieCallback = {this.selectMovie} changeStatusCallback = {this.changeStatus} />} />
-        <Route path="/customers" render={() => <CustomerSection selectCustomerCallback = {this.selectCustomer} changeStatusCallback = {this.changeStatus} />} />
+        <Route path="/library" render={() => <LibrarySection selectMovieCallback = {this.selectMovie} changeStatusCallback = {this.changeStatus} currentSelected = {this.state.selectedMovie}/>} />
+        <Route path="/customers" render={() => <CustomerSection selectCustomerCallback = {this.selectCustomer} changeStatusCallback = {this.changeStatus} currentSelected = {this.state.selectedCustomer}/>} />
         <Route path="/search" render={() => <SearchSection changeStatusCallback = {this.changeStatus} />} />
 
       </div>

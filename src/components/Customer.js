@@ -3,12 +3,14 @@ import PropTypes from 'prop-types';
 import './Customer.css';
 
 
-const Customer = ({name, phone, movies, selectCustomerCallback, memberDate}) => {
+const Customer = ({name, phone, movies, selectCustomerCallback, memberDate, currentSelected}) => {
 
   const currentRentals = movies > 0 ? `${movies} movie(s) checked out` : "";
   const displayMemberDate = memberDate.slice(0,4);
+  const styling = name === currentSelected ? "customer-card-selected" : "customer-card";
+
   return (
-      <div className="customer-card">
+      <div className={styling}>
         <h3>{name}</h3>
         <div>
           <h3><small>{phone}</small></h3>
@@ -28,6 +30,7 @@ Customer.propTypes = {
   movies: PropTypes.int,
   selectCustomerCallback: PropTypes.func,
   memberDate: PropTypes.string,
+  currentSelected: PropTypes.string,
 };
 
 export default Customer;

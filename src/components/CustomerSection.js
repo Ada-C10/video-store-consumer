@@ -44,6 +44,7 @@ class CustomerSection extends Component {
         movies={customer.movies_checked_out_count}
         memberDate={customer.registered_at}
         selectCustomerCallback={() => this.props.selectCustomerCallback(customer)}
+        currentSelected={this.props.currentSelected}
         />
 
     });
@@ -59,6 +60,7 @@ class CustomerSection extends Component {
 CustomerSection.propTypes = {
   changeStatusCallback: PropTypes.func,
   selectCustomerCallback: PropTypes.func,
+  currentSelected: PropTypes.string,
 };
 
 export default CustomerSection;
