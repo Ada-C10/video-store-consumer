@@ -12,7 +12,7 @@ class RentalLibrary extends Component {
     super();
     this.state = {
       movies: [],
-      error: undefined
+      errors: undefined
     }
   }
 
@@ -28,11 +28,12 @@ componentDidMount() {
 
   })
   .catch((error) => {
-    console.log(error.message);
     this.setState({
-      error: error.message,
-      // add error messages buy mapping through check validations??
+      errorMessage: `Unable to view movies: ${error.message}`,
     })
+
+    this.props.errorCatcherCallback(this.state.errors)
+
   })
 }
 
@@ -53,8 +54,10 @@ render() {
     })
 
   return (
-    <div className="card-group">
-      {movies}
+    <div>
+      <div className="card-group">
+        {movies}
+      </div>
     </div>
   )
 }
@@ -62,8 +65,8 @@ render() {
 }
 
 RentalLibrary.propTypes = {
-  // onAddRental: PropTypes.func,
   updatedMovieCallback: PropTypes.func,
+  errorCatcherCallback: PropTypes.func,
 };
 
 export default RentalLibrary;

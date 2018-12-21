@@ -3,8 +3,6 @@ import PropTypes from 'prop-types';
 import './CheckOut.css'
 import axios from 'axios';
 
-
-
 class CheckOut extends Component {
     constructor(props) {
       super(props);
@@ -12,6 +10,7 @@ class CheckOut extends Component {
         currentCustomer: props.currentCustomer,
         currentMovie: props.currentMovie,
         isReavelad: false,
+        errors: undefined
       }
     }
 
@@ -45,6 +44,7 @@ class CheckOut extends Component {
   onRental = () => {
     const due_date = new Date();
     due_date.setDate(due_date.getDate() + 7)
+
     const customer_id = this.props.currentCustomer.id
 
     const url = `http://localhost:3000/rentals/${this.props.currentMovie.title}/check-out`
@@ -57,12 +57,20 @@ class CheckOut extends Component {
   axios.post(url, params)
     .then((response) => {
       console.log(response);
+
+      this.setState({
+        errors: `Successfully Checked out ${this.props.currentMovie.title}`,
+      })
+
+      this.props.errorCatcherCallback(this.state.errors)
+
     })
     .catch((error) => {
       this.setState({
-        errorMessage: `Failure ${error.message}`,
+        errors: `Unable to checkout: ${error.message}`,
       })
-      console.log(this.errorMessage)
+
+      this.props.errorCatcherCallback(this.state.errors)
     });
   };
 
@@ -92,13 +100,9 @@ class CheckOut extends Component {
 
 CheckOut.propTypes = {
   currentCustomer: PropTypes.object,
-  currentMovie: PropTypes.currentMovie,
-  // currentMovie: PropTypes.object,
-  // currentCustomer: PropTypes.object,
-  // updatedCustomerCallback: PropTypes.func,
-  // updatedMovieCallback: PropTypes.func
+  currentMovie: PropTypes.object,
+  errorCatcherCallback: PropTypes.func,
 }
-//customer space and movie space
-//has button to checkmovie out once movie and cutomer are added
-//passsed by props callback
+
+
 export default CheckOut;
