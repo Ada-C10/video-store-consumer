@@ -63,12 +63,12 @@ class VideoStore extends Component {
       });
     } else if (this.state.selectedCustomer === "none" && this.state.selectedCustomer !== "none") {
       this.setState({
-        errorMessage: "No movie selected, please select one"
+        errorMessage: "No movie selected, please select one and try again"
       })
 
     } else if (this.state.selectedMovie === "none" && this.state.selectedCustomer !== "none") {
       this.setState({
-        errorMessage: "No movie selected, please select one"
+        errorMessage: "No movie selected, please select one and try again"
       })
     } else {
       this.setState({
@@ -102,12 +102,12 @@ class VideoStore extends Component {
       });
     } else if (this.state.selectedCustomer === "none" && this.state.selectedCustomer !== "none") {
       this.setState({
-        errorMessage: "No movie selected, please select one"
+        errorMessage: "No movie selected, please select one and try again."
       })
 
     } else if (this.state.selectedMovie === "none" && this.state.selectedCustomer !== "none") {
       this.setState({
-        errorMessage: "No movie selected, please select one"
+        errorMessage: "No movie selected, please select one and try again."
       })
     } else {
       this.setState({
