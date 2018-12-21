@@ -11,6 +11,8 @@ import './styles/Navbar.css';;
 
 class NavBar extends Component {
   render() {
+console.log(this.props.displayedMovie);
+
     return (
       <div className='navbar-div'>
         <nav className='navbar'>
