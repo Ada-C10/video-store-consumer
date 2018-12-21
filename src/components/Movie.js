@@ -9,16 +9,6 @@ class Movie extends Component {
     super(props);
   }
 
-  // clickHandler = () => {
-  //   console.log("in movie click handler", this.props);
-  //   const task = this.props.message;
-  // // if movie is not in library, clickHander is addToLibray
-  //   if (task.includes("Add")) {
-  //   this.props.addToLibraryCallback(this.props);
-  // // if movie is already in library, handler is to addRental
-  //   } else if (task.includes("Select")) {
-  //     this.props.addRentalCallback(this.props);
-  //   }
   addtoLibraryHandler = () => {
     this.props.addToLibraryCallback(this.props);
   }
@@ -30,8 +20,8 @@ class Movie extends Component {
   render () {
     const image_alt_tag = `Movie poster for ${this.props.title}`;
     const task = this.props.message;
-    // change conditional to be if is included in library rather than on message?
 
+    // change conditional to be if is included in library rather than on message??
     return (
       <div className="movie-item">
         <img className="movie-item__image" src={this.props.image_url} alt={image_alt_tag}/>
@@ -59,7 +49,9 @@ Movie.propTypes = {
   release_date: PropTypes.string,
   image_url: PropTypes.string,
   external_id: PropTypes.number,
-  message: PropTypes.string
+  message: PropTypes.string,
+  addToLibraryCallback: PropTypes.func,
+  selectMovieCallback: PropTypes.func,
 };
 
 export default Movie;
