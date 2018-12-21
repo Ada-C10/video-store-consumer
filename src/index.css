@@ -2,4 +2,13 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+  background-image: url("https://i.cdnraw.com/previews/downloads/d/e/r/p-christmas-gingerbread-ErwpwiowlN-1.jpg");
+  background-attachment: fixed;
+  background-size: cover;
+  resize: both;
+  overflow: scroll;
+  border: 10px;
+  border-style: solid;
+  border-image: repeating-linear-gradient(20deg, red, green, white 20px) 30;
 }
+/* background-image: url("https://happyholidaysblog.com/wp-content/uploads/Ugly-Christmas-Sweater-Background-03.png"); */

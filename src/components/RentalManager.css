@@ -1,0 +1,47 @@
+.video-store-rm {
+  text-align: center;
+  margin: 15px;
+}
+
+.nav-bar {
+  display: inline-flex;
+}
+
+.navbar__nav {
+}
+
+.nav-bar__nav {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -ms-flex-pack: distribute;
+  justify-content: space-around;
+  height: 100%;
+}
+
+.nav-bar__nav-item {
+  background-color: white;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -ms-flex-align: center;
+  align-items: center;
+  font-size: 16px;
+  padding: 2rem;
+  width: 10rem;
+  border: 3px solid darkgreen;
+  border-radius: 25px;
+  margin: 3px;
+}
+a {
+  color: black;
+  text-decoration: none;
+}
+/* Not sure if this is valid BEM, but need the
+increased specificity to override built-in styles */
+.nav-bar__nav .nav-bar__nav-item {
+  color: black;
+  text-decoration: none;
+}

@@ -1,0 +1,35 @@
+.customers {
+  display: flex;
+  flex-wrap: wrap;
+  text-align: center;
+}
+.customer-container-box {
+  background-color: red;
+  width: 45%;
+  margin: 5px;
+}
+.item {
+  border: 1px solid black;
+  border-radius: 1em;
+  overflow: hidden;
+  margin: 2em;
+  background-color: white;
+}
+
+.item__button {
+  background-color: white;
+  font-size: 18px;
+}
+
+.item__details {
+  padding: 0 1.5em;
+  /* border-left: 2px solid green; */
+  border-right: 3px solid gold;
+}
+.titlefont {
+  font-family: "Mountains of Christmas", cursive;
+  font-size: 30px;
+}
+.tielefont2 {
+  font-family: "Mountains of Christmas", cursive;
+}

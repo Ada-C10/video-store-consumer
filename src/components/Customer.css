@@ -1,0 +1,29 @@
+.customer {
+  border-radius: 20px;
+  border: 7px solid darkgreen;
+  background-color: white;
+  display: grid;
+  grid-template-columns: 4fr 1fr;
+  text-align: center;
+  align-content: center;
+}
+.customer-container-box {
+  width: 90%;
+  display: inline-block;
+}
+.customer__content {
+  grid-column-start: 4;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  text-align: center;
+  font-weight: 100;
+  overflow: hidden;
+}
+.customer-item__button {
+  font-size: 18px;
+  background-color: white;
+}
+.message p {
+  background-color: #8fb996;
+}

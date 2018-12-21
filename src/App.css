@@ -1,21 +1,113 @@
-.App {
-  text-align: center;
+.message {
+  margin: 0.4em;
+  background-color: white;
 }
 
-.App-logo {
+.video-store-main {
+  text-align: center;
+  padding-top: 10px;
+  /* background-image: url("https://i.cdnraw.com/previews/downloads/d/e/r/p-christmas-gingerbread-ErwpwiowlN-1.jpg"); */
+}
+header.header {
+  opacity: 50;
+  /* border: 5px solid #402300; */
+  border-radius: 15px;
+  width: 90%;
+  display: inline-block;
+}
+.item2 {
+  margin-left: 20px;
+  padding-left: 20px;
+
+  height: 80px;
+  justify-content: center;
+  align-items: center;
+}
+
+.item1 {
   animation: App-logo-spin infinite 20s linear;
   height: 80px;
+  justify-content: center;
+  align-items: center;
+
+  margin-left: 20px;
+  padding-left: 20px;
+}
+.item1a {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
+  justify-content: center;
+  align-items: center;
+
+  margin-left: 20px;
+  padding-left: 20px;
+}
+.item3 {
+  width: 50;
+  height: 50;
+  justify-content: center;
+  align-items: center;
+
+  margin-left: 20px;
+  padding-left: 20px;
 }
 
-.App-header {
-  background-color: #222;
+.main-header {
+  background-color: white;
+  border: 15px dotted darkgreen;
+  border-radius: 15px;
+  width: 90%;
   height: 150px;
   padding: 20px;
   color: white;
+  width: 90%;
+  display: inline-grid;
+  grid-template-columns: 240px 240px 240px 240px 240px;
+  grid-template-rows: 80px;
+  align-items: center;
 }
 
-.App-title {
-  font-size: 1.5em;
+@-webkit-keyframes borderBlink {
+   from, to {
+      border: 15px dashed darkgreen;
+
+   }
+
+   50% {
+     border: 15px dotted red;
+   }
+
+}
+@keyframes borderBlink {
+   from, to {
+     border: 15px dashed darkgreen;
+
+   }
+
+   50% {
+     border: 15px dotted red;
+   }
+
+}
+
+.main-header{
+   -webkit-animation: borderBlink 1s step-end infinite;
+   animation: borderBlink 1s step-end infinite;
+}
+
+
+
+.item4 {
+  font-family: "Mountains of Christmas", cursive;
+
+  font-size: 4em;
+  color: red;
+  grid-column: 1 / span 5;
+  grid-row: 2;
+  justify-content: center;
+  align-items: center;
+  margin-left: 20px;
+  padding-left: 20px;
 }
 
 .App-intro {
@@ -23,6 +115,21 @@
 }
 
 @keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
+
+li.nav-bar__nav-item {
+  list-style-type: none;
+}
+
+/* .rental-selection-container {
+  display: inline-block;
+} */
+/* .rmField {
+  background-color: white;
+} */
