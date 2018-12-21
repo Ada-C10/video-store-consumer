@@ -35,7 +35,7 @@ class NavBar extends Component {
 
           <SelectedMovie title={selectedMovieName}/>
           <SelectedCustomer fullName={selectedCustomerName} />
-          <CheckoutRental rentalCustomer={selectedCustomerName}
+          <CheckoutRental rentalCustomer={2}
               rentalMovie={selectedMovieName} />
         </nav>
       </div>
