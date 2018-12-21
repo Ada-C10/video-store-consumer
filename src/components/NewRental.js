@@ -18,7 +18,7 @@ class NewRental extends Component {
   render() {
 
     return (
-      <div>
+      <div className="new-rental">
         <div><Selector selectorType="Customer" selected={this.props.selectedCustomer}/></div>
         <div><Selector selectorType="Movie" selected={this.props.selectedMovie}/></div>
         <button onClick={this.checkoutMovie}>Check Out</button>
@@ -30,7 +30,7 @@ class NewRental extends Component {
 NewRental.propTypes = {
   selectedCustomer: PropTypes.string,
   selectedMovie: PropTypes.string,
-  rentMovieCallBack: PropTypes.func.isRequired
+  rentMovieCallBack: PropTypes.func,
 };
 
 export default NewRental;

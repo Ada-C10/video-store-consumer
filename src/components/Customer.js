@@ -3,21 +3,21 @@ import PropTypes from 'prop-types';
 import './Customer.css';
 
 
-const Customer = (props) => {
+const Customer = ({name, phone, movies, selectCustomerCallback, memberDate}) => {
 
-  const currentRentals = props.movies > 0 ? `${props.movies} movie(s) checked out` : "";
-  const memberDate = props.memberDate.slice(0,4);
+  const currentRentals = movies > 0 ? `${movies} movie(s) checked out` : "";
+  const displayMemberDate = memberDate.slice(0,4);
   return (
       <div className="customer-card">
-        <h3>{props.name}</h3>
+        <h3>{name}</h3>
         <div>
-          <h3><small>{props.phone}</small></h3>
+          <h3><small>{phone}</small></h3>
           <p>{currentRentals}</p>
         </div>
         <div>
-          <button onClick={props.selectCustomerCallback}>Select</button>
+          <button onClick={selectCustomerCallback}>Select</button>
         </div>
-        <p className="member-date"><small>Member since {memberDate}</small></p>
+        <p className="member-date"><small>Member since {displayMemberDate}</small></p>
       </div>
   )
 }

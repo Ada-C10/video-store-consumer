@@ -4,11 +4,11 @@ import './Selector.css';
 
 const Selector = ({selectorType, selected}) => {
   return (
-    <div>
+    <div className="selector">
       <label>
-        Selected {selectorType}
+        {selectorType}:
       </label>
-      <span>
+      <span className="selected">
         {selected}
       </span>
     </div>

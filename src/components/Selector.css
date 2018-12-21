@@ -1,0 +1,10 @@
+.selector {
+  margin-left: 2vw;
+  font-weight: 200;
+}
+
+.selected{
+  font-weight: 400;
+  color: rgba(243, 156, 18,1.0);
+  margin-left: 1vw;
+}
