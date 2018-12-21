@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 
 import { Route, Link } from 'react-router-dom'
 import axios from 'axios';
@@ -32,15 +31,16 @@ class App extends Component {
   }
 
   selectMovie = (movie) => {
+    this.changeStatus('success', `Selected ${movie.title}`)
     this.setState({selectedMovie: movie.title })
-    console.log(movie)
   }
 
 
   selectCustomer = (customer) => {
+    this.changeStatus('success', `Selected ${customer.name}`)
     this.setState({
       selectedCustomer: customer.name,
-      selectedCustomerID: customer.id
+      selectedCustomerID: customer.id,
     })
   }
 
@@ -83,26 +83,21 @@ class App extends Component {
 
     return (
       <div className="video-store">
-          <header className="video-store__header">
-            <Link to= "/"><h1>Be Kind, Rewind&lt;&lt;</h1></Link>
-            <Nav />
-            <NewRental selectedCustomer={this.state.selectedCustomer} selectedMovie={this.state.selectedMovie} rentMovieCallBack={this.rentMovie}/>
-          </header>
+        <header className="video-store__header">
+          <Link to= "/"><h1>Be Kind, Rewind&lt;&lt;</h1></Link>
+          <Nav />
+          <NewRental selectedCustomer={this.state.selectedCustomer} selectedMovie={this.state.selectedMovie} rentMovieCallBack={this.rentMovie}/>
+        </header>
 
-          <StatusBar statusClass={this.state.status.statusClass} statusMessage={this.state.status.statusMessage}/>
-          <Route path="/" exact="true" render={() => <SearchSection changeStatusCallback = {this.changeStatus} />} />
-          <Route path="/library" render={() => <LibrarySection selectMovieCallback = {this.selectMovie} changeStatusCallback = {this.changeStatus} />} />
-          <Route path="/customers" render={() => <CustomerSection selectCustomerCallback = {this.selectCustomer} changeStatusCallback = {this.changeStatus} />} />
-          <Route path="/search" render={() => <SearchSection changeStatusCallback = {this.changeStatus} />} />
+        <StatusBar statusClass={this.state.status.statusClass} statusMessage={this.state.status.statusMessage}/>
+        <Route path="/" exact="true" render={() => <SearchSection changeStatusCallback = {this.changeStatus} />} />
+        <Route path="/library" render={() => <LibrarySection selectMovieCallback = {this.selectMovie} changeStatusCallback = {this.changeStatus} />} />
+        <Route path="/customers" render={() => <CustomerSection selectCustomerCallback = {this.selectCustomer} changeStatusCallback = {this.changeStatus} />} />
+        <Route path="/search" render={() => <SearchSection changeStatusCallback = {this.changeStatus} />} />
 
       </div>
     );
   }
 }
-
-App.propTypes = {
-  changeStatusCallback: PropTypes.func.isRequired
-};
-
 
 export default App;

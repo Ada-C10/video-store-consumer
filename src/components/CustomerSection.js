@@ -41,6 +41,7 @@ class CustomerSection extends Component {
         name={customer.name}
         phone={customer.phone}
         movies={customer.movies_checked_out_count}
+        memberDate={customer.registered_at}
         selectCustomerCallback={() => this.props.selectCustomerCallback(customer)}
         />
 

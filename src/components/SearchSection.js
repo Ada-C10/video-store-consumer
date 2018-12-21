@@ -51,8 +51,10 @@ class SearchSection extends Component {
       console.log(response)
       this.props.changeStatusCallback('success', `Successfully added ${movie.title} to your library.`)
     })
+  }
 
-
+  componentDidMount(){
+    this.props.changeStatusCallback('default', '')
   }
 
     render() {
@@ -63,8 +65,10 @@ class SearchSection extends Component {
         return (<Movie
           key={i}
           title={movie.title}
-          release_date={movie.release_date}
-          image_url={movie.image_url}
+          releaseDate={movie.release_date}
+          imageURL={movie.image_url}
+          buttonText={"Add to Library"}
+          selectMovieCallback={() => this.addToLibrary(movie)}
         />
         )
       });
@@ -72,11 +76,9 @@ class SearchSection extends Component {
       return (
         <div>
           <SearchBar searchCallback={this.onSearchSubmit}/>
-
-          <ul>
-          {searchResults.map(movie => <li key={movie.id}>{movie.title} <img src={movie.image_url} /> <button onClick={() => this.addToLibrary(movie)}>Add to Library</button></li>)}
-          </ul>
-
+          <div className="search-section">
+            {returnedResults}
+          </div>
         </div>
       )
     }

@@ -5,15 +5,17 @@ import './Movie.css';
 
 const Movie = (props) => {
 
-  const date = props.release_date === null ? "" : props.release_date.slice(0,4);
+  const date = props.releaseDate === null ? "" : props.releaseDate.slice(0,4);
+  const buttonText = props.buttonText === undefined ? "Select" : props.buttonText;
+  const displayTitle = props.title.length > 45 ? props.title.slice(0,45) + "..." : props.title;
 
   return (
       <div className="movie-card">
-        <img src={props.image_url} alt={`${props.title}`} />
+        <img src={props.imageURL} alt={`${props.title}`} />
         <div>
-          <h3>{props.title}</h3>
+          <h3>{displayTitle}</h3>
           <h3><small>{date}</small></h3>
-          <button onClick={props.selectMovieCallback}>Select</button>
+          <button onClick={props.selectMovieCallback}>{buttonText}</button>
         </div>
       </div>
   )
@@ -21,9 +23,10 @@ const Movie = (props) => {
 
 Movie.propTypes = {
   title: PropTypes.string,
-  image_url: PropTypes.string,
-  release_date: PropTypes.string,
+  imageURL: PropTypes.string,
+  releaseDate: PropTypes.string,
   selectMovieCallback: PropTypes.func,
+  buttonText: PropTypes.string,
 };
 
 export default Movie;

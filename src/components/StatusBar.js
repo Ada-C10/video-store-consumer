@@ -19,7 +19,7 @@ class StatusBar extends Component {
 }
 
 StatusBar.propTypes = {
-  statusMessage: PropTypes.func.isRequired,
+  statusMessage: PropTypes.string.isRequired,
   statusClass: PropTypes.string
 };
 
