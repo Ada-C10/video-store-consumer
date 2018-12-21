@@ -35,8 +35,11 @@ class LibrarySection extends Component {
   render() {
 
     const { movies } = this.state;
+    const sortedMovies = movies.sort(function (a, b) {
+      return ('' + a.title).localeCompare(b.title);
+    })
 
-    const allMovies = movies.map((movie, i) => {
+    const allMovies = sortedMovies.map((movie, i) => {
 
       return (<Movie
         key={i}
@@ -45,20 +48,20 @@ class LibrarySection extends Component {
         imageURL={movie.image_url}
         selectMovieCallback={() => this.props.selectMovieCallback(movie)}
         buttonText={"Select"}
-      />)
-    });
+        />)
+      });
 
-    return (
-      <div className="library-section">
-        {allMovies}
-      </div>
-    )
+      return (
+        <div className="library-section">
+          {allMovies}
+        </div>
+      )
+    }
   }
-}
 
-LibrarySection.propTypes = {
-  changeStatusCallback: PropTypes.func,
-  selectMovieCallback: PropTypes.func
-}
+  LibrarySection.propTypes = {
+    changeStatusCallback: PropTypes.func,
+    selectMovieCallback: PropTypes.func
+  }
 
-export default LibrarySection;
+  export default LibrarySection;

@@ -33,9 +33,12 @@ class CustomerSection extends Component {
   }
 
   render() {
-    const { customers } = this.state
+    const { customers } = this.state;
+    const sortedCustomers = customers.sort(function (a, b) {
+      return ('' + a.name).localeCompare(b.name);
+    })
 
-    const allCustomers = customers.map((customer, i) => {
+    const allCustomers = sortedCustomers.map((customer, i) => {
       return <Customer
         key={i}
         name={customer.name}
