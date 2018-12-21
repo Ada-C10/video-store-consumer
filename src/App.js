@@ -2,20 +2,7 @@ import React, { Component } from 'react';
 import { Route, Link } from 'react-router-dom';
 import axios from 'axios';
 import './App.css';
-import {
-  Alert,
-  Button,
-  Navbar,
-  NavbarToggler,
-  NavbarBrand,
-  Nav,
-  NavItem,
-  NavLink,
-  Container,
-  Row,
-  Col,
-  Jumbotron,
-} from 'reactstrap';
+import { Alert } from 'reactstrap';
 import MovieLibrary from './components/MovieLibrary.js';
 import CustomerLibrary from './components/CustomerLibrary.js';
 import Search from './components/Search.js';
@@ -63,34 +50,33 @@ class App extends Component {
   render() {
 
     return (
-      <div className="outer-container">
-        <Navbar className="nav-bar" color="light" light expand="lg">
-          <Nav className="ml-auto" navbar>
-            <NavItem className="nav__links">
-              <NavLink tag={Link} to="/">Movie Library</NavLink>
-            </NavItem>
-            <NavItem className="nav__links">
-              <NavLink tag={Link} to="/customers">Customers</NavLink>
-            </NavItem>
-            <NavItem className="nav__links">
-              <NavLink tag={Link} to="/search">Search</NavLink>
-            </NavItem>
-            <div className="rental">
-              <Rental
-                  movie={this.state.selectedMovie}
-                  customer={this.state.selectedCustomer}
-                  customerId={this.state.selectedCustomerId}
-                  rentalCallback={this.changeMessage}/>
+      <div className="main-container">
+        <header>
+          <h2 className="app_name">Videobuster</h2>
+          <div className="nav">
+            <div className="nav-item1">
+              <Link to="/" className="vhs">Movie Library</Link>
             </div>
-          </Nav>
-        </Navbar>
+            <div className="nav-item2">
+              <Link to="/customers" className="customers">Customers</Link>
+            </div>
+            <div className="nav-item3">
+              <Link to="/search" className="searchbar">Search</Link>
+            </div>
+          </div>
+        </header>
+        <Rental
+          movie={this.state.selectedMovie}
+          customer={this.state.selectedCustomer}
+          customerId={this.state.selectedCustomerId}
+          rentalCallback={this.changeMessage}/>
 
-        <div className="status-bar status-bar--success">
+        <div className="status-bar">
           <Alert color="success">
-            <StatusBar className="status-br__text" status={this.state.message}/>
+            <StatusBar className="status-br__text" status={this.state.message} />
           </Alert>
         </div>
-
+        
         <Route exact path="/"
           render={ (props) => <MovieLibrary {...props}
           movieCountCallback={this.changeMessage}
@@ -102,6 +88,8 @@ class App extends Component {
           grabCustomerNameCallback={this.rentalsCustomer} /> }
           />
         <Route exact path="/search" component={searchConst}/>
+
+
       </div>
 
     )

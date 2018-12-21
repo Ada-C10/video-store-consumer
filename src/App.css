@@ -1,25 +1,65 @@
-div.outer-container {
-  margin: 0;
-  background-color: blue;
-  /* max-width: 1559px; */
-  width: 100%;
-  padding: 0;
+.main-container {
+  background-color: black;
 }
 
-.nav-bar {
-  margin: 0;
+.app_name {
+  font-size: 80px;
+  color: yellow;
+  text-align: center;
+  -webkit-animation: app_name 1s ease-in-out infinite alternate;
+  -moz-animation: app_name 1s ease-in-out infinite alternate;
+  animation: app_name 1s ease-in-out infinite alternate;
 }
 
-.ml-auto {
-  /* background-color: red; */
-  width: 100%;
-  margin: 0px;
+@-webkit-keyframes app_name {
+  from {
+    text-shadow: 0 0 10px #FFFF00, 0 0 20px #FFFF00, 0 0 30px #FF0000, 0 0 40px #FF0000, 0 0 50px #FF0000, 0 0 60px #FF0000, 0 0 70px #FF0000;
+  }
+
+  to {
+    text-shadow: 0 0 20px #fff, 0 0 30px #FFDAB9, 0 0 40px #6495ED, 0 0 50px #6495ED, 0 0 60px #6495ED, 0 0 70px #6495ED, 0 0 80px #6495ED;
+  }
+}
+
+.nav {
+  color: #0D0DCE;
   display: flex;
-  justify-content: space-between;
-  height: 100%;
+  flex-direction: row;
+  justify-content: space-around;
+  background-color: black;
+  align-items: center;
 }
 
-.nav__links {
-  flex-direction: column;
+.blinking{
+  animation:blinkingText 0.8s infinite;
+}
 
+@keyframes blinkingText{
+  0%{     color: #000;    }
+  49%{    color: transparent; }
+  50%{    color: transparent; }
+  99%{    color:transparent;  }
+  100%{   color: #000;    }
+}
+
+.vhs {
+  display: block;
+  text-indent: -9999px;
+  width: 100px;
+  height: 82px;
+  background: url(https://openclipart.org/download/272216/vcrandtapes.svg);
+  background-size: 100px 82px;
+}
+
+.customers {
+  display: block;
+}
+
+.searchbar {
+  display: block;
+  text-indent: -9999px;
+  width: 100px;
+  height: 82px;
+  background: url(https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/High-contrast-system-search.svg/2000px-High-contrast-system-search.svg.png);
+  background-size: 100px 82px;
 }
