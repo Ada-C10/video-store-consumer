@@ -4,6 +4,7 @@ import Search from './Search';
 import MovieResult from './MovieResult'
 import './SearchCollection.css'
 
+const TMDBMOVIEURL = 'https://rent-o-rama-app-api.herokuapp.com/';
 class SearchCollection extends Component {
   constructor(props){
     super(props);
@@ -14,7 +15,7 @@ class SearchCollection extends Component {
   }
 
   searchMovie = (movie) => {
-    axios.get(URL + `movies?query=${movie}`)
+    axios.get(TMDBMOVIEURL + `movies?query=${movie}`)
     .then((response) => {
       this.setState({
         matchingMovies: response.data,
@@ -25,18 +26,18 @@ class SearchCollection extends Component {
     .catch((error) => {
       this.setState({error: error.message})
     });
-  }
+  };
   renderMessage = () => {
     if(this.state.message){
       return(
         <p>{this.state.message}</p>
       )
     }
-  }
+  };
 
   addToLibrary = (movie) => {
-    console.log(movie)
-    axios.post(URL + `movies`, movie)
+    console.log(movie);
+    axios.post(TMDBMOVIEURL + `movies`, movie)
     .then((response) => {
       console.log(response);
       console.log(response.data);
@@ -47,10 +48,10 @@ class SearchCollection extends Component {
         message: error.message,
       })
     });
-  }
+  };
 
   renderMovieList = () => {
-    let movies = this.state.matchingMovies
+    let movies = this.state.matchingMovies;
     const componentList = this.state.matchingMovies.map((movie,index) =>{
       return (
           <MovieResult
@@ -68,7 +69,7 @@ class SearchCollection extends Component {
       )
     } );
     return componentList;
-  }
+  };
 
   render() {
     return(
