@@ -70,7 +70,7 @@ header.header {
 .item4 {
   font-family: "Mountains of Christmas", cursive;
 
-  font-size: 3em;
+  font-size: 4em;
   color: red;
   grid-column: 1 / span 5;
   grid-row: 2;

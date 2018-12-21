@@ -9,6 +9,6 @@ body {
   overflow: scroll;
   border: 10px;
   border-style: solid;
-  border-image: repeating-linear-gradient(30deg, red, green, white 20px) 60;
+  border-image: repeating-linear-gradient(20deg, red, green, white 20px) 30;
 }
 /* background-image: url("https://happyholidaysblog.com/wp-content/uploads/Ugly-Christmas-Sweater-Background-03.png"); */
