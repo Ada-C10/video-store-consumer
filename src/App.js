@@ -85,7 +85,7 @@ class App extends Component {
     return (
       <Router>
         <div>
-          <ul>
+          <ul className="nav-bar">
             <li>
               <Link to="/">Home</Link>
             </li>
@@ -98,10 +98,10 @@ class App extends Component {
             <li>
               <Link to="/search">Search</Link>
             </li>
-            <li>
+            <li className="nav-bar__list-item">
               Selected Movie: {this.state.currentMovie}
             </li>
-            <li>
+            <li className="nav-bar__list-item">
               Selected Customer: {this.state.currentCustomerName}
             </li>
             <li>
@@ -113,6 +113,7 @@ class App extends Component {
               </button>
             </li>
           </ul>
+
           <section>
             <ul>
               {messages}
