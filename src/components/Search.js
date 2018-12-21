@@ -73,7 +73,9 @@ class Search extends Component {
     const madeRequest = this.state.alert;
     let alert;
 
-    if (madeRequest) {
+    if (madeRequest && madeRequest.includes("Found 0 results")) {
+      alert = <Alert color="danger">{this.state.alert}</Alert>
+    } else if (madeRequest) {
       alert = <Alert color="success">{this.state.alert}</Alert>
     }
 
