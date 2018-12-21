@@ -1,14 +1,21 @@
-import React from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import './styles/SelectedMovie.css';
 
-const SelectedMovie = ({id, title, overview, release_date, image_url}) => {
+class SelectedMovie extends Component {
+  constructor(props) {
+    super(props);
+  }
 
-  return (
-    <div className="selected-movie">
-      
-    </div>
-  );
-};
+  render () {
+    return (
+      <div className="selected-movie__container">
+        <p className="selected-movie__label">Selected Movie</p>
+        <p>{this.props.title}</p>
+      </div>
+    );
 
+  }
+}
 
 export default SelectedMovie;
