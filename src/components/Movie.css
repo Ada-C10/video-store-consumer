@@ -4,12 +4,37 @@
 } */
 .movie {
   border-radius: 20px;
-  border: 7px solid darkgreen;
+  border: 7px dotted darkgreen;
   background-color: white;
   display: grid;
   grid-template-columns: 1fr 3fr 1fr;
   text-align: center;
   align-content: center;
+}
+@-webkit-keyframes borderBlink {
+  from,
+  to {
+    border: 15px dashed darkgreen;
+  }
+
+  50% {
+    border: 15px dotted red;
+  }
+}
+@keyframes borderBlink {
+  from,
+  to {
+    border: 15px dotted darkgreen;
+  }
+
+  50% {
+    border: 15px dotted red;
+  }
+}
+
+.movie {
+  -webkit-animation: borderBlink 1s step-end infinite;
+  animation: borderBlink 1s step-end infinite;
 }
 .movie-container-box {
   width: 90%;
