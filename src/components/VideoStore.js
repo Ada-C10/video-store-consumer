@@ -72,7 +72,7 @@ class VideoStore extends Component {
       })
     } else {
       this.setState({
-        errorMessage: "No movie or customer selected"
+        errorMessage: "Please select a movie and a customer before checking in a movie"
       })
     }
   }
@@ -111,7 +111,7 @@ class VideoStore extends Component {
       })
     } else {
       this.setState({
-        errorMessage: "No movie or customer selected"
+        errorMessage: "Please select a movie and a customer before checking in a movie"
       })
     }
   }
@@ -128,7 +128,7 @@ class VideoStore extends Component {
       <nav className={"navbar navbar-expand-lg navbar-dark bg-dark fixed-top"}>
       <div className={"container"}>
       <a className="navbar-brand" href="#">
-        <img src="https://cdn2.bigcommerce.com/server4900/364bb/product_images/usa_movie_store.gif" width="150" height="30" alt="">
+        <img src="https://cdn2.bigcommerce.com/server4900/364bb/product_images/usa_movie_store.gif" width="200" height="60" alt="">
       </img></a>
       <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
          <span className="navbar-toggler-icon"></span>
@@ -151,7 +151,6 @@ class VideoStore extends Component {
           <Link to="/overdue">Overdue</Link>
           </li>
           </ul>
-          <h4>{this.state.errorMessage !== "" ? this.state.errorMessage: "" }</h4>
           <button
           onClick ={this.checkOutRental}
           type="button">Check Out New Rental</button>
@@ -162,9 +161,10 @@ class VideoStore extends Component {
       </div>
       </nav>
       </header>
-      <div>Selected Customer: {this.state.selectedCustomer === "none" ? this.state.selectedCustomer
+      <h4 className ={"sticky"}>{this.state.errorMessage !== "" ? this.state.errorMessage: "" }</h4>
+      <div className ={"sticky"}>Selected Customer: {this.state.selectedCustomer === "none" ? this.state.selectedCustomer
       : this.state.selectedCustomer.name}</div>
-      <div>Selected Movie: {this.state.selectedMovie === "none" ? this.state.selectedMovie : this.state.selectedMovie.title}</div>
+      <div className ={"sticky"}>Selected Movie: {this.state.selectedMovie === "none" ? this.state.selectedMovie : this.state.selectedMovie.title}</div>
       <section className={"main-content"}>
       <Route exact path="/" component={Home} />
 
