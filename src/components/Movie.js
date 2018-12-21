@@ -5,16 +5,20 @@ import { Button } from 'reactstrap';
 
 
 class Movie extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
   }
 
   clickHandler = () => {
     console.log("in movie click handler", this.props);
+    const task = this.props.message;
   // if movie is not in library, clickHander is addToLibray
+    if (task.includes("Add")) {
     this.props.addToLibraryCallback(this.props);
-    // if movie is already in library, handler is to addRental
-  }
+  // if movie is already in library, handler is to addRental
+    } else if (task.includes("Select")) {
+      this.props.addRentalCallback(this.props);
+    }
 
   render () {
     const image_alt_tag = `Movie poster for ${this.props.title}`;
