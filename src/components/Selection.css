@@ -1,0 +1,22 @@
+.selection-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+span {
+  font-weight: bold;
+}
+
+.selection-items {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.one-selected-item {
+  display: inline-block;
+  border: 2px blue solid;
+  padding: 2px;
+  margin: 5px;
+}

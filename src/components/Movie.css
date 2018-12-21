@@ -1,0 +1,13 @@
+.width {
+  width: 18rem;
+}
+
+.movie-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+img.card-img-top {
+  max-height: 426px;
+}

@@ -1,0 +1,13 @@
+.width {
+  width: 18rem;
+}
+
+.customer-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+/* img {
+  max-height: 426px;
+} */
