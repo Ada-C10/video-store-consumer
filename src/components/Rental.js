@@ -10,6 +10,7 @@ class Rental extends Component {
     super(props);
   }
 
+
   makeRental = () => {
     const today = new Date();
     today.setDate(today.getDate() + 1);
@@ -17,30 +18,39 @@ class Rental extends Component {
     const month = today.getMonth() + 1;
     const year = today.getFullYear();
     const movieDueDate = `${year}-${month}-${day}`;
+    // const newRental = {
+    //   movie: this.props.movie,
+    //   customer: this.props.customerId,
+    //   dueDate: movieDueDate,
+    // }
 
-    const url=`http://localhost:3000/rentals/${this.props.movie}/check-out?customer_id=${this.props.customerId}&due_date=${movieDueDate}`
+    const url = this.props.url + '?' + `customer_id=${this.props.customerId}&due_date=${movieDueDate}`;
+
+    console.log("it responded to click");
+    console.log(url);
 
     axios.post(url)
     .then((response) => {
       console.log("successfully posted film", response);
+      // console.log(newRental);
     })
     .catch((error) => {
-      console.log("could not post film", error);
+      console.log("could not post film for some reason", error);
     });
-    this.props.rentalCallback(`Successfully rented ${this.props.movie} to ${this.props.customer}`)
   }
 
 
   render(){
+
     return(
-      <div>
-        <div>
-          {this.props.movie}
-        </div>
-        <div>
-          {this.props.customer}
+      <div className="rental-container">
+        <div className="rental-box">
+          <p>{this.props.movie}</p>
         </div>
         <Button onClick={this.makeRental}>Check Out New Rental</Button>
+        <div className="rental-box">
+          <p>{this.props.customer}</p>
+        </div>
       </div>
     )
   }
@@ -52,7 +62,6 @@ Rental.propTypes = {
   customer:PropTypes.string,
   customerId:PropTypes.number,
   url:PropTypes.string,
-  rentalCallback:PropTypes.func
 };
 
 export default Rental;

@@ -6,9 +6,15 @@
     "ajv": "^6.6.2",
     "axios": "^0.18.0",
     "bootstrap": "^4.1.3",
+<<<<<<< HEAD
     "react": "^16.6.3",
     "react-collapsible": "^2.3.2",
     "react-dom": "^16.6.3",
+=======
+    "react": "^16.7.0",
+    "react-bootstrap": "^0.32.4",
+    "react-dom": "^16.7.0",
+>>>>>>> 331037c357f29f002b7b5d7b09f95f21e040388d
     "react-router-dom": "^4.3.1",
     "react-scripts": "1.1.4",
     "reactstrap": "^6.5.0"
