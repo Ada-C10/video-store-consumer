@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Form, FormGroup, Label, Input } from 'reactstrap';
+import { Form, FormGroup, Label, Input, Alert } from 'reactstrap';
 import './styles/Search.css';
 import Movie from './Movie';
 import axios from 'axios';
@@ -30,7 +30,11 @@ class Search extends Component {
       const searchResultList = response.data.map((hit, i) => {
         return <Movie key={i} message="Add to library" addToLibraryCallback={this.addToLibrary} {...hit} />
       })
-      this.setState({searchResults: searchResultList});
+
+      const alertMessage = `Found ${response.data.length} results for ${query}`;
+
+      this.setState({searchResults: searchResultList,
+      alert: alertMessage });
     })
     .catch((error) => {
       this.setState({error: error.message})
@@ -66,6 +70,13 @@ class Search extends Component {
   }
 
   render () {
+    const madeRequest = this.state.alert;
+    let alert;
+
+    if (madeRequest) {
+      alert = <Alert color="success">{this.state.alert}</Alert>
+    }
+
     return (
       <div>
         <Form className="movie-search-form" onSubmit={this.onSearchSubmit}>
@@ -77,6 +88,7 @@ class Search extends Component {
           </FormGroup>
         </Form>
         <div>
+          {alert}
           {this.state.searchResults}
         </div>
       </div>
