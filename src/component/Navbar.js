@@ -25,11 +25,6 @@ return (
           {props.search}
         </li>
 
-        <div className="searchBar">
-          {props.searchBar}
-        </div>
-
-
         <li className="nav-item dropdown">
           <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
             {props.allMovies}
@@ -37,8 +32,13 @@ return (
             {props.search}
           </div>
         </li>
-
      </ul>
+     <div className="song">
+     <audio controls autoPlay>
+       <source src="https://t4.bcbits.com/stream/1a445a31edb1024356bff6e40412165d/mp3-128/3468622126?p=0&ts=1545440169&t=96e06118500667bd3e045d2da5b0efd3c00380c2&token=1545440169_0ca0f566be9cceb50e298f46861425629243ae88" type="audio/mpeg">
+       </source>
+     </audio>
+     </div>
    </div>
   </nav>
   )

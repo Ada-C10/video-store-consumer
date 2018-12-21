@@ -22,3 +22,8 @@
   background-color: white;
   border-bottom: 1px solid lightgrey;
 }
+
+.image {
+    height: 50px;
+    width: 45px;
+}

@@ -6,6 +6,7 @@ import Navbar from './component/Navbar'
 import SearchBar from './component/SearchBar'
 import CheckOut from './component/CheckOut'
 
+
 import './App.css';
 
 class App extends Component {
@@ -76,6 +77,7 @@ class App extends Component {
 
           </div>
           </Router>
+
       </div>
     );
   }

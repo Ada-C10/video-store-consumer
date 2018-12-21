@@ -32,3 +32,8 @@ li > a:hover {
   padding-left: 20em;
   margin-left: 10px;
 }
+
+.song {
+  padding-left: 12em;
+  display: inline;
+}
