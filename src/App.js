@@ -36,13 +36,12 @@ addError = (error) => {
 
   this.setState({errors: error})
 
-    setTimeout(
-      () =>
-        this.setState({
-          errors: undefined
-        }),
-        2500
-    )
+  setTimeout(() =>
+    this.setState({
+      errors: undefined
+    }),
+    2500
+  )
 }
 
   render() {
