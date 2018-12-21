@@ -304,13 +304,13 @@ class App extends Component {
                 </header>
 
                 <section className="container">
-                    <div className="messages position-sticky">
-                        <section className="info-alert alert alert-info alert-dismissible">
-                            <a href="#" className="close" data-dismiss="alert" aria-label="close">&times;</a>
-                            <strong>{this.state.message}</strong>
-                        </section>
-                    </div>
                     <div className="jumbotron">
+                        {this.state.message && <div className="messages position-sticky">
+                            <section className="info-alert alert alert-info alert-dismissible">
+                                <a href="#" className="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                <strong>{this.state.message}</strong>
+                            </section>
+                        </div>}
                         <Route path="/search"
                                component={SearchCollection}/>
 

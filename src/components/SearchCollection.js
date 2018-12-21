@@ -87,7 +87,7 @@ class SearchCollection extends Component {
           <div className="add-message">{this.renderMessage()}</div>
           <div className="search-list">{this.renderMovieList() }</div>
         </section>
-        
+
     )
   }
 }
