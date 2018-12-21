@@ -1,0 +1,15 @@
+
+.container {
+  font-size: 33px;
+  font-family: 'Righteous', cursive;
+  color: black;
+  padding: 22px;
+  text-shadow: 2px 2px #ff0000;
+}
+
+.List {
+  list-style-type: none;
+  text-shadow: 2px 2px #ff0000;
+  font-size: 22px;
+  color: black;
+}
