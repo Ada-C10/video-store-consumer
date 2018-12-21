@@ -12,6 +12,7 @@ class Library extends Component {
 
     this.state = {
       movies: [],
+      selectedMovie: "None",
     };
   }
 
@@ -39,8 +40,10 @@ class Library extends Component {
 
   selectRental = (movie) => {
     console.log(`Selected a movie to rent: ${movie.title}, id ${movie.id}`);
-    const selectedMovie = movie.external_id
-    // save to state? or props?
+    const movieClicked = movie;
+    this.setState({
+      selectedMovie: movieClicked
+    });
   }
 
 
