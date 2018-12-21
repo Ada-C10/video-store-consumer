@@ -15,7 +15,7 @@ class NavBar extends Component {
   render() {
     const selectedCustomerName = this.props.selectedCustomer.fullName;
     const selectedMovieName = this.props.displayedMovie.title;
-    console.log(selectedMovieName); // Psycho
+    console.log("in nav bar", selectedMovieName); // Psycho
 
     return (
       <div className='navbar-div'>

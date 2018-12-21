@@ -10,11 +10,14 @@ class CheckoutRental extends Component {
     super(props);
   }
 
-  postRental (title, customerId) {
+  postRental = () => {
     const today = new Date();
     let dueDate = new Date(today.getTime() + (7 * 24 * 60 *60 * 1000));
-    console.log('in postRental function', this.props);
-    const RENTURL = `http://localhost:3000/rentals/${this.props.rentalMovie}/1/check-out?due_date=${dueDate}`;
+    console.log('in postRental function');
+    console.log(this.props.movie);
+
+    const movie = this.props.rentalMovie
+    const RENTURL = `http://localhost:3000/rentals/${movie}/1/check-out?due_date=${dueDate}`;
 
 
     axios.post(RENTURL)
@@ -40,6 +43,11 @@ class CheckoutRental extends Component {
 
     )
   }
+}
+
+CheckoutRental.propTypes = {
+  rentalCustomer: PropTypes.string,
+  rentalMovie: PropTypes.string
 }
 
 export default CheckoutRental;
