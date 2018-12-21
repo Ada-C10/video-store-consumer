@@ -1,0 +1,27 @@
+&::-webkit-scrollbar {
+    display: none;
+}
+
+@media(min-width:768px) {
+    width:80%;
+    white-space:nowrap;
+    margin-top: 0;
+}
+
+.movie-card {
+  margin: 60px 30px 0px 30px;
+  display: inline-block;
+
+  .pet-card--body {
+    white-space: normal;
+  }
+}
+
+
+.movie-card--select-pet-btn {
+  margin-left: 15px;
+}
+
+.movie-card--close-btn {
+  float: right;
+}

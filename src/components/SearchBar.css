@@ -1,0 +1,14 @@
+
+input {
+  color: black;
+  padding: 1rem;
+  margin-right: 2rem;
+  font-family: 'Permanent Marker', cursive;
+}
+
+input[type=search] {
+  width: 25rem;
+  border-radius: 8px;
+  margin-top: 5rem;
+
+}
