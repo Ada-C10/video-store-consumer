@@ -1,6 +1,10 @@
 @import url('https://fonts.googleapis.com/css?family=Bitter|Luckiest+Guy');
 @import url('https://fonts.googleapis.com/css?family=Montserrat|Open+Sans');
 
+html {
+  background-color: #3B4052;
+}
+
 .video-store {
   text-align: center;
   background-color: #3B4052;
@@ -57,12 +61,12 @@ header {
   /*flex-wrap: wrap;*/
   flex-direction: column;
   margin: 3px;
-  width: 12rem;
+  /*width: 12rem;*/
 
 }
 
 .panel > * {
-
+  padding: 5px;
   word-wrap: break-word;
 }
 
