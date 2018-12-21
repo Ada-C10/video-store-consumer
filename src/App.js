@@ -13,7 +13,6 @@ class App extends Component {
       <Router>
         <div className="App">
           <header className="App-header">
-            <h1 className="App-title">all the movies all the time</h1>
             <Navbar />
           </header>
 

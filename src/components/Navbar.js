@@ -24,9 +24,6 @@ class NavBar extends Component {
             <label>Customers</label>
           </Link>
         </nav>
-
-
-
       </div>
     );
   }

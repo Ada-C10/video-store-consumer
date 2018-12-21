@@ -1,6 +1,8 @@
 .navbar {
   font-family: 'Staatliches', cursive;
   font-size: 1.5em;
+  padding-left: 200px;
+  padding-right: 200px;
 }
 
 .navbar a {
@@ -10,4 +12,10 @@
 .navbar-icon {
   height: 8rem;
   padding: 5px;
+}
+
+.navbar-link{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
 }

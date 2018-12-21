@@ -1,6 +1,4 @@
 .App {
-  padding-left: 100px;
-  padding-right: 100px;
   text-decoration: none;
 }
 
@@ -26,6 +24,11 @@
   font-size: large;
 }
 
+
+Navbar {
+  padding-left: 100px;
+  padding-right: 100px;
+}
 ul {
   list-style: none;
   display: flex;
