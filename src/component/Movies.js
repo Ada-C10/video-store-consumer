@@ -13,7 +13,7 @@ const Movies = (props) => {
             <sub>{props.releaseDate}</sub>
             <h5 className="card-title">{props.title} </h5>
             <p className="card-text">{props.overview}</p>
-            <button type="button" onClick={props.callback}>{props.button}</button>
+            <button className="button" type="button" onClick={props.callback}>{props.button}</button>
           </div>
         </div>
     )

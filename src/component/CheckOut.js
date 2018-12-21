@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import './CheckOut.css'
 import axios from 'axios';
 
 
@@ -10,6 +11,7 @@ class CheckOut extends Component {
       this.state = {
         currentCustomer: props.currentCustomer,
         currentMovie: props.currentMovie,
+        isReavelad: false,
       }
     }
 
@@ -29,6 +31,15 @@ class CheckOut extends Component {
     //     currentMovie: updatedMovie
     //   });
     // }
+
+  renderButton = () => {
+    const customer = this.props.currentCustomer.name
+    const movie = this.props.currentMovie.title
+
+    if (customer !== undefined && movie !== undefined) {
+      return <button className="button" type="button" onClick={this.onRental}>Check Out {movie}</button>
+    }
+  }
 
 
   onRental = () => {
@@ -58,11 +69,24 @@ class CheckOut extends Component {
   render() {
     return(
       //need to fix this in place to view it when scrolling with movies
-      <section>
-        <section>{this.props.currentCustomer.name}</section>
-        <section>{this.props.currentMovie.title}</section>
-        <button type="button" onClick={this.onRental}>Check Out Movie</button>
-    </section>)
+      <div className="check-out">
+        <table className="table">
+          <thead className="thead-dark">
+            <tr>
+              <th scope="col">Customer Name</th>
+              <th scope="col">Movies Select</th>
+              <th scope="col">Complete Rental</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr className="tr-background">
+              <td>{this.props.currentCustomer.name}</td>
+              <td><img className="image" src={this.props.currentMovie.image_url} alt={this.props.currentMovie.title}/></td>
+              <td>{this.renderButton()}</td>
+            </tr>
+          </tbody>
+        </table>
+    </div>)
   }
 }
 

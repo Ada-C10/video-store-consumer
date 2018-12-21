@@ -42,11 +42,11 @@ class App extends Component {
           />
 
 
-          <div> <CheckOut
+          { !this.isReavelad && <div className="checkout"> <CheckOut
           currentMovie={this.state.currentMovie}
           currentCustomer={this.state.currentCustomer}
           />
-          </div>
+          </div> }
 
           <div>
             <Route path="/search"

@@ -1,13 +1,26 @@
+@import url('https://fonts.googleapis.com/css?family=Poiret+One|Poppins|Reem+Kufi');
+
+.navbar {
+  background-color: #ff0000;
+}
+
+li.navbar-brand {
+  font-family: 'Reem Kufi', sans-serif;
+  font-size: 2em;
+  color: white;
+}
+
 .nav-item {
   padding-left: 10px;
 }
 
 li > a{
-  color: black
+  color: white;
+  font-size: 1.25em;
 }
 
 li > a:hover {
-  color: coral;
+  color: black;
   text-decoration: none;
 }
 

@@ -1,11 +1,8 @@
-.card {
-  height: 700px;
-  width: 350px;
-  padding-bottom: auto;
-  padding-bottom: 700px;
-  font-size: 1em;
-  display: inline-block;
-  margin: 1em;
+.check-out {
+  padding-top: 5.75%;
+  position: fixed;
+  width: 100%;
+  z-index: 1
 }
 
 .button {
@@ -19,4 +16,9 @@
   color: #ff0000;
   font-family: 'Reem Kufi', sans-serif;
   background-color: white;
+}
+
+.tr-background {
+  background-color: white;
+  border-bottom: 1px solid lightgrey;
 }

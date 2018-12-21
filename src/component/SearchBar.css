@@ -2,7 +2,7 @@
   display: flex;
   height: 700px;
 
-  padding-top: 5%;
+  padding-top: 15%;
   padding-bottom: 700px;
   font-size: .85em;
   display: inline-block;
@@ -11,10 +11,11 @@
 
 .search-movies {
 width: 6000px;
+padding-top: 21em;
+
 }
 
 .form {
-  position: fixed; /* or absolute */
-  top: 10%;
+  top: 50%;
   left: 40%;
 }

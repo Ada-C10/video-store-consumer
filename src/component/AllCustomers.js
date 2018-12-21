@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types'
+import "./AllCustomers.css"
 import Customer from './Customer'
 
 import axios from 'axios';
@@ -37,18 +38,19 @@ componentDidMount() {
 
 render() {
   const customers = this.state.customers.map((customer, i) => {
+    const name = `Add ${customer.name} to Rent a Movie`
     return <Customer
       key={i}
       id={customer.id}
       name={customer.name}
       movies_checked_out_count={customer.movies_checked_out_count}
-      button="Add Customer"
+      button={name}
       callback={()=>this.props.updatedCustomerCallback(customer)}
      />
     })
 
   return (
-    <div>
+    <div className="top-table">
     {customers}
     </div>
   )

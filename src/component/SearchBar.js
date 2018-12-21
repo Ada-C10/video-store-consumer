@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import Search from './Search'
 import "./SearchBar.css"
 import "./Movies.css"
 import Movies from './Movies'
@@ -27,7 +28,7 @@ class SearchBar extends Component {
       axios.get(url)
       .then((response) => {
         const movies = response.data.map((movie, i) => {
-          let title = `Add ${movie.title} to Hollywood Video`
+          let title = `Add ${movie.title} to Netflix & Chill`
           return <Movies
             key={i}
             id={movie.id}
@@ -71,17 +72,25 @@ class SearchBar extends Component {
     }
 
     render() {
+      const image = "http://www.myiconfinder.com/uploads/iconsets/256-256-42777f4dee0832bd856f069b91e56b60-reel.png"
       return (
-        <div className="search-container" >
-        <section className="form">
-          <input
+        // <div className="search-container" >
+        // <section className="form">
+        //   <input
+        //   onChange={this.onSearchChange}
+        //   value={this.state.searchValue}
+        //   placeholder="Search.."
+        //   name="search-bar"
+        //   />
+        //   <input className="button" type="submit" value="Submit" onClick={this.onSubmit}/>
+        // </section>
+      <div className="search-container">
+        <Search
+          onSubmit={this.onSubmit}
           onChange={this.onSearchChange}
-          value={this.state.searchValue}
-          placeholder="Search.."
-          name="search-bar"
+          search={this.state.searchValue}
+          image={image}
           />
-          <input className="button" type="submit" value="Submit" onClick={this.onSubmit}/>
-        </section>
 
         <div className="card-group search-movies">
           {this.state.searchMovies}
