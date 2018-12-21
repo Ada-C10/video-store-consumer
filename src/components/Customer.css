@@ -51,19 +51,13 @@
   text-shadow: 2px 2px 2px rgba(129, 236, 236,.7);
 }
 
-.customer-card h3 small{
+.customer-card h3 small, .customer-card-selected h3 small{
   font-family: "Major Mono Display", sans-serif;
   font-style: italic;
   font-size: 16px;
 }
 
-.customer-card-selected h3 small{
-  font-family: "Major Mono Display", sans-serif;
-  font-style: italic;
-  font-size: 16px;
-}
-
-.customer-card button {
+.customer-card button, .customer-card-selected button {
   font-family: 'Raleway', sans-serif;
   border-radius: 5px;
   padding: 10px 20px;
@@ -81,39 +75,12 @@
   transition: background-color 1s;
 }
 
-.customer-card-selected button {
-  font-family: 'Raleway', sans-serif;
-  border-radius: 5px;
-  padding: 10px 20px;
-  font-size: 18px;
-  font-weight: 700;
-  text-decoration: none;
-  text-shadow: 1px 1px 1px rgba(250,250,250,.4);
-  margin: 20px;
-  position: relative;
-  display: inline-block;
-  background-color: rgba(253, 203, 110,1.0);
-  border:none;
-  box-shadow: none;
-  text-align: center;
-  transition: background-color 1s;
-}
 
-.customer-card button:hover {
+.customer-card button:hover, .customer-card-selected button:hover {
   background-color: rgba(245, 178, 55, 1);
 }
 
-.customer-card-selected button:hover {
-  background-color: rgba(245, 178, 55, 1);
-}
-
-.customer-card button:active {
-  transform: translate(0px, 1px);
-  -webkit-transform: translate(0px, 1px);
-  box-shadow: inset -2px -2px 0px 0px rgba(245, 178, 55, 1);
-}
-
-.customer-card-selected button:active {
+.customer-card button:active, .customer-card-selected button:active {
   transform: translate(0px, 1px);
   -webkit-transform: translate(0px, 1px);
   box-shadow: inset -2px -2px 0px 0px rgba(245, 178, 55, 1);
@@ -124,10 +91,6 @@
   transition: 2s;
 }
 
-.customer-card:hover .member-date {
-  opacity: 1;
-}
-
-.customer-card-selected:hover .member-date {
+.customer-card:hover .member-date, .customer-card-selected:hover .member-date {
   opacity: 1;
 }
