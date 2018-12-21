@@ -3,13 +3,10 @@ import './App.css';
 import CustomersCollection from './components/CustomersCollection.js';
 import RentalLibrary from './components/RentalLibrary.js';
 import SearchBar from './components/SearchBar.js';
+import AlertMessage from './components/AlertMessage.js';
 import { BrowserRouter as Router, Link, Route } from 'react-router-dom';
-import { Button } from 'react-bootstrap';
-import { ButtonToolbar } from 'react-bootstrap';
+import { Button, ButtonToolbar } from 'react-bootstrap';
 import axios from 'axios';
-
-
-
 
 
 
@@ -64,15 +61,11 @@ class App extends Component {
     .then((response) => {
       console.log("API response success!", response);
       this.setState({
-        alertMessage: `Sucessfully checkedout ${this.state.selectedMovie.title}
-                      to ${this.state.selectedCustomer.name}`
-      });
+        alertMessage: response.data.message,
+      })
     })
     .catch((error) => {
       console.log("Logging out error message in 'App checkout axios.post' ",error.message);
-      this.setState({
-        alertMessage: error.message
-      });
     });
   };
 
@@ -99,7 +92,7 @@ class App extends Component {
          </ButtonToolbar>
         </ul>
 
-        <p>{this.state.alertMessage}</p>
+        <AlertMessage message={this.state.alertMessage} />
 
         <div className="card bg-light" >
           <h2 className="card-text ">{this.state.selectedCustomer.name}</h2>
@@ -135,5 +128,7 @@ class App extends Component {
 }
 //checkout pass customer id as a parameter in the api post with id in the url axios can post for you?
 //urlencode the movie's title use it as the path and send the cusomer id as the parameter
+
+
 
 export default App;

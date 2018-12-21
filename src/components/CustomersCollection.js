@@ -14,7 +14,6 @@ class CustomersCollection  extends Component {
   }
 
   handleSelectCustomer = (name, id) => {
-    console.log("printing customer id in hnadleSelectCustoomer in customerscollect", id);
     if (this.props.onSelectCustomer) {
       this.props.onSelectCustomer( name, id);
     }
@@ -34,7 +33,6 @@ class CustomersCollection  extends Component {
 }
 
   componentDidMount() {
-    console.log("The component did in fact mount");
     const GET_ALL_CUSTOMERS = "http://localhost:3000/customers";
 
     axios.get(GET_ALL_CUSTOMERS)
@@ -63,7 +61,6 @@ class CustomersCollection  extends Component {
 }
 
 CustomersCollection.propTypes = {
-  customerList: PropTypes.array.isRequired,
   onSelectCustomer: PropTypes.func.isRequired,
 };
 
