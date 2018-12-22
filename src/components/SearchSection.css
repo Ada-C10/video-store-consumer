@@ -1,0 +1,6 @@
+.search-section {
+  margin-top: 8vh;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
