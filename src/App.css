@@ -1,28 +1,125 @@
-.App {
+@import url('https://fonts.googleapis.com/css?family=Bitter|Luckiest+Guy');
+@import url('https://fonts.googleapis.com/css?family=Montserrat|Open+Sans');
+
+html {
+  background-color: #3B4052;
+}
+
+.video-store {
   text-align: center;
+  background-color: #3B4052;
+  font-family: 'Montserrat', sans-serif;
+
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+/*.mv-reel-img {*/
+  /*!*position: absolute;*!*/
+  /*top: 50%;*/
+  /*left: 50%;*/
+  /*width: 120px;*/
+  /*height: 120px;*/
+  /*margin:-60px 0 0 -60px;*/
+  /*-webkit-animation:spin 4s linear infinite;*/
+  /*-moz-animation:spin 4s linear infinite;*/
+  /*animation:spin 4s linear infinite;*/
+/*}*/
+/*@-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }*/
+/*@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }*/
+/*@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }*/
+
+header {
+  padding-bottom: 20px;
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
+.header-controls {
+  height: 15rem;
+  display: grid;
+  grid-template-columns: 2fr 1fr auto;
+  background-color: #ABADC1;
+  align-items: center;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+}
+
+.navbar {
+  /*background-color: greenyellow;*/
+  /*display: grid;*/
+  /*grid-template-rows: 1fr 1fr;*/
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding-left: 4rem;
+}
+
+
+.info-alert {
+  margin-top: 75px;
+}
+
+.panel {
+  display: flex;
+  /*flex-wrap: wrap;*/
+  flex-direction: column;
+  margin: 3px;
+  /*width: 12rem;*/
+
+}
+
+.panel > * {
+  padding: 5px;
+  word-wrap: break-word;
+}
+
+
+.nav-links{
+  /*grid-column-start: 1;*/
+  /*grid-column-end: 1;*/
+  display:flex;
+  height: 100%;
+  /*padding: 5px;*/
+  justify-content: space-evenly;
+}
+
+.mv-reel-img {
+  height: 5rem;
+  width: 5rem;
+}
+
+.logo {
+  grid-column: 2;
+  display: flex;
+  font-family: 'Luckiest Guy', cursive;
+  font-size: 4rem;
+}
+
+.rental-info{
+  display: flex;
+  padding-left: 3rem;
+  padding-top: 3rem;
+  padding-right: 5rem;
+  height: 75%;
+  align-items: center;
+
+}
+
+
+.rental-info > * {
+  display: flex;
   padding: 20px;
-  color: white;
 }
 
-.App-title {
-  font-size: 1.5em;
-}
+.messages {
 
-.App-intro {
-  font-size: large;
+  position: sticky;
+  top: 0;
 }
+/*.selected-item{*/
+  /*grid-column: 3;*/
+  /*text-align: center;*/
+  /*background-color: greenyellow;*/
+  /*padding: 1rem;*/
+  /*color: #222222;*/
+  /*border: 1px solid;*/
+  /*border-radius: 5px;*/
+/*}*/
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
