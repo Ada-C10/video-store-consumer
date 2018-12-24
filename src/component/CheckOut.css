@@ -1,0 +1,37 @@
+.check-out {
+  padding-top: 6.90%;
+  position: fixed;
+  width: 100%;
+  z-index: 1
+}
+
+.button {
+  color: white;
+  font-family: 'Reem Kufi', sans-serif;
+  background-color: #ff0000
+}
+
+.button:hover {
+  cursor: pointer;
+  color: #ff0000;
+  font-family: 'Reem Kufi', sans-serif;
+  background-color: white;
+}
+
+.tr-background {
+  background-color: white;
+  border-bottom: 1px solid lightgrey;
+}
+
+.image-nav {
+    height: 50px;
+    width: 45px;
+    border-style: inset;
+}
+
+.name-checkout {
+    font-family: 'Reem Kufi', sans-serif;
+    text-align: center;
+    font-size: 1.5em;
+    padding-top: .75em;
+}

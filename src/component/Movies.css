@@ -1,0 +1,22 @@
+.card {
+  height: 700px;
+  width: 350px;
+  padding-bottom: auto;
+  padding-bottom: 700px;
+  font-size: 1em;
+  display: inline-block;
+  margin: 1em;
+}
+
+.button {
+  color: white;
+  font-family: 'Reem Kufi', sans-serif;
+  background-color: #ff0000
+}
+
+.button:hover {
+  cursor: pointer;
+  color: #ff0000;
+  font-family: 'Reem Kufi', sans-serif;
+  background-color: white;
+}

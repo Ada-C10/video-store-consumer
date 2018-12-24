@@ -1,0 +1,11 @@
+.card-group {
+  display: flex;
+  height: 700px;
+  width: 30000px;
+  padding-bottom: auto;
+  padding-bottom: 900px;
+  font-size: .85em;
+  display: inline-block;
+  margin: 1em;
+   z-index: -1!important;
+}

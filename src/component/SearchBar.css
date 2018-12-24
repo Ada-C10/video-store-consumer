@@ -1,0 +1,24 @@
+.card-group {
+  display: flex;
+  height: 700px;
+
+  padding-top: 18%;
+  padding-bottom: 700px;
+  font-size: .85em;
+  display: inline-block;
+  margin: 1em;
+}
+
+.search-movies {
+width: 5000px;
+padding-top: 21em;
+}
+
+.search-container {
+  padding-top: 50px;
+}
+
+.form {
+  top: 50%;
+  left: 40%;
+}
