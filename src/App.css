@@ -1,28 +1,80 @@
-.App {
+.main-container {
+  background-color: #17a2b8;
+}
+
+.app_name {
+  font-size: 80px;
+  color: yellow;
   text-align: center;
+  -webkit-animation: app_name 1s ease-in-out infinite alternate;
+  -moz-animation: app_name 1s ease-in-out infinite alternate;
+  animation: app_name 1s ease-in-out infinite alternate;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+@-webkit-keyframes app_name {
+  from {
+    text-shadow: 0 0 10px #FFFF00, 0 0 20px #FFFF00, 0 0 30px #FF0000, 0 0 40px #FF0000, 0 0 50px #FF0000, 0 0 60px #FF0000, 0 0 70px #FF0000;
+  }
+
+  to {
+    text-shadow: 0 0 20px #fff, 0 0 30px #FFDAB9, 0 0 40px #6495ED, 0 0 50px #6495ED, 0 0 60px #6495ED, 0 0 70px #6495ED, 0 0 80px #6495ED;
+  }
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
+.nav {
+  color: #0D0DCE;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  background-color: #17a2b8;
+  align-items: center;
 }
 
-.App-title {
-  font-size: 1.5em;
+.blinking{
+  animation:blinkingText 0.8s infinite;
 }
 
-.App-intro {
-  font-size: large;
+@keyframes blinkingText{
+  0%{     color: #000;    }
+  49%{    color: transparent; }
+  50%{    color: transparent; }
+  99%{    color:transparent;  }
+  100%{   color: #000;    }
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.vhs {
+  display: block;
+  text-indent: -9999px;
+  width: 100px;
+  height: 82px;
+  background: url(https://openclipart.org/download/272216/vcrandtapes.svg);
+  background-size: 100px 82px;
+}
+
+.cust {
+  display: block;
+  text-indent: -9999px;
+  width: 200px;
+  height: 82px;
+  background: url(https://img.freepik.com/free-icon/users-group_318-48680.jpg?size=338c&ext=jpg);
+  background-repeat: no-repeat;
+  background-size: 100px 82px;
+  margin-left: 75px;
+}
+
+.searchbar {
+  display: block;
+  text-indent: -9999px;
+  width: 100px;
+  height: 82px;
+  background: url(https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/High-contrast-system-search.svg/2000px-High-contrast-system-search.svg.png);
+  background-size: 100px 82px;
+}
+
+.status-bar {
+  height: 75px;
+}
+
+.alert {
+  padding: 0px;
 }
