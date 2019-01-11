@@ -1,0 +1,55 @@
+a.dashboard-link {
+  text-decoration: none;
+  color: white;
+}
+
+.dashboard-item {
+  display: inline-block;
+  border-radius: 5px;
+  margin: 3px;
+  font-size: 20px;
+  background-color: red;
+  color: white;
+  border-color: red;
+}
+
+
+.label {
+  background-color: lightgray;
+  display: inline-block;
+}
+
+.movie-customer-label {
+  background-color: red;
+  display: inline-block;
+  font-size: 1rem;
+  padding: .1rem;
+  color: white;
+}
+
+.selected-movie-customer {
+  font-size: 1rem;
+  background-color: white;
+  height: 2rem;
+  color: black;
+  padding: 1rem;
+}
+
+.nav-list_container {
+  display: flex;
+  justify-content: center;
+}
+
+.container-selected-item {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+
+}
+
+.selected-container {
+  display: flex;
+  justify-content: space-between;
+  margin-left: 35%;
+  margin-right:  35%;
+  align-items: center
+}
